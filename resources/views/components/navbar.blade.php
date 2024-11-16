@@ -1,8 +1,6 @@
-<div>
-    <!-- Always remember that you are absolutely unique. Just like everyone else. - Margaret Mead -->
-</div><!--Tempat edit navigasi-->
-<div>
-<nav class="bg-white">
+
+<div class="border-b-2  border-black border-solid">
+<nav class="bg-white fixed top-0 left-0 right-0 z-50 shadow">
     <div class="mx-auto  px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between w-full">
        

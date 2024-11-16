@@ -16,7 +16,10 @@ export default {
             },
             colors:{
                 'orange':'#F4511E',
-                'orangehvr':'#D5481C'
+                'orangehvr':'#D5481C',
+                'reds':'#FF0000',
+                'blue' : '#3C2EFF',
+                'purple':'#D70EBD'
             }
         },
     },
