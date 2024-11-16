@@ -26,9 +26,8 @@
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
             </div>
-            <div class="content-2 flex-1 ">
-                <p>yoho</p>
-                <img src="" alt="">
+            <div class="content-2 flex-1 items-center flex ">
+                <img src="/images/gambar-1.png" alt="" class="mx-auto my-auto rounded-xl ">
             </div>
         </div>
     </div>
@@ -66,11 +65,10 @@
     </div>
     <div class="section-5 ">
         <div class="background flex bg-gradient-to-r from-orange to-reds text-white px-16 py-8 ">
-            <div class="content-1 flex-1 mr-8">
-                <p>yoho</p>
-                <img src="" alt="">
+            <div class="content-1 flex-iinitial items-center flex mr-14">
+                <img src="/images/gambar-1.png" alt="" width="800" class="mx-auto my-auto rounded-xl ">
             </div>
-            <div class="content-2 flex-1 ">
+            <div class="content-2 flex-initial ">
                 <p class="text-center text-xl font-bold mb-8">VISI & MISI</p>
                 <p class="text-justify">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -87,12 +85,55 @@
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
             </div>
-            <div class="content-2 flex-1 ">
-                <p>yoho</p>
-                <img src="" alt="">
+            <div class="content-2 flex-1 items-center flex">
+                <img src="/images/gambar-1.png" alt="" class="mx-auto my-auto rounded-xl ">
             </div>
             
             
         </div>
     </div>
+    <div class="section-7 ">
+        <div class="background flex  px-32 py-16 ">
+            <div class="content-1 flex-1 mr-8 ">
+                <p class="text-left text-4xl font-bold mb-8"><span class="text-orange">Syarat</span> <span>Pendaftaran</span></p>
+                <p class="text-lg font-normal mb-12">Untuk memenuhi persyaratan pendaftaran santri baru, perlu beberapa berkas
+                    yang harus disiapkan:</p>
+
+                <ul>
+                    <li>
+                        <div class="flex items-center mb-8">
+                            <img src="/images/checklist.png" alt="" class="w-8 h-8 mr-8">
+                            <span class="text-xl font-bold mr-8">Membawa KTP</span><span class="text-lg">sebanyak 3 lembar</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center mb-8">
+                            <img src="/images/checklist.png" alt="" class="w-8 h-8 mr-8">
+                            <span class="text-xl font-bold mr-8">Membawa KTP</span><span class="text-lg">sebanyak 3 lembar</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center mb-8">
+                            <img src="/images/checklist.png" alt="" class="w-8 h-8 mr-8">
+                            <span class="text-xl font-bold mr-8">Membawa Kk</span><span class="text-lg">sebanyak 3 lembar</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center mb-8">
+                            <img src="/images/checklist.png" alt="" class="w-8 h-8 mr-8">
+                            <span class="text-xl font-bold mr-8">Membawa BPJS</span><span class="text-lg">sebanyak 3 lembar</span>
+                        </div>
+                    </li>
+                   
+                </ul>
+                
+            </div>
+            <div class="content-2 flex-1 items-center flex">
+                <img src="/images/gambar-1.png" alt="" class="mx-auto my-auto rounded-tl-larges rounded-tr-xl rounded-br-larges rounded-bl-xl">
+            </div>    
+        </div>
+    </div>
+    <footer>
+        <x-footer></x-footer>
+    </footer>
 </x-layout>

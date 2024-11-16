@@ -20,6 +20,9 @@ export default {
                 'reds':'#FF0000',
                 'blue' : '#3C2EFF',
                 'purple':'#D70EBD'
+            },
+            borderRadius:{
+                'larges':'200px'
             }
         },
     },
