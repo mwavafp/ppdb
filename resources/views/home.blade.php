@@ -133,7 +133,5 @@
             </div>    
         </div>
     </div>
-    <footer>
-        <x-footer></x-footer>
-    </footer>
+  
 </x-layout>

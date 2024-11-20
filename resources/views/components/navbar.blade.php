@@ -21,7 +21,7 @@
               </div>
             </div>
             <div class="py-2 px-4 bg-orange text-white rounded-lg  ml-12" >
-              <button>Login</button>
+              <a href="/login"><span>Login</span></a>
             </div>
           </div>
           

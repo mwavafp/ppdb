@@ -11,10 +11,12 @@
 
   <x-navbar></x-navbar>
  
-    <div class="">
+    <div class="mt-16">
       {{$slot}}
     </div>
-
+  <footer>
+      <x-footer></x-footer>
+  </footer>
 </body>
 </html>
 
