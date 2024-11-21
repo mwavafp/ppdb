@@ -1,47 +1,31 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
-    <!--taruh kode disini-->
+    
 
     <div class="bg-white rounded-lg shadow p-6">
         <h2 class="text-xl font-semibold mb-4">Selamat Datang</h2>
 
-        <!-- Langkah-langkah Pendaftaran -->
-        <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
-            @foreach ([ 
-                'Pengisian Biodata', 
-                'Upload Berkas', 
-                'Seleksi', 
-                'Pengumuman', 
-                'Daftar Ulang', 
-                'Verifikasi Data' 
-            ] as $step)
-            <!-- Nanti diisi menyesuaikan -->
-            <div class="bg-blue-50 p-4 rounded-lg shadow hover:bg-blue-100 ">
-                <h3 class="font-semibold">{{ $loop->iteration }}. {{ $step }}</h3>
-                <p class="text-sm text-gray-600">Selesai: {{ now()->toDateString() }}</p>
-            </div>
-            @endforeach
-        </div>
+     <x-tahapan></x-tahapan>
 
         <!-- Tabel Informasi dan Foto Samping -->
         <div class="flex flex-col lg:flex-row gap-6">
 
-            <!-- Foto bagian kiri -->
+            <!-- Foto -->
             <div class="lg:w-1/4 w-full">
-                <div class="bg-white shadow rounded-lg p-6 flex items-center justify-center">
+                <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center justify-center">
                     <img id="profile-photo" src="https://via.placeholder.com/200" alt="Foto Riwayat Pendidikan" class="rounded-lg border border-gray-300">
                     <!-- Foto input hanya muncul dalam mode edit -->
                     <input id="profile-photo-input" type="file" class="hidden mt-2" accept="image/*">
                 </div>
             </div>
 
-            <!-- Data Pendaftar bagian kanan -->
+            <!-- Data Pendaftar -->
             <div class="lg:w-3/4 w-full">
                 <div class="bg-white shadow rounded-lg">
                     <h3 class="text-lg font-semibold text-gray-700 mb-4 p-6">Data Pendaftar</h3>
 
                     <!-- Tombol Edit -->
-                    <button id="edit-btn" onclick="toggleEditMode()" class="px-4 py-2 bg-green-500 text-black rounded-md mb-4">Edit</button>
+                    <button id="edit-btn" onclick="toggleEditMode()" class="px-4 py-2 bg-green-500 text-white    rounded-md mb-4">Edit</button>
 
                     <!-- Tab Navigation -->
                     <div class="flex border-b border-gray-300">
@@ -58,7 +42,7 @@
                             <div class="overflow-x-auto">
                                 <table class="table-auto w-full border border-gray-300">
                                     <tbody>
-                                        <tr class="odd:bg-gray-100 even:bg-white">
+                                        <tr class="odd:bg-white-100 even:bg-white">
                                             <td class="border px-4 py-2 font-bold">Apapun</td>
                                             <td class="border px-4 py-2"><input type="text" class="editable-field" value="Isien rek"></td>
                                         </tr>
@@ -76,7 +60,7 @@
                             <div class="overflow-x-auto">
                                 <table class="table-auto w-full border border-gray-300">
                                     <tbody>
-                                        <tr class="odd:bg-gray-100 even:bg-white">
+                                        <tr class="odd:bg-white-100 even:bg-white">
                                             <td class="border px-4 py-2 font-bold">Apapun</td>
                                             <td class="border px-4 py-2"><input type="text" class="editable-field" value="Isien rek"></td>
                                         </tr>
@@ -94,7 +78,7 @@
                             <div class="overflow-x-auto">
                                 <table class="table-auto w-full border border-gray-300">
                                     <tbody>
-                                        <tr class="odd:bg-gray-100 even:bg-white">
+                                        <tr class="odd:bg-white-100 even:bg-white">
                                             <td class="border px-4 py-2 font-bold">Apapun</td>
                                             <td class="border px-4 py-2"><input type="text" class="editable-field" value="Isien rek"></td>
                                         </tr>
@@ -113,13 +97,12 @@
     </div>
 
     <script>
-        // Tab switching logic
+        
         function showTab(index) {
-            // Get all tabs and panels
+            
             const tabs = document.querySelectorAll('.tab-btn');
             const panels = document.querySelectorAll('.tab-panel');
 
-            // Loop through tabs to reset styles
             tabs.forEach((tab, i) => {
                 if (i === index) {
                     tab.classList.add('border-b-2', 'border-blue-500', 'text-blue-500');
@@ -128,7 +111,6 @@
                 }
             });
 
-            // Show/Hide panels
             panels.forEach((panel, i) => {
                 if (i === index) {
                     panel.classList.remove('hidden');
@@ -138,29 +120,31 @@
             });
         }
 
-        // Show the first tab by default
         document.addEventListener('DOMContentLoaded', () => {
             showTab(0);
         });
 
-        // Toggle edit mode
         function toggleEditMode() {
             const isEditing = document.body.classList.toggle('editing');
             const editButton = document.getElementById('edit-btn');
             
-            // Toggle button text
             if (isEditing) {
                 editButton.textContent = "Simpan";
-                document.querySelectorAll('.editable-field').forEach(input => input.disabled = false);
+                document.querySelectorAll('.editable-field').forEach(input => {
+                    input.disabled = false;
+                    input.parentElement.classList.add('bg-yellow-100'); 
+                });
                 document.getElementById('profile-photo-input').classList.remove('hidden');
             } else {
                 editButton.textContent = "Edit";
-                document.querySelectorAll('.editable-field').forEach(input => input.disabled = true);
+                document.querySelectorAll('.editable-field').forEach(input => {
+                    input.disabled = true;
+                    input.parentElement.classList.remove('bg-yellow-100'); 
+                });
                 document.getElementById('profile-photo-input').classList.add('hidden');
             }
         }
 
-        // Optionally, handle file input for photo
         document.getElementById('profile-photo-input').addEventListener('change', function(event) {
             const reader = new FileReader();
             reader.onload = function(e) {
@@ -169,4 +153,11 @@
             reader.readAsDataURL(event.target.files[0]);
         });
     </script>
+
+    <style>
+        /* Menambahkan kelas CSS untuk latar belakang tabel kuning saat edit mode */
+        .editing .editable-field:enabled {
+            background-color: #fffbcc; /* Kuning muda */
+        }
+    </style>
 </x-layout>
