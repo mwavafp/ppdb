@@ -5,14 +5,17 @@
     <div class="section-1 flex justify-center">
         <img src="/images/banner.png" alt="">
     </div>
-    <div class="section-2 py-12 ">
+    <div class="section-2  -">
+        <div class="text-3xl text-center font-bold bg-gradient-to-r from-orange to-reds text-white mb-8 rounded-b-full">
+            <p class="py-8">Jenjang Pendidikan</p>
+        </div>
         <div class="flex justify-center mb-8">
             <x-card-sekolah>TK</x-card-sekolah>
             <x-card-sekolah>SD</x-card-sekolah>
             <x-card-sekolah>SMP</x-card-sekolah>
             <x-card-sekolah>SMA</x-card-sekolah>
         </div>
-        <div class="flex justify-center ">
+        <div class="flex justify-center mb-8">
             <x-card-sekolah>TPQ</x-card-sekolah>
             <x-card-sekolah>MADIN</x-card-sekolah>
             <x-card-sekolah>PONDOK</x-card-sekolah>
@@ -92,8 +95,51 @@
             
         </div>
     </div>
-    <div class="section-7 ">
-        <div class="background flex  px-32 py-16 ">
+    <div class="section-7">
+        <div class="box p-12">
+            <p class="text-left text-4xl font-bold mb-12 text-center"><span class="text-orange">Alur</span> <span>Pendaftaran</span></p>
+            <div class="card-box flex  justify-center">
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">1</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Membawa Kk</p>
+                    <p class="text-justify text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">2</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Membawa Kk</p>
+                    <p class="text-justify text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">3</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Membawa Kk</p>
+                    <p class="text-justify text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">4</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Membawa Kk</p>
+                    <p class="text-justify text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">5</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Membawa Kk</p>
+                    <p class="text-justify text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="section-8 ">
+        <div class="background flex  px-16 py-12 bg-gray-50 ">
             <div class="content-1 flex-1 mr-8 ">
                 <p class="text-left text-4xl font-bold mb-8"><span class="text-orange">Syarat</span> <span>Pendaftaran</span></p>
                 <p class="text-lg font-normal mb-12">Untuk memenuhi persyaratan pendaftaran santri baru, perlu beberapa berkas
