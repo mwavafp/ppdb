@@ -2,7 +2,7 @@
         <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 mb-5">
             @foreach ([ 
                 'Pengisian Biodata', 
-                'Upload Berkas', 
+                'Pemberkasan', 
                 'Pengumuman', 
                 'Daftar Ulang', 
                 'Verifikasi Data' 

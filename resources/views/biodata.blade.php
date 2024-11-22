@@ -102,7 +102,7 @@
                                         </tr>
                                         <tr class="odd:bg-gray-100 even:bg-white">
                                             <td class="border px-4 py-2 font-bold">Tanggal Lahir Ayah</td>
-                                            <td class="border px-4 py-2"><input type="text" class="editable-field" value="Oi"></td>
+                                            <td class="border px-4 py-2"><input type="date" class="editable-field" value="Oi"></td>
                                         </tr>
                                         <tr class="odd:bg-gray-100 even:bg-white">
                                             <td class="border px-4 py-2 font-bold">Alamat Ayah</td>
@@ -130,7 +130,7 @@
                                         </tr>
                                         <tr class="odd:bg-gray-100 even:bg-white">
                                             <td class="border px-4 py-2 font-bold">Tanggal Lahir Ibu</td>
-                                            <td class="border px-4 py-2"><input type="text" class="editable-field" value="Oi"></td>
+                                            <td class="border px-4 py-2"><input type="date" class="editable-field" value="Oi"></td>
                                         </tr>
                                         <tr class="odd:bg-gray-100 even:bg-white">
                                             <td class="border px-4 py-2 font-bold">Alamat Ibu</td>
