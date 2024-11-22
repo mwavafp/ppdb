@@ -36,6 +36,7 @@ Route::get('/biodata', function () {
 Route::get('/berkas', function () {
     return view('berkas',['title'=>'User Page']);
 });
+
 Route::get('/pengumuman', function () {
     return view('pengumuman',['title'=>'About Page','post'=>[
         [
