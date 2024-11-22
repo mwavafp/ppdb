@@ -28,7 +28,7 @@ Route::get('/biaya', function () {
     return view('biaya',['title'=>'Home Page']);
 });
 Route::get('/kontak', function () {
-    return view('kontak',['title'=>'Home Page']);
+    return view('kontak',['title'=>'Kontak Page']);
 });
 Route::get('/pengumuman', function () {
     return view('pengumuman',['title'=>'About Page','post'=>[
