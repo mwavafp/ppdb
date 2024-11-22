@@ -14,40 +14,90 @@
                 <p class="text-gray-600">Nomor Pendaftaran: <span class="border-b border-gray-400">_______________</span></p>
             </div>
     
-            <!-- Tabel Checklist -->
-            <table class="w-full border-collapse border border-gray-300">
-                <thead>
-                    <tr class="bg-gray-100">
-                        <th class="border border-gray-300 px-4 py-2 text-left">No.</th>
-                        <th class="border border-gray-300 px-4 py-2 text-left">Jenis Berkas</th>
-                        <th class="border border-gray-300 px-4 py-2 text-center">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php
-                        $documents = [
-                            'Fotokopi Kartu Identitas',
-                            'Pas Foto 3x4 (2 Lembar)',
-                            'Fotokopi Ijazah Terakhir',
-                            'Surat Pernyataan',
-                            'Surat Keterangan Sehat',
-                        ];
-   
-                    @endphp
-    
-                    @foreach ($documents as $index => $document)
-                    <tr class="bg-white hover:bg-gray-50">
-                        <td class="border border-gray-300 px-4 py-2 text-center">{{ $index + 1 }}</td>
-                        <td class="border border-gray-300 px-4 py-2">{{ $document }} </td>
-                        <td class="border border-gray-300 px-4 py-2 text-center">
-                            <label class="flex items-center justify-center">
-                                <span  class="text-gray-600">Belum</span>
-                            </label>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+          <!-- Tabel Checklist -->
+<table class="w-full border-collapse border border-gray-300">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="border border-gray-300 px-4 py-2 text-left">No.</th>
+            <th class="border border-gray-300 px-4 py-2 text-left">Jenis Berkas</th>
+            <th class="border border-gray-300 px-4 py-2 text-left">Template Berkas</th>
+            <th class="border border-gray-300 px-4 py-2 text-center">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Baris 1 -->
+        <tr class="bg-white hover:bg-gray-50">
+            <td class="border border-gray-300 px-4 py-2 text-center">1</td>
+            <td class="border border-gray-300 px-4 py-2">Fotokopi Kartu Identitas</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">
+                <span class="text-gray-600">tidak ada</span>
+            </td>
+            <td class="border border-gray-300 px-4 py-2 text-center">
+                <label class="flex items-center justify-center">
+                    <span class="text-gray-600">Belum</span>
+                </label>
+            </td>
+        </tr>
+        <!-- Baris 2 -->
+        <tr class="bg-white hover:bg-gray-50">
+            <td class="border border-gray-300 px-4 py-2 text-center">2</td>
+            <td class="border border-gray-300 px-4 py-2">Pas Foto 3x4 (2 Lembar)</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">
+                <span class="text-gray-600">tidak ada</span>
+            </td>
+            <td class="border border-gray-300 px-4 py-2 text-center">
+                <label class="flex items-center justify-center">
+                    <span class="text-gray-600">Belum</span>
+                </label>
+            </td>
+        </tr>
+        <!-- Baris 3 -->
+        <tr class="bg-white hover:bg-gray-50">
+            <td class="border border-gray-300 px-4 py-2 text-center">3</td>
+            <td class="border border-gray-300 px-4 py-2">Fotokopi Ijazah Terakhir</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">
+                <span class="text-gray-600">tidak ada</span>
+            </td>
+            <td class="border border-gray-300 px-4 py-2 text-center">
+                <label class="flex items-center justify-center">
+                    <span class="text-gray-600">Belum</span>
+                </label>
+            </td>
+        </tr>
+        <!-- Baris 4 -->
+        <tr class="bg-white hover:bg-gray-50">
+            <td class="border border-gray-300 px-4 py-2 text-center">4</td>
+            <td class="border border-gray-300 px-4 py-2">Surat Pernyataan</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">
+                <a href="mmmmmm.pdf" download="How-to-download-file.pdf">
+                    <button class="px-4 py-2 bg-blue-500 text-black rounded hover:bg-blue-700">
+                        Download File
+                    </button>
+                </a>
+                
+            </td>
+            <td class="border border-gray-300 px-4 py-2 text-center">
+                <label class="flex items-center justify-center">
+                    <span class="text-gray-600">Belum</span>
+                </label>
+            </td>
+        </tr>
+        <!-- Baris 5 -->
+        <tr class="bg-white hover:bg-gray-50">
+            <td class="border border-gray-300 px-4 py-2 text-center">5</td>
+            <td class="border border-gray-300 px-4 py-2">Surat Keterangan Sehat</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">
+                <span class="text-gray-600">tidak ada</span>
+            </td>
+            <td class="border border-gray-300 px-4 py-2 text-center">
+                <label class="flex items-center justify-center">
+                    <span class="text-gray-600">Belum</span>
+                </label>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
     
             <!-- Informasi Tambahan -->
             <div class="mt-6">
