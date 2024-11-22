@@ -30,6 +30,9 @@ Route::get('/biaya', function () {
 Route::get('/kontak', function () {
     return view('kontak',['title'=>'Kontak Page']);
 });
+Route::get('/biodata', function () {
+    return view('biodata',['title'=>'User Page']);
+});
 Route::get('/pengumuman', function () {
     return view('pengumuman',['title'=>'About Page','post'=>[
         [
