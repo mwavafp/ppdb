@@ -8,7 +8,7 @@
                 'Verifikasi Data' 
             ] as $step)
             <div class="bg-blue-50 p-4 rounded-lg shadow hover:bg-blue-100 ">
-                <h3 class="font-semibold">{{ $loop->iteration }}. {{ $step }}</h3>
+                <h3 class="font-semibold"> {{ $step }}</h3>
                 <p class="text-sm text-gray-600">Selesai: {{ now()->toDateString() }}</p>
             </div>
             @endforeach
