@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
@@ -17,6 +19,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::middleware('auth','panitia')->group(function(){
+    Route::get('/panitia',[PanitiaController::class,'index'])->name('panitia.panitia');
+});
+
 
 Route::get('/', function () {
     return view('home',['title'=>'Home Page']);//penggunaan nilai title
@@ -32,6 +38,12 @@ Route::get('/kontak', function () {
 });
 Route::get('/biodata', function () {
     return view('biodata',['title'=>'User Page']);
+});
+Route::get('/berkas', function () {
+    return view('berkas',['title'=>'User Page']);
+});
+Route::get('/dulang', function () {
+    return view('dulang',['title'=>'User Page']);
 });
 Route::get('/pengumuman', function () {
     return view('pengumuman',['title'=>'About Page','post'=>[
