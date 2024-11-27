@@ -5,11 +5,8 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
 
-    <!-- Header -->
-   
-
     <!-- Header Title -->
-    <div class="contact-header bg-green-600 text-white text-center py-6 text-2xl font-bold">
+    <div class="contact-header bg-gradient-to-r from-orange to-reds text-white text-center py-6 text-2xl font-bold">
         CONTACT
     </div>
 
@@ -24,7 +21,7 @@
                     <p class="font-bold text-lg">Ust. Jalal</p>
                     <p>Admin XYZ</p>
                 </div>
-                <a href="https://wa.me/6289656488667?text=Assalamualaikum%2C%20Halo%20Bapak%2FIbu.%20Saya%20ingin%20bertanya%20tentang%20pendaftaran%20sekolah" target="_blank" class="contact-btn bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mt-4 inline-block">Contact</a>
+                <a href="https://wa.me/6289656488667?text=Assalamualaikum" target="_blank" class="contact-btn bg-reds text-white px-4 py-2 rounded hover:bg-green-700 mt-4 inline-block">Contact</a>
             </div>
             <!-- Card 2 -->
             <div class="contact-card text-center border border-gray-300 rounded-lg shadow-md p-6 w-60 bg-white">
@@ -33,7 +30,7 @@
                     <p class="font-bold text-lg">Ust. Izza</p>
                     <p>Admin XYZ</p>
                 </div>
-                <a href="https://wa.me/6289656488667?text=Assalamualaikum%2C%20Halo%20Bapak%2FIbu.%20Saya%20ingin%20bertanya%20tentang%20pendaftaran%20sekolah" target="_blank" class="contact-btn bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mt-4 inline-block">Contact</a>
+                <a href="https://wa.me/6289656488667?text=Assalamualaikum%2C%20Halo%20Bapak%2FIbu.%20Saya%20ingin%20bertanya%20tentang%20pendaftaran%20sekolah" target="_blank" class="contact-btn bg-gradient-to-r from-orange to-reds text-white px-4 py-2 rounded hover:bg-green-700 mt-4 inline-block">Contact</a>
             </div>
             <!-- Card 3 -->
             <div class="contact-card text-center border border-gray-300 rounded-lg shadow-md p-6 w-60 bg-white">
@@ -42,21 +39,21 @@
                     <p class="font-bold text-lg">Ust. Qusyairi</p>
                     <p>Admin XYZ</p>
                 </div>
-                <a href="https://wa.me/6289656488667?text=Assalamualaikum%2C%20Halo%20Bapak%2FIbu.%20Saya%20ingin%20bertanya%20tentang%20pendaftaran%20sekolah" target="_blank" class="contact-btn bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mt-4 inline-block">Contact</a>
+                <a href="https://wa.me/6289656488667?text=Assalamualaikum%2C%20Halo%20Bapak%2FIbu.%20Saya%20ingin%20bertanya%20tentang%20pendaftaran%20sekolah" target="_blank" class="contact-btn bg-gradient-to-r from-orange to-reds text-white px-4 py-2 rounded hover:bg-green-700 mt-4 inline-block">Contact</a>
             </div>
         </div>
     </div>
 
     <!-- Contact Information -->
     <div class="contact-info flex gap-6 p-6 bg-white rounded-lg shadow mx-6 my-10 h-5/6">
-        <div class="info bg-green-600 text-white p-6 rounded-lg w-1/3">
+        <div class="info bg-gradient-to-r from-orange to-reds text-white p-6 rounded-lg w-1/3">
             <h2 class="font-bold text-xl mb-6">Contact Information</h2>
             <p class="mb-4"><i class="fas fa-phone"></i> 085781000933 ( Jalal )</p>
             <p class="mb-4"><i class="fas fa-phone"></i> 089656488667 ( Izza )</p>
             <p class="mb-4"><i class="fas fa-phone"></i> 087754441485 ( Qusyairi )</p>
             <p class="mb-4"><i class="fas fa-envelope"></i> psb.yppnuha20@gmail.com</p>
             <p class="mb-4"><i class="fas fa-map-marker-alt"></i> Jalan Sencaki No. 64, Simolawang, Simokerto, Surabaya</p>
-            <div class="social-icons flex gap-4 mt-64">
+            <div class="social-icons flex gap-5 mt-64 ">
                 <a href="#" class="text-white text-2xl"><i class="fab fa-facebook"></i></a>
                 <a href="#" class="text-white text-2xl"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="text-white text-2xl"><i class="fab fa-whatsapp"></i></a>
