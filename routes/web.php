@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -11,17 +12,18 @@ use Illuminate\Support\Arr;
 use function Laravel\Prompts\alert;
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('biodata',['title'=>'User Page']);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/dulang', function () {
+        return view('dulang',['title'=>'User Page']);
+    });
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::middleware('auth','panitia')->group(function(){
-    Route::get('/panitia',[PanitiaController::class,'index'])->name('panitia.panitia');
-});
+
 
 
 Route::get('/', function () {
@@ -36,15 +38,11 @@ Route::get('/biaya', function () {
 Route::get('/kontak', function () {
     return view('kontak',['title'=>'Kontak Page']);
 });
-Route::get('/biodata', function () {
-    return view('biodata',['title'=>'User Page']);
-});
+
 Route::get('/berkas', function () {
     return view('berkas',['title'=>'User Page']);
 });
-Route::get('/dulang', function () {
-    return view('dulang',['title'=>'User Page']);
-});
+
 Route::get('/pengumuman', function () {
     return view('pengumuman',['title'=>'About Page','post'=>[
         [
@@ -69,3 +67,5 @@ Route::get('/pengumuman/{id}', function ($id){
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin-auth.php';
+
