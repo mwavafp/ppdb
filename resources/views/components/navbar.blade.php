@@ -20,9 +20,21 @@
                 <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
               </div>
             </div>
+            @if(Auth::check())
+            <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="bg-orange text-white p-2 rounded">
+                                {{ __('Log Out') }}
+                                
+                            </button>
+                        </form>
+            @else
             <div class="py-2 px-4 bg-orange text-white rounded-lg  ml-12" >
               <a href="/login"><span>Login</span></a>
             </div>
+            @endif
           </div>
           
      
