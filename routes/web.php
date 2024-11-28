@@ -27,8 +27,26 @@ Route::middleware('auth','panitia')->group(function(){
 Route::get('/', function () {
     return view('home',['title'=>'Home Page']);//penggunaan nilai title
 });
-Route::get('/informasi', function () {
-    return view('informasi',['title'=>'Home Page']);
+Route::get('/pondok', function () {
+    return view('pondok',['title'=>'Information Page']);
+});
+Route::get('/madin', function () {
+    return view('madin',['title'=>'Information Page']);
+});
+Route::get('/tpq', function () {
+    return view('tpq',['title'=>'Information Page']);
+});
+Route::get('/tk', function () {
+    return view('tk',['title'=>'Information Page']);
+});
+Route::get('/sd', function () {
+    return view('sd',['title'=>'Information Page']);
+});
+Route::get('/smp', function () {
+    return view('smp',['title'=>'Information Page']);
+});
+Route::get('/sma', function () {
+    return view('sma',['title'=>'Information Page']);
 });
 Route::get('/biaya', function () {
     return view('biaya',['title'=>'Home Page']);
