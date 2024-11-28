@@ -33,6 +33,9 @@ Route::get('/kontak', function () {
 Route::get('/biodata', function () {
     return view('biodata',['title'=>'User Page']);
 });
+Route::get('/pembayaran', function () {
+    return view('pembayaran',['title'=>'Informasi Pembayaran']);
+});
 Route::get('/pengumuman', function () {
     return view('pengumuman',['title'=>'About Page','post'=>[
         [
