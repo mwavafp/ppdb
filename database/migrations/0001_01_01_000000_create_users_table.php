@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role',['panitia','calon_murid','murid'])->default('calon_murid');
             $table->rememberToken();
             $table->timestamps();
         });
