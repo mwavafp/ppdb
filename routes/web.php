@@ -60,6 +60,12 @@ Route::get('/berkas', function () {
     return view('berkas',['title'=>'User Page']);
 });
 
+Route::get('/pembayaran', function () {
+    return view('pembayaran',['title'=>'Informasi Pembayaran']);
+});
+
+
+
 Route::get('/pengumuman', function () {
     return view('pengumuman',['title'=>'About Page','post'=>[
         [
