@@ -20,19 +20,18 @@
                 <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
               </div>
             </div>
-            
-            <div class="py-2 px-4 bg-orange text-white rounded-lg  ml-12 " >
-              @if(Auth::check())
+            @if(Auth::check())
             <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="bg-orange text-white  rounded">
+                                                this.closest('form').submit();" class="bg-orange text-white p-2 rounded">
                                 {{ __('Log Out') }}
                                 
                             </button>
                         </form>
             @else
+            <div class="py-2 px-4 bg-orange text-white rounded-lg  ml-12" >
               <a href="/login"><span>Login</span></a>
             </div>
             @endif
@@ -61,6 +60,7 @@
       </div>
     </div>
 
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden">
             <div class="px-2 pb-3 pt-2 space-y-1">
                 <x-nav-link href="/">BERANDA</x-nav-link>
