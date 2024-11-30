@@ -12,17 +12,10 @@ use Illuminate\Support\Arr;
 use function Laravel\Prompts\alert;
 
 Route::get('/dashboard', function () {
-    return view('biodata',['title'=>'User Page']);
+    return view('calonMurid.biodata',['title'=>'User Page']);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::get('/dulang', function () {
-        return view('dulang',['title'=>'User Page']);
-    });
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
 
 
 
@@ -56,13 +49,7 @@ Route::get('/biaya', function () {
 Route::get('/kontak', function () {
     return view('kontak',['title'=>'Kontak Page']);
 });
-Route::get('/berkas', function () {
-    return view('berkas',['title'=>'User Page']);
-});
 
-Route::get('/pembayaran', function () {
-    return view('pembayaran',['title'=>'Informasi Pembayaran']);
-});
 
 
 
