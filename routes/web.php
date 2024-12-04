@@ -44,7 +44,7 @@ Route::get('/sma', function () {
     return view('sma',['title'=>'Information Page']);
 });
 Route::get('/biaya', function () {
-    return view('biaya',['title'=>'Home Page']);
+    return view('calonMurid/biaya',['title'=>'Home Page']);
 });
 Route::get('/kontak', function () {
     return view('kontak',['title'=>'Kontak Page']);
