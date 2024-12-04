@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id('id_brks');
             $table->enum('kk',['diserahkan','belum_diserahkan'])->default('belum_diserahkan');
             $table->enum('srt_pernyataan',['diserahkan','belum_diserahkan'])->default('belum_diserahkan');
-            $table->foreignId('fk_user')->default(1)->constrained('users')->cascadeOnDelete();
             $table->timestamps();
+            
+            
         });
     }
 

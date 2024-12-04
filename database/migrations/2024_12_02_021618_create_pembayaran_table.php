@@ -16,8 +16,8 @@ return new class extends Migration
             $table->enum('byr_dft_ulang', ['lunas', 'belum']); // Status pembayaran (wajib diisi)
             $table->enum('status', ['cicil', 'DP', 'Lunas']); // Status pembayaran (wajib diisi)
             $table->integer('jmlh_byr'); // Jumlah pembayaran (wajib diisi)
-            $table->foreignId('fk_user')->default(1)->constrained('users')->cascadeOnDelete();
             $table->timestamps();
+            
         });
     }
 
