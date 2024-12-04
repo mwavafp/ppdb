@@ -5,7 +5,7 @@
     <html>
  <head>
   <title>
-   Informasi TK
+   Informasi SD
   </title>
   <script src="https://cdn.tailwindcss.com">
   </script>
@@ -15,7 +15,7 @@
   <main class="container mx-auto mt-6">
    <div class="bg-red-600 text-white text-center py-4 rounded-md">
     <h1 class="text-xl font-bold">
-     INFORMASI TK
+     INFORMASI SD
     </h1>
    </div>
    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">

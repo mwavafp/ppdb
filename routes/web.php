@@ -63,8 +63,13 @@ Route::get('/berkas', function () {
 Route::get('/pembayaran', function () {
     return view('pembayaran',['title'=>'Informasi Pembayaran']);
 });
+Route::get('/sd', function () {
+    return view('sd',['title'=>'Informasi Pembayaran']);
+});
 
-
+Route::get('/seleksi', function () {
+    return view('seleksi',['title'=>'Informasi Pembayaran']);
+});
 
 Route::get('/pengumuman', function () {
     return view('pengumuman',['title'=>'About Page','post'=>[
