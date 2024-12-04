@@ -49,6 +49,9 @@ Route::get('/biaya', function () {
 Route::get('/kontak', function () {
     return view('kontak',['title'=>'Kontak Page']);
 });
+Route::get('/registerer', function () {
+    return view('registerer',['title'=>'registerer Page']);
+});
 
 
 
