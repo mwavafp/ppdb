@@ -31,7 +31,7 @@
             
             <td class="border border-gray-300 px-4 py-2 text-center">
                 <label class="flex items-center justify-center">
-                    <span class="text-gray-600">Belum</span>
+                    <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum</span>
                 </label>
             </td>
         </tr>
@@ -42,7 +42,7 @@
             
             <td class="border border-gray-300 px-4 py-2 text-center">
                 <label class="flex items-center justify-center">
-                    <span class="text-gray-600">Belum</span>
+                    <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum</span>
                 </label>
             </td>
         </tr>
@@ -53,7 +53,7 @@
             
             <td class="border border-gray-300 px-4 py-2 text-center">
                 <label class="flex items-center justify-center">
-                    <span class="text-gray-600">Belum</span>
+                    <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum</span>
                 </label>
             </td>
         </tr>
@@ -64,7 +64,7 @@
         
             <td class="border border-gray-300 px-4 py-2 text-center">
                 <label class="flex items-center justify-center">
-                    <span class="text-gray-600">Belum</span>
+                    <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum</span>
                 </label>
             </td>
         </tr>
@@ -75,7 +75,7 @@
             
             <td class="border border-gray-300 px-4 py-2 text-center">
                 <label class="flex items-center justify-center">
-                    <span class="text-gray-600">Belum</span>
+                    <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum</span>
                 </label>
             </td>
         </tr>

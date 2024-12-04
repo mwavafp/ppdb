@@ -36,6 +36,20 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/biodata', function () {
+        return view('calonMurid.biodata',['title'=>'User Page']);
+    });
+    Route::get('/dulang', function () {
+        return view('calonMurid.dulang',['title'=>'User Page']);
+    });
+    Route::get('/berkas', function () {
+        return view('calonMurid.berkas',['title'=>'User Page']);
+    });
+    
+    Route::get('/pembayaran', function () {
+        return view('calonMurid.pembayaran',['title'=>'Informasi Pembayaran']);
+    });
+    
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 
