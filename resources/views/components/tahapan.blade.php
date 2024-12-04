@@ -4,7 +4,7 @@
                 'Pengisian Biodata' => 'biodata', 
                 'Pemberkasan' => 'berkas', 
                 'Pengumuman' => 'pengumuman', 
-                'Daftar Ulang' => 'dulang', 
+                'Daftar Ulang' => 'pembayaran', 
                 'Verifikasi Data' => 'verifikasi-data'
             ] as $step => $urlSegment)
             <a href="{{ url($urlSegment) }}" class="block">
