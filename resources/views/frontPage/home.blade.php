@@ -10,15 +10,15 @@
             <p class="py-8">Jenjang Pendidikan</p>
         </div>
         <div class="flex justify-center mb-8">
-            <x-card-sekolah>TK</x-card-sekolah>
-            <x-card-sekolah>SD</x-card-sekolah>
-            <x-card-sekolah>SMP</x-card-sekolah>
-            <x-card-sekolah>SMA</x-card-sekolah>
+            <x-card-sekolah href="/tk">TK</x-card-sekolah>
+            <x-card-sekolah href="/sd">SD</x-card-sekolah>
+            <x-card-sekolah href="/smp">SMP</x-card-sekolah>
+            <x-card-sekolah href="/sma">SMA</x-card-sekolah>
         </div>
         <div class="flex justify-center mb-8">
-            <x-card-sekolah>TPQ</x-card-sekolah>
-            <x-card-sekolah>MADIN</x-card-sekolah>
-            <x-card-sekolah>PONDOK</x-card-sekolah>
+            <x-card-sekolah href="/tpq">TPQ</x-card-sekolah>
+            <x-card-sekolah href="/madin">MADIN</x-card-sekolah>
+            <x-card-sekolah href="/pondok">PONDOK</x-card-sekolah>
         </div>
     </div>
     <div class="section-3 ">

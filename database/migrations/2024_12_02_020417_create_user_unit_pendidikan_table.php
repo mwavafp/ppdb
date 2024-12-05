@@ -12,13 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_unit_pendidikan', function (Blueprint $table) {
-            $table->bigIncrements('id_uup');
+            $table->id('id_uup');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_kelas');
+           
             
             $table->enum('status',['aktif','tidak_aktif'])->default('aktif');
             $table->date('tgl_mulai');
             $table->date('tgl_berakhir');
             $table->timestamps();
-            
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
+            $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade');
         });
     }
 
