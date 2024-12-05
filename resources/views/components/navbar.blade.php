@@ -1,4 +1,6 @@
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
 <div class="border-b-2  border-black border-solid">
 <nav class="bg-white fixed top-0 left-0 right-0 z-50 shadow">
 

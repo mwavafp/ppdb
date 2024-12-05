@@ -56,7 +56,9 @@ Route::get('/form', function () {
 Route::get('/pembayaran', function () {
     return view('frontPage.pembayaran',['title'=>'Informasi Pembayaran']);
 });
-
+Route::get('/sd', function () {
+    return view('sd',['title'=>'Informasi Pembayaran']);
+});
 
 
 Route::get('/seleksi', function () {
