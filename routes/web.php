@@ -50,16 +50,6 @@ Route::get('/kontak', function () {
     return view('kontak',['title'=>'Kontak Page']);
 });
 
-<<<<<<< HEAD
-Route::get('/pembayaran', function () {
-    return view('pembayaran',['title'=>'Informasi Pembayaran']);
-});
-Route::get('/sd', function () {
-    return view('sd',['title'=>'Informasi Pembayaran']);
-});
-=======
->>>>>>> e1aa369ebe6b04652f417f9aaba0266709912b06
-
 Route::get('/seleksi', function () {
     return view('seleksi',['title'=>'Informasi Pembayaran']);
 });
