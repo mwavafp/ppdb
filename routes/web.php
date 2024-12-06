@@ -20,48 +20,52 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/', function () {
-    return view('home',['title'=>'Home Page']);//penggunaan nilai title
+    return view('frontPage.home',['title'=>'Home Page']);//penggunaan nilai title
 });
 Route::get('/pondok', function () {
-    return view('pondok',['title'=>'Information Page']);
+    return view('frontPage.pondok',['title'=>'Pondok Information Page']);
 });
 Route::get('/madin', function () {
-    return view('madin',['title'=>'Information Page']);
+    return view('frontPage.madin',['title'=>'Madin Information Page']);
 });
 Route::get('/tpq', function () {
-    return view('tpq',['title'=>'Information Page']);
+    return view('frontPage.tpq',['title'=>'TPQ Information Page']);
 });
 Route::get('/tk', function () {
-    return view('tk',['title'=>'Information Page']);
+    return view('frontPage.tk',['title'=>'TK Information Page']);
 });
 Route::get('/sd', function () {
-    return view('sd',['title'=>'Information Page']);
+    return view('frontPage.sd',['title'=>'SD Information Page']);
 });
 Route::get('/smp', function () {
-    return view('smp',['title'=>'Information Page']);
+    return view('frontPage.smp',['title'=>'SMP Information Page']);
 });
 Route::get('/sma', function () {
-    return view('sma',['title'=>'Information Page']);
+    return view('frontPage.sma',['title'=>'SMA Information Page']);
 });
 Route::get('/biaya', function () {
-    return view('calonMurid/biaya',['title'=>'Home Page']);
+    return view('calonMurid/biaya',['title'=>'Biaya Page']);
 });
 Route::get('/kontak', function () {
-    return view('kontak',['title'=>'Kontak Page']);
+    return view('frontPage.kontak',['title'=>'Kontak Page']);
 });
-Route::get('/registerer', function () {
-    return view('registerer',['title'=>'registerer Page']);
+Route::get('/form', function () {
+    return view('frontPage.formRegister',['title'=>'Register Page']);
 });
 
 Route::get('/pembayaran', function () {
-    return view('pembayaran',['title'=>'Informasi Pembayaran']);
+    return view('frontPage.pembayaran',['title'=>'Informasi Pembayaran']);
 });
 Route::get('/sd', function () {
     return view('sd',['title'=>'Informasi Pembayaran']);
 });
 
+Route::get('/seleksi', function () {
+    return view('seleksi',['title'=>'Informasi Pembayaran']);
+});
+
 Route::get('/pengumuman', function () {
-    return view('pengumuman',['title'=>'About Page','post'=>[
+    return view('frontPage.pengumuman',['title'=>'About Page','post'=>[
         [
             'id'=>1,
             'title'=>'njirlah aneh',
