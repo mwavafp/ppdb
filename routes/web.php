@@ -18,8 +18,6 @@ Route::get('/dashboard', function () {
 
 
 
-
-
 Route::get('/', function () {
     return view('frontPage.home',['title'=>'Home Page']);//penggunaan nilai title
 });
@@ -59,13 +57,18 @@ Route::get('/sd', function () {
     return view('sd',['title'=>'Informasi Pembayaran']);
 });
 
+
 Route::get('/form', function (Request $request) {
     $unitPendidikan = $request->query('unit_pendidikan', ''); // Nilai default kosong jika tidak ada parameter
     return view('frontPage.formRegister',['title'=>'test'], compact('unitPendidikan'));
 });
 
+
 Route::get('/seleksi', function () {
     return view('seleksi',['title'=>'Informasi Pembayaran']);
+});
+Route::get('/verifikasi', function () {
+    return view('verifikasi',['title'=>'Vrifikasi Data']);
 });
 
 Route::get('/pengumuman', function () {
