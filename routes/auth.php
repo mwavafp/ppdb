@@ -45,9 +45,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/berkas', function () {
         return view('calonMurid.berkas',['title'=>'User Page']);
     });
+    Route::get('/verifikasi-data', function () {
+        return view('calonMurid.verifikasi',['title'=>'User Page']);
+    });
     
     Route::get('/pembayaran', function () {
         return view('calonMurid.pembayaran',['title'=>'Informasi Pembayaran']);
+    });
+    Route::get('/biaya', function () {
+        return view('calonMurid.biaya',['title'=>'Informasi Pembayaran']);
     });
     
     Route::get('verify-email', EmailVerificationPromptController::class)

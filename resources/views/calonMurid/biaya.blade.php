@@ -10,6 +10,7 @@
     </script>
     <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+    <x-tahapan></x-tahapan>>
     <div class="container mx-auto p-4">
      
     <div class="bg-orange-500 text-black text-center py-4 font-bold text-lg">
