@@ -51,8 +51,6 @@ Route::get('/form', function () {
     return view('frontPage.formRegister',['title'=>'Register Page']);
 });
 
-<<<<<<< HEAD
-=======
 Route::get('/pembayaran', function () {
     return view('frontPage.pembayaran',['title'=>'Informasi Pembayaran']);
 });
@@ -60,7 +58,6 @@ Route::get('/sd', function () {
     return view('sd',['title'=>'Informasi Pembayaran']);
 });
 
->>>>>>> 5dc51dfc716aeffcdd160c5990e7ed5a93966566
 Route::get('/seleksi', function () {
     return view('seleksi',['title'=>'Informasi Pembayaran']);
 });
