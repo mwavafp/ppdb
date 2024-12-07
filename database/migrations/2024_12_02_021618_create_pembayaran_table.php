@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id('id_bayar'); // Primary key
+            $table->unsignedBigInteger('id_user');
             $table->enum('byr_dft_ulang', ['lunas', 'belum']); // Status pembayaran (wajib diisi)
             $table->enum('status', ['cicil', 'DP', 'Lunas']); // Status pembayaran (wajib diisi)
             $table->integer('jmlh_byr'); // Jumlah pembayaran (wajib diisi)
             $table->timestamps();
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
             
         });
     }

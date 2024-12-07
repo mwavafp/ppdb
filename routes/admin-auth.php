@@ -5,6 +5,9 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->middleware('guest:admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard',['title'=>'User Page']);
+    })->middleware(['auth', 'verified'])->name('dashboard');
     Route::get('register', [RegisteredUserController::class, 'create'])->name('admin.register');
     Route::post('register', [RegisteredUserController::class, 'store']);
     Route::get('login', [LoginController::class, 'create'])

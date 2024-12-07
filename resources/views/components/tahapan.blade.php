@@ -3,7 +3,7 @@
                 @foreach ([
                 'Pengisian Biodata' => 'biodata', 
                 'Pemberkasan' => 'berkas', 
-                'Pengumuman' => 'pengumuman', 
+                'pengumuman' => 'seleksi', 
                 'Daftar Ulang' => 'pembayaran', 
                 'Verifikasi Data' => 'verifikasi-data'
             ] as $step => $urlSegment)
