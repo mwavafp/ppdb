@@ -100,7 +100,7 @@
                 1 Juni - 14 Juli 2025
                </li>
               </ul>
-              <a href="/form"  class="bg-orange text-white py-2 px-4 rounded-md">
+              <a href="/form?unit_pendidikan=TPQ"  class="bg-orange text-white py-2 px-4 rounded-md">
                DAFTAR KLIK DISINI
               </a>
              </div>
