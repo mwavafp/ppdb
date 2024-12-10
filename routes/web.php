@@ -51,44 +51,20 @@ Route::get('/form', function () {
     return view('frontPage.formRegister',['title'=>'Register Page']);
 });
 
-<<<<<<< HEAD
-=======
 Route::get('/pembayaran', function () {
-    return view('frontPage.pembayaran',['title'=>'Informasi Pembayaran']);
-});
-Route::get('/sd', function () {
-    return view('sd',['title'=>'Informasi Pembayaran']);
+    return view('calonMurid.pembayaran',['title'=>'Informasi Pembayaran']);
 });
 
->>>>>>> 5dc51dfc716aeffcdd160c5990e7ed5a93966566
 Route::get('/seleksi', function () {
-    return view('seleksi',['title'=>'Informasi Pembayaran']);
+    return view('calonMurid.seleksi',['title'=>'Seleksi Murid']);
 });
+
 Route::get('/verifikasi', function () {
-    return view('verifikasi',['title'=>'Vrifikasi Data']);
+    return view('calonMurid.verifikasi',['title'=>'Verifikasi Data']);
 });
 
 Route::get('/pengumuman', function () {
-    return view('frontPage.pengumuman',['title'=>'About Page','post'=>[
-        [
-            'id'=>1,
-            'title'=>'njirlah aneh',
-            'link'=>'gg123',
-            'desk'=>'Error123'
-        ],
-        [   
-            'id'=>2,
-            'title'=>'njirlah aneh2',
-            'link'=>'gg321',
-            'desk'=>'Error321'
-        ]//contoh data
-    ]]);
-});
-
-Route::get('/pengumuman/{id}', function ($id){
-
-    $post=Post::find($id);
-    return view('post',['title'=>'single post','post'=>$post]);
+    return view('frontPage.pengumuman',['title'=>'About Page']);
 });
 
 require __DIR__.'/auth.php';
