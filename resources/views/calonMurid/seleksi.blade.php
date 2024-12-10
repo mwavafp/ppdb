@@ -1,10 +1,6 @@
 <x-layout>
     <x-slot:title>Hasil Seleksi</x-slot:title>
-
-    <div class="bg-gradient-to-r from-orange to-reds p-4 flex justify-center items-center">
-        <h1 class="text-white text-xl font-bold">Hasil Seleksi</h1>
-    </div>
-
+    <x-tahapan></x-tahapan>
     <main class="flex-grow w-full px-10 my-7 p-4">
         <div class="bg-white shadow-lg w-11/12 mx-auto rounded-lg h-auto">
             <div class="bg-green-500 text-center text-white py-4 w-full rounded-t-lg font-bold">

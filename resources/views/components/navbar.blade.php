@@ -45,7 +45,7 @@
               @csrf
               <button
                   onclick="event.preventDefault(); this.closest('form').submit();"
-                  class="py-2 px-4 bg-orange text-white rounded-lg hover:bg-orange-600 transition">
+                  class="py-2 px-4 mt-4 bg-orange text-white rounded-lg hover:bg-orange-600 transition">
                   {{ __('Log Out') }}
               </button>
           </form>
