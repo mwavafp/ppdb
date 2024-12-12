@@ -53,15 +53,12 @@ Route::get('/registerer', function () {
     return view('registerer',['title'=>'registerer Page']);
 });
 
-<<<<<<< HEAD
 Route::get('/pembayaran', function () {
     return view('pembayaran',['title'=>'Informasi Pembayaran']);
 });
 Route::get('/sd', function () {
     return view('sd',['title'=>'Informasi Pembayaran']);
 });
-=======
->>>>>>> e1aa369ebe6b04652f417f9aaba0266709912b06
 
 Route::get('/seleksi', function () {
     return view('seleksi',['title'=>'Informasi Pembayaran']);
@@ -89,6 +86,19 @@ Route::get('/pengumuman/{id}', function ($id){
     $post=Post::find($id);
     return view('post',['title'=>'single post','post'=>$post]);
 });
+
+Route::get('/pengumuman-sma', function () {
+    return view('pengumumansma');
+})->name('pengumuman-sma');
+
+Route::get('/pengumuman-smp', function () {
+    return view('pengumumansmp');
+})->name('pengumuman-smp');
+
+Route::get('/pengumuman-tk', function () {
+    return view('pengumumantk');
+})->name('pengumuman-tk');
+
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin-auth.php';
