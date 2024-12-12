@@ -17,6 +17,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $primaryKey = 'id_user'; // digunakan untuk penggantian id
+    public $incrementing = true; 
+    protected $keyType = 'int'; 
     protected $fillable = [
         'name',
         'email',

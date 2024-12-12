@@ -1,13 +1,8 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
-    
-    <div class="border-white font-sans">
-        <div class=" border-black px-9 py-5 border-b-2">
-            <h1 class="text-2xl font-bold">Informasi Pembayaran</h1>
-        </div>
-
-        <x-tahapan></x-tahapan>
-
+        <x-tahapan></x-tahapan>    
+                <h1 class="text-2xl text-center font-bold">Informasi Pembayaran</h1>
+        
         <div class="px-9 py-5 flex space-x-20">
             <table>
                 <tr>

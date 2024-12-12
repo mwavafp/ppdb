@@ -6,6 +6,7 @@
             <h2 class="text-lg font-semibold">BIODATA PESERTA DIDIK</h2>
         </div>
         <form>
+            @csrf
             <div class="mb-4">
                 <label class="block text-gray-700">Nama Lengkap</label>
                 <input type="text" class="w-full border border-gray-300 p-2 mt-1">
@@ -40,42 +41,7 @@
             </div>
             <div class="mb-4">
     <label class="block text-gray-700">Unit Pendidikan</label>
-    <div class="mt-1">
-        <label class="inline-flex items-center">
-            <input type="radio" name="unit_pendidikan" class="form-radio" value="TK">
-            <span class="ml-2">TK</span>
-        </label>
-        <br>
-        <label class="inline-flex items-center">
-            <input type="radio" name="unit_pendidikan" class="form-radio" value="SD">
-            <span class="ml-2">SD</span>
-        </label>
-        <br>
-        <label class="inline-flex items-center">
-            <input type="radio" name="unit_pendidikan" class="form-radio" value="SMP">
-            <span class="ml-2">SMP</span>
-        </label>
-        <br>
-        <label class="inline-flex items-center">
-            <input type="radio" name="unit_pendidikan" class="form-radio" value="SMA">
-            <span class="ml-2">SMA</span>
-        </label>
-        <br>
-        <label class="inline-flex items-center">
-            <input type="radio" name="unit_pendidikan" class="form-radio" value="SMK">
-            <span class="ml-2">SMK</span>
-        </label>
-        <br>
-        <label class="inline-flex items-center">
-            <input type="radio" name="unit_pendidikan" class="form-radio" value="SMA Dan Pondok">
-            <span class="ml-2">SMA Dan Pondok</span>
-        </label>
-        <br>
-        <label class="inline-flex items-center">
-            <input type="radio" name="unit_pendidikan" class="form-radio" value="NAHDIYIN TK/RA">
-            <span class="ml-2">NAHDIYIN TK/RA</span>
-        </label>
-    </div>
+    <label >{{$unitPendidikan}}</label>
 </div>
 
             <div class="border-b pb-2 mb-4">

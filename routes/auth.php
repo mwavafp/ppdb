@@ -39,15 +39,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/biodata', function () {
         return view('calonMurid.biodata',['title'=>'User Page']);
     });
-    Route::get('/dulang', function () {
-        return view('calonMurid.dulang',['title'=>'User Page']);
+    Route::get('/seleksi', function () {
+        return view('calonMurid.seleksi',['title'=>'User Page']);
     });
     Route::get('/berkas', function () {
         return view('calonMurid.berkas',['title'=>'User Page']);
     });
+    Route::get('/verifikasi-data', function () {
+        return view('calonMurid.verifikasi',['title'=>'User Page']);
+    });
     
     Route::get('/pembayaran', function () {
         return view('calonMurid.pembayaran',['title'=>'Informasi Pembayaran']);
+    });
+    Route::get('/biaya', function () {
+        return view('calonMurid.biaya',['title'=>'Informasi Pembayaran']);
     });
     
     Route::get('verify-email', EmailVerificationPromptController::class)

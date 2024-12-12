@@ -1,7 +1,6 @@
-<!-- Komponen x-nav-link -->
 @props(['href'])
-<a href={{$href}} 
-   class="{{ request()->is($href) ? 'bg-red-500 text-white' : 'text-orange hover:text-orangehrv hover:bg-red-200 rounded-md' }} px-4 py-2 rounded-md" 
-   aria-current="page">
+<a href="{{ $href }}" 
+   class="{{ request()->is(trim($href, '/')) || request()->is($href) ? 'bg-red-500  text-white block' : 'text-orange block  hover:text-orangehrv hover:bg-red-200 rounded-md' }} px-4 py-2 rounded-md" 
+   aria-current="{{ request()->is(trim($href, '/')) ? 'page' : '' }}">
    {{ $slot }}
 </a>
