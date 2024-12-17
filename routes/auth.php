@@ -36,7 +36,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/biodata', function () {
+    Route::get('/dashboard', function () {
         return view('calonMurid.biodata',['title'=>'User Page']);
     });
     Route::get('/seleksi', function () {

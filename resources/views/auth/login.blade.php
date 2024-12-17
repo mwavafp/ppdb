@@ -1,6 +1,6 @@
 <div class="flex w-full">
     <div class="w-1/2 ">
-        <img src="{{ asset('images/lgn_bg.webp') }}" alt="" class="w-full">
+        <img src="{{ asset('') }}" alt="" class="w-full">
     </div>
     <div class="w-1/2">
         <x-guest-layout>

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('ortu', function (Blueprint $table) {
             $table->id('id_ortu'); // Primary key
+            $table->unsignedBigInteger('id_user');
             $table->integer('nmr_kk'); // Nomor KK (wajib diisi)
             $table->string('nm_ayah', 100); // Nama Ayah (wajib diisi)
             $table->string('nik_ayah', 20); // NIK Ayah (wajib diisi)
@@ -30,6 +31,7 @@ return new class extends Migration
             $table->string('pekerjaan_ibu', 100); // Pekerjaan Ibu (wajib diisi)
             $table->string('nmr_ibu_wa', 15); // Nomor WA Ibu (wajib diisi)
             $table->timestamps();
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
         });
     }
 

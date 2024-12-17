@@ -21,9 +21,16 @@ class User extends Authenticatable
     public $incrementing = true; 
     protected $keyType = 'int'; 
     protected $fillable = [
-        'name',
+        'username_generate',
         'email',
-        'password'
+        'password_generate',
+        'name' ,
+            'alamat',
+            'nisn',
+            'tgl_lahir',
+            'tmpt_lahir',
+            'asl_sekolah' ,
+
     ];
 
     /**
@@ -32,7 +39,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'password_generate',
         'remember_token',
     ];
 
@@ -45,7 +52,11 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password_generate' => 'hashed',
         ];
+    }
+    public function ortu()
+    {
+        return $this->hasOne(Ortu::class, 'id_user', 'id_user'); // user_id foreign key di ortu
     }
 }

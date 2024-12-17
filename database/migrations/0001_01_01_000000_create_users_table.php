@@ -16,7 +16,7 @@ return new class extends Migration
     
             $table->string('username_generate')->nullable();
             $table->string('password_generate')->nullable();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('alamat')->nullable();
             $table->integer('nisn')->nullable();
             $table->string('tmpt_lahir')->nullable();
@@ -25,7 +25,6 @@ return new class extends Migration
             $table->enum('status',['aktif','tidak_aktif'])->default('tidak_aktif');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
            
