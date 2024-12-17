@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -70,6 +71,7 @@ Route::get('/seleksi', function () {
 Route::get('/verifikasi', function () {
     return view('verifikasi',['title'=>'Vrifikasi Data']);
 });
+Route::get('/dashboard-admin', [UserController::class,'showUser']);
 
 Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman',['title'=>'About Page','post'=>[
