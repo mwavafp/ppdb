@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kelas;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -42,14 +43,15 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'alamat' => $request->alamat,
             'nisn' => $request->nisn,
+            'gender' => $request->gender,
             'tmpt_lahir' => $request->tmpt_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'asl_sekolah' => $request->asl_sekolah,
     
         ]);
-        $user = User::latest()->first();
+   
             $user->ortu()->create([
-                'id_user' => $request->id_user,
+                'id_user' => $user->id_user,
                 'nmr_kk'=>$request->nmr_kk,
                 'nm_ayah'=>$request->nm_ayah,
                 'nik_ayah'=>$request->nik_ayah,
@@ -68,6 +70,18 @@ class RegisteredUserController extends Controller
                
     
             ]);
+
+
+         $kelas=Kelas::create([
+            'unt_pendidikan'=>strtolower($request->unt_pendidikan)
+         ]);
+         $user->userUnitPendidikan()->create([
+            'id_user'=>$user->id_user,
+            'id_kelas'=>$kelas->id_kelas,
+            'status' => 'aktif',
+        'tgl_mulai' => now(),
+        ]);
+        
 
         event(new Registered($user));
 

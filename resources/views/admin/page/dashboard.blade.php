@@ -22,41 +22,14 @@
             </div>
         </div>
         <div class="flex w-1/2 flex-wrap">
+            
+            @foreach ($tipe_user as $user)
             <div class="flex-1 p-4 m-2 bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">Jumlah Pendaftar SD</p>
-                <p class="text-2xl font-semibold">47,403</p>
+                <p class="text-sm text-gray-500">{{$user['title']}}</p>
+                <p class="text-2xl font-semibold">{{$user['fungsi']}}</p>
                 <p class="text-red-500 text-sm mt-1">-112.4%</p>
             </div>
-            <div class="flex-1 p-4 m-2 bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">Jumlah Pendaftar SMP</p>
-                <p class="text-2xl font-semibold">47,403</p>
-                <p class="text-red-500 text-sm mt-1">-112.4%</p>
-            </div>
-            <div class="flex-1 p-4 m-2 bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">Jumlah Pendaftar SMA</p>
-                <p class="text-2xl font-semibold">47,403</p>
-                <p class="text-red-500 text-sm mt-1">-112.4%</p>
-            </div>
-            <div class="flex-1 p-4 m-2 bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">Jumlah Pendaftar TK</p>
-                <p class="text-2xl font-semibold">47,403</p>
-                <p class="text-red-500 text-sm mt-1">-112.4%</p>
-            </div>
-            <div class="flex-1 p-4 m-2 bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">Jumlah Pendaftar TPQ</p>
-                <p class="text-2xl font-semibold">47,403</p>
-                <p class="text-red-500 text-sm mt-1">-112.4%</p>
-            </div>
-            <div class="flex-1 p-4 m-2 bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">Jumlah Pendaftar MADIN</p>
-                <p class="text-2xl font-semibold">47,403</p>
-                <p class="text-red-500 text-sm mt-1">-112.4%</p>
-            </div>
-            <div class="flex-1 p-4 m-2 bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">Jumlah Pendaftar PONDOK</p>
-                <p class="text-2xl font-semibold">47,403</p>
-                <p class="text-red-500 text-sm mt-1">-112.4%</p>
-            </div>
+            @endforeach
         </div>
        
      
@@ -98,6 +71,8 @@
     </div>
 </x-layout>
 <script>
+    const genderLaki = @json($gender_laki);
+    const genderPerempuan = @json($gender_perempuan);
     // Contextual Chart (Pie)
     const ctxContextual = document.getElementById('contextualChart');
     new Chart(ctxContextual, {
@@ -105,7 +80,7 @@
         data: {
             labels: ['Laki - laki', 'Perempuan'],
             datasets: [{
-                data: [40, 30],
+                data: [genderLaki,genderPerempuan],
                 backgroundColor: ['#f472b6', '#818cf8'],
             }]
         }

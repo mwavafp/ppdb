@@ -48,6 +48,40 @@
                         <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required />
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
+                    <div class=" items-center gap-6 mb-4 ">
+                        <x-input-label for="name" :value="__('Jenis Kelamin')" />
+                        <div class="flex mt-2">
+                            <label for="pria" class="flex items-center space-x-2 cursor-pointer">
+                                <input 
+                                    type="radio" 
+                                    id="pria" 
+                                    name="gender" 
+                                    value="laki-laki" 
+                                    class="hidden peer"
+                                />
+                                <!-- Kotak custom -->
+                                <div
+                                    class="rounded-md w-5 h-5 border-2 border-gray-300 rounded-full peer-checked:bg-blue peer-checked:border-blue transition-all"
+                                ></div>
+                                <span class="text-gray-700 peer-checked:font-semibold">Laki-Laki</span>
+                            </label>
+                            <label for="wanita" class="flex items-center space-x-2 cursor-pointer">
+                                <input 
+                                    type="radio" 
+                                    id="perempuan" 
+                                    name="gender" 
+                                    value="perempuan" 
+                                    class="hidden peer"
+                                />
+                                <div
+                                    class="rounded-md w-5 h-5 border-2 border-gray-300 rounded-full peer-checked:bg-pink-500 peer-checked:border-pink-500 transition-all"
+                                ></div>
+                                <!-- Text Label -->
+                                <span class="text-gray-700 peer-checked:font-semibold">Perempuan</span>
+                            </label>
+                        </div>
+                        
+                    </div>
             
                 
             
@@ -81,6 +115,12 @@
                         <x-text-input id="nisn" class="block mt-1 w-full" type="text" name="nisn" :value="old('nisn')" required />
                         <x-input-error :messages="$errors->get('nisn')" class="mt-2" />
                     </div>
+                    <div class="mb-4">
+                        <x-input-label for="unt_pendidikan" :value="__('Unit Pendidikan')" />
+                        <input id="unt_pendidikan" class="block mt-1 w-full" type="text" name='unt_pendidikan' value='{{$unitPendidikan}}'' readonly/>
+                        <x-input-error :messages="$errors->get('unt_pendidikan')" class="mt-2" />
+                    </div>
+                    
                   
                     <!--Data ortu -->
                     

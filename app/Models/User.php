@@ -26,6 +26,7 @@ class User extends Authenticatable
         'password_generate',
         'name' ,
             'alamat',
+            'gender',
             'nisn',
             'tgl_lahir',
             'tmpt_lahir',
@@ -58,5 +59,9 @@ class User extends Authenticatable
     public function ortu()
     {
         return $this->hasOne(Ortu::class, 'id_user', 'id_user'); // user_id foreign key di ortu
+    }
+    public function userUnitPendidikan()
+    {
+        return $this->hasMany(UserUnitPendidikan::class, 'id_user', 'id_user'); // user_id foreign key di ortu
     }
 }

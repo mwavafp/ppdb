@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\AdminDashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PanitiaController;
@@ -71,7 +72,7 @@ Route::get('/seleksi', function () {
 Route::get('/verifikasi', function () {
     return view('verifikasi',['title'=>'Vrifikasi Data']);
 });
-Route::get('/dashboard-admin', [UserController::class,'showUser']);
+Route::get('/dashboard-admin', [AdminDashboardController::class,'showUser']);
 
 Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman',['title'=>'About Page','post'=>[

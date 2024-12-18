@@ -68,7 +68,7 @@
     </div>
     <div class="section-5 ">
         <div class="background flex bg-gradient-to-r from-orange to-reds text-white px-16 py-8 ">
-            <div class="content-1 flex-iinitial items-center flex mr-14">
+            <div class="content-1 flex-initial items-center flex mr-14">
                 <img src="/images/gambar-1.png" alt="" width="800" class="mx-auto my-auto rounded-xl ">
             </div>
             <div class="content-2 flex-initial ">

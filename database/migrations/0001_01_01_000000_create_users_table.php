@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('alamat')->nullable();
             $table->integer('nisn')->nullable();
+            $table->enum('gender',['laki-laki','perempuan']);
             $table->string('tmpt_lahir')->nullable();
             $table->date('tgl_lahir')->nullable();
             $table->string('asl_sekolah')->nullable();
