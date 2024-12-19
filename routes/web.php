@@ -6,6 +6,7 @@ use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 
@@ -47,13 +48,23 @@ Route::get('/biaya', function () {
 Route::get('/kontak', function () {
     return view('frontPage.kontak',['title'=>'Kontak Page']);
 });
-Route::get('/form', function () {
-    return view('frontPage.formRegister',['title'=>'Register Page']);
-});
+
 
 Route::get('/pembayaran', function () {
     return view('calonMurid.pembayaran',['title'=>'Informasi Pembayaran']);
 });
+
+
+Route::get('/pembayaran', function () {
+    return view('frontPage.pembayaran',['title'=>'Informasi Pembayaran']);
+});
+
+
+Route::get('/form', function (Request $request) {
+    $unitPendidikan = $request->query('unit_pendidikan', ''); // Nilai default kosong jika tidak ada parameter
+    return view('frontPage.formRegister',['title'=>'test'], compact('unitPendidikan'));
+});
+
 
 Route::get('/seleksi', function () {
     return view('calonMurid.seleksi',['title'=>'Seleksi Murid']);

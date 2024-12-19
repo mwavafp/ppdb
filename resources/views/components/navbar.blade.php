@@ -1,6 +1,8 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 
+
+
 <div class="border-b-2  border-black border-solid">
 <nav class="bg-white fixed top-0 left-0 right-0 z-50 shadow">
 
@@ -18,23 +20,21 @@
           <div class="hidden md:flex space-x-4 items-center">
               <x-nav-link href="/">BERANDA</x-nav-link>
               <div class="relative group">
-                  <x-nav-link href="#" class="flex items-center">
-                   
-                      INFORMASI
-                      <i class="fas fa-chevron-down ml-2 "></i>
-                  </x-nav-link>
-                  <div
-                      class="absolute hidden group-hover:block bg-white text-white shadow-lg border rounded-lg mt-2 py-2 w-full z-50">
-                      <x-nav-link href="/pondok">PONDOK</x-nav-link>
-                      <x-nav-link href="/madin">MADIN</x-nav-link>
-                      <x-nav-link href="/tpq">TPQ</x-nav-link>
-                      <x-nav-link href="/tk">TK</x-nav-link>
-                      <x-nav-link href="/sd">SD</x-nav-link>
-                      <x-nav-link href="/smp">SMP</x-nav-link>
-                      <x-nav-link href="/sma">SMA</x-nav-link>
-            
-                  </div>
-              </div>
+                <a href="#" class="flex items-center text-orange block  hover:text-orangehrv hover:bg-red-200  px-4 py-2 rounded-md" onclick="toggleDropdown()">
+                    INFORMASI
+                    <i class="fas fa-chevron-down ml-2"></i>
+                </a>
+                <!-- Dropdown -->
+                <div id="dropdown-menu" class="absolute hidden bg-white text-black shadow-lg border rounded-lg mt-2 py-2 w-48 transition duration-700 ease-in-out">
+                    <x-nav-link href="/pondok" class="block px-4 py-2 hover:bg-gray-100">PONDOK</x-nav-link>
+                    <x-nav-link href="/madin" class="block px-4 py-2 hover:bg-gray-100">MADIN</x-nav-link>
+                    <x-nav-link href="/tpq" class="block px-4 py-2 hover:bg-gray-100">TPQ</x-nav-link>
+                    <x-nav-link href="/tk" class="block px-4 py-2 hover:bg-gray-100">TK</x-nav-link>
+                    <x-nav-link href="/sd" class="block px-4 py-2 hover:bg-gray-100">SD</x-nav-link>
+                    <x-nav-link href="/smp" class="block px-4 py-2 hover:bg-gray-100">SMP</x-nav-link>
+                    <x-nav-link href="/sma" class="block px-4 py-2 hover:bg-gray-100">SMA</x-nav-link>
+                </div>
+            </div>
               <x-nav-link href="/biaya">BIAYA</x-nav-link>
               <x-nav-link href="/kontak">KONTAK</x-nav-link>
               <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
@@ -45,7 +45,7 @@
               @csrf
               <button
                   onclick="event.preventDefault(); this.closest('form').submit();"
-                  class="py-2 px-4 bg-orange text-white rounded-lg hover:bg-orange-600 transition">
+                  class="py-2 px-4 mt-4 bg-orange text-white rounded-lg hover:bg-orange-600 transition">
                   {{ __('Log Out') }}
               </button>
           </form>
@@ -99,3 +99,10 @@
         </div>
     </nav>
 </div>
+
+<script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown-menu");
+        dropdown.classList.toggle("hidden"); // Toggle 'hidden' class to show or hide the dropdown
+    }
+</script>

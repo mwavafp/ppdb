@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>Verifikasi Data Siswa</x-slot:title>
-
+    <x-tahapan></x-tahapan>
     <div class="container">
         <h1 class="text-center mt-4">Halaman Verifikasi Data Siswa</h1>
         
