@@ -78,6 +78,9 @@ Route::get('/seleksi', function () {
 Route::get('/verifikasi', function () {
     return view('calonMurid.verifikasi',['title'=>'Verifikasi Data']);
 });
+Route::get('/tagihan', function () {
+    return view('admin.page.tagihan',['title'=>'Tagihan Pembayaran']);
+});
 Route::get('/dashboard-admin', [AdminDashboardController::class,'showUser']);
 
 Route::get('/pengumuman', function () {
