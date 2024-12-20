@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id('id_kelas');
-            $table->string('name');
             $table->enum('unt_pendidikan',['tk','sd','smp','sma','tpq','madin','pondok']);
-            $table->enum('kelas',['-','1','2','3','4','5','6']);
-            $table->enum('kls_identitas',['-','A','B','C','D','E','F']);
+            $table->enum('kelas',['-','1','2','3','4','5','6'])->nullable();
+            $table->enum('kls_identitas',['-','A','B','C','D','E','F'])->nullable();
             $table->timestamps();
         });
     }

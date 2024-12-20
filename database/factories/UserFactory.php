@@ -27,7 +27,13 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password_generate' => static::$password ??= Hash::make('password'), // Ubah kolom ini
+            'username_generate' => fake()->userName(),
+            'alamat' => fake()->address(),
+            'nisn' => fake()->randomNumber(8),
+            'tgl_lahir' => fake()->date(),
+            'tmpt_lahir' => fake()->city(),
+            'asl_sekolah' => fake()->company(),
             'remember_token' => Str::random(10),
         ];
     }

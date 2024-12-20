@@ -18,8 +18,8 @@ return new class extends Migration
            
             
             $table->enum('status',['aktif','tidak_aktif'])->default('aktif');
-            $table->date('tgl_mulai');
-            $table->date('tgl_berakhir');
+            $table->date('tgl_mulai')->nullable();
+            $table->date('tgl_berakhir')->nullable();
             $table->timestamps();
             $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
             $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade');

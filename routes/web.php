@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\AdminDashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -12,7 +14,7 @@ use Illuminate\Support\Arr;
 
 use function Laravel\Prompts\alert;
 
-Route::get('/dashboard', function () {
+Route::get('/biodata', function () {
     return view('calonMurid.biodata',['title'=>'User Page']);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -55,8 +57,11 @@ Route::get('/pembayaran', function () {
 });
 
 
-Route::get('/pembayaran', function () {
-    return view('frontPage.pembayaran',['title'=>'Informasi Pembayaran']);
+Route::get('/tagihan1', function () {
+    return view('frontPage.tagihan1',['title'=>'Tagihan Biaya']);
+});
+Route::get('/sd', function () {
+    return view('sd',['title'=>'Informasi Pembayaran']);
 });
 
 
@@ -73,6 +78,7 @@ Route::get('/seleksi', function () {
 Route::get('/verifikasi', function () {
     return view('calonMurid.verifikasi',['title'=>'Verifikasi Data']);
 });
+Route::get('/dashboard-admin', [AdminDashboardController::class,'showUser']);
 
 Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman',['title'=>'About Page']);
