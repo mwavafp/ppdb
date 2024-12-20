@@ -73,6 +73,9 @@ Route::get('/verifikasi', function () {
     return view('verifikasi',['title'=>'Vrifikasi Data']);
 });
 Route::get('/dashboard-admin', [AdminDashboardController::class,'showUser']);
+Route::get('/seleksiSiswa', function () {
+    return view('admin.page.seleksi',['title'=>'Seleksi Siswa Page']);
+});
 
 Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman',['title'=>'About Page','post'=>[
