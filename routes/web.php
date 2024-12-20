@@ -53,7 +53,12 @@ Route::get('/kontak', function () {
 
 
 Route::get('/pembayaran', function () {
-    return view('frontPage.pembayaran',['title'=>'Informasi Pembayaran']);
+    return view('calonMurid.pembayaran',['title'=>'Informasi Pembayaran']);
+});
+
+
+Route::get('/tagihan1', function () {
+    return view('frontPage.tagihan1',['title'=>'Tagihan Biaya']);
 });
 Route::get('/sd', function () {
     return view('sd',['title'=>'Informasi Pembayaran']);
@@ -67,10 +72,14 @@ Route::get('/form', function (Request $request) {
 
 
 Route::get('/seleksi', function () {
-    return view('seleksi',['title'=>'Informasi Pembayaran']);
+    return view('calonMurid.seleksi',['title'=>'Seleksi Murid']);
 });
+
 Route::get('/verifikasi', function () {
-    return view('verifikasi',['title'=>'Vrifikasi Data']);
+    return view('calonMurid.verifikasi',['title'=>'Verifikasi Data']);
+});
+Route::get('/tagihan', function () {
+    return view('admin.page.tagihan',['title'=>'Tagihan Pembayaran']);
 });
 Route::get('/dashboard-admin', [AdminDashboardController::class,'showUser']);
 Route::get('/seleksiSiswa', function () {
@@ -78,26 +87,7 @@ Route::get('/seleksiSiswa', function () {
 });
 
 Route::get('/pengumuman', function () {
-    return view('frontPage.pengumuman',['title'=>'About Page','post'=>[
-        [
-            'id'=>1,
-            'title'=>'njirlah aneh',
-            'link'=>'gg123',
-            'desk'=>'Error123'
-        ],
-        [   
-            'id'=>2,
-            'title'=>'njirlah aneh2',
-            'link'=>'gg321',
-            'desk'=>'Error321'
-        ]//contoh data
-    ]]);
-});
-
-Route::get('/pengumuman/{id}', function ($id){
-
-    $post=Post::find($id);
-    return view('post',['title'=>'single post','post'=>$post]);
+    return view('frontPage.pengumuman',['title'=>'About Page']);
 });
 
 require __DIR__.'/auth.php';
