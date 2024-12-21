@@ -17,6 +17,7 @@ class Kelas extends Model
         'unt_pendidikan',
         'kelas',
         'kls_identitas',
+        'kls_status',
       
     ];
     public function userUnitPendidikan()

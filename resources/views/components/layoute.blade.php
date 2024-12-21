@@ -15,6 +15,7 @@
     <!-- Icons CSS -->
     @vite('resources/css/app.css')
 
+    
     <!-- ui jqgrid -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/css/ui.jqgrid.min.css">
 

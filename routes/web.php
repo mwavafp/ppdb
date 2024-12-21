@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Auth\AdminDashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\ProfileController;
@@ -78,9 +79,13 @@ Route::get('/seleksi', function () {
 Route::get('/verifikasi', function () {
     return view('calonMurid.verifikasi',['title'=>'Verifikasi Data']);
 });
+
+Route::get('/pembagiankelas', [KelasController::class, 'index']);
+
 Route::get('/tagihan', function () {
     return view('admin.page.tagihan',['title'=>'Tagihan Pembayaran']);
 });
+
 Route::get('/dashboard-admin', [AdminDashboardController::class,'showUser']);
 Route::get('/seleksiSiswa', function () {
     return view('admin.page.seleksi',['title'=>'Seleksi Siswa Page']);
