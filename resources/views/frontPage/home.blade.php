@@ -9,7 +9,7 @@
         <div class="text-3xl text-center font-bold bg-primary  text-white mb-8 rounded-b-full">
             <p class="py-8">Jenjang Pendidikan</p>
         </div>
-        <div class="flex justify-center mb-8">
+        <div class="flex justify-center mb-8 x">
             <x-card-sekolah href="/tk">TK</x-card-sekolah>
             <x-card-sekolah href="/sd">SD</x-card-sekolah>
             <x-card-sekolah href="/smp">SMP</x-card-sekolah>
