@@ -1,5 +1,14 @@
 
   <x-layout>
+<<<<<<< HEAD
+    
+    <x-slot:title>{{$title}}</x-slot:title>
+
+    <div class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-semibold mb-4">Selamat Datang</h2>
+    <h1>ini halaman pengumuman</h1>
+    
+=======
     <title>Pengumuman Hasil Seleksi</title>
     <script src="https://cdn.tailwindcss.com"></script>
 <body class="bg-white">
@@ -70,4 +79,5 @@
         </div>
     </div>
 </body>
+>>>>>>> 210b07cc665aa40dba617343f7688afa5d32f146
   </x-layout>
