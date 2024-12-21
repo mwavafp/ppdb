@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Models\Kelas;  // Pastikan model yang sesuai digunakan
 use Illuminate\Http\Request;

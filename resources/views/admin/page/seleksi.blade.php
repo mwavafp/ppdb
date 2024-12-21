@@ -42,11 +42,12 @@
             </tr>
           </thead>
           <tbody id="data-table-body">
+            @foreach($students as $index => $student)
             <tr class="hover:bg-gray-50" data-id="01">
-              <td class="border p-2 text-center">01</td>
-              <td class="border p-2">ILHAM</td>
+              <td class="border p-2 text-center">{{ $index + 1 }}</td>
+              <td class="border p-2">{{$index->name}}</td>
               <td class="border p-2">01010101</td>
-              <td class="border p-2">SMA</td>
+              <td class="border p-2">{{$index->unt_pendidikan}}</td>
               <td class="border p-2">11</td>
               <td class="border p-2">
                 <a href="#" class="text-blue-500 underline hover:text-blue-700">Lihat Berkas</a>
@@ -61,25 +62,7 @@
                         class="bg-blue-500 text-white px-3 py-1 rounded">Detail</button>
               </td>
             </tr>
-            <tr class="hover:bg-gray-50" data-id="02">
-              <td class="border p-2 text-center">02</td>
-              <td class="border p-2">SHINTA</td>
-              <td class="border p-2">01010101</td>
-              <td class="border p-2">SMA</td>
-              <td class="border p-2">11</td>
-              <td class="border p-2">
-                <a href="#" class="text-blue-500 underline hover:text-blue-700">Lihat Berkas</a>
-              </td>
-              <td class="border p-2 status">
-                <span class="bg-yellow-400 text-white px-2 py-1 rounded text-sm">Belum Ditentukan</span>
-              </td>
-              <td class="border p-2 flex space-x-2">
-                <button onclick="openModal('02', 'SHINTA', '01010101', 'SMA', '11', 'Belum Ditentukan')"
-                        class="bg-blue-500 text-white px-3 py-1 rounded">Edit</button>
-                <button onclick="openDetailModal('SHINTA', '01010101', 'SMA', '11', 'Lihat Berkas', 'Belum Ditentukan')"
-                        class="bg-blue-500 text-white px-3 py-1 rounded">Detail</button>
-              </td>
-            </tr>
+            @endforeach
             <!-- Tambahkan data lainnya di sini -->
           </tbody>
         </table>

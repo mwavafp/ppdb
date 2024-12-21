@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\Auth\AdminDashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Admin\KelasController;
+use App\Http\Controllers\Admin\Auth\KelasController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PanitiaController;
 use App\Http\Controllers\ProfileController;
@@ -62,7 +62,7 @@ Route::get('/tagihan1', function () {
     return view('frontPage.tagihan1',['title'=>'Tagihan Biaya']);
 });
 Route::get('/sd', function () {
-    return view('sd',['title'=>'Informasi Pembayaran']);
+    return view('frontPage.sd',['title'=>'Informasi Pembayaran']);
 });
 
 
@@ -80,16 +80,6 @@ Route::get('/verifikasi', function () {
     return view('calonMurid.verifikasi',['title'=>'Verifikasi Data']);
 });
 
-Route::get('/pembagiankelas', [KelasController::class, 'index']);
-
-Route::get('/tagihan', function () {
-    return view('admin.page.tagihan',['title'=>'Tagihan Pembayaran']);
-});
-
-Route::get('/dashboard-admin', [AdminDashboardController::class,'showUser']);
-Route::get('/seleksiSiswa', function () {
-    return view('admin.page.seleksi',['title'=>'Seleksi Siswa Page']);
-});
 
 Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman',['title'=>'About Page']);
@@ -97,4 +87,5 @@ Route::get('/pengumuman', function () {
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin-auth.php';
+require __DIR__.'/pageAuth.php';
 

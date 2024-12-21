@@ -61,7 +61,7 @@
                                 />
                                 <!-- Kotak custom -->
                                 <div
-                                    class="rounded-md w-5 h-5 border-2 border-gray-300 rounded-full peer-checked:bg-blue peer-checked:border-blue transition-all"
+                                    class="rounded-md w-5 h-5 border-2 border-gray-300  peer-checked:bg-blue peer-checked:border-blue transition-all"
                                 ></div>
                                 <span class="text-gray-700 peer-checked:font-semibold">Laki-Laki</span>
                             </label>
@@ -74,7 +74,7 @@
                                     class="hidden peer"
                                 />
                                 <div
-                                    class="rounded-md w-5 h-5 border-2 border-gray-300 rounded-full peer-checked:bg-pink-500 peer-checked:border-pink-500 transition-all"
+                                    class="rounded-md w-5 h-5 border-2 border-gray-300  peer-checked:bg-pink-500 peer-checked:border-pink-500 transition-all"
                                 ></div>
                                 <!-- Text Label -->
                                 <span class="text-gray-700 peer-checked:font-semibold">Perempuan</span>

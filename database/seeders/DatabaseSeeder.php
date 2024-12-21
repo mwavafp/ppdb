@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kelas;
 use App\Models\User;
 use App\Models\Ortu;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,7 +16,7 @@ class DatabaseSeeder extends Seeder
     
     public function run(): void
     {
-        // User::factory(10)->create();
+      
 
        $user= User::factory()->create([
             'username'=>'user',
@@ -48,5 +49,12 @@ class DatabaseSeeder extends Seeder
         'pekerjaan_ibu'=>'rhs',
         'nmr_ibu_wa'=>123445
         ]);
+        
+        User::factory(100)->create()->each(function ($user) {
+            Ortu::factory()->create([
+                'id_user' => $user->id_user,//penimpaan data
+            ]);
+        });
+        Kelas::factory(100)->create();
     }
 }

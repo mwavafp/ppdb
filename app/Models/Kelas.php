@@ -13,7 +13,6 @@ class Kelas extends Model
     public $incrementing = true; 
     protected $keyType = 'int'; 
     protected $fillable=[
-        'name',
         'unt_pendidikan',
         'kelas',
         'kls_identitas',

@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<x-layout>
+<x-layoute>
     <x-slot:title>{{$title}}</x-slot:title>
     
     <div class="px-9 py-5 flex justify-between items-center mb-4">
@@ -78,7 +78,7 @@
 
 <!-- Pagination Controls -->
 <div class="flex justify-center mt-4" id="paginationControls"></div>
-
+</x-layoute>
 <script>
     let currentPage = 1;
     const rowsPerPage = 5;
@@ -268,4 +268,3 @@
 </script>
 
 
-</x-layout>
