@@ -62,8 +62,8 @@
         <tr>
             <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
             <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Lengkap</th>
-            <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang</th>
-            <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Gelombang</th>
+            <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang Pendidikan</th>
+            <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Tipe Pembayaran</th>
             <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Tagihan</th>
             <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Bayar</th>
             <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Kekurangan</th>
@@ -72,71 +72,16 @@
         </tr>
     </thead>
     <tbody class="bg-white divide-y divide-gray-200" id="tableBody">
-        <!-- Data siswa akan ditampilkan disini -->
-    </tbody>
-</table>
-
-<!-- Pagination Controls -->
-<div class="flex justify-center mt-4" id="paginationControls"></div>
-</x-layoute>
-<script>
-    let currentPage = 1;
-    const rowsPerPage = 5;
-
-    // fungsi untuk menampilkan data dengan pagination
-    function displayTable(data, page = 1) {
-        const start = (page - 1) * rowsPerPage;
-        const end = start + rowsPerPage;
-        const paginatedData = data.slice(start, end);
-
-        // Kosongkan tabel sebelum mengisi
-        const tableBody = document.getElementById('tableBody');
-        tableBody.innerHTML = '';
-
-        paginatedData.forEach(addRow);
-        setupPagination(data);
-    }
-
-    function setupPagination(data) {
-        const totalRows = data.length;
-        const totalPages = Math.ceil(totalRows / rowsPerPage);
-
-        const paginationControls = document.getElementById('paginationControls');
-        paginationControls.innerHTML = '';
-
-        for (let i = 1; i <= totalPages; i++) {
-            const button = document.createElement('button');
-            button.textContent = i;
-            button.classList.add('px-3', 'py-1', 'mx-1', 'border', 'border-gray-300', 'rounded', 'hover:bg-gray-100');
-            if (i === currentPage) {
-                button.classList.add('bg-gray-300');
-            }
-            button.addEventListener('click', () => {
-                currentPage = i;
-                displayTable(data, currentPage);
-            });
-
-            paginationControls.appendChild(button);
-        }
-    }
-
-    // fungsi untuk menambahkan baris secara dinamis
-    function addRow(data) {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td class="px-6 py-4 whitespace-nowrap text-center">${data.no}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-left">${data.nama}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-center">${data.jenjang}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-center">${data.gelombang}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-center jumlahTagihan">${data.jumlahTagihan}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-center">
-                <span class="bayarDisplay">${data.jumlahBayar}</span>
-                <input type="number" class="hidden bayarInput px-2 py-1 w-32"/>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-center jumlahKekurangan">${data.jumlahKekurangan}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-center">
-                <span class="statusDisplay p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">${data.status}</span>
-            </td>
+        @foreach ($all_data as $item)
+        <tr class="hover:bg-gray-50 transition">
+            <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
+            <td class="border px-4 py-2 text-center">{{ $item ->name }}</td>
+            <td class="border px-4 py-2 text-center">{{ $item ->unt_pendidikan }}</td>
+            <td class="border px-4 py-2 text-center">{{ $item ->status }}</td>
+            <td class="border px-4 py-2 text-center">100000</td>
+            <td class="border px-4 py-2 text-center">{{ $item ->jmlh_byr }}</td>
+            <td class="border px-4 py-2 text-center">{{ $item ->jmlh_byr>10000000?0:10000000-$item ->jmlh_byr}}</td>
+            <td class="border px-4 py-2 text-center">{{ $item ->byr_dft_ulang }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-center">
                 <button class="editButton bg-yellow-500 text-white py-2 px-1 rounded-md border border-transparent hover:bg-yellow-600 hover:border-yellow-600 transition">
                     <i class="fas fa-edit mx-3"></i>
@@ -144,9 +89,25 @@
                 <button class="finishButton hidden bg-green-500 text-white py-2 px-1 rounded-md mr-2 border border-transparent hover:bg-green-600 hover:border-green-600 transition"><i class="fas fa-save mx-3"></i></button>
                 <button class="cancelButton hidden bg-red-500 text-white py-2 px-1 rounded-md mr-2 border border-transparent hover:bg-red-600 hover:border-red-600 transition"><i class="fas fa-times mx-3"></i></button>
             </td>
-        `;
-        document.getElementById('tableBody').appendChild(row);
-    }
+
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
+<!-- Pagination Controls -->
+<div class="mt-4">
+    {{ $all_data->links() }}
+</div>
+
+</x-layoute>
+<script>
+
+   
+
+    
+    // fungsi untuk menambahkan baris secara dinamis
+
 
     document.getElementById('dataTable').addEventListener('click', function(e) {
         // Cek jika user klik button edit

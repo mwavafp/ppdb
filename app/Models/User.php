@@ -60,6 +60,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Ortu::class, 'id_user', 'id_user'); // user_id foreign key di ortu
     }
+    public function pembayaran()
+    {
+        return $this->hasOne(Pembayaran::class, 'id_user', 'id_user'); // user_id foreign key di ortu
+    }
     public function userUnitPendidikan()
     {
         return $this->hasMany(UserUnitPendidikan::class, 'id_user', 'id_user'); // user_id foreign key di ortu

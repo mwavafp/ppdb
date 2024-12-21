@@ -122,7 +122,7 @@
         <tbody id="data-table-body">
           @foreach($students as $index => $student)
             <tr class="hover:bg-gray-50 transition">
-              <td class="border px-4 py-2 text-center">{{ $index + 1 }}</td>
+              <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
               <td class="border px-4 py-2 text-center">{{ $student->name }}</td>
               <td class="border px-4 py-2 text-center">{{ $student->kelas }}</td>
               <td class="border px-4 py-2 text-center">{{ $student->kls_identitas }}</td>

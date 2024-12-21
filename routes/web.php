@@ -58,8 +58,8 @@ Route::get('/pembayaran', function () {
 });
 
 
-Route::get('/tagihan1', function () {
-    return view('frontPage.tagihan1',['title'=>'Tagihan Biaya']);
+Route::get('/tagihan', function () {
+    return view('frontPage.tagihan',['title'=>'Tagihan Biaya']);
 });
 Route::get('/sd', function () {
     return view('frontPage.sd',['title'=>'Informasi Pembayaran']);

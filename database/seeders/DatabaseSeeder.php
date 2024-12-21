@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Kelas;
+use App\Models\Pembayaran;
 use App\Models\User;
 use App\Models\Ortu;
+use App\Models\UserUnitPendidikan;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -54,7 +56,17 @@ class DatabaseSeeder extends Seeder
             Ortu::factory()->create([
                 'id_user' => $user->id_user,//penimpaan data
             ]);
+            Pembayaran::factory()->create([
+                'id_user' => $user->id_user,//penimpaan data
+            ]);
+            UserUnitPendidikan::factory()->create([
+                'id_user' => $user->id_user,//penimpaan data
+            ]);
         });
-        Kelas::factory(100)->create();
+        Kelas::factory(100)->create()->each(function ($kelas){
+            UserUnitPendidikan::factory()->create([
+                'id_kelas' => $kelas->id_kelas,//penimpaan data
+            ]);
+        });
     }
 }
