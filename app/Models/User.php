@@ -21,9 +21,9 @@ class User extends Authenticatable
     public $incrementing = true; 
     protected $keyType = 'int'; 
     protected $fillable = [
-        'username_generate',
+        'username',
         'email',
-        'password_generate',
+        'password',
         'name' ,
             'alamat',
             'gender',
@@ -40,7 +40,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password_generate',
+        'password',
         'remember_token',
     ];
 
@@ -53,7 +53,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password_generate' => 'hashed',
+            'password' => 'hashed',
         ];
     }
     public function ortu()

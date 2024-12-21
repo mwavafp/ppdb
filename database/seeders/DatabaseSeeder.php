@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
        $user= User::factory()->create([
-            'username_generate'=>'user',
+            'username'=>'user',
         'email'=>'user@gmail.com',
-        'password_generate'=>'user1234',
+        'password'=>'user1234',
         'name' =>'User Prasetyo',
             'alamat'=>'Jalan User Tenggara no.23, welington, DC',
             'nisn'=>123456,

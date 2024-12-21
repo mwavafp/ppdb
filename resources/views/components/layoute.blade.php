@@ -52,27 +52,34 @@
 </head>
 
 <body data-mode="light" data-sidebar-size="lg" class="group">
+<main class="flex">
+    <div class="w-auto">
+        <x-sidebar></x-sidebar>
 
-    <x-sidebar></x-sidebar>
-
-    <div class="main-content group-data-[sidebar-size=sm]:ml-[70px]">
-        <div class="page-content">
-            <div class="my-5">
-                @if(session('error'))
-                <div role="alert" class="alert alert-error mb-5">
-                    <i class="fa-regular fa-circle-xmark"></i>
-                    <span class="font-medium">{{ session('error') }}</span>
+    </div>
+    <div class="w-full">
+        <div class="main-content group-data-[sidebar-size=sm]:ml-[70px]">
+            <div class="page-content">
+                <div class="my-5">
+                    @if(session('error'))
+                    <div role="alert" class="alert alert-error mb-5">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                        <span class="font-medium">{{ session('error') }}</span>
+                    </div>
+                    @elseif(session('success'))
+                    <div role="alert" class="alert alert-success mb-5">
+                        <i class="fa-regular fa-circle-check text-xl"></i>
+                        <span class="font-medium">{{ session('success') }}</span>
+                    </div>
+                    @endif
                 </div>
-                @elseif(session('success'))
-                <div role="alert" class="alert alert-success mb-5">
-                    <i class="fa-regular fa-circle-check text-xl"></i>
-                    <span class="font-medium">{{ session('success') }}</span>
-                </div>
-                @endif
+                {{ $slot }}
             </div>
-            {{ $slot }}
         </div>
     </div>
+</main>
+    
+    
 
 
     <script src="{{ asset('/assets/libs/@popperjs/core/umd/popper.min.js') }}"></script>

@@ -20,7 +20,7 @@
 @endphp
 
 <div id="sidebar"
-    class="fixed top-0 left-0 z-10 h-screen w-64 bg-slate-50 border-r border-gray-200 dark:bg-zinc-800 dark:border-neutral-700 transition-all duration-300">
+    class="fixed top-0 left-0 m-0 z-10 h-screen w-64 bg-slate-50 border-r border-gray-200 dark:bg-zinc-800 dark:border-neutral-700 transition-all duration-300">
     <!-- Tombol Collapse -->
     <button id="toggleSidebar"
         class="absolute top-4 right-[-16px] w-8 h-8 bg-violet-500 text-white rounded-full shadow-md hover:bg-violet-600 flex items-center justify-center">
@@ -48,7 +48,7 @@
 </div>
 
 <!-- Konten Utama -->
-<div id="mainContent" class="ml-64 p-6 transition-all duration-300"></div>
+<div id="mainContent" class="ml-52 p-6 transition-all duration-300"></div>
 
 <!-- Script untuk Toggle Sidebar -->
 <script>
@@ -61,8 +61,8 @@
     toggleSidebar.addEventListener("click", () => {
         sidebar.classList.toggle("w-16");
         sidebar.classList.toggle("w-64");
-        mainContent.classList.toggle("ml-16");
-        mainContent.classList.toggle("ml-64");
+        mainContent.classList.toggle("ml-2");
+        mainContent.classList.toggle("ml-4");
 
         // Ubah ikon tombol toggle
         if (sidebar.classList.contains("w-16")) {

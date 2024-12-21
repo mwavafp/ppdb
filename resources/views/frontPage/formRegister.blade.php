@@ -16,9 +16,9 @@
                         <h2 class="text-md font-semibold">AKUN PESERTA DIDIK</h2>
                     </div>
                     <div>
-                        <x-input-label for="username_generate" :value="__('Username')" />
-                        <x-text-input id="username_generate" class="block mt-1 w-full" type="text" name="username_generate" :value="old('username_generate')" required autofocus autocomplete="name" />
-                        <x-input-error :messages="$errors->get('username_generate')" class="mt-2" />
+                        <x-input-label for="username" :value="__('Username')" />
+                        <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus autocomplete="name" />
+                        <x-input-error :messages="$errors->get('username')" class="mt-2" />
                     </div>
             
                     <!-- Email Address -->
@@ -30,14 +30,14 @@
             
                     <!-- Password -->
                     <div class="mt-4">
-                        <x-input-label for="password_generate" :value="__('Password')" />
+                        <x-input-label for="password" :value="__('Password')" />
             
-                        <x-text-input id="password_generate" class="block mt-1 w-full"
+                        <x-text-input id="password" class="block mt-1 w-full"
                                         type="password"
-                                        name="password_generate"
+                                        name="password"
                                         required autocomplete="new-password" />
             
-                        <x-input-error :messages="$errors->get('password_generate')" class="mt-2" />
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
                    
             

@@ -1,6 +1,6 @@
 @props(['href'])
 <a href="{{ $href }}" 
-   class="{{ request()->is(trim($href, '/')) || request()->is($href) ? 'bg-red-500  text-white block' : 'text-orange block  hover:text-orangehrv hover:bg-red-200 rounded-md' }} px-4 py-2 rounded-md" 
+   class="{{ request()->is(trim($href, '/')) || request()->is($href) ? 'bg-primary  text-white block' : 'text-orange block  hover:text-orangehrv hover:bg-green-200 rounded-md' }} px-4 py-2 rounded-md" 
    aria-current="{{ request()->is(trim($href, '/')) ? 'page' : '' }}">
    {{ $slot }}
 </a>

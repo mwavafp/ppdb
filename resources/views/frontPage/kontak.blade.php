@@ -5,7 +5,7 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
 
-    <div class="contact-header bg-gradient-to-r from-orange to-reds text-white text-center py-5 text-2xl font-bold">
+    <div class="contact-header bg-gradient-to-r from-primary to-secondary text-white text-center py-5 text-2xl font-bold">
         CONTACT
     </div>
 
@@ -62,9 +62,9 @@
     </div>
 
 
-<div class="contact-form-map  bg-white rounded-lg shadow mx-6 my-10">
+<div class="contact-form-map  bg-white rounded-lg shadow mx-6 my-10 ">
  
-        <div class="map w-full h-96">
+        <div class="map w-full h-96 z-0 mb-24">
             <div id="map" class="rounded-lg w-full h-full"></div>
         </div>
  </div>

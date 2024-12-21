@@ -1,6 +1,6 @@
 <div class="flex w-full">
     <div class="w-1/2 ">
-        <img src="{{ asset('') }}" alt="" class="w-full">
+        <img src="{{ asset('/images/banner.png') }}" alt="" class="w-full">
     </div>
     <div class="w-1/2">
         <x-guest-layout>
@@ -12,9 +12,9 @@
         
                 <!-- Email Address -->
                 <div>
-                    <x-input-label for="email" :value="__('Email')" />
-                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    <x-input-label for="username" :value="__('Username')" />
+                    <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus autocomplete="username" />
+                    <x-input-error :messages="$errors->get('username')" class="mt-2" />
                 </div>
         
                 <!-- Password -->
@@ -24,7 +24,7 @@
                     <x-text-input id="password" class="block mt-1 w-full"
                                     type="password"
                                     name="password"
-                                    required autocomplete="current-password" />
+                                    required  />
         
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>

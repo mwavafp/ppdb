@@ -27,8 +27,8 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password_generate' => static::$password ??= Hash::make('password'), // Ubah kolom ini
-            'username_generate' => fake()->userName(),
+            'password' => static::$password ??= Hash::make('password'), // Ubah kolom ini
+            'username' => fake()->userName(),
             'alamat' => fake()->address(),
             'nisn' => fake()->randomNumber(8),
             'tgl_lahir' => fake()->date(),

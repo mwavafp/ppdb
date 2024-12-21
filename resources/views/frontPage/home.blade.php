@@ -6,7 +6,7 @@
         <img src="/images/banner.png" alt="">
     </div>
     <div class="section-2  -">
-        <div class="text-3xl text-center font-bold bg-gradient-to-r from-orange to-reds text-white mb-8 rounded-b-full">
+        <div class="text-3xl text-center font-bold bg-primary  text-white mb-8 rounded-b-full">
             <p class="py-8">Jenjang Pendidikan</p>
         </div>
         <div class="flex justify-center mb-8">
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="section-3 ">
-        <div class="background flex bg-gradient-to-r from-orange to-reds text-white p-16 ">
+        <div class="background flex bg-gradient-to-r from-primary to-secondary text-white p-16 ">
             <div class="content-1 flex-1 mr-8">
                 <p class="text-right text-xl font-bold mb-8">Selamat Datang Di PMB Yayasan Nurul Huda</p>
                 <p class="text-justify">
@@ -67,7 +67,7 @@
         </div>
     </div>
     <div class="section-5 ">
-        <div class="background flex bg-gradient-to-r from-orange to-reds text-white px-16 py-8 ">
+        <div class="background flex bg-gradient-to-r from-primary to-secondary text-white px-16 py-8 ">
             <div class="content-1 flex-initial items-center flex mr-14">
                 <img src="/images/gambar-1.png" alt="" width="800" class="mx-auto my-auto rounded-xl ">
             </div>

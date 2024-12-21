@@ -20,7 +20,7 @@
           <div class="hidden md:flex space-x-4 items-center">
               <x-nav-link href="/">BERANDA</x-nav-link>
               <div class="relative group">
-                <a href="#" class="flex items-center text-orange block  hover:text-orangehrv hover:bg-red-200  px-4 py-2 rounded-md" onclick="toggleDropdown()">
+                <a href="#" class="flex items-center  block  hover:text-primaryhrv hover:bg-green-200  px-4 py-2 rounded-md" onclick="toggleDropdown()">
                     INFORMASI
                     <i class="fas fa-chevron-down ml-2"></i>
                 </a>
@@ -45,20 +45,20 @@
               @csrf
               <button
                   onclick="event.preventDefault(); this.closest('form').submit();"
-                  class="py-2 px-4 mt-4 bg-orange text-white rounded-lg hover:bg-orange-600 transition">
+                  class="py-2 px-4 mt-4 bg-primary text-white rounded-lg hover:bg-green-900 transition">
                   {{ __('Log Out') }}
               </button>
           </form>
           @else
           <a href="/login"
-              class="py-2 px-4 bg-orange text-white rounded-lg hover:bg-orange-600 transition">
+              class="py-2 px-4 bg-primary text-white rounded-lg hover:bg-green-900 transition">
               Login
           </a>
           @endif
       </div>
       <!-- Mobile Menu Toggle -->
       <button id="menu-toggle"
-          class="md:hidden text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-600">
+          class="md:hidden text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-600">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -92,7 +92,7 @@
                 <x-nav-link href="/kontak">KONTAK</x-nav-link>
                 <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
                 <a href="/login"
-                    class="block w-full text-center py-2 px-4 bg-orange text-white rounded-lg hover:bg-orange-600 transition">
+                    class="block w-full text-center py-2 px-4 bg-primary text-white rounded-lg hover:bg-primary-600 transition">
                     Login
                 </a>
             </div>

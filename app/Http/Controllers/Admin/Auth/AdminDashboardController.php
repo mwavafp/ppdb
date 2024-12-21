@@ -6,9 +6,11 @@ use App\Models\Kelas;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminDashboardController extends Controller
 {
+   
     public function showUser()
     {
                                       
@@ -38,6 +40,7 @@ class AdminDashboardController extends Controller
             'gender_laki',
             'gender_perempuan'
         ),['title'=>'test']);
+        
     }
     
 }
