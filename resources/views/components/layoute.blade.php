@@ -49,6 +49,7 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     ></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 
 </head>
 
