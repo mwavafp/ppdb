@@ -7,7 +7,7 @@
         <div class="relative">
             <form method="GET" action="{{ route('search') }}" id="searchForm">
                 <input type="text" name="search" class="border border-gray-400 rounded-full py-2 px-4 pl-10 w-[500px]"
-                    placeholder="Search" value="{{ old('search') }}"
+                    placeholder="Search" value="{{ request('search') }}"
                     oninput="document.getElementById('searchForm').submit()">
 
             </form>
@@ -82,7 +82,7 @@
                     <tr class="hover:bg-gray-50 transition">
                         <td class="border px-4 py-2 text-center">{{ $item->id_bayar }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->name }}</td>
-                        <td class="border px-4 py-2 text-center">{{ $item->unt_pendidikan }}</td>
+                        <td class="border px-4 py-2 text-center">{{ strtoupper($item->unt_pendidikan) }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->status }}</td>
                         <td class="border px-4 py-2 text-center">100000</td>
                         <td class="border px-4 py-2 text-center">{{ $item->jmlh_byr }}</td>

@@ -103,6 +103,7 @@ class TagihanAdmin extends Controller
 
         // Ambil data dengan pagination
         $all_data = $query->paginate(10);
+        $all_data->appends($request->all());
 
         return view('admin.page.tagihan', compact('all_data'), ['title' => 'Search Results']);
     }
