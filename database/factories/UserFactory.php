@@ -25,7 +25,7 @@ class UserFactory extends Factory
     {
         return [
             'username' => $this->faker->userName,
-            'password' => 'password', // You can replace 'password' with a default value
+            'password' => Hash::make($this->faker->password), // You can replace 'password' with a default value
             'name' => $this->faker->name,
             'alamat' => $this->faker->address,
             'nisn' => $this->faker->randomNumber(8), // Generate random 8-digit NISN
@@ -45,7 +45,7 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }

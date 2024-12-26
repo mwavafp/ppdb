@@ -16,7 +16,7 @@ class OrtuFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    protected $model = Ortu::class;//biar nyambung ke Ortu model
+    protected $model = Ortu::class; //biar nyambung ke Ortu model
     public function definition(): array
     {
         return [
