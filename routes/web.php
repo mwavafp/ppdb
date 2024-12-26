@@ -85,6 +85,7 @@ Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman',['title'=>'About Page']);
 });
 
+
 require __DIR__.'/auth.php';
 require __DIR__.'/admin-auth.php';
 require __DIR__.'/pageAuth.php';

@@ -5,13 +5,14 @@
             'items' => [],
         ],
         (object) [
-            'menu' => (object) ['icon' => 'fa-user-check', 'title' => 'Seleksi Siswa'],
-            'items' => [],
-        ],
-        (object) [
             'menu' => (object) ['icon' => 'fa-users', 'title' => 'Data Siswa'],
             'items' => [],
         ],
+        (object) [
+            'menu' => (object) ['icon' => 'fa-user-check', 'title' => 'Seleksi Siswa'],
+            'items' => [],
+        ],
+        
         (object) [
             'menu' => (object) ['icon' => 'fa-file-invoice-dollar', 'title' => 'Tagihan Siswa'],
             'items' => [],
