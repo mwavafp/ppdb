@@ -42,23 +42,23 @@
             </tr>
           </thead>
           <tbody id="data-table-body">
-            @foreach($students as $index => $student)
-            <tr class="hover:bg-gray-50" data-id="01">
-              <td class="border p-2 text-center">{{ $index + 1 }}</td>
-              <td class="border p-2">{{$index->name}}</td>
-              <td class="border p-2">01010101</td>
-              <td class="border p-2">{{$index->unt_pendidikan}}</td>
-              <td class="border p-2">11</td>
+            @foreach($data as $student)
+            <tr class="hover:bg-gray-50" data-id="{{ $student->nisn }}">
+              <td class="border p-2 text-center">{{ $loop->iteration }}</td>
+              <td class="border p-2">{{ $student->nama }}</td>
+              <td class="border p-2">{{ $student->nisn }}</td>
+              <td class="border p-2">{{ ucfirst($student->jenjang) }}</td>
+              <td class="border p-2">{{ $student->kelas ?? '-' }}</td>
               <td class="border p-2">
                 <a href="#" class="text-blue-500 underline hover:text-blue-700">Lihat Berkas</a>
               </td>
               <td class="border p-2 status">
-                <span class="bg-yellow-400 text-white px-2 py-1 rounded text-sm">Belum Ditentukan</span>
+                <span class="bg-yellow-400 text-white px-2 py-1 rounded text-sm">{{ $student->status_user }}</span>
               </td>
               <td class="border p-2 flex space-x-2">
-                <button onclick="openModal('01', 'ILHAM', '01010101', 'SMA', '11', 'Belum Ditentukan')"
+                <button onclick="openModal('{{ $student->nisn }}', '{{ $student->nama }}', '{{ $student->nisn }}', '{{ $student->jenjang }}', '{{ $student->kelas ?? '-' }}', '{{ $student->status_user }}')"
                         class="bg-blue-500 text-white px-3 py-1 rounded">Edit</button>
-                <button onclick="openDetailModal('ILHAM', '01010101', 'SMA', '11', 'Lihat Berkas', 'Belum Ditentukan')"
+                <button onclick="openDetailModal('{{ $student->nama}}', '{{ $student->nisn }}', '{{ $student->jenjang }}', '{{ $student->kelas ?? '-' }}', 'Lihat Berkas', '{{ $student->status_user }}')"
                         class="bg-blue-500 text-white px-3 py-1 rounded">Detail</button>
               </td>
             </tr>
@@ -137,6 +137,11 @@
       </div>
     </div>
   </div>
+
+          <!-- Pagination Controls -->
+          <div class="mt-4">
+            {{ $data->links() }}
+        </div>
 
   <!-- JavaScript -->
   <script>
