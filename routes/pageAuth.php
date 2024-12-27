@@ -10,9 +10,14 @@ Route::get('/dashboard-admin', [AdminDashboardController::class, 'showUser']);
 Route::get('/pembagiankelas', [KelasController::class, 'index']);
 
 Route::get('/siswa', [SiswaController::class, 'index'])->name('index');
+Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
+Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('detail-user');
+
 Route::get('/seleksiSiswa', function () {
     return view('admin.page.seleksi', ['title' => 'Seleksi Siswa Page']);
 });
+
+
 
 Route::get('/tagihan-admin', [TagihanAdmin::class, 'showData'])->name('tagihan-admin');
 Route::get('/edit-tagihan/{id}', [TagihanAdmin::class, 'editData'])->name('edit-tagihan');

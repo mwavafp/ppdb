@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/css/ui.jqgrid.min.css">
 
     <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/tailwind2.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/tailwind2.css')}}">
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
