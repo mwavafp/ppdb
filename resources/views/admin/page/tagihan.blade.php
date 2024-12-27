@@ -35,7 +35,7 @@
                 <div>
                     <label class="block text-sm font-medium">Tipe Pembayaran</label>
                     <select name="status"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
+                        class="bg-primary p-4 mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
                         <option value="">Semua</option>
                         <option value="Cicil">Cicil</option>
                         <option value="Lunas">Lunas</option>
@@ -83,14 +83,24 @@
                         <td class="border px-4 py-2 text-center">{{ $item->id_bayar }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->name }}</td>
                         <td class="border px-4 py-2 text-center">{{ strtoupper($item->unt_pendidikan) }}</td>
-                        <td class="border px-4 py-2 text-center">{{ $item->status }}</td>
+                        <td class="border px-4 py-2 text-center ">{{ $item->status }}</td>
                         <td class="border px-4 py-2 text-center">100000</td>
                         <td class="border px-4 py-2 text-center">{{ $item->jmlh_byr }}</td>
                         <td class="border px-4 py-2 text-center">
                             {{ $item->jmlh_byr > 10000000 ? 0 : 10000000 - $item->jmlh_byr }}</td>
-                        <td class="border px-4 py-2 text-center">{{ $item->byr_dft_ulang }}</td>
+                        @if ($item->byr_dft_ulang === 'lunas')
+                            <td
+                                class="flex items-center justify-center bg-gradient-to-r from-green-400 to-green-600 text-white py-1 px-3 rounded-full shadow-lg font-semibold">
+                                {{ $item->byr_dft_ulang }}</td>
+                        @else
+                            <td
+                                class="flex items-center justify-center bg-gradient-to-r from-red-400 to-red-600 text-white py-1 px-3 rounded-full shadow-lg font-semibold">
+                                {{ $item->byr_dft_ulang }}</td>
+                        @endif
+
                         <td>
                             <!-- Modal -->
+
 
                             <div x-data="{ isModalOpen: false }">
                                 <!-- Tombol untuk membuka modal -->
@@ -159,6 +169,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </td>
                     </tr>
                 @endforeach

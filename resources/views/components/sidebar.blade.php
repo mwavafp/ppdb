@@ -12,9 +12,13 @@
             'menu' => (object) ['icon' => 'fa-user-check', 'title' => 'Seleksi Siswa'],
             'items' => [],
         ],
-        
+
         (object) [
             'menu' => (object) ['icon' => 'fa-file-invoice-dollar', 'title' => 'Tagihan Siswa'],
+            'items' => [],
+        ],
+        (object) [
+            'menu' => (object) ['icon' => 'fa-file-invoice-dollar', 'title' => 'Pembagian Kelas'],
             'items' => [],
         ],
     ];
@@ -33,7 +37,8 @@
         <!-- Sidebar Menu -->
         <div class="pb-10 pt-2.5">
             <ul class="space-y-2">
-                <img src="images/logo-yysn.png" alt="Logo" class="w-12 h-12 object-cover rounded-full shadow-md mb-10">
+                <img src="images/logo-yysn.png" alt="Logo"
+                    class="w-12 h-12 object-cover rounded-full shadow-md mb-10">
                 @foreach ($menu as $m)
                     <li>
                         <a href="javascript:void(0);"
