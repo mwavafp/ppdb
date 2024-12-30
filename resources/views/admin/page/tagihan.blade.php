@@ -4,17 +4,18 @@
 
     <div class="px-9 py-5 flex justify-between items-center mb-4">
         <h1 class="font-bold text-xl mr-2">TAGIHAN BIAYA</h1>
+        <!-- Form Search -->
         <div class="relative">
             <form method="GET" action="{{ route('search') }}" id="searchForm">
                 <input type="text" name="search" class="border border-gray-400 rounded-full py-2 px-4 pl-10 w-[500px]"
-                    placeholder="Search" value="{{ old('search') }}"
+                    placeholder="Search" value="{{ request('search') }}"
                     oninput="document.getElementById('searchForm').submit()">
-
             </form>
             <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
         </div>
         <span class="bg-gray-200 text-black py-2 px-4 rounded-full">Nama Atmin</span>
     </div>
+    <!--Form Filter -->
     <form method="GET" action="{{ route('filter') }}">
         <div class="max-w-7xl mx-auto bg-white p-6 rounded-lg  shadow-md mt-4">
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
@@ -23,13 +24,13 @@
                     <select name="unt_pendidikan"
                         class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
                         <option value="">Semua</option>
-                        <option value="tk">TK</option>
-                        <option value="sd">SD</option>
-                        <option value="smp">SMP</option>
-                        <option value="sma">SMA</option>
-                        <option value="tpq">TPQ</option>
-                        <option value="madin">MADIN</option>
-                        <option value="pondok">PONDOK</option>
+                        <option value="tk" {{ request('unt_pendidikan') == 'tk' ? 'selected' : '' }}>TK</option>
+                        <option value="sd" {{ request('unt_pendidikan') == 'sd' ? 'selected' : '' }}>SD</option>
+                        <option value="smp"{{ request('unt_pendidikan') == 'smp' ? 'selected' : '' }}>SMP</option>
+                        <option value="sma"{{ request('unt_pendidikan') == 'sma' ? 'selected' : '' }}>SMA</option>
+                        <option value="tpq"{{ request('unt_pendidikan') == 'tpq' ? 'selected' : '' }}>TPQ</option>
+                        <option value="madin"{{ request('unt_pendidikan') == 'madin' ? 'selected' : '' }}>MADIN</option>
+                        <option value="pondok"{{ request('unt_pendidikan') == 'pondok' ? 'selected' : '' }}>PONDOK</option>
                     </select>
                 </div>
                 <div>
@@ -37,9 +38,9 @@
                     <select name="status"
                         class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
                         <option value="">Semua</option>
-                        <option value="Cicil">Cicil</option>
-                        <option value="Lunas">Lunas</option>
-                        <option value="DP">DP</option>
+                        <option value="Cicil"{{ request('status') == 'Cicil' ? 'selected' : '' }}>Cicil</option>
+                        <option value="Lunas"{{ request('status') == 'Lunas' ? 'selected' : '' }}>Lunas</option>
+                        <option value="DP"{{ request('status') == 'DP' ? 'selected' : '' }}>DP</option>
                     </select>
                 </div>
                 <div>
@@ -47,13 +48,15 @@
                     <select name="dft_ulang"
                         class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
                         <option value="">Semua</option>
-                        <option value="lunas">Lunas</option>
-                        <option value="belum">Belum Lunas</option>
+                        <option value="lunas"{{ request('dft_ulang') == 'lunas' ? 'selected' : '' }}>Lunas</option>
+                        <option value="belum"{{ request('dft_ulang') == 'belum' ? 'selected' : '' }}>Belum Lunas</option>
                     </select>
                 </div>
                 <div class="flex mt-4 mx-4">
                     <button type="submit"
                         class="bg-green-500 text-white py-2 px-4 rounded-md mr-2 w-[100px] border border-transparent hover:bg-green-600 hover:border-green-600 transition">Cari</button>
+                        <a href="{{ route('filter') }}"
+                        class="bg-red-500 text-white py-2 px-4 rounded-md w-[100px] border border-transparent hover:bg-red-600 hover:border-red-600 transition text-center">Reset</a>
                 </div>
             </div>
         </div>
@@ -78,16 +81,23 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200" id="tableBody">
+                @if ($all_data->isEmpty())
+                    <tr>
+                        <td colspan="9" class="text-center py-4 text-gray-500">
+                        Data tidak ditemukan
+                        </td>
+                    </tr>
+                @else
                 @foreach ($all_data as $item)
                     <tr class="hover:bg-gray-50 transition">
                         <td class="border px-4 py-2 text-center">{{ $item->id_bayar }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->name }}</td>
-                        <td class="border px-4 py-2 text-center">{{ $item->unt_pendidikan }}</td>
+                        <td class="border px-4 py-2 text-center">{{ strtoupper($item->unt_pendidikan) }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->status }}</td>
                         <td class="border px-4 py-2 text-center">100000</td>
-                        <td class="border px-4 py-2 text-center">{{ $item->jmlh_byr }}</td>
+                        <td class="border px-4 py-2 text-center">{{ number_format($item->jmlh_byr) }}</td>
                         <td class="border px-4 py-2 text-center">
-                            {{ $item->jmlh_byr > 10000000 ? 0 : 10000000 - $item->jmlh_byr }}</td>
+                            {{ $item->jmlh_byr > 10000000 ? 0 : number_format(10000000 - $item->jmlh_byr) }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->byr_dft_ulang }}</td>
                         <td>
                             <!-- Modal -->
@@ -147,7 +157,7 @@
                                                 </div>
                                                 <div class="flex justify-end">
                                                     <button type="submit"
-                                                        class="bg-blue-500 text-white px-4 py-2 rounded bg-primary rounded-lg">
+                                                        class="bg-blue-500 text-white px-4 py-2  bg-primary rounded-lg">
                                                         Simpan
                                                     </button>
                                                 </div>
@@ -162,11 +172,12 @@
                         </td>
                     </tr>
                 @endforeach
+                @endif
             </tbody>
         </table>
 
         <!-- Pagination Controls -->
         <div class="mt-4">
-            {{ $all_data->links() }}
+            {{ $all_data->appends(request()->except('page'))->links() }}
         </div>
 </x-layoute>

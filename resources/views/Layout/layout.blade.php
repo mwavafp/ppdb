@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Yayasan Nurul Huda</title>
+    <title>SB | Sarana Bahagia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Tailwind Admin & Dashboard Template" name="description">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -15,12 +15,11 @@
     <!-- Icons CSS -->
     @vite('resources/css/app.css')
 
-    
     <!-- ui jqgrid -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/css/ui.jqgrid.min.css">
 
     <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="{{ asset('css/tailwind2.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tailwind2.css')}}">
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -49,39 +48,33 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     ></script>
-    <script src="//unpkg.com/alpinejs" defer></script>
 
 </head>
 
 <body data-mode="light" data-sidebar-size="lg" class="group">
-<main class="flex">
-    <div class="w-auto">
-        <x-sidebar></x-sidebar>
 
-    </div>
-    <div class="w-full">
-        <div class="main-content group-data-[sidebar-size=sm]:ml-[70px]">
-            <div class="page-content">
-                <div class="my-5">
-                    @if(session('error'))
-                    <div role="alert" class="alert alert-error mb-5">
-                        <i class="fa-regular fa-circle-xmark"></i>
-                        <span class="font-medium">{{ session('error') }}</span>
-                    </div>
-                    @elseif(session('success'))
-                    <div role="alert" class="alert alert-success mb-5">
-                        <i class="fa-regular fa-circle-check text-xl"></i>
-                        <span class="font-medium">{{ session('success') }}</span>
-                    </div>
-                    @endif
+    <x-Layout.sidebar />
+
+    <x-Layout.navbar />
+
+    <div class="main-content group-data-[sidebar-size=sm]:ml-[70px]">
+        <div class="page-content">
+            <div class="my-5">
+                @if(session('error'))
+                <div role="alert" class="alert alert-error mb-5">
+                    <i class="fa-regular fa-circle-xmark"></i>
+                    <span class="font-medium">{{ session('error') }}</span>
                 </div>
-                {{ $slot }}
+                @elseif(session('success'))
+                <div role="alert" class="alert alert-success mb-5">
+                    <i class="fa-regular fa-circle-check text-xl"></i>
+                    <span class="font-medium">{{ session('success') }}</span>
+                </div>
+                @endif
             </div>
+            {{ $slot }}
         </div>
     </div>
-</main>
-    
-    
 
 
     <script src="{{ asset('/assets/libs/@popperjs/core/umd/popper.min.js') }}"></script>

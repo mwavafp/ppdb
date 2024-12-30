@@ -1,0 +1,135 @@
+<?php
+
+namespace App\Http\Controllers\Admin\Auth;
+
+use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Models\Ortu;
+use Illuminate\Http\Request;
+
+class SiswaController extends Controller
+{
+    
+    public function index(Request $request)
+    {
+        $search = $request->input('search', '');
+        $gender = $request->input('gender', '');
+        $status = $request->input('status', '');
+
+        // Query dasar dengan filter pencarian
+        $query = User::with(['ortu', 'userUnitPendidikan', 'ortu']);
+
+
+        if (!empty($search)) {
+            $query->where('name', 'like', "%{$search}%")
+                  ->orWhere('alamat', 'like', "%{$search}%");
+        }
+
+        if (!empty($gender)) {
+            $query->where('gender', $gender);
+        }
+
+        if (!empty($status)) {
+            $query->where('status', $status);
+        }
+
+        $siswa = $query->paginate(10);
+
+        return view('index', [
+            'title' => 'Data Siswa',
+            'all_data' => $siswa,
+        ]);
+    }
+    public function update(Request $request, $id_user)
+    {
+        // Validasi data yang masuk
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
+            'nisn' => 'required|string|max:20',
+            'gender' => 'required|in:laki-laki,perempuan',
+            'tmpt_lahir' => 'nullable|string|max:255',
+            'tgl_lahir' => 'nullable|date',
+            'asl_sekolah' => 'nullable|string|max:255',
+            'status' => 'required|in:aktif,tidak_aktif',
+            'email' => 'nullable|email|max:255',
+            'nm_ayah' => 'nullable|string|max:255',
+            'nmr_kk' => 'nullable|string|max:20',
+            'nik_ayah' => 'nullable|string|max:20',
+            'tgl_lhr_ayah' => 'nullable|date',
+            'tmpt_lhr_ayah' => 'nullable|string|max:255',
+            'almt_ayah' => 'nullable|string|max:255',
+            'pekerjaan_ayah' => 'nullable|string|max:255',
+            'nmr_ayah_wa' => 'nullable|string|max:20',
+            'nm_ibu' => 'nullable|string|max:255',
+            'nik_ibu' => 'nullable|string|max:20',
+            'tgl_lhr_ibu' => 'nullable|date',
+            'tmpt_lhr_ibu' => 'nullable|string|max:255',
+            'almt_ibu' => 'nullable|string|max:255',
+            'pekerjaan_ibu' => 'nullable|string|max:255',
+            'nmr_ibu_wa' => 'nullable|string|max:20',
+        ]);
+
+        // Cari data user berdasarkan id_user
+        $user = User::findOrFail($id_user);
+
+        // Update data user
+        $user->update([
+            'name' => $request->input('name'),
+            'alamat' => $request->input('alamat'),
+            'nisn' => $request->input('nisn'),
+            'gender' => $request->input('gender'),
+            'tmpt_lahir' => $request->input('tmpt_lahir'),
+            'tgl_lahir' => $request->input('tgl_lahir'),
+            'asl_sekolah' => $request->input('asl_sekolah'),
+            'status' => $request->input('status'),
+            'email' => $request->input('email'),
+        ]);
+
+        // Jika data ortu ada, update data ortu
+        if ($user->ortu) {
+            $user->ortu->update([
+                'nmr_kk' => $request->input('nmr_kk'),
+                'nm_ayah' => $request->input('nm_ayah'),
+                'nik_ayah' => $request->input('nik_ayah'),
+                'tgl_lhr_ayah' => $request->input('tgl_lhr_ayah'),
+                'tmpt_lhr_ayah' => $request->input('tmpt_lhr_ayah'),
+                'almt_ayah' => $request->input('almt_ayah'),
+                'pekerjaan_ayah' => $request->input('pekerjaan_ayah'),
+                'nmr_ayah_wa' => $request->input('nmr_ayah_wa'),
+                'nm_ibu' => $request->input('nm_ibu'),
+                'nik_ibu' => $request->input('nik_ibu'),
+                'tgl_lhr_ibu' => $request->input('tgl_lhr_ibu'),
+                'tmpt_lhr_ibu' => $request->input('tmpt_lhr_ibu'),
+                'almt_ibu' => $request->input('almt_ibu'),
+                'pekerjaan_ibu' => $request->input('pekerjaan_ibu'),
+                'nmr_ibu_wa' => $request->input('nmr_ibu_wa'),
+            ]);
+        } else {
+            // Jika data ortu belum ada, buat data ortu baru
+            Ortu::create([
+                'id_user' => $user->id_user,
+                'nmr_kk' => $request->input('nmr_kk'),
+                'nm_ayah' => $request->input('nm_ayah'),
+                'nik_ayah' => $request->input('nik_ayah'),
+                'tgl_lhr_ayah' => $request->input('tgl_lhr_ayah'),
+                'tmpt_lhr_ayah' => $request->input('tmpt_lhr_ayah'),
+                'almt_ayah' => $request->input('almt_ayah'),
+                'pekerjaan_ayah' => $request->input('pekerjaan_ayah'),
+                'nmr_ayah_wa' => $request->input('nmr_ayah_wa'),
+                'nm_ibu' => $request->input('nm_ibu'),
+                'nik_ibu' => $request->input('nik_ibu'),
+                'tgl_lhr_ibu' => $request->input('tgl_lhr_ibu'),
+                'tmpt_lhr_ibu' => $request->input('tmpt_lhr_ibu'),
+                'almt_ibu' => $request->input('almt_ibu'),
+                'pekerjaan_ibu' => $request->input('pekerjaan_ibu'),
+                'nmr_ibu_wa' => $request->input('nmr_ibu_wa'),
+            ]);
+        }
+
+        // Redirect atau kembalikan response setelah update
+        return redirect()->route('index')->with('success', 'Data siswa berhasil diperbarui!');
+    }
+
+
+}
