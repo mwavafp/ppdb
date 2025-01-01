@@ -77,8 +77,12 @@ Route::get('/seleksi', function () {
 });
 
 Route::get('/verifikasi', function () {
-    return view('calonMurid.verifikasi',['title'=>'Verifikasi Data']);
+    $pemberkasanLengkap = false; // Ganti sesuai status aktual
+    $pembayaranLunas = true; // Ganti sesuai status aktual
+
+    return view('calonMurid.verifikasi',['title'=>'Verifikasi Data', 'pemberkasanLengkap' => $pemberkasanLengkap, 'pembayaranLunas' => $pembayaranLunas,]);
 });
+
 
 
 Route::get('/pengumuman', function () {

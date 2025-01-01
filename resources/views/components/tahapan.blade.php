@@ -6,7 +6,7 @@
                 'Seleksi' => 'seleksi', 
                 'Biaya' => 'biaya',
                 'Daftar Ulang' => 'pembayaran', 
-                'Verifikasi Data' => 'verifikasi-data'
+                'Verifikasi Data' => 'verifikasi'
             ] as $step => $urlSegment)
      
             <a href="{{ url($urlSegment) }}"
