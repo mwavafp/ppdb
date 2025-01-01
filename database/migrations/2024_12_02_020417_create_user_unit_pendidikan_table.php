@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_uup');
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_kelas');
-            $table->enum('status',['aktif','tidak_aktif'])->default('aktif');
+            $table->enum('status', ['Alumni', 'Siswa Aktif', 'Siswa Tidak Aktif'])->default('Alumni');
             $table->date('tgl_mulai')->nullable();
             $table->date('tgl_berakhir')->nullable();
             $table->timestamps();

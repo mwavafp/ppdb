@@ -2,12 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\Berkas;
 use App\Models\Kelas;
 use App\Models\Pembayaran;
+use App\Models\Seleksi;
 use App\Models\User;
 use App\Models\Ortu;
 use App\Models\UserUnitPendidikan;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\BerkasFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,7 +26,6 @@ class DatabaseSeeder extends Seeder
 
         $user = User::factory()->create([
             'username' => 'user',
-            'email' => 'user@gmail.com',
             'password' => Hash::make('user1234'),
             'name' => 'User Prasetyo',
             'alamat' => 'Jalan User Tenggara no.23, welington, DC',
@@ -37,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'unt_pendidikan' => 'sma',
             'kelas' => '8',
             'kls_identitas' => 'A',
-            'kls_status' => 'Lolos'
+            'kls_status' => 'Siswa Aktif'
         ]);
 
         Ortu::factory()->create([
@@ -68,11 +70,24 @@ class DatabaseSeeder extends Seeder
         UserUnitPendidikan::factory()->create([
             'id_user' => $user->id_user,
             'id_kelas' => $kelas->id_kelas,
-            'status' => 'aktif',
+            'status' => 'Siswa Aktif',
             'tgl_mulai' => '2024-12-03',
             'tgl_berakhir' => '2024-12-11'
 
         ]);
+        Berkas::factory()->create([
+            'id_user' => $user->id_user,
+            'kk' => 'belum_diserahkan',
+            'pas_foto' => 'belum_diserahkan',
+            'ijazah_akhir' => 'belum_diserahkan',
+            'kip' => 'belum_diserahkan'
+
+        ]);
+        Seleksi::factory()->create([
+            'id_user' => $user->id_user,
+            'status_seleksi' => 'TIDAK LOLOS'
+        ]);
+
 
         //Automatic 100 dummy
 
@@ -84,6 +99,12 @@ class DatabaseSeeder extends Seeder
                 'id_user' => $user->id_user, //penimpaan data
             ]);
             UserUnitPendidikan::factory()->create([
+                'id_user' => $user->id_user, //penimpaan data
+            ]);
+            Seleksi::factory()->create([
+                'id_user' => $user->id_user, //penimpaan data
+            ]);
+            Berkas::factory()->create([
                 'id_user' => $user->id_user, //penimpaan data
             ]);
         });
