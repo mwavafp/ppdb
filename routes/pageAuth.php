@@ -14,9 +14,8 @@ Route::get('/siswa', [SiswaController::class, 'index'])->name('index');
 Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
 Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('detail-user');
 
-Route::get('/seleksiSiswa', function () {
-    return view('admin.page.seleksi', ['title' => 'Seleksi Siswa Page']);
-});
+Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi-siswa');
+
 
 
 

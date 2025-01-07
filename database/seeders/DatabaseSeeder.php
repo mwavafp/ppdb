@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\Berkas;
 use App\Models\Kelas;
 use App\Models\Pembayaran;
@@ -9,6 +10,7 @@ use App\Models\Seleksi;
 use App\Models\User;
 use App\Models\Ortu;
 use App\Models\UserUnitPendidikan;
+use Database\Factories\AdminsFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Factories\BerkasFactory;
 use Illuminate\Database\Seeder;
@@ -41,6 +43,27 @@ class DatabaseSeeder extends Seeder
             'kls_identitas' => 'A',
             'kls_status' => 'Siswa Aktif'
         ]);
+        $admins = [
+            [
+                'name' => 'cahyo',
+                'nip' => 1231232,
+                'email' => 'cahyo@gmail.com',
+                'password' => bcrypt('cahyo123'), // Jangan lupa hash password
+                'role' => 'admin'
+            ],
+            [
+                'name' => 'super',
+                'nip' => 1231232,
+                'email' => 'super@gmail.com',
+                'password' => bcrypt('super'), // Jangan lupa hash password
+                'role' => 'superAdmin'
+            ]
+        ];
+
+        foreach ($admins as $admin) {
+            Admin::factory()->create($admin);
+        }
+
 
         Ortu::factory()->create([
             'id_user' => $user->id_user,
