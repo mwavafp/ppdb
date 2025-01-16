@@ -10,13 +10,17 @@ class Pembayaran extends Model
     use HasFactory;
     protected $table = 'pembayaran';
     protected $primaryKey = 'id_bayar'; // digunakan untuk penggantian id
-    public $incrementing = true; 
-    protected $keyType = 'int'; 
-    protected $fillable=[
+    public $incrementing = true;
+    protected $keyType = 'int';
+    protected $fillable = [
         'id_user',
         'byr_dft_ulang',
         'status',
         'jmlh_byr',
+    ];
+    protected $attributes = [
+        'byr_dft_ulang' => 'belum',
+        'status' => 'DP',
     ];
     public function user()
     {

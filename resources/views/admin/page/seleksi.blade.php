@@ -32,6 +32,7 @@
                             <th class="border p-2 text-left">Jenjang</th>
                             <th class="border p-2 text-left">Kelas</th>
                             <th class="border p-2 text-left">Berkas</th>
+                            <th class="border p-2 text-left">Status Bayar</th>
                             <th class="border p-2 text-left">Status Calon</th>
                             <th class="border p-2 text-left">Action</th>
                         </tr>
@@ -45,9 +46,11 @@
                                 <td class="border p-2">{{ ucfirst($student->jenjang) }}</td>
                                 <td class="border p-2">{{ $student->kelas ?? '-' }}</td>
                                 <td class="border p-2">
-                                    <a href="#" class="text-blue-500 underline hover:text-blue-700">Lihat
-                                        Berkas</a>
+                                    <p class="bg-primary text-white rounded-lg px-2  text-center my-2">kk</p>
+                                    <p class="bg-red-500 text-white rounded-lg px-2  text-center my-2">kip</p>
+                                    <p class="bg-primary text-white rounded-lg px-2  text-center my-2">kis</p>
                                 </td>
+                                <td class="border p-2"><span>lunas</span></td>
                                 <td class="border p-2 status">
                                     <span
                                         class="bg-yellow-400 text-white px-2 py-1 rounded text-sm">{{ $student->status_user }}</span>

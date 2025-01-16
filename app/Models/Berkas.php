@@ -20,6 +20,12 @@ class Berkas extends Model
         'kip',
 
     ];
+    protected $attributes = [
+        'kk' => 'belum_diserahkan',
+        'pas_foto' => 'belum_diserahkan',
+        'ijazah_akhir' => 'belum_diserahkan',
+        'kip' => 'belum_diserahkan',
+    ];
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user', 'id_user');

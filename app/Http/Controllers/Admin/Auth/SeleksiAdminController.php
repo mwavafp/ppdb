@@ -24,7 +24,7 @@ class SeleksiAdminController extends Controller
                 'kelas.kls_status as status',
                 'users.status as status_user',
                 'berkas.kk as status_kk',
-                'berkas.srt_pernyataan as status_surat'
+                // 'berkas.srt_pernyataan as status_surat'
             )
             ->paginate(10); // Data dengan pagination
 
