@@ -1,71 +1,71 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <x-layoute>
-    <x-slot:title>{{$title}}</x-slot:title>
-    
+    <x-slot:title>{{ $title }}</x-slot:title>
+
 
     <div class=" bg-gray-100">
         <div class="p-4">
             <p class="text-3xl">Dashboard</p>
         </div>
-    <!-- Header Metrics -->
-    <div class="flex p-8  gap-4 mb-6 flex-row items-stretch">
-        <div class="flex flex-col w-1/2 h-full justify-between ">
-            <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">Jumlah Total Pendaftar</p>
-                <p class="text-2xl font-semibold">{{$all_user}}</p>
-                <p class="text-green-500 text-sm mt-1">+33.45%</p>
+        <!-- Header Metrics -->
+        <div class="flex p-8  gap-4 mb-6 flex-row items-stretch">
+            <div class="flex flex-col w-1/2 h-full justify-between ">
+                <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
+                    <p class="text-sm text-gray-500">Jumlah Total Pendaftar</p>
+                    <p class="text-2xl font-semibold">{{ $all_user }}</p>
+                    <p class="text-green-500 text-sm mt-1">+33.45%</p>
+                </div>
+                <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
+                    <p class="text-sm text-gray-500">Jumlah Pendapatan Pendaftaran</p>
+                    <p class="text-2xl font-semibold">$11.67M</p>
+                    <p class="text-green-500 text-sm mt-1">+33.45%</p>
+                </div>
             </div>
-            <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">Jumlah Pendapatan Pendaftaran</p>
-                <p class="text-2xl font-semibold">$11.67M</p>
-                <p class="text-green-500 text-sm mt-1">+33.45%</p>
+            <div class="flex w-1/2 flex-wrap">
+
+                @foreach ($tipe_user as $user)
+                    <div class="flex-1 p-4 m-2 bg-white rounded-lg shadow-md text-center min-w-[200px]">
+                        <p class="text-sm text-gray-500">{{ $user['title'] }}</p>
+                        <p class="text-2xl font-semibold">{{ $user['fungsi'] }}</p>
+                        <p class="text-red-500 text-sm mt-1">-112.4%</p>
+                    </div>
+                @endforeach
+            </div>
+
+
+        </div>
+
+        <!-- Charts Section -->
+        <div class="flex flex-wrap gap-4 mb-6 p-8">
+            <!-- Contextual Pie Chart -->
+            <div class="flex-1 bg-white p-4 rounded-lg shadow-md w-40">
+                <p class="text-lg font-semibold mb-4">Tipe Pendaftar</p>
+                <canvas id="contextualChart"></canvas>
+            </div>
+
+            <!-- Device Type Doughnut Chart -->
+
+
+            <!-- Impression Line Chart -->
+            <div class="flex-1 bg-white p-4 rounded-lg shadow-md min-w-[300px]">
+                <p class="text-lg font-semibold mb-4">Impression Measurement</p>
+                <canvas id="impressionChart"></canvas>
             </div>
         </div>
-        <div class="flex w-1/2 flex-wrap">
-            
-            @foreach ($tipe_user as $user)
-            <div class="flex-1 p-4 m-2 bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">{{$user['title']}}</p>
-                <p class="text-2xl font-semibold">{{$user['fungsi']}}</p>
-                <p class="text-red-500 text-sm mt-1">-112.4%</p>
+
+        <!-- Spend by Channel Bar Chart -->
+        <div class="flex flex-wrap bg-white p-4 rounded-lg shadow-md mb-6">
+            <p class="text-lg font-semibold w-full mb-4">Spend by Channel</p>
+            <div class="w-full">
+                <canvas id="spendChart"></canvas>
             </div>
-            @endforeach
-        </div>
-       
-     
-    </div>
-
-    <!-- Charts Section -->
-    <div class="flex flex-wrap gap-4 mb-6 p-8">
-        <!-- Contextual Pie Chart -->
-        <div class="flex-1 bg-white p-4 rounded-lg shadow-md w-40">
-            <p class="text-lg font-semibold mb-4">Tipe Pendaftar</p>
-            <canvas id="contextualChart"></canvas>
         </div>
 
-        <!-- Device Type Doughnut Chart -->
-       
+        <!-- Resonance Score by Creative -->
 
-        <!-- Impression Line Chart -->
-        <div class="flex-1 bg-white p-4 rounded-lg shadow-md min-w-[300px]">
-            <p class="text-lg font-semibold mb-4">Impression Measurement</p>
-            <canvas id="impressionChart"></canvas>
-        </div>
-    </div>
 
-    <!-- Spend by Channel Bar Chart -->
-    <div class="flex flex-wrap bg-white p-4 rounded-lg shadow-md mb-6">
-        <p class="text-lg font-semibold w-full mb-4">Spend by Channel</p>
-        <div class="w-full">
-            <canvas id="spendChart"></canvas>
-        </div>
-    </div>
+        <!-- Scripts for Charts -->
 
-    <!-- Resonance Score by Creative -->
-   
-
-    <!-- Scripts for Charts -->
-    
 
 
     </div>
@@ -80,7 +80,7 @@
         data: {
             labels: ['Laki - laki', 'Perempuan'],
             datasets: [{
-                data: [genderLaki,genderPerempuan],
+                data: [genderLaki, genderPerempuan],
                 backgroundColor: ['#f472b6', '#818cf8'],
             }]
         }

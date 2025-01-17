@@ -59,12 +59,8 @@
                 <li>
                     <a
                         class="flex items-center gap-4 py-2.5 px-4 text-sm font-medium  text-gray-900 hover:text-violet-500 dark:text-gray-300 dark:hover:text-white">
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
-                            <button class="block p-3 hover:bg-gray-50/50 dark:hover:bg-zinc-700/50" type="submit"><span
-                                    class="menu-text text-lg bg-primary text-white px-4 py-2 rounded-md">Logout</span>
-                            </button>
-                        </form>
+
+
                     </a>
                 </li>
             </ul>
