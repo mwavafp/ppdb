@@ -36,7 +36,7 @@
         </div>
 
         <!-- Charts Section -->
-        <div class="flex flex-wrap gap-4 mb-6 p-8">
+        <div class="flex  gap-4 mb-6 p-8 ">
             <!-- Contextual Pie Chart -->
             <div class="flex-1 bg-white p-4 rounded-lg shadow-md w-40">
                 <p class="text-lg font-semibold mb-4">Tipe Pendaftar</p>
@@ -51,20 +51,14 @@
                 <p class="text-lg font-semibold mb-4">Impression Measurement</p>
                 <canvas id="impressionChart"></canvas>
             </div>
-        </div>
-
-        <!-- Spend by Channel Bar Chart -->
-        <div class="flex flex-wrap bg-white p-4 rounded-lg shadow-md mb-6">
-            <p class="text-lg font-semibold w-full mb-4">Spend by Channel</p>
-            <div class="w-full">
-                <canvas id="spendChart"></canvas>
+            <div class="flex-1 flex-wrap bg-white p-4 rounded-lg shadow-md mb-6">
+                <p class="text-lg font-semibold w-full mb-4">Spend by Channel</p>
+                <div class="w-full">
+                    <canvas id="spendChart"></canvas>
+                </div>
             </div>
         </div>
 
-        <!-- Resonance Score by Creative -->
-
-
-        <!-- Scripts for Charts -->
 
 
 

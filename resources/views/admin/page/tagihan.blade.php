@@ -93,7 +93,7 @@
                 @else
                     @foreach ($all_data as $item)
                         <tr class="hover:bg-gray-50 transition">
-                            <td class="border px-4 py-2 text-center">{{ $item->id_bayar }}</td>
+                            <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->name }}</td>
                             <td class="border px-4 py-2 text-center">{{ strtoupper($item->unt_pendidikan) }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->status }}</td>
