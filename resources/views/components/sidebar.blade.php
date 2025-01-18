@@ -63,6 +63,14 @@
 
                     </a>
                 </li>
+                <li>
+                    <form method="POST" action="{{ route('admin.logout') }}">
+                        @csrf
+                        <button class="block p-3 hover:bg-gray-50/50 dark:hover:bg-zinc-700/50" type="submit">
+                            <span class="menu-text text-lg bg-primary text-white px-4 py-2 rounded-md">Logout</span>
+                        </button>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>

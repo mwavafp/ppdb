@@ -47,6 +47,6 @@ Route::middleware('auth:admin')->group(function () {
     Route::post('update-tagihan/{id}', [TagihanAdmin::class, 'updateData'])->name('update-tagihan');
     Route::get('/search', [TagihanAdmin::class, 'search'])->name('search');
     Route::get('/filter', [TagihanAdmin::class, 'filter'])->name('filter');
-    // Route::post('logout', [LoginController::class, 'destroy'])
-    //     ->name('admin.logout');
+    Route::post('logout', [LoginController::class, 'destroy'])
+        ->name('admin.logout');
 });

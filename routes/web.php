@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 
-Route::get('/biodata', function () {
-    return view('calonMurid.biodata', ['title' => 'User Page']);
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 
 
 
@@ -45,10 +41,6 @@ Route::get('/kontak', function () {
 });
 
 
-Route::get('/pembayaran', function () {
-    return view('calonMurid.pembayaran', ['title' => 'Informasi Pembayaran']);
-});
-
 
 Route::get('/tagihan', function () {
     return view('frontPage.tagihan', ['title' => 'Tagihan Biaya']);
@@ -64,17 +56,14 @@ Route::get('/form', function (Request $request) {
 });
 
 
-Route::get('/seleksi', function () {
-    return view('calonMurid.seleksi', ['title' => 'Seleksi Murid']);
-});
 
-Route::get('/verifikasi', function () {
-    $pemberkasanLengkap = false; // Ganti sesuai status aktual
-    $pembayaranLunas = true; // Ganti sesuai status aktual
 
-    return view('calonMurid.verifikasi', ['title' => 'Verifikasi Data', 'pemberkasanLengkap' => $pemberkasanLengkap, 'pembayaranLunas' => $pembayaranLunas,]);
-});
+// Route::get('/verifikasi', function () {
+//     $pemberkasanLengkap = false; // Ganti sesuai status aktual
+//     $pembayaranLunas = true; // Ganti sesuai status aktual
 
+//     return view('calonMurid.verifikasi', ['title' => 'Verifikasi Data', 'pemberkasanLengkap' => $pemberkasanLengkap, 'pembayaranLunas' => $pembayaranLunas,]);
+// });
 
 
 Route::get('/pengumuman', function () {
