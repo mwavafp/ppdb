@@ -33,9 +33,7 @@ Route::get('/smp', function () {
 Route::get('/sma', function () {
     return view('frontPage.sma', ['title' => 'SMA Information Page']);
 });
-Route::get('/biaya', function () {
-    return view('calonMurid/biaya', ['title' => 'Biaya Page']);
-});
+
 Route::get('/kontak', function () {
     return view('frontPage.kontak', ['title' => 'Kontak Page']);
 });

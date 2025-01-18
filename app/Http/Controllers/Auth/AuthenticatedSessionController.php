@@ -27,8 +27,9 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        return redirect()->intended(route('biodata'));
+        if (Auth::guard('web')->check()) {
+            return redirect()->intended(route('biodata'));
+        }
     }
 
     /**
