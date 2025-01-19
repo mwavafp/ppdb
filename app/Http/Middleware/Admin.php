@@ -14,12 +14,14 @@ class Admin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    
-    public function handle(Request $request, Closure $next): Response
+
+    public function handle(Request $request, Closure $next, $checkrole): Response
     {
-        
-        if(Auth::user()->role != 'panitia'){
-            return redirect('/');
+
+        $user = Auth::guard('admin')->user();
+
+        if (!$user || $user->role !== $checkrole) {
+            return redirect()->route('admin.login')->withErrors('You do not have permission to access this page.');
         }
         return $next($request);
     }

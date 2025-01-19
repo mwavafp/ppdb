@@ -25,23 +25,17 @@ Route::prefix('admin')->middleware('guest:admin')->group(function () {
     Route::post('login', [LoginController::class, 'store']);
 });
 
-Route::middleware('auth:admin')->group(function () {
+Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
 
     // Route::get('/dashboard', function () {
     //     return view('admin.page.dashboard', ['title' => 'tes']);
     // })->name('admin.dashboard');
     Route::get('/dashboard-admin', [AdminDashboardController::class, 'showUser'])->name('admin.dashboard-admin');
     Route::get('/pembagiankelas', [KelasController::class, 'index']);
-
     Route::get('/siswa', [SiswaController::class, 'index'])->name('index');
     Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
     Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('detail-user');
-
     Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi-siswa');
-
-
-
-
     Route::get('/tagihan-admin', [TagihanAdmin::class, 'showData'])->name('tagihan-admin');
     Route::get('/edit-tagihan/{id}', [TagihanAdmin::class, 'editData'])->name('edit-tagihan');
     Route::post('update-tagihan/{id}', [TagihanAdmin::class, 'updateData'])->name('update-tagihan');
@@ -49,4 +43,9 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/filter', [TagihanAdmin::class, 'filter'])->name('filter');
     Route::post('logout', [LoginController::class, 'destroy'])
         ->name('admin.logout');
+});
+Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('superAdmin.dashboardSA', ['title' => 'Pondok Information Page']);
+    })->name('admin.dashboardSA');
 });
