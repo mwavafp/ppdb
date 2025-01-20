@@ -8,7 +8,7 @@
             <tr>
                 <td class="pr-2 py-1 font-medium">No.Pendaftaran</td>
                 <td class="pr-2">:</td>
-                <td>21200022011</td>
+                <td>{{ $all_data->id_user }}</td>
             </tr>
             <tr>
                 <td class="pr-2 py-1 font-medium">Nama</td>
@@ -131,7 +131,7 @@
             <h1 class="font-semibold text-2xl mb-4">Informasi:</h1>
             <div class="flex">
                 <h2 class="font-semibold text-md ">Bonus : </h2>
-                <p class="ml-2">Lunas atau DP akan mendapatkan free sepatu / tas / 1 stel seragam (boleh memilih
+                <p class="ml-2">Lunas atau DP akan mendapatkan free sepatu 1  / tas  / 1 stel seragam  (boleh memilih
                     selama persediaan masih ada).
                 </p>
             </div>

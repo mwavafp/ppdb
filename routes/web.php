@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\Auth\SeleksiAdminController;
 use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
-
+use App\Http\Controllers\UserBerkasController;
 
 Route::get('/', function () {
     return view('frontPage.home', ['title' => 'Home Page']); //penggunaan nilai title
@@ -96,9 +96,10 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/seleksi', function () {
         return view('calonMurid.seleksi', ['title' => 'User Page']);
     });
-    Route::get('/berkas', function () {
-        return view('calonMurid.berkas', ['title' => 'User Page']);
-    });
+    
+    Route::get('/berkas', [UserBerkasController::class, 'showData'])->name('berkas');
+  
+  
     Route::get('/verifikasi-data', function () {
         return view('calonMurid.verifikasi', ['title' => 'User Page']);
     });

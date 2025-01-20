@@ -4,7 +4,7 @@
             buttons.forEach(button => button.classList.remove('active'));
 
             if (tab) {
-                document.querySelector(.menu-btn:contains(${tab})).classList.add('active');
+                document.querySelector('menu-btn:contains'(tab)).classList.add('active');
             }
         }
     </script>
