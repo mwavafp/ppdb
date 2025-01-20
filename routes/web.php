@@ -75,9 +75,9 @@ Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman', ['title' => 'About Page']);
 });
 
-Route::get('/logout', function () {
-    return "hello world";
-})->name('logout');
+// Route::get('/logout', function () {
+//     return "hello world";
+// })->name('logout');
 
 //////////////////////////////////Route Auth/////////////////////////////////////
 Route::middleware('guest:web')->group(function () {

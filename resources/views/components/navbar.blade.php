@@ -42,7 +42,7 @@
                     </div>
                     <!-- Auth Buttons -->
                     @if (Auth::check())
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="{{ route('logouts') }}">
                             @csrf
                             <button onclick="event.preventDefault(); this.closest('form').submit();"
                                 class="py-2 px-4 mt-4 bg-primary text-white rounded-lg hover:bg-green-900 transition">
