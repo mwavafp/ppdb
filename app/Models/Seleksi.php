@@ -5,23 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pembayaran extends Model
+class Seleksi extends Model
 {
     use HasFactory;
-    protected $table = 'pembayaran';
-    protected $primaryKey = 'id_bayar'; // digunakan untuk penggantian id
+    protected $table = 'seleksi';
+    protected $primaryKey = 'id_seleksi'; // digunakan untuk penggantian id
     public $incrementing = true;
     protected $keyType = 'int';
     protected $fillable = [
         'id_user',
-        'byr_dft_ulang',
-        'status',
-        'jmlh_byr',
+        'status_seleksi'
+
     ];
     protected $attributes = [
-        'byr_dft_ulang' => 'belum',
-        'status' => 'DP',
+        'status_seleksi' => 'PENDING',
     ];
+
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user', 'id_user');

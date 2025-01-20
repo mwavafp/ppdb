@@ -5,22 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pembayaran extends Model
+class Berkas extends Model
 {
     use HasFactory;
-    protected $table = 'pembayaran';
-    protected $primaryKey = 'id_bayar'; // digunakan untuk penggantian id
+    protected $table = 'berkas';
+    protected $primaryKey = 'id_brks'; // digunakan untuk penggantian id
     public $incrementing = true;
     protected $keyType = 'int';
     protected $fillable = [
         'id_user',
-        'byr_dft_ulang',
-        'status',
-        'jmlh_byr',
+        'kk',
+        'pas_foto',
+        'ijazah_akhir',
+        'kip',
+
     ];
     protected $attributes = [
-        'byr_dft_ulang' => 'belum',
-        'status' => 'DP',
+        'kk' => 'belum_diserahkan',
+        'pas_foto' => 'belum_diserahkan',
+        'ijazah_akhir' => 'belum_diserahkan',
+        'kip' => 'belum_diserahkan',
     ];
     public function user()
     {

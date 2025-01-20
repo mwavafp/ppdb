@@ -16,8 +16,10 @@ class TagihanAdmin extends Controller
         $all_data = DB::table('pembayaran')
             ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.id_user', 'pembayaran.id_bayar', 'kelas.unt_pendidikan', 'pembayaran.byr_dft_ulang', 'pembayaran.status', 'jmlh_byr')
+            ->select('users.name', 'users.id_user', 'pembayaran.id_bayar', 'kelas.unt_pendidikan', 'pembayaran.byr_dft_ulang', 'pembayaran.status', 'jmlh_byr', 'seleksi.status_seleksi')
+            ->where('seleksi.status_seleksi', '=', 'LOLOS')
             ->paginate(10);
 
 
@@ -103,6 +105,7 @@ class TagihanAdmin extends Controller
 
         // Ambil data dengan pagination
         $all_data = $query->paginate(10);
+        $all_data->appends($request->all());
 
         return view('admin.page.tagihan', compact('all_data'), ['title' => 'Search Results']);
     }

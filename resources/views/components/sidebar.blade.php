@@ -1,20 +1,32 @@
 @php
     $menu = [
         (object) [
-            'menu' => (object) ['icon' => 'fa-house', 'title' => 'Dashboard'],
+            'menu' => (object) ['icon' => 'fa-house', 'title' => 'Dashboard', 'link' => 'dashboard-admin'],
             'items' => [],
         ],
         (object) [
-            'menu' => (object) ['icon' => 'fa-users', 'title' => 'Data Siswa'],
+            'menu' => (object) ['icon' => 'fa-users', 'title' => 'Data Siswa', 'link' => 'siswa'],
             'items' => [],
         ],
         (object) [
-            'menu' => (object) ['icon' => 'fa-user-check', 'title' => 'Seleksi Siswa'],
+            'menu' => (object) ['icon' => 'fa-user-check', 'title' => 'Seleksi Siswa', 'link' => 'seleksiSiswa'],
             'items' => [],
         ],
-        
+
         (object) [
-            'menu' => (object) ['icon' => 'fa-file-invoice-dollar', 'title' => 'Tagihan Siswa'],
+            'menu' => (object) [
+                'icon' => 'fa-file-invoice-dollar',
+                'title' => 'Tagihan Siswa',
+                'link' => 'tagihan-admin',
+            ],
+            'items' => [],
+        ],
+        (object) [
+            'menu' => (object) [
+                'icon' => 'fa-file-invoice-dollar',
+                'title' => 'Pembagian Kelas',
+                'link' => 'pembagiankelas',
+            ],
             'items' => [],
         ],
     ];
@@ -33,16 +45,32 @@
         <!-- Sidebar Menu -->
         <div class="pb-10 pt-2.5">
             <ul class="space-y-2">
-                <img src="images/logo-yysn.png" alt="Logo" class="w-12 h-12 object-cover rounded-full shadow-md mb-10">
+                <img src="images/logo-yysn.png" alt="Logo"
+                    class="w-12 h-12 object-cover rounded-full shadow-md mb-10 ml-2">
                 @foreach ($menu as $m)
                     <li>
-                        <a href="javascript:void(0);"
+                        <a href='/{{ $m->menu->link }}'
                             class="flex items-center gap-4 py-2.5 px-4 text-sm font-medium text-gray-900 hover:text-violet-500 dark:text-gray-300 dark:hover:text-white">
                             <i class="fa-solid {{ $m->menu->icon }}"></i>
                             <span class="menu-text">{{ $m->menu->title }}</span>
                         </a>
                     </li>
                 @endforeach
+                <li>
+                    <a
+                        class="flex items-center gap-4 py-2.5 px-4 text-sm font-medium  text-gray-900 hover:text-violet-500 dark:text-gray-300 dark:hover:text-white">
+
+
+                    </a>
+                </li>
+                <li>
+                    <form method="POST" action="{{ route('admin.logout') }}">
+                        @csrf
+                        <button class="block p-3 hover:bg-gray-50/50 dark:hover:bg-zinc-700/50" type="submit">
+                            <span class="menu-text text-lg bg-primary text-white px-4 py-2 rounded-md">Logout</span>
+                        </button>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
