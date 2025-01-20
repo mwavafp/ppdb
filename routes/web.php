@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 
 
-
+Route::get('/logout')->name('logout');
 
 Route::get('/', function () {
     return view('frontPage.home', ['title' => 'Home Page']); //penggunaan nilai title
