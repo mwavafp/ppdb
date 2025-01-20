@@ -4,9 +4,16 @@
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
-
-
-
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\DaftarUlangController;
+use App\Http\Controllers\Admin\Auth\AdminDashboardController;
+use App\Http\Controllers\Admin\Auth\KelasController;
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\Auth\RegisteredUserController;
+use App\Http\Controllers\Admin\Auth\SeleksiAdminController;
+use App\Http\Controllers\Admin\Auth\SiswaController;
+use App\Http\Controllers\Admin\Auth\TagihanAdmin;
+use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
 
 
 Route::get('/', function () {
@@ -68,6 +75,78 @@ Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman', ['title' => 'About Page']);
 });
 
+Route::get('/logout', function () {
+    return "hello world";
+})->name('logout');
 
-require __DIR__ . '/auth.php';
-require __DIR__ . '/admin-auth.php';
+//////////////////////////////////Route Auth/////////////////////////////////////
+Route::middleware('guest:web')->group(function () {
+
+
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])
+        ->name('login');
+
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+});
+
+Route::middleware('auth:web')->group(function () {
+    Route::get('/biodata', function () {
+        return view('calonMurid.biodata', ['title' => 'User Page']);
+    })->name('biodata');
+    Route::get('/seleksi', function () {
+        return view('calonMurid.seleksi', ['title' => 'User Page']);
+    });
+    Route::get('/berkas', function () {
+        return view('calonMurid.berkas', ['title' => 'User Page']);
+    });
+    Route::get('/verifikasi-data', function () {
+        return view('calonMurid.verifikasi', ['title' => 'User Page']);
+    });
+
+    Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
+    Route::get('/biaya', function () {
+        return view('calonMurid.biaya', ['title' => 'Informasi Pembayaran']);
+    });
+    Route::post('logouts', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logouts');
+});
+///////////////////////////////////Admin Auth///////////////////////////////////////////
+//prefix digunakan untuk penambahan awal sebelum view contoh 
+//prefix(admin) pada view dashboard. maka nanti akan menjadi /admin/dashboard
+//guest digunakan khusus pengguna yang belum login sebagai admin
+//auth memerikasa pengguna sudah login
+Route::prefix('admin')->middleware('guest:admin')->group(function () {
+    // Route::get('/dashboard', function () {
+    //     return view('admin.dashboard',['title'=>'User Page']);
+    // })->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('admin.register');
+    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::get('login', [LoginController::class, 'create'])
+        ->name('admin.login');
+
+    Route::post('login', [LoginController::class, 'store']);
+});
+
+Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
+
+    // Route::get('/dashboard', function () {
+    //     return view('admin.page.dashboard', ['title' => 'tes']);
+    // })->name('admin.dashboard');
+    Route::get('/dashboard-admin', [AdminDashboardController::class, 'showUser'])->name('admin.dashboard-admin');
+    Route::get('/pembagiankelas', [KelasController::class, 'index']);
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('index');
+    Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
+    Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('detail-user');
+    Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi-siswa');
+    Route::get('/tagihan-admin', [TagihanAdmin::class, 'showData'])->name('tagihan-admin');
+    Route::get('/edit-tagihan/{id}', [TagihanAdmin::class, 'editData'])->name('edit-tagihan');
+    Route::post('update-tagihan/{id}', [TagihanAdmin::class, 'updateData'])->name('update-tagihan');
+    Route::get('/search', [TagihanAdmin::class, 'search'])->name('search');
+    Route::get('/filter', [TagihanAdmin::class, 'filter'])->name('filter');
+    Route::post('/logout', [LoginController::class, 'destroy'])
+        ->name('admin.logout');
+});
+Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
+
+    Route::get('/dashboard', [AdminSuperDashboardController::class, 'showData'])->name('admin.dashboardSA');
+});
