@@ -17,6 +17,7 @@ use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
 use App\Http\Controllers\Auth\PengumumanController;
 use App\Http\Controllers\UserBerkasController;
 use App\Http\Controllers\BiodataController;
+use App\Http\Controllers\BerkasSeleksiControl;
 
 Route::get('/', function () {
     return view('frontPage.home', ['title' => 'Home Page']); //penggunaan nilai title
@@ -109,9 +110,7 @@ Route::middleware('auth:web')->group(function () {
     // })->name('biodata');
     Route::get('/biodata', [BiodataController::class, 'showData'])->name('biodata');
 
-    Route::get('/seleksi', function () {
-        return view('calonMurid.seleksi', ['title' => 'User Page']);
-    });
+    Route::get('/seleksi', [BerkasSeleksiControl::class, 'showData'])->name('seleksi');
 
     Route::get('/berkas', [UserBerkasController::class, 'showData'])->name('berkas');
 
