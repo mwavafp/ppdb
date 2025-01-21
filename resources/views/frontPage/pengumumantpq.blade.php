@@ -5,7 +5,7 @@
 
             <!-- Search Bar -->
             <div class="flex items-center justify-between mb-6">
-                <form method="GET" action="{{ route('pengumumansma.search') }}" class="w-full max-w-lg">
+                <form method="GET" action="{{ route('pengumumantpq.search') }}" class="w-full max-w-lg">
                     <div class="relative">
                         <input
                             type="text"

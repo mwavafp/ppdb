@@ -64,17 +64,25 @@ Route::get('/form', function (Request $request) {
 });
 
 Route::get('/pengumumansma', [PengumumanController::class, 'showDatasma'])->name('pengumumansma');
+Route::get('/pengumumansma/search', [PengumumanController::class, 'searchsma'])->name('pengumumansma.search');
 
+Route::get('/pengumumansmp', [PengumumanController::class, 'showDatasmp'])->name('pengumumansmp');
+Route::get('/pengumumansmp/search', [PengumumanController::class, 'searchsmp'])->name('pengumumansmp.search');
 
+Route::get('/pengumumantk', [PengumumanController::class, 'showDatatk'])->name('pengumumantk');
+Route::get('/pengumumantk/search', [PengumumanController::class, 'searchtk'])->name('pengumumantk.search');
 
-Route::get('/pengumumansmp', function () {
-    return view('frontPage.pengumumansmp', ['title' => 'halaman informasi smp']);
-})->name('pengumuman-smp');
+Route::get('/pengumumansd', [PengumumanController::class, 'showDatasd'])->name('pengumumansd');
+Route::get('/pengumumansd/search', [PengumumanController::class, 'searchsd'])->name('pengumumansd.search');
 
-Route::get('/pengumumantk', function () {
-    return view('frontPage.pengumumansmp', ['title' => 'halaman informasi tk']);
-})->name('pengumuman-tk');
+Route::get('/pengumumantpq', [PengumumanController::class, 'showDatatpq'])->name('pengumumantpq');
+Route::get('/pengumumantpq/search', [PengumumanController::class, 'searchtpq'])->name('pengumumantpq.search');
 
+Route::get('/pengumumanmadin', [PengumumanController::class, 'showDatamadin'])->name('pengumumanmadin');
+Route::get('/pengumumanmadin/search', [PengumumanController::class, 'searchmadin'])->name('pengumumanmadin.search');
+
+Route::get('/pengumumanpondok', [PengumumanController::class, 'showDatapondok'])->name('pengumumanpondok');
+Route::get('/pengumumanpondok/search', [PengumumanController::class, 'searchpondok'])->name('pengumumanpondok.search');
 
 // Route::get('/verifikasi', function () {
 //     $pemberkasanLengkap = false; // Ganti sesuai status aktual
