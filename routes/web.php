@@ -16,6 +16,8 @@ use App\Http\Controllers\Admin\Auth\TagihanAdmin;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
 use App\Http\Controllers\Auth\PengumumanController;
 use App\Http\Controllers\Auth\VerifikasiController;
+use App\Http\Controllers\BerkasSeleksiControl;
+use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\UserBerkasController;
 
 Route::get('/', function () {
@@ -99,12 +101,12 @@ Route::middleware('guest:web')->group(function () {
 });
 
 Route::middleware('auth:web')->group(function () {
-    Route::get('/biodata', function () {
-        return view('calonMurid.biodata', ['title' => 'User Page']);
-    })->name('biodata');
-    Route::get('/seleksi', function () {
-        return view('calonMurid.seleksi', ['title' => 'User Page']);
-    });
+    // Route::get('/biodata', function () {
+    //     return view('calonMurid.biodata', ['title' => 'User Page']);
+    // })->name('biodata');
+    Route::get('/biodata', [BiodataController::class, 'showData'])->name('biodata');
+
+    Route::get('/seleksi', [BerkasSeleksiControl::class, 'showData'])->name('seleksi');
 
     Route::get('/berkas', [UserBerkasController::class, 'showData'])->name('berkas');
 
@@ -140,11 +142,18 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
     //     return view('admin.page.dashboard', ['title' => 'tes']);
     // })->name('admin.dashboard');
     Route::get('/dashboard-admin', [AdminDashboardController::class, 'showUser'])->name('admin.dashboard-admin');
-    Route::get('/pembagiankelas', [KelasController::class, 'index']);
+
+    Route::get('/pembagiankelas', [KelasController::class, 'showData'])->name('pembagiankelas');
+    Route::get('/pembagiankelas/{id}/edit', [KelasController::class, 'edit'])->name('pembagiankelas.edit');
+    Route::put('/pembagiankelas/{id}/update', [KelasController::class, 'update'])->name('pembagiankelas.update');
+    Route::get('/pembagiankelas/search', [KelasController::class, 'search'])->name('pembagiankelas.search');
+    Route::get('/pembagiankelas/filter', [KelasController::class, 'filter'])->name('pembagiankelas.filter');
+
     Route::get('/siswa', [SiswaController::class, 'index'])->name('index');
     Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
     Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('detail-user');
     Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi-siswa');
+
     Route::get('/tagihan-admin', [TagihanAdmin::class, 'showData'])->name('tagihan-admin');
     Route::get('/edit-tagihan/{id}', [TagihanAdmin::class, 'editData'])->name('edit-tagihan');
     Route::post('update-tagihan/{id}', [TagihanAdmin::class, 'updateData'])->name('update-tagihan');
