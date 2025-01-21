@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\Auth\SeleksiAdminController;
 use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
-
+use App\Http\Controllers\Auth\PengumumanController;
 
 Route::get('/', function () {
     return view('frontPage.home', ['title' => 'Home Page']); //penggunaan nilai title
@@ -46,7 +46,6 @@ Route::get('/kontak', function () {
 });
 
 
-
 Route::get('/tagihan', function () {
     return view('frontPage.tagihan', ['title' => 'Tagihan Biaya']);
 });
@@ -60,7 +59,17 @@ Route::get('/form', function (Request $request) {
     return view('frontPage.formRegister', ['title' => 'test'], compact('unitPendidikan'));
 });
 
+Route::get('/pengumumansma', [PengumumanController::class, 'showDatasma'])->name('pengumumansma');
 
+
+
+Route::get('/pengumumansmp', function () {
+    return view('frontPage.pengumumansmp', ['title' => 'halaman informasi smp']);
+})->name('pengumuman-smp');
+
+Route::get('/pengumumantk', function () {
+    return view('frontPage.pengumumansmp', ['title' => 'halaman informasi tk']);
+})->name('pengumuman-tk');
 
 
 // Route::get('/verifikasi', function () {
@@ -75,13 +84,14 @@ Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman', ['title' => 'About Page']);
 });
 
-// Route::get('/logout', function () {
-//     return "hello world";
-// })->name('logout');
+
 
 //////////////////////////////////Route Auth/////////////////////////////////////
 Route::middleware('guest:web')->group(function () {
+    Route::get('register', [AuthenticatedSessionController::class, 'create'])
+        ->name('register');
 
+    Route::post('register', [AuthenticatedSessionController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
@@ -104,6 +114,7 @@ Route::middleware('auth:web')->group(function () {
     });
 
     Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
+
     Route::get('/biaya', function () {
         return view('calonMurid.biaya', ['title' => 'Informasi Pembayaran']);
     });

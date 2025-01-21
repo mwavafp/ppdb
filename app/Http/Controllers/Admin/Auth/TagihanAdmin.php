@@ -66,8 +66,10 @@ class TagihanAdmin extends Controller
             ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->select('users.name', 'users.id_user', 'pembayaran.id_bayar', 'kelas.unt_pendidikan', 'pembayaran.byr_dft_ulang', 'pembayaran.status', 'jmlh_byr')
             ->where('users.name', 'LIKE', "%{$search}%")
+            ->where('seleksi.status_seleksi', '=', 'LOLOS')
             ->paginate(10);
 
         return view('admin.page.tagihan', compact('all_data'), ['title' => 'Search Results']);
@@ -83,6 +85,7 @@ class TagihanAdmin extends Controller
         ];
         $query = DB::table('pembayaran')
             ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
+            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
             ->select(
@@ -93,7 +96,7 @@ class TagihanAdmin extends Controller
                 'pembayaran.byr_dft_ulang',
                 'pembayaran.status',
                 'pembayaran.jmlh_byr'
-            );
+            )->where('seleksi.status_seleksi', '=', 'LOLOS');
 
 
         foreach ($filterCategory as $key => $value) {

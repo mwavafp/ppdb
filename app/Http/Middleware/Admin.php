@@ -21,11 +21,11 @@ class Admin
         $user = Auth::guard('admin')->user();
         $userLogin = Auth::user()->role;
 
-        if ($userLogin != "admin") {
-            return redirect()->route('admin.login')->withErrors('You do not have permission to access this page.');
-        }
+        // if ($userLogin != "admin") {
+        //     return redirect()->route('admin.login')->withErrors('You do not have permission to access this page.');
+        // }
 
-        dd($userLogin);
+        // dd($userLogin);
 
         if (!$user || $user->role !== $checkrole) {
             return redirect()->route('admin.login')->withErrors('You do not have permission to access this page.');

@@ -35,6 +35,7 @@
                                     <th class="border p-2 text-left">Berkas</th>
                                     <th class="border p-2 text-left">Status Bayar</th>
                                     <th class="border p-2 text-left">Status Calon</th>
+                                    <th class="border p-2 text-left">Status Seleksi</th>
                                     <th class="border p-2 text-left">Action</th>
                                 </tr>
                             </thead>
@@ -47,22 +48,57 @@
                                         <td class="border p-2">{{ ucfirst($student->jenjang) }}</td>
                                         <td class="border p-2">{{ $student->kelas ?? '-' }}</td>
                                         <td class="border p-2">
-                                            <p class="bg-primary text-white rounded-lg px-2  text-center my-2">kk</p>
-                                            <p class="bg-red-500 text-white rounded-lg px-2  text-center my-2">kip</p>
-                                            <p class="bg-primary text-white rounded-lg px-2  text-center my-2">kis</p>
+
+                                            <p
+                                                class="{{ $student->status_kk === 'diserahkan' ? 'bg-primary text-white rounded-lg px-2  text-center my-2' : 'bg-red-500 text-white rounded-lg px-2  text-center my-2' }}">
+                                                Kartu Keluarga
+                                            </p>
+                                            <p
+                                                class="{{ $student->status_pas_foto === 'diserahkan' ? 'bg-primary text-white rounded-lg px-2  text-center my-2' : 'bg-red-500 text-white rounded-lg px-2  text-center my-2' }}">
+                                                Pas Foto
+                                            </p>
+                                            <p
+                                                class="{{ $student->status_ijazah_akhir === 'diserahkan' ? 'bg-primary text-white rounded-lg px-2  text-center my-2' : 'bg-red-500 text-white rounded-lg px-2  text-center my-2' }}">
+                                                Ijazah Akhir
+                                            </p>
+                                            <p
+                                                class="{{ $student->status_kip === 'diserahkan' ? 'bg-primary text-white rounded-lg px-2  text-center my-2' : 'bg-red-500 text-white rounded-lg px-2  text-center my-2' }}">
+                                                KIP
+                                            </p>
+
+
                                         </td>
-                                        <td class="border p-2"><span>lunas</span></td>
+                                        <td class="border p-2"><span>{{ $student->byr_dft_ulang }}</span></td>
                                         <td class="border p-2 status">
-                                            <span
-                                                class="bg-yellow-400 text-white px-2 py-1 rounded text-sm">{{ $student->status_user }}</span>
+                                            @if ($student->status_user === 'aktif')
+                                                <span
+                                                    class="bg-primary text-white px-2 py-1 rounded text-sm">Aktif</span>
+                                            @elseif ($student->status_user === 'tidak_aktif')
+                                                <span class="bg-red-500 text-white px-2 py-1 rounded text-sm">Tidak
+                                                    Aktif</span>
+                                            @endif
+
+                                        </td>
+                                        <td class="border p-2 status">
+                                            @if ($student->status_seleksi === 'LOLOS')
+                                                <span
+                                                    class="bg-primary text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
+                                            @elseif($student->status_seleksi === 'PENDING')
+                                                <span
+                                                    class="bg-blue-500 text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
+                                            @elseif($student->status_seleksi === 'TIDAK LOLOS')
+                                                <span
+                                                    class="bg-red-500 text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
+                                            @endif
+
                                         </td>
                                         <td class="border p-2 flex space-x-2">
                                             <button
-                                                onclick="openModal('{{ $student->nisn }}', '{{ $student->nama }}', '{{ $student->nisn }}', '{{ $student->jenjang }}', '{{ $student->kelas ?? '-' }}', '{{ $student->status_user }}')"
+                                                onclick="openModal('{{ $student->nisn }}', '{{ $student->nama }}', '{{ $student->nisn }}', '{{ $student->jenjang }}', '{{ $student->kelas ?? '-' }}', '{{ $student->status_seleksi }}')"
                                                 class="bg-blue-500 text-white px-3 py-1 rounded">Edit</button>
-                                            <button
-                                                onclick="openDetailModal('{{ $student->nama }}', '{{ $student->nisn }}', '{{ $student->jenjang }}', '{{ $student->kelas ?? '-' }}', 'Lihat Berkas', '{{ $student->status_user }}')"
-                                                class="bg-blue-500 text-white px-3 py-1 rounded">Detail</button>
+                                            {{-- <button
+                                                onclick="openDetailModal('{{ $student->nama }}', '{{ $student->nisn }}', '{{ $student->jenjang }}', '{{ $student->kelas ?? '-' }}', 'Lihat Berkas', '{{ $student->status_seleksi }}')"
+                                                class="bg-blue-500 text-white px-3 py-1 rounded">Detail</button> --}}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -107,10 +143,10 @@
                                 class="w-full p-2 border border-gray-300 rounded bg-gray-100" readonly>
                         </div>
                         <div class="mb-4">
-                            <label for="status" class="block text-sm font-medium">Status Calon</label>
-                            <select id="status" class="w-full p-2 border border-gray-300 rounded">
-                                <option value="Lolos">Lolos</option>
-                                <option value="Tidak Lolos">Tidak Lolos</option>
+                            <label for="seleksi" class="block text-sm font-medium">Status Seleksi</label>
+                            <select id="seleksi" class="w-full p-2 border border-gray-300 rounded">
+                                <option value="LOLOS">Lolos</option>
+                                <option value="TIDAK LOLOS">Tidak Lolos</option>
                             </select>
                         </div>
                         <div class="flex justify-end space-x-2">
@@ -123,7 +159,8 @@
             </div>
 
             <!-- Modal Detail -->
-            <div id="detailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center">
+            <div id="detailModal"
+                class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center">
                 <div class="bg-white w-96 p-6 rounded shadow">
                     <h2 class="text-xl font-semibold mb-4">Detail Data Siswa</h2>
                     <div class="mb-4">
@@ -142,7 +179,7 @@
                         <strong>Berkas:</strong> <span id="detailBerkas"></span>
                     </div>
                     <div class="mb-4">
-                        <strong>Status Calon:</strong> <span id="detailStatus"></span>
+                        <strong>Status Seleksi:</strong> <span id="detailSeleksi"></span>
                     </div>
                     <div class="flex justify-end">
                         <button onclick="closeDetailModal()" class="bg-gray-300 px-4 py-2 rounded">Close</button>
@@ -173,7 +210,7 @@
             document.getElementById("nisn").value = nisn;
             document.getElementById("jenjang").value = jenjang;
             document.getElementById("kelas").value = kelas;
-            document.getElementById("status").value = status;
+            document.getElementById("seleksi").value = status;
             modal.classList.remove("hidden");
         }
 
@@ -187,7 +224,7 @@
             document.getElementById("detailJenjang").textContent = jenjang;
             document.getElementById("detailKelas").textContent = kelas;
             document.getElementById("detailBerkas").textContent = berkas;
-            document.getElementById("detailStatus").textContent = status;
+            document.getElementById("detailSeleksi").textContent = status;
             detailModal.classList.remove("hidden");
         }
 
