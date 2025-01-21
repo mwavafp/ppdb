@@ -14,7 +14,9 @@ use App\Http\Controllers\Admin\Auth\SeleksiAdminController;
 use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
-
+use App\Http\Controllers\Auth\PengumumanController;
+use App\Http\Controllers\Auth\VerifikasiController;
+use App\Http\Controllers\UserBerkasController;
 
 Route::get('/', function () {
     return view('frontPage.home', ['title' => 'Home Page']); //penggunaan nilai title
@@ -74,12 +76,7 @@ Route::get('/pengumumantk', function () {
 })->name('pengumuman-tk');
 
 
-// Route::get('/verifikasi', function () {
-//     $pemberkasanLengkap = false; // Ganti sesuai status aktual
-//     $pembayaranLunas = true; // Ganti sesuai status aktual
 
-//     return view('calonMurid.verifikasi', ['title' => 'Verifikasi Data', 'pemberkasanLengkap' => $pemberkasanLengkap, 'pembayaranLunas' => $pembayaranLunas,]);
-// });
 
 
 Route::get('/pengumuman', function () {
@@ -112,15 +109,11 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/berkas', [UserBerkasController::class, 'showData'])->name('berkas');
 
 
-    Route::get('/verifikasi-data', function () {
-        return view('calonMurid.verifikasi', ['title' => 'User Page']);
-    });
+    Route::get('/verifikasi', [VerifikasiController::class, 'showData']);
 
     Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
 
-    Route::get('/biaya', function () {
-        return view('calonMurid.biaya', ['title' => 'Informasi Pembayaran']);
-    });
+
     Route::post('logouts', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logouts');
 });
@@ -160,6 +153,7 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
     Route::post('/logout', [LoginController::class, 'destroy'])
         ->name('admin.logout');
 });
+
 Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
 
     Route::get('/dashboard', [AdminSuperDashboardController::class, 'showData'])->name('admin.dashboardSA');
