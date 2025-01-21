@@ -14,7 +14,9 @@ use App\Http\Controllers\Admin\Auth\SeleksiAdminController;
 use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
-
+use App\Http\Controllers\Auth\PengumumanController;
+use App\Http\Controllers\UserBerkasController;
+use App\Http\Controllers\BiodataController;
 
 Route::get('/', function () {
     return view('frontPage.home', ['title' => 'Home Page']); //penggunaan nilai title
@@ -102,9 +104,11 @@ Route::middleware('guest:web')->group(function () {
 });
 
 Route::middleware('auth:web')->group(function () {
-    Route::get('/biodata', function () {
-        return view('calonMurid.biodata', ['title' => 'User Page']);
-    })->name('biodata');
+    // Route::get('/biodata', function () {
+    //     return view('calonMurid.biodata', ['title' => 'User Page']);
+    // })->name('biodata');
+    Route::get('/biodata', [BiodataController::class, 'showData'])->name('biodata');
+
     Route::get('/seleksi', function () {
         return view('calonMurid.seleksi', ['title' => 'User Page']);
     });
