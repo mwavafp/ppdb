@@ -1,4 +1,4 @@
-<x-layout-user>
+<x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
     <x-tahapan></x-tahapan>
@@ -24,13 +24,7 @@
                 <!-- Tombol Edit -->
                 <div class="flex item-center">
                     <button id="edit-btn" onclick="toggleEditMode()"
-                        class="px-4 py-2 bg-green-500 text-white    rounded-md mb-4">Edit</button>
-                    <form method="POST" action="{{ route('logouts') }}">
-                        @csrf
-                        <button class="block p-3 hover:bg-gray-50/50 dark:hover:bg-zinc-700/50" type="submit">
-                            <span class="menu-text text-lg bg-primary text-white px-4 py-2 rounded-md">Logout</span>
-                        </button>
-                    </form>
+                        class="px-4 py-2 ml-10 bg-green-500 text-white rounded-md mb-4">Edit</button>
                 </div>
 
 
@@ -40,8 +34,6 @@
                         id="tab-0">Data Siswa</button>
                     <button onclick="showTab(1)" class="tab-btn px-4 py-2 focus:outline-none" id="tab-1">Data
                         Wali</button>
-                    <button onclick="showTab(2)" class="tab-btn px-4 py-2 focus:outline-none" id="tab-2">Data
-                        lain</button>
                 </div>
 
                 <!-- Tab Content -->
@@ -55,41 +47,41 @@
                                     <tr class="odd:bg-white-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Nama Lengkap</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Nizar"></td>
+                                                value="{{ $all_data->name }}"></td>
                                     </tr>
-                                    <tr class="odd:bg-gray-100 even:bg-white">
+                                    {{-- <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">NIK</td>
                                         <td class="border px-4 py-2"><input type="number" class="editable-field"
                                                 value="123456789"></td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Tempat Lahir Siswa</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Sidoarjo"></td>
+                                                value="{{ $all_data->tmpt_lahir }}"></td>
                                     </tr>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Tanggal Lahir Siswa</td>
                                         <td class="border px-4 py-2"><input type="date" class="editable-field"
-                                                value="02/05/2004"></td>
+                                                value="{{ $all_data->tgl_lahir }}"></td>
                                     </tr>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Alamat Siswa</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Tanjungsari"></td>
+                                                value="{{ $all_data->alamat }}"></td>
                                     </tr>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Asal Sekolah</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="SMAN 1 TAMAN"></td>
+                                                value="{{ $all_data->asl_sekolah }}"></td>
                                     </tr>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">NISN</td>
                                         <td class="border px-4 py-2"><input type="number" class="editable-field"
-                                                value="987654321"></td>
+                                                value="{{ $all_data->nisn }}"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -104,99 +96,79 @@
                                     <tr class="odd:bg-white-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Nama Ayah</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Isien rek"></td>
+                                                value="{{ $all_data->nm_ayah }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">No KK</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->nmr_kk }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">NIK Ayah</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->nik_ayah }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Tempat Lahir Ayah</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->tmpt_lhr_ayah }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Tanggal Lahir Ayah</td>
                                         <td class="border px-4 py-2"><input type="date" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->tgl_lhr_ayah }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Alamat Ayah</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->almt_ayah }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">No WA Ayah</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->nmr_ayah_wa }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Pekerjaan Ayah</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->pekerjaan_ayah }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Nama Ibu</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->nm_ibu}}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">NIK Ibu</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->nik_ibu }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Tempat Lahir Ibu</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->tmpt_lhr_ibu }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Tanggal Lahir Ibu</td>
                                         <td class="border px-4 py-2"><input type="date" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->tgl_lhr_ibu}}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Alamat Ibu</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->almt_ibu }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">No WA Ibu</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->nmr_ibu_wa }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Pekerjaan Ibu</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
+                                                value="{{ $all_data->pekerjaan_ibu }}"></td>
                                     </tr>
 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Tab 3 -->
-                    <div class="tab-panel hidden" id="panel-2">
-                        <div class="overflow-x-auto">
-                            <table class="table-auto w-full border border-gray-300">
-                                <tbody>
-                                    <tr class="odd:bg-white-100 even:bg-white">
-                                        <td class="border px-4 py-2 font-bold">Apapun</td>
-                                        <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Isien rek"></td>
-                                    </tr>
-                                    <tr class="odd:bg-gray-100 even:bg-white">
-                                        <td class="border px-4 py-2 font-bold">Yom o</td>
-                                        <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="Oi"></td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -263,4 +235,4 @@
             /* Kuning muda */
         }
     </style>
-</x-layout-user>
+</x-layout>
