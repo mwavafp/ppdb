@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory
  */
 class AdminFactory extends Factory
 {
@@ -27,7 +27,7 @@ class AdminFactory extends Factory
             'name' => $this->faker->name(), // Nama random
             'nip' => $this->faker->unique()->numerify('##########'), // NIP dengan 10 angka unik
             'email' => $this->faker->unique()->safeEmail(), // Email random
-            'password' => Hash::make('password'), // Password hash (default: "password")
+            'password' => $this->faker->name(), // Password hash (default: "password")
             'role' => $this->faker->randomElement(['admin', 'superAdmin']), // Role random
         ];
     }
@@ -35,10 +35,4 @@ class AdminFactory extends Factory
     /**
      * Indicate that the model's email address should be unverified.
      */
-    public function unverified(): static
-    {
-        return $this->state(fn(array $attributes) => [
-            'email_verified_at' => null,
-        ]);
-    }
 }

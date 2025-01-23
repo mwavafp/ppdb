@@ -34,7 +34,7 @@ class LoginController extends Controller
         if ($admin && Auth::guard('admin')->user()->role == 'admin') {
             return redirect()->intended(route('admin.dashboard-admin'));
         } elseif ($admin) {
-            return redirect()->intended(route('admin.dashboardSA'));
+            return redirect()->intended(route('admin.dashboardSuperAdmin'));
         }
         // if ($admin) {
         //     return redirect()->intended(route('admin.dashboard-admin'));

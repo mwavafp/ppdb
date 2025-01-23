@@ -4,7 +4,6 @@
         'Pengisian Biodata' => 'biodata',
         'Pemberkasan' => 'berkas',
         'Seleksi' => 'seleksi',
-        'Biaya' => 'biaya',
         'Daftar Ulang' => 'pembayaran',
         'Verifikasi Data' => 'verifikasi-data',
     ] as $step => $urlSegment)

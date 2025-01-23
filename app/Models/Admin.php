@@ -12,7 +12,8 @@ class Admin extends Authenticatable
 
     use HasFactory, Notifiable;
     protected $guard = 'admin';
-    protected $primaryKey = 'id'; // digunakan untuk penggantian id
+    protected $table = 'admins';
+    protected $primaryKey = 'id_admin'; // digunakan untuk penggantian id
     public $incrementing = true;
     protected $keyType = 'int';
 
@@ -49,7 +50,7 @@ class Admin extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+
         ];
     }
 }

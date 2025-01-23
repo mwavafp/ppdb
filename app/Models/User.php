@@ -76,16 +76,14 @@ class User extends Authenticatable
         return $this->hasMany(UserUnitPendidikan::class, 'id_user', 'id_user'); // user_id foreign key di ortu
     }
     public function kelas()
-{
-    return $this->hasManyThrough(
-        Kelas::class,
-        UserUnitPendidikan::class,
-        'id_user', // Foreign key di UserUnitPendidikan
-        'id_kelas', // Foreign key di Kelas
-        'id_user', // Primary key di User
-        'id_kelas' // Primary key di UserUnitPendidikan
-    );
-}
-
-    
+    {
+        return $this->hasManyThrough(
+            Kelas::class,
+            UserUnitPendidikan::class,
+            'id_user', // Foreign key di UserUnitPendidikan
+            'id_kelas', // Foreign key di Kelas
+            'id_user', // Primary key di User
+            'id_kelas' // Primary key di UserUnitPendidikan
+        );
+    }
 }

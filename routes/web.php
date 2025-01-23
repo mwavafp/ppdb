@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
@@ -9,7 +10,7 @@ use App\Http\Controllers\Auth\DaftarUlangController;
 use App\Http\Controllers\Admin\Auth\AdminDashboardController;
 use App\Http\Controllers\Admin\Auth\KelasController;
 use App\Http\Controllers\Admin\Auth\LoginController;
-use App\Http\Controllers\Admin\Auth\RegisteredUserController;
+
 use App\Http\Controllers\Admin\Auth\SeleksiAdminController;
 use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
@@ -94,10 +95,10 @@ Route::get('/pengumuman', function () {
 
 //////////////////////////////////Route Auth/////////////////////////////////////
 Route::middleware('guest:web')->group(function () {
-    Route::get('register', [AuthenticatedSessionController::class, 'create'])
+    Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
-    Route::post('register', [AuthenticatedSessionController::class, 'store']);
+    Route::post('register', [RegisteredUserController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
@@ -162,6 +163,8 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
     Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
     Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('detail-user');
     Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi-siswa');
+    Route::get('/edit-seleksi/{id}', [SeleksiAdminController::class, 'editData'])->name('edit-siswa');
+
 
     Route::get('/tagihan-admin', [TagihanAdmin::class, 'showData'])->name('tagihan-admin');
     Route::get('/edit-tagihan/{id}', [TagihanAdmin::class, 'editData'])->name('edit-tagihan');
@@ -174,5 +177,10 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
 
 Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
 
-    Route::get('/dashboard', [AdminSuperDashboardController::class, 'showData'])->name('admin.dashboardSA');
+    Route::get('/dashboard-super-admin', [AdminDashboardController::class, 'showUserSuperAdmin'])->name('admin.dashboardSuperAdmin');
+    Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
+    Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
+    Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
+    Route::post('/logoutz', [LoginController::class, 'destroy'])
+        ->name('admin.logoutz');
 });
