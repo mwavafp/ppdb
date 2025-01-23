@@ -14,6 +14,7 @@ use App\Models\UserUnitPendidikan;
 use Database\Factories\AdminsFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Factories\BerkasFactory;
+use Database\Factories\TahunFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
@@ -94,11 +95,7 @@ class DatabaseSeeder extends Seeder
             'status' => 'Lunas',
             'jmlh_byr' => 300000
         ]);
-        Tahun::factory()->create([
-            'nama' => 'Tahun Ajaran2024/2025',
-            'awal' => '2024-12-12',
-            'akhir' => '2025-12-12'
-        ]);
+
         UserUnitPendidikan::factory()->create([
             'id_user' => $user->id_user,
             'id_kelas' => $kelas->id_kelas,
