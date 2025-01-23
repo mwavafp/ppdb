@@ -10,43 +10,65 @@
                 <div class="flex mt-1">
                     <p class="pr-24">Nama</p>
                     <p class="pr-2">:</p>
-                    <p>Fatwa</p>
+                    <p>{{ $berkas->name }}</p>
                 </div>
                 <div class="flex mt-3">
                     <p class="pr-6">No. Pendaftaran</p>
                     <p class="pr-2">:</p>
-                    <p>12345</p>
+                    <p>{{ $berkas->nisn }}</p>
                 </div>
                 <p class="mt-9 font-bold">• Berkas Yang Telah Dikumpulkan Untuk Daftar Ulang</p>
-                    <table class="w-full border-collapse border mt-5 border-gray-300">
-                        <thead>
-                            <tr class="bg-gray-100 text-black">
-                                <th class="border border-gray-500 py-2">Jenis Dokumen</th>
-                                <th class="border border-gray-500 py-2">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="border border-gray-500 py-2 text-center">Ijazah</td>
-                                <td class="border border-gray-500 py-2 text-center">
-                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/check-icon.png?raw=true" alt="Cross Icon" class="h-6 w-6 mx-auto">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="border border-gray-500 py-2 text-center">Akta Kelahiran</td>
-                                <td class="border border-gray-500 py-2 text-center">
+                <table class="w-full border-collapse border mt-5 border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-100 text-black">
+                            <th class="border border-gray-500 py-2">Jenis Dokumen</th>
+                            <th class="border border-gray-500 py-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-500 py-2 text-center">Ijazah</td>
+                            <td class="border border-gray-500 py-2 text-center">
+                                @if ($berkas->ijazah_akhir === 'diserahkan')
                                     <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/check-icon.png?raw=true" alt="Check Icon" class="h-6 w-6 mx-auto">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="border border-gray-500 py-2 text-center">Kartu Keluarga</td>
-                                <td class="border border-gray-500 py-2 text-center">
-                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/remove-icon.png?raw=true" alt="Check Icon" class="h-6 w-6 mx-auto">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="mt-8">
+                                @else
+                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/remove-icon.png?raw=true" alt="Cross Icon" class="h-6 w-6 mx-auto">
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-500 py-2 text-center">Akta Kelahiran</td>
+                            <td class="border border-gray-500 py-2 text-center">
+                                @if ($berkas->pas_foto === 'diserahkan')
+                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/check-icon.png?raw=true" alt="Check Icon" class="h-6 w-6 mx-auto">
+                                @else
+                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/remove-icon.png?raw=true" alt="Cross Icon" class="h-6 w-6 mx-auto">
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-500 py-2 text-center">Kartu Keluarga</td>
+                            <td class="border border-gray-500 py-2 text-center">
+                                @if ($berkas->kk === 'diserahkan')
+                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/check-icon.png?raw=true" alt="Check Icon" class="h-6 w-6 mx-auto">
+                                @else
+                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/remove-icon.png?raw=true" alt="Cross Icon" class="h-6 w-6 mx-auto">
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-500 py-2 text-center">KIP</td>
+                            <td class="border border-gray-500 py-2 text-center">
+                                @if ($berkas->kip === 'diserahkan')
+                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/check-icon.png?raw=true" alt="Check Icon" class="h-6 w-6 mx-auto">
+                                @else
+                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/remove-icon.png?raw=true" alt="Cross Icon" class="h-6 w-6 mx-auto">
+                                @endif
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="mt-8">
                     <div class="bg-gray-100 p-4 rounded-md mt-6">
                         <p class="font-bold">Langkah-Langkah Selanjutnya:</p>
                         <ul class="list-disc pl-6 mt-3">

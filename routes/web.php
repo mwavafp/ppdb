@@ -15,8 +15,10 @@ use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
 use App\Http\Controllers\Auth\PengumumanController;
-use App\Http\Controllers\UserBerkasController;
+use App\Http\Controllers\Auth\VerifikasiController;
+use App\Http\Controllers\BerkasSeleksiControl;
 use App\Http\Controllers\BiodataController;
+use App\Http\Controllers\UserBerkasController;
 
 Route::get('/', function () {
     return view('frontPage.home', ['title' => 'Home Page']); //penggunaan nilai title
@@ -64,9 +66,29 @@ Route::get('/form', function (Request $request) {
 });
 
 Route::get('/pengumumansma', [PengumumanController::class, 'showDatasma'])->name('pengumumansma');
+Route::get('/pengumumansma/search', [PengumumanController::class, 'searchsma'])->name('pengumumansma.search');
+
+Route::get('/pengumumansmp', [PengumumanController::class, 'showDatasmp'])->name('pengumumansmp');
+Route::get('/pengumumansmp/search', [PengumumanController::class, 'searchsmp'])->name('pengumumansmp.search');
+
+Route::get('/pengumumantk', [PengumumanController::class, 'showDatatk'])->name('pengumumantk');
+Route::get('/pengumumantk/search', [PengumumanController::class, 'searchtk'])->name('pengumumantk.search');
+
+Route::get('/pengumumansd', [PengumumanController::class, 'showDatasd'])->name('pengumumansd');
+Route::get('/pengumumansd/search', [PengumumanController::class, 'searchsd'])->name('pengumumansd.search');
+
+Route::get('/pengumumantpq', [PengumumanController::class, 'showDatatpq'])->name('pengumumantpq');
+Route::get('/pengumumantpq/search', [PengumumanController::class, 'searchtpq'])->name('pengumumantpq.search');
+
+Route::get('/pengumumanmadin', [PengumumanController::class, 'showDatamadin'])->name('pengumumanmadin');
+Route::get('/pengumumanmadin/search', [PengumumanController::class, 'searchmadin'])->name('pengumumanmadin.search');
+
+Route::get('/pengumumanpondok', [PengumumanController::class, 'showDatapondok'])->name('pengumumanpondok');
+Route::get('/pengumumanpondok/search', [PengumumanController::class, 'searchpondok'])->name('pengumumanpondok.search');
 
 
 
+<<<<<<< HEAD
 Route::get('/pengumumansmp', function () {
     return view('frontPage.pengumumansmp', ['title' => 'halaman informasi smp']);
 })->name('pengumuman-smp');
@@ -83,6 +105,8 @@ Route::get('/verifikasi-data', function () {
      return view('calonMurid.verifikasi', ['title' => 'Verifikasi Data', 'pemberkasanLengkap' => $pemberkasanLengkap, 'pembayaranLunas' => $pembayaranLunas,]);
 });
 
+=======
+>>>>>>> b24533e187d2c9d911d48bb4e0f6ba13ba2f5cd3
 
 Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman', ['title' => 'About Page']);
@@ -109,13 +133,12 @@ Route::middleware('auth:web')->group(function () {
     // })->name('biodata');
     Route::get('/biodata', [BiodataController::class, 'showData'])->name('biodata');
 
-    Route::get('/seleksi', function () {
-        return view('calonMurid.seleksi', ['title' => 'User Page']);
-    });
+    Route::get('/seleksi', [BerkasSeleksiControl::class, 'showData'])->name('seleksi');
 
     Route::get('/berkas', [UserBerkasController::class, 'showData'])->name('berkas');
 
 
+<<<<<<< HEAD
     // Route::get('/verifikasi-data', function () {
     //     return view('calonMurid.verifikasi', ['title' => 'User Page']);
     // });
@@ -125,6 +148,13 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/aya', function () {
         return view('calonMurid.b', ['title' => 'Informasi Pembayaran']);
     });     
+=======
+    Route::get('/verifikasi', [VerifikasiController::class, 'showData']);
+
+    Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
+
+
+>>>>>>> b24533e187d2c9d911d48bb4e0f6ba13ba2f5cd3
     Route::post('logouts', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logouts');
 });
@@ -151,11 +181,18 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
     //     return view('admin.page.dashboard', ['title' => 'tes']);
     // })->name('admin.dashboard');
     Route::get('/dashboard-admin', [AdminDashboardController::class, 'showUser'])->name('admin.dashboard-admin');
-    Route::get('/pembagiankelas', [KelasController::class, 'index']);
+
+    Route::get('/pembagiankelas', [KelasController::class, 'showData'])->name('pembagiankelas');
+    Route::get('/pembagiankelas/{id}/edit', [KelasController::class, 'edit'])->name('pembagiankelas.edit');
+    Route::put('/pembagiankelas/{id}/update', [KelasController::class, 'update'])->name('pembagiankelas.update');
+    Route::get('/pembagiankelas/search', [KelasController::class, 'search'])->name('pembagiankelas.search');
+    Route::get('/pembagiankelas/filter', [KelasController::class, 'filter'])->name('pembagiankelas.filter');
+
     Route::get('/siswa', [SiswaController::class, 'index'])->name('index');
     Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
     Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('detail-user');
     Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi-siswa');
+
     Route::get('/tagihan-admin', [TagihanAdmin::class, 'showData'])->name('tagihan-admin');
     Route::get('/edit-tagihan/{id}', [TagihanAdmin::class, 'editData'])->name('edit-tagihan');
     Route::post('update-tagihan/{id}', [TagihanAdmin::class, 'updateData'])->name('update-tagihan');
@@ -164,6 +201,7 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
     Route::post('/logout', [LoginController::class, 'destroy'])
         ->name('admin.logout');
 });
+
 Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
 
     Route::get('/dashboard', [AdminSuperDashboardController::class, 'showData'])->name('admin.dashboardSA');
