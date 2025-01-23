@@ -5,7 +5,7 @@
         'Pemberkasan' => 'berkas',
         'Seleksi' => 'seleksi',
         'Daftar Ulang' => 'pembayaran',
-        'Verifikasi Data' => 'verifikasi',
+        'Verifikasi Data' => 'verifikasi-data',
     ] as $step => $urlSegment)
         <a href="{{ url($urlSegment) }}"
             class="{{ request()->is($urlSegment) ? 'bg-red-500  text-white block' : 'text-orange block  hover:text-orangehrv hover:bg-red-200 rounded-md' }}block rounded-md"

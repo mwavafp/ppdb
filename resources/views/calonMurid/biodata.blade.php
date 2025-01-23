@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout-login>
     <x-slot:title>{{ $title }}</x-slot:title>
 
     <x-tahapan></x-tahapan>
@@ -235,4 +235,4 @@
             /* Kuning muda */
         }
     </style>
-</x-layout>
+</x-layout-login>
