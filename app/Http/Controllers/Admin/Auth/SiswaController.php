@@ -3,43 +3,61 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Models\User;
+use App\Models\Tahun; // Pastikan mengimpor model Tahun jika diperlukan
 use App\Http\Controllers\Controller;
-use App\Models\Ortu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SiswaController extends Controller
 {
-    
     public function index(Request $request)
     {
         $search = $request->input('search', '');
         $gender = $request->input('gender', '');
-        $status = $request->input('status', '');
-
+        $status = $request->input('status', ''); 
+        
         // Query dasar dengan filter pencarian
-        $query = User::with(['ortu', 'userUnitPendidikan', 'ortu']);
+        $query = User::join('tahun', function ($join) {
+            // Di sini kita tidak perlu menghubungkan ke 'kelas', 
+            // tetapi langsung ke 'tahun', karena kita ingin memfilter berdasarkan tahun
+           
+        })
+        ->select('users.*', 'tahun.awal', 'tahun.akhir'); // Mengambil kolom yang dibutuhkan
 
-
+        // Menambahkan filter pencarian jika ada
         if (!empty($search)) {
-            $query->where('name', 'like', "%{$search}%")
-                  ->orWhere('alamat', 'like', "%{$search}%");
+            $query->where('users.name', 'like', "%{$search}%")
+                  ->orWhere('users.alamat', 'like', "%{$search}%");
         }
 
+        // Menambahkan filter berdasarkan gender jika ada
         if (!empty($gender)) {
-            $query->where('gender', $gender);
+            $query->where('users.gender', $gender);
         }
 
+        // Menambahkan filter berdasarkan status jika ada
         if (!empty($status)) {
-            $query->where('status', $status);
+            $query->where('users.status', $status);
         }
 
+        // Menambahkan filter berdasarkan rentang tanggal yang ada pada tabel 'tahun'
+        // Pastikan untuk menggunakan DB::raw agar bisa menggunakan referensi kolom dari tabel 'tahun'
+        $query->whereBetween('users.created_at', [
+            DB::raw('tahun.awal'),
+            DB::raw('tahun.akhir')
+        ]);
+
+        // Ambil data siswa dengan pagination (halaman 10 data per halaman)
         $siswa = $query->paginate(10);
+        // dd($query->toSql(), $query->getBindings());
 
         return view('index', [
             'title' => 'Data Siswa',
-            'all_data' => $siswa,
+            'all_data' => $siswa, // Mengirimkan data ke view dengan nama variabel all_data
         ]);
     }
+
+
     public function update(Request $request, $id_user)
     {
         // Validasi data yang masuk
@@ -105,27 +123,7 @@ class SiswaController extends Controller
                 'pekerjaan_ibu' => $request->input('pekerjaan_ibu'),
                 'nmr_ibu_wa' => $request->input('nmr_ibu_wa'),
             ]);
-        } else {
-            // Jika data ortu belum ada, buat data ortu baru
-            Ortu::create([
-                'id_user' => $user->id_user,
-                'nmr_kk' => $request->input('nmr_kk'),
-                'nm_ayah' => $request->input('nm_ayah'),
-                'nik_ayah' => $request->input('nik_ayah'),
-                'tgl_lhr_ayah' => $request->input('tgl_lhr_ayah'),
-                'tmpt_lhr_ayah' => $request->input('tmpt_lhr_ayah'),
-                'almt_ayah' => $request->input('almt_ayah'),
-                'pekerjaan_ayah' => $request->input('pekerjaan_ayah'),
-                'nmr_ayah_wa' => $request->input('nmr_ayah_wa'),
-                'nm_ibu' => $request->input('nm_ibu'),
-                'nik_ibu' => $request->input('nik_ibu'),
-                'tgl_lhr_ibu' => $request->input('tgl_lhr_ibu'),
-                'tmpt_lhr_ibu' => $request->input('tmpt_lhr_ibu'),
-                'almt_ibu' => $request->input('almt_ibu'),
-                'pekerjaan_ibu' => $request->input('pekerjaan_ibu'),
-                'nmr_ibu_wa' => $request->input('nmr_ibu_wa'),
-            ]);
-        }
+        } 
 
         // Redirect atau kembalikan response setelah update
         return redirect()->route('index')->with('success', 'Data siswa berhasil diperbarui!');
