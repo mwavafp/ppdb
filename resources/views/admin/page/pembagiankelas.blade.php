@@ -70,7 +70,8 @@
                         <td class="border px-4 py-2 text-center">{{ $item->kls_identitas }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->unt_pendidikan }}</td>
                         <td class="border px-4 py-2 text-center">
-                            <span class="inline-block px-3 py-1 rounded-full text-white {{ $item->kls_status == 'Lolos' ? 'bg-green-500' : ($item->kls_status == 'Tidak Lolos' ? 'bg-red-500' : 'bg-yellow-500') }}">
+                            <span
+                                class="inline-block px-3 py-1 rounded-full text-white {{ $item->kls_status == 'Lolos' ? 'bg-green-500' : ($item->kls_status == 'Tidak Lolos' ? 'bg-red-500' : 'bg-yellow-500') }}">
                                 {{ $item->kls_status }}
                             </span>
                         </td>
@@ -88,35 +89,49 @@
                                             class="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
                                             &times;
                                         </button>
-                                        <form action="{{ route('pembagiankelas.update', $item->id_kelas) }}" method="POST">
+                                        <form action="{{ route('pembagiankelas.update', $item->id_kelas) }}"
+                                            method="POST">
                                             @csrf
                                             <h1 class="font-bold text-xl mb-4">Edit Seleksi</h1>
 
                                             <div class="mb-4">
-                                                  <label for="name" class="block text-left text-gray-700 font-medium">Nama</label>
-                                                  <label for="name" class="block text-left text-gray-700 font-medium">{{ $item->name }}</label>
+                                                <label for="name"
+                                                    class="block text-left text-gray-700 font-medium">Nama</label>
+                                                <label for="name"
+                                                    class="block text-left text-gray-700 font-medium">{{ $item->name }}</label>
                                             </div>
 
                                             <div class="mb-4">
-                                                <label for="kelas" class="block text-left text-gray-700 font-medium">Kelas</label>
-                                                <input type="number" id="kelas" name="kelas" value="{{ $item->kelas }}"
+                                                <label for="kelas"
+                                                    class="block text-left text-gray-700 font-medium">Kelas</label>
+                                                <input type="number" id="kelas" name="kelas"
+                                                    value="{{ $item->kelas }}"
                                                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                                             </div>
 
                                             <div class="mb-4">
-                                                <label for="kls_identitas" class="block text-left text-gray-700 font-medium">Golongan</label>
+                                                <label for="kls_identitas"
+                                                    class="block text-left text-gray-700 font-medium">Golongan</label>
                                                 <input type="text" id="kls_identitas" name="kls_identitas"
                                                     value="{{ $item->kls_identitas }}"
                                                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                                             </div>
 
                                             <div class="mb-4">
-                                                <label for="kls_status" class="block text-left text-gray-700 font-medium">Status Calon</label>
+                                                <label for="kls_status"
+                                                    class="block text-left text-gray-700 font-medium">Status
+                                                    Calon</label>
                                                 <select id="kls_status" name="kls_status"
                                                     class="block w-full px-4 py-2 bg-white border-gray-300 rounded-md shadow-sm">
-                                                    <option value="Lolos" {{ $item->kls_status == 'Lolos' ? 'selected' : '' }}>Lolos</option>
-                                                    <option value="Tidak Lolos" {{ $item->kls_status == 'Tidak Lolos' ? 'selected' : '' }}>Tidak Lolos</option>
-                                                    <option value="Belum Ditentukan" {{ $item->kls_status == 'Belum Ditentukan' ? 'selected' : '' }}>Belum Ditentukan</option>
+                                                    <option value="Lolos"
+                                                        {{ $item->kls_status == 'Lolos' ? 'selected' : '' }}>Lolos
+                                                    </option>
+                                                    <option value="Tidak Lolos"
+                                                        {{ $item->kls_status == 'Tidak Lolos' ? 'selected' : '' }}>
+                                                        Tidak Lolos</option>
+                                                    <option value="Belum Ditentukan"
+                                                        {{ $item->kls_status == 'Belum Ditentukan' ? 'selected' : '' }}>
+                                                        Belum Ditentukan</option>
                                                 </select>
                                             </div>
 

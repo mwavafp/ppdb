@@ -1,4 +1,4 @@
-@if (Auth::user()->role === 'admin')
+@if (Auth::user()->role == 'admin')
     @php
         $menu = [
             (object) [

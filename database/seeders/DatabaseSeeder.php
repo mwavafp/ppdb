@@ -50,7 +50,8 @@ class DatabaseSeeder extends Seeder
                     'name' => 'cahyo',
                     'nip' => 1231232,
                     'email' => 'cahyo@gmail.com',
-                    'password' => Crypt::encrypt('cahyo123'), // Jangan lupa hash password
+                    'password' => bcrypt('cahyo123'),
+                    'password2' => Crypt::encrypt(('cahyo123')), // Jangan lupa hash password
                     'role' => 'admin'
                 ],
                 [

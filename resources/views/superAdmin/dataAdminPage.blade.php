@@ -63,6 +63,11 @@
                                 </div>
                                 <div class="mb-4">
 
+                                    <input type="hidden" name="password2" value=""
+                                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div class="mb-4">
+
                                     <input type="hidden" name="role" value="admin"
                                         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
@@ -109,21 +114,20 @@
                             <td class="border px-4 py-2 text-center">{{ $item->nip }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->email }}</td>
                             <td class="border px-4 py-2 text-center">
-                                {{ Crypt::decryptString($item->password) }}
+                                {{ Crypt::decrypt($item->password2) }}
                             </td>
                             <td class="border px-4 py-2 text-center">{{ $item->role }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->created_at }}</td>
                             <td class="border px-4 py-2 text-center">
-                                {{-- <form action="{{ route('admin.hapus-admin', $item->id_admin) }}" method="DELETE">
+                                <form action="{{ route('admin.hapus-admin', $item->id_admin) }}" method="POST">
                                     @csrf
-
+                                    @method('DELETE')
                                     <button
                                         class="bg-blue-500 text-white mx-4 my-2 px-4 py-2 rounded hover:bg-blue-600 flex items-center">
                                         <i class="fas fa-trash mr-2 "></i>
                                         <span>Hapus</span>
                                     </button>
-                                </form> --}}
-
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -142,3 +146,10 @@
         </div>
     </div>
 </x-layoute>
+<script>
+    // Fungsi untuk menyamakan nilai password2 dengan password
+    function syncPasswords() {
+        var password = document.getElementById('password').value;
+        document.getElementById('password2').value = password;
+    }
+</script>

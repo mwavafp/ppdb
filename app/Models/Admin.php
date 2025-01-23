@@ -28,6 +28,7 @@ class Admin extends Authenticatable
         'nip',
         'email',
         'password',
+        'password2',
         'role'
     ];
 
@@ -50,7 +51,7 @@ class Admin extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-
+            'password' => 'hashed',
         ];
     }
 }
