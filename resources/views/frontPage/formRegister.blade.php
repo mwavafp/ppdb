@@ -29,8 +29,7 @@
                 <div class="mt-4">
                     <x-input-label for="password" :value="__('Password')" />
 
-                    <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                        autocomplete="new-password" />
+                    <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" />
 
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
@@ -77,15 +76,18 @@
                 </div>
 
                 <div class="mb-4">
-                    <x-input-label for="tgl_lahir" :value="__('Tanggal Lahir Siswa')" />
-                    <x-text-input id="tgl_lahir" class="block mt-1 w-full" type="date" name="tgl_lahir"
-                        :value="old('tgl_lahir')" required />
+                    <label for="tgl_lahir" class="block cursor-pointer">
+                        <x-input-label for="tgl_lahir" :value="__('Tanggal Lahir Siswa')" />
+                        <x-text-input id="tgl_lahir" class="block mt-1 w-full cursor-pointer" type="date"
+                            name="tgl_lahir" :value="old('tgl_lahir')" required />
+                    </label>
                     <x-input-error :messages="$errors->get('tgl_lahir')" class="mt-2" />
                 </div>
 
+
                 <div class="mb-4">
                     <x-input-label for="address" :value="__('Alamat')" />
-                    <textarea id="alamat" name="alamat" class="block mt-1 w-full border-gray-300 rounded-md">{{ old('alamat') }}</textarea>
+                    <textarea id="alamat" name="alamat" class="resize-none block mt-1 w-full border-2 border-gray-400 rounded-md">{{ old('alamat') }}</textarea>
                     <x-input-error :messages="$errors->get('address')" class="mt-2" />
                 </div>
 

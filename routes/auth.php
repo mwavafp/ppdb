@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\DaftarUlangController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
@@ -38,23 +37,25 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
-        return view('calonMurid.biodata', ['title' => 'User Page']);
+        return view('calonMurid.biodata',['title'=>'User Page']);
     });
     Route::get('/seleksi', function () {
-        return view('calonMurid.seleksi', ['title' => 'User Page']);
+        return view('calonMurid.seleksi',['title'=>'User Page']);
     });
     Route::get('/berkas', function () {
-        return view('calonMurid.berkas', ['title' => 'User Page']);
+        return view('calonMurid.berkas',['title'=>'User Page']);
     });
     Route::get('/verifikasi-data', function () {
-        return view('calonMurid.verifikasi', ['title' => 'User Page']);
+        return view('calonMurid.verifikasi',['title'=>'User Page']);
     });
-
-    Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
-    Route::get('/biaya', function () {
-        return view('calonMurid.biaya', ['title' => 'Informasi Pembayaran']);
+    
+    Route::get('/pembayaran', function () {
+        return view('calonMurid.pembayaran',['title'=>'Informasi Pembayaran']);
     });
-
+    Route::get('/bayar', function () {
+        return view('calonMurid.bayar',['title'=>'Informasi Pembayaran']);
+    });
+    
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 

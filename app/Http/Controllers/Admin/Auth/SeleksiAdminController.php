@@ -12,8 +12,11 @@ class SeleksiAdminController extends Controller
     {
         // Mengambil data yang dibutuhkan dari tabel terkait, termasuk tabel berkas
         $data = DB::table('users')
+            ->join('pembayaran', 'users.id_user', '=', 'pembayaran.id_user')
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user') // Relasi user-unit pendidikan
+            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas') // Relasi ke kelas
+            // Relasi ke kelas
             ->leftJoin('berkas', 'users.id_user', '=', 'berkas.id_user') // Relasi ke berkas (left join untuk data berkas opsional)
             ->select(
                 'users.name as nama',
@@ -24,8 +27,14 @@ class SeleksiAdminController extends Controller
                 'kelas.kls_status as status',
                 'users.status as status_user',
                 'berkas.kk as status_kk',
+                'berkas.pas_foto as status_pas_foto',
+                'berkas.ijazah_akhir as status_ijazah_akhir',
+                'berkas.kip as status_kip',
+                'pembayaran.byr_dft_ulang',
+                'seleksi.status_seleksi'
                 // 'berkas.srt_pernyataan as status_surat'
             )
+
             ->paginate(10); // Data dengan pagination
 
         return view('admin.page.seleksi', compact('data'), ['title' => 'Seleksi Siswa']);
@@ -91,5 +100,35 @@ class SeleksiAdminController extends Controller
         $data->appends($request->all());
 
         return view('admin.page.seleksi', compact('data'), ['title' => 'Filtered Results']);
+    }
+    public function editData($id)
+    {
+
+        $data = DB::table('users')
+            ->join('pembayaran', 'users.id_user', '=', 'pembayaran.id_user')
+            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user') // Relasi user-unit pendidikan
+            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
+            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas') // Relasi ke kelas
+            // Relasi ke kelas
+            ->leftJoin('berkas', 'users.id_user', '=', 'berkas.id_user') // Relasi ke berkas (left join untuk data berkas opsional)
+            ->select(
+                'users.name as nama',
+                'users.nisn',
+                'kelas.unt_pendidikan as jenjang',
+                'kelas.kelas',
+                'kelas.kls_identitas as kelas_identitas',
+                'kelas.kls_status as status',
+                'users.status as status_user',
+                'berkas.kk as status_kk',
+                'berkas.pas_foto as status_pas_foto',
+                'berkas.ijazah_akhir as status_ijazah_akhir',
+                'berkas.kip as status_kip',
+                'pembayaran.byr_dft_ulang',
+                'seleksi.status_seleksi'
+                // 'berkas.srt_pernyataan as status_surat'
+            )
+            ->first();
+
+        return view('admin.page.modal.edit_tagihan', compact('data'), ['title' => 'tes']);
     }
 }

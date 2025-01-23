@@ -216,9 +216,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <button type="button" @click="isEditModalOpen = false" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-red-600 text-white rounded-full text-xl font-bold hover:bg-red-700">
-    X
-</button>
+                                                        <button type="button" @click="isEditModalOpen = false" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-red-600 text-white rounded-full text-xl font-bold hover:bg-red-700">X</button>
                                                         <div class="flex justify-between mt-6">
                                                             <!-- Tombol Cancel -->
                                                             <button type="button" @click="isEditModalOpen = false" class="bg-red-500 text-white px-4 py-2 rounded w-full sm:w-auto text-center hover:bg-red-700">
@@ -348,7 +346,7 @@
                 </tr>
                 <tr>
                     <td class="font-bold py-2">Tanggal Lahir Ibu</td>
-                    <td>: {{ $item->ortu->tgl_lhr_ibu }}</td>
+                    <td>: {{ $item->ortu->tgl_lhr_ibu }}</td>       
                 </tr>
                 <tr>
                     <td class="font-bold py-2">Tempat Lahir Ibu</td>
@@ -370,8 +368,6 @@
         </table>
     </div>
 </div>
-
-
 
                             </div>
                         </td>

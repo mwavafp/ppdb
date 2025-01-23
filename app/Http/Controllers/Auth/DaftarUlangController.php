@@ -12,6 +12,7 @@ class DaftarUlangController extends Controller
     public function showData()
     {
         $catchUser = Auth::id();
+
         $all_data = DB::table('pembayaran')
             ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
