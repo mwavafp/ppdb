@@ -39,32 +39,32 @@ class DatabaseSeeder extends Seeder
             'tmpt_lahir' => 'DC',
             'asl_sekolah' => 'sdn Pekalongan DC',
 
-        ]);
-        $kelas = Kelas::factory()->create([
-            'unt_pendidikan' => 'sma',
-            'kelas' => '8',
-            'kls_identitas' => 'A',
-            'kls_status' => 'Siswa Aktif'
-        ]);
-        Admin::factory()->createMany(
-            [
-                [
-                    'name' => 'cahyo',
-                    'nip' => 1231232,
-                    'email' => 'cahyo@gmail.com',
-                    'password' => bcrypt('cahyo123'),
-                    'password2' => Crypt::encrypt(('cahyo123')), // Jangan lupa hash password
-                    'role' => 'admin'
-                ],
-                [
-                    'name' => 'super',
-                    'nip' => 1231232,
-                    'email' => 'super@gmail.com',
-                    'password' => bcrypt('super'), // Jangan lupa hash password
-                    'role' => 'superAdmin'
-                ]
-            ]
-        );
+        // ]);
+        // $kelas = Kelas::factory()->create([
+        //     'unt_pendidikan' => 'sma',
+        //     'kelas' => '8',
+        //     'kls_identitas' => 'A',
+        //     'kls_status' => 'Siswa Aktif'
+        // ]);
+        // Admin::factory()->createMany(
+        //     [
+        //         [
+        //             'name' => 'cahyo',
+        //             'nip' => 1231232,
+        //             'email' => 'cahyo@gmail.com',
+        //             'password' => bcrypt('cahyo123'),
+        //             'password2' => Crypt::encrypt(('cahyo123')), // Jangan lupa hash password
+        //             'role' => 'admin'
+        //         ],
+        //         [
+        //             'name' => 'super',
+        //             'nip' => 1231232,
+        //             'email' => 'super@gmail.com',
+        //             'password' => bcrypt('super'), // Jangan lupa hash password
+        //             'role' => 'superAdmin'
+        //         ]
+        //     ]
+        // );
 
 
 

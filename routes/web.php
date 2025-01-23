@@ -89,6 +89,22 @@ Route::get('/pengumumanpondok/search', [PengumumanController::class, 'searchpond
 
 
 
+Route::get('/pengumumansmp', function () {
+    return view('frontPage.pengumumansmp', ['title' => 'halaman informasi smp']);
+})->name('pengumuman-smp');
+
+Route::get('/pengumumantk', function () {
+    return view('frontPage.pengumumansmp', ['title' => 'halaman informasi tk']);
+})->name('pengumuman-tk');
+
+
+Route::get('/verifikasi-data', function () {
+    $pemberkasanLengkap = false; // Ganti sesuai status aktual
+    $pembayaranLunas = true; // Ganti sesuai status aktual
+
+    return view('calonMurid.verifikasi', ['title' => 'Verifikasi Data', 'pemberkasanLengkap' => $pemberkasanLengkap, 'pembayaranLunas' => $pembayaranLunas,]);
+});
+
 
 Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman', ['title' => 'About Page']);
@@ -128,10 +144,12 @@ Route::middleware('auth:web')->group(function () {
 
     Route::get('/aya', function () {
         return view('calonMurid.b', ['title' => 'Informasi Pembayaran']);
-    });     
+    });
+
     Route::get('/verifikasi', [VerifikasiController::class, 'showData']);
 
     Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
+
     Route::post('logouts', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logouts');
 });
