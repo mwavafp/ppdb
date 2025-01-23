@@ -14,29 +14,34 @@ class SiswaController extends Controller
     {
         $search = $request->input('search', '');
         $gender = $request->input('gender', '');
+        $status = $request->input('status', '');
         $status = $request->input('status', ''); 
         
         // Query dasar dengan filter pencarian
+        $query = User::with(['ortu', 'userUnitPendidikan', 'ortu']);
         $query = User::join('tahun', function ($join) {
             // Di sini kita tidak perlu menghubungkan ke 'kelas', 
             // tetapi langsung ke 'tahun', karena kita ingin memfilter berdasarkan tahun
            
         })
         ->select('users.*', 'tahun.awal', 'tahun.akhir'); // Mengambil kolom yang dibutuhkan
-
         // Menambahkan filter pencarian jika ada
         if (!empty($search)) {
+            $query->where('name', 'like', "%{$search}%")
+                  ->orWhere('alamat', 'like', "%{$search}%");
             $query->where('users.name', 'like', "%{$search}%")
                   ->orWhere('users.alamat', 'like', "%{$search}%");
         }
 
         // Menambahkan filter berdasarkan gender jika ada
         if (!empty($gender)) {
+            $query->where('gender', $gender);
             $query->where('users.gender', $gender);
         }
 
         // Menambahkan filter berdasarkan status jika ada
         if (!empty($status)) {
+            $query->where('status', $status);
             $query->where('users.status', $status);
         }
 
@@ -46,13 +51,13 @@ class SiswaController extends Controller
             DB::raw('tahun.awal'),
             DB::raw('tahun.akhir')
         ]);
-
         // Ambil data siswa dengan pagination (halaman 10 data per halaman)
         $siswa = $query->paginate(10);
         // dd($query->toSql(), $query->getBindings());
 
         return view('index', [
             'title' => 'Data Siswa',
+            'all_data' => $siswa,
             'all_data' => $siswa, // Mengirimkan data ke view dengan nama variabel all_data
         ]);
     }
@@ -124,7 +129,6 @@ class SiswaController extends Controller
                 'nmr_ibu_wa' => $request->input('nmr_ibu_wa'),
             ]);
         } 
-
         // Redirect atau kembalikan response setelah update
         return redirect()->route('index')->with('success', 'Data siswa berhasil diperbarui!');
     }

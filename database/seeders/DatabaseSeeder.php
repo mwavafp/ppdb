@@ -9,6 +9,7 @@ use App\Models\Pembayaran;
 use App\Models\Seleksi;
 use App\Models\User;
 use App\Models\Ortu;
+use App\Models\Tahun;
 use App\Models\UserUnitPendidikan;
 use Database\Factories\AdminsFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -27,15 +28,15 @@ class DatabaseSeeder extends Seeder
     {
 
 
-        // $user = User::factory()->create([
-        //     'username' => 'user',
-        //     'password' => Hash::make('user1234'),
-        //     'name' => 'User Prasetyo',
-        //     'alamat' => 'Jalan User Tenggara no.23, welington, DC',
-        //     'nisn' => 123456,
-        //     'tgl_lahir' => '2024-12-03',
-        //     'tmpt_lahir' => 'DC',
-        //     'asl_sekolah' => 'sdn Pekalongan DC',
+        $user = User::factory()->create([
+            'username' => 'user',
+            'password' => Hash::make('user1234'),
+            'name' => 'User Prasetyo',
+            'alamat' => 'Jalan User Tenggara no.23, welington, DC',
+            'nisn' => 123456,
+            'tgl_lahir' => '2024-12-03',
+            'tmpt_lahir' => 'DC',
+            'asl_sekolah' => 'sdn Pekalongan DC',
 
         // ]);
         // $kelas = Kelas::factory()->create([
@@ -68,51 +69,56 @@ class DatabaseSeeder extends Seeder
 
 
 
-        // Ortu::factory()->create([
-        //     'id_user' => $user->id_user,
-        //     'nmr_kk' => 123456,
-        //     'nm_ayah' => 'User Sunjarya',
-        //     'nik_ayah' => 123456,
-        //     'tgl_lhr_ayah' => '2024-12-03',
-        //     'tmpt_lhr_ayah' => 'DC Cakung',
-        //     'almt_ayah' => 'DC Cakung',
-        //     'pekerjaan_ayah' => "penguasa",
-        //     'nmr_ayah_wa' => 123456,
-        //     'nm_ibu' => 'User Wenty',
-        //     'nik_ibu' => 123456,
-        //     'tgl_lhr_ibu' => '2024-12-03',
-        //     'tmpt_lhr_ibu' => 'DC MU',
-        //     'almt_ibu' => 'MU',
-        //     'pekerjaan_ibu' => 'rhs',
-        //     'nmr_ibu_wa' => 123445
-        // ]);
+        Ortu::factory()->create([
+            'id_user' => $user->id_user,
+            'nmr_kk' => 123456,
+            'nm_ayah' => 'User Sunjarya',
+            'nik_ayah' => 123456,
+            'tgl_lhr_ayah' => '2024-12-03',
+            'tmpt_lhr_ayah' => 'DC Cakung',
+            'almt_ayah' => 'DC Cakung',
+            'pekerjaan_ayah' => "penguasa",
+            'nmr_ayah_wa' => 123456,
+            'nm_ibu' => 'User Wenty',
+            'nik_ibu' => 123456,
+            'tgl_lhr_ibu' => '2024-12-03',
+            'tmpt_lhr_ibu' => 'DC MU',
+            'almt_ibu' => 'MU',
+            'pekerjaan_ibu' => 'rhs',
+            'nmr_ibu_wa' => 123445
+        ]);
 
-        // Pembayaran::factory()->create([
-        //     'id_user' => $user->id_user,
-        //     'byr_dft_ulang' => 'lunas',
-        //     'status' => 'Lunas',
-        //     'jmlh_byr' => 300000
-        // ]);
-        // UserUnitPendidikan::factory()->create([
-        //     'id_user' => $user->id_user,
-        //     'id_kelas' => $kelas->id_kelas,
-        //     'status' => 'Siswa Aktif',
-        //     'tgl_mulai' => '2024-12-03',
-        //     'tgl_berakhir' => '2024-12-11'
+        Pembayaran::factory()->create([
+            'id_user' => $user->id_user,
+            'byr_dft_ulang' => 'lunas',
+            'status' => 'Lunas',
+            'jmlh_byr' => 300000
+        ]);
+        Tahun::factory()->create([
+            'nama' => 'Tahun Ajaran2024/2025',
+            'awal' => '2024-12-12',
+            'akhir' => '2025-12-12'
+        ]);
+        UserUnitPendidikan::factory()->create([
+            'id_user' => $user->id_user,
+            'id_kelas' => $kelas->id_kelas,
+            'status' => 'Siswa Aktif',
+            'tgl_mulai' => '2024-12-03',
+            'tgl_berakhir' => '2024-12-11'
 
-        // ]);
-        // Berkas::factory()->create([
-        //     'id_user' => $user->id_user,
-        //     'kk' => 'belum_diserahkan',
-        //     'pas_foto' => 'belum_diserahkan',
-        //     'ijazah_akhir' => 'belum_diserahkan',
-        //     'kip' => 'belum_diserahkan'
+        ]);
+        Berkas::factory()->create([
+            'id_user' => $user->id_user,
+            'kk' => 'belum_diserahkan',
+            'pas_foto' => 'belum_diserahkan',
+            'ijazah_akhir' => 'belum_diserahkan',
+            'kip' => 'belum_diserahkan'
 
-        // ]);
-        // Seleksi::factory()->create([
-        //     'id_user' => $user->id_user,
-        //     'status_seleksi' => 'TIDAK LOLOS'
-        // ]);
+        ]);
+        Seleksi::factory()->create([
+            'id_user' => $user->id_user,
+            'status_seleksi' => 'TIDAK LOLOS'
+        ]);
 
 
         //Automatic 100 dummy
