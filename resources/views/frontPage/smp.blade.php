@@ -101,7 +101,7 @@
         </ul>
         <a href="/form?unit_pendidikan=SMP" class="bg-orange-600 text-white py-2 px-4 rounded-md">
          DAFTAR KLIK DISINI
-        </a>
+        </a>
        </div>
        <div class="bg-white p-6 rounded-md shadow-md  tabel-2">
         <h2 class="text-orange-600 text-lg font-bold mt-6 mb-4">
@@ -112,28 +112,42 @@
           <i class="fas fa-check text-green-500">
           </i>
           <span class="ml-2">
-           Akta Kelahiran
+           Fotocopy Ijazah SD/MI Yang di legalisir 2 Lembar
           </span>
          </li>
          <li class="flex items-center">
           <i class="fas fa-check text-green-500">
           </i>
           <span class="ml-2">
-           Kartu Keluarga
+          Fotocopy SKHUN SD/MI Yang di legalisir 2 Lembar
           </span>
          </li>
          <li class="flex items-center">
           <i class="fas fa-check text-green-500">
           </i>
           <span class="ml-2">
-           Data Diri Anak
+          Fotocopy KK 2 Lembar
           </span>
          </li>
          <li class="flex items-center">
           <i class="fas fa-check text-green-500">
           </i>
           <span class="ml-2">
-           Data Diri Orang Tua
+          Fotocopy Akte Kelahiran 2 Lembar
+          </span>
+         </li>
+         <li class="flex items-center">
+          <i class="fas fa-check text-green-500">
+          </i>
+          <span class="ml-2">
+          Foto Hitam PUtih 3x4 2 Lember
+          </span>
+         </li>
+         <li class="flex items-center">
+          <i class="fas fa-check text-green-500">
+          </i>
+          <span class="ml-2">
+          Lembar NISN 
           </span>
          </li>
         </ul>

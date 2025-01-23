@@ -100,9 +100,9 @@
             1 Juni - 14 Juli 2025
            </li>
           </ul>
-          <a href="/form?unit_pendidikan=SMA"  class="bg-orange text-white py-2 px-4 rounded-md">
-           DAFTAR KLIK DISINI
-          </a>
+          <a href="/form?unit_pendidikan=SMP" class="bg-orange-600 text-white py-2 px-4 rounded-md">
+         DAFTAR KLIK DISINI
+        </a>
          </div>
          <div class="bg-white p-6 rounded-md shadow-md  tabel-2">
           <h2 class="text-orange-600 text-lg font-bold mt-6 mb-4">
@@ -113,28 +113,49 @@
             <i class="fas fa-check text-green-500">
             </i>
             <span class="ml-2">
-             Akta Kelahiran
+             Fotocopy Ijazah di Legalisir 3 Lembar
             </span>
            </li>
            <li class="flex items-center">
             <i class="fas fa-check text-green-500">
             </i>
             <span class="ml-2">
-             Kartu Keluarga
+            Fotocopy SKHNU di Legalisir 3 Lembar
             </span>
            </li>
            <li class="flex items-center">
             <i class="fas fa-check text-green-500">
             </i>
             <span class="ml-2">
-             Data Diri Anak
+            Fotocopy AKte Kelahiran 3 Lembar
             </span>
            </li>
            <li class="flex items-center">
             <i class="fas fa-check text-green-500">
             </i>
             <span class="ml-2">
-             Data Diri Orang Tua
+            Fotocopy KK di Legalisir 3 Lembar
+            </span>
+           </li>
+           <li class="flex items-center">
+            <i class="fas fa-check text-green-500">
+            </i>
+            <span class="ml-2">
+            Foto Warna 4x6 2 Lembar
+            </span>
+           </li>
+           <li class="flex items-center">
+            <i class="fas fa-check text-green-500">
+            </i>
+            <span class="ml-2">
+            Foto Warna 3x4 2 Lembar
+            </span>
+           </li>
+           <li class="flex items-center">
+            <i class="fas fa-check text-green-500">
+            </i>
+            <span class="ml-2">
+            Foto Hitam Putih 3x4 2 Lembar
             </span>
            </li>
           </ul>
