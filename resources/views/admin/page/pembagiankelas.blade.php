@@ -92,6 +92,7 @@
                                         <form action="{{ route('pembagiankelas.update', $item->id_kelas) }}"
                                             method="POST">
                                             @csrf
+                                            @method('PUT') <!-- Tambahkan method PUT untuk update -->
                                             <h1 class="font-bold text-xl mb-4">Edit Seleksi</h1>
 
                                             <div class="mb-4">

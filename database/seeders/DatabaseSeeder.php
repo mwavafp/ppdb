@@ -44,25 +44,25 @@ class DatabaseSeeder extends Seeder
         //     'kls_identitas' => 'A',
         //     'kls_status' => 'Siswa Aktif'
         // ]);
-        Admin::factory()->createMany(
-            [
-                [
-                    'name' => 'cahyo',
-                    'nip' => 1231232,
-                    'email' => 'cahyo@gmail.com',
-                    'password' => bcrypt('cahyo123'),
-                    'password2' => Crypt::encrypt(('cahyo123')), // Jangan lupa hash password
-                    'role' => 'admin'
-                ],
-                [
-                    'name' => 'super',
-                    'nip' => 1231232,
-                    'email' => 'super@gmail.com',
-                    'password' => bcrypt('super'), // Jangan lupa hash password
-                    'role' => 'superAdmin'
-                ]
-            ]
-        );
+        // Admin::factory()->createMany(
+        //     [
+        //         [
+        //             'name' => 'cahyo',
+        //             'nip' => 1231232,
+        //             'email' => 'cahyo@gmail.com',
+        //             'password' => bcrypt('cahyo123'),
+        //             'password2' => Crypt::encrypt(('cahyo123')), // Jangan lupa hash password
+        //             'role' => 'admin'
+        //         ],
+        //         [
+        //             'name' => 'super',
+        //             'nip' => 1231232,
+        //             'email' => 'super@gmail.com',
+        //             'password' => bcrypt('super'), // Jangan lupa hash password
+        //             'role' => 'superAdmin'
+        //         ]
+        //     ]
+        // );
 
 
 
@@ -117,27 +117,27 @@ class DatabaseSeeder extends Seeder
 
         //Automatic 100 dummy
 
-        // User::factory(100)->create()->each(function ($user) {
-        //     Ortu::factory()->create([
-        //         'id_user' => $user->id_user, //penimpaan data
-        //     ]);
-        //     Pembayaran::factory()->create([
-        //         'id_user' => $user->id_user, //penimpaan data
-        //     ]);
-        //     UserUnitPendidikan::factory()->create([
-        //         'id_user' => $user->id_user, //penimpaan data
-        //     ]);
-        //     Seleksi::factory()->create([
-        //         'id_user' => $user->id_user, //penimpaan data
-        //     ]);
-        //     Berkas::factory()->create([
-        //         'id_user' => $user->id_user, //penimpaan data
-        //     ]);
-        // });
-        // Kelas::factory(100)->create()->each(function ($kelas) {
-        //     UserUnitPendidikan::factory()->create([
-        //         'id_kelas' => $kelas->id_kelas, //penimpaan data
-        //     ]);
-        // });
+        User::factory(100)->create()->each(function ($user) {
+            Ortu::factory()->create([
+                'id_user' => $user->id_user, //penimpaan data
+            ]);
+            Pembayaran::factory()->create([
+                'id_user' => $user->id_user, //penimpaan data
+            ]);
+            UserUnitPendidikan::factory()->create([
+                'id_user' => $user->id_user, //penimpaan data
+            ]);
+            Seleksi::factory()->create([
+                'id_user' => $user->id_user, //penimpaan data
+            ]);
+            Berkas::factory()->create([
+                'id_user' => $user->id_user, //penimpaan data
+            ]);
+        });
+        Kelas::factory(100)->create()->each(function ($kelas) {
+            UserUnitPendidikan::factory()->create([
+                'id_kelas' => $kelas->id_kelas, //penimpaan data
+            ]);
+        });
     }
 }

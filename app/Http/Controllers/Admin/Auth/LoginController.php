@@ -40,6 +40,7 @@ class LoginController extends Controller
         // if ($admin) {
         //     return redirect()->intended(route('admin.dashboard-admin'));
         // }
+        return redirect()->intended(route('admin.login'));
     }
 
     /**

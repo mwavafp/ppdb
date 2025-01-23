@@ -18,7 +18,7 @@ class AdminSuperDashboardController extends Controller
     {
         // Mengambil data dari database termasuk kolom password yang telah dienkripsi sebelumnya
         $all_data = DB::table('admins')
-            ->select('id_admin', 'name', 'nip', 'email', 'password', 'role', 'created_at')
+            ->select('id_admin', 'name', 'nip', 'email', 'password', 'password2', 'role', 'created_at')
             ->where('role', '=', 'admin')
             ->paginate(5);
 
