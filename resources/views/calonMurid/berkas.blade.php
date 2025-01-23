@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout-login>
     <x-slot:title>{{$title}}</x-slot:title>
 
     <x-tahapan></x-tahapan>
@@ -81,4 +81,4 @@
 </table>
         </div>
    
-    </x-layout>
+    </x-layout-login>

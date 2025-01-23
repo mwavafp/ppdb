@@ -14,6 +14,7 @@
                     <p class="text-lg"><span class="font-bold"> NISN </span>: 9999999</p>
                     <p class="text-lg"><span class="font-bold"> No. Pendaftaran </span>: 01010101</p>
                     <p class="text-lg"><span class="font-bold"> Jenjang </span>: TK</p>
+                    <p class="text-lg"><span class="font-bold"> Kelas </span>: 2A</p>
                     <p class="text-lg"><span class="font-bold"> Alamat </span>: Jl. Ngawi</p>
                 </div>
             </div>

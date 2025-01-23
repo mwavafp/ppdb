@@ -76,12 +76,12 @@ Route::get('/pengumumantk', function () {
 })->name('pengumuman-tk');
 
 
-// Route::get('/verifikasi', function () {
-//     $pemberkasanLengkap = false; // Ganti sesuai status aktual
-//     $pembayaranLunas = true; // Ganti sesuai status aktual
+Route::get('/verifikasi-data', function () {
+     $pemberkasanLengkap = false; // Ganti sesuai status aktual
+     $pembayaranLunas = true; // Ganti sesuai status aktual
 
-//     return view('calonMurid.verifikasi', ['title' => 'Verifikasi Data', 'pemberkasanLengkap' => $pemberkasanLengkap, 'pembayaranLunas' => $pembayaranLunas,]);
-// });
+     return view('calonMurid.verifikasi', ['title' => 'Verifikasi Data', 'pemberkasanLengkap' => $pemberkasanLengkap, 'pembayaranLunas' => $pembayaranLunas,]);
+});
 
 
 Route::get('/pengumuman', function () {
@@ -116,15 +116,15 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/berkas', [UserBerkasController::class, 'showData'])->name('berkas');
 
 
-    Route::get('/verifikasi-data', function () {
-        return view('calonMurid.verifikasi', ['title' => 'User Page']);
-    });
+    // Route::get('/verifikasi-data', function () {
+    //     return view('calonMurid.verifikasi', ['title' => 'User Page']);
+    // });
 
     Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
 
-    Route::get('/biaya', function () {
-        return view('calonMurid.biaya', ['title' => 'Informasi Pembayaran']);
-    });
+    Route::get('/aya', function () {
+        return view('calonMurid.b', ['title' => 'Informasi Pembayaran']);
+    });     
     Route::post('logouts', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logouts');
 });
