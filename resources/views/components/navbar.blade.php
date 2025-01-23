@@ -19,7 +19,7 @@
                     <div class="hidden md:flex space-x-4 items-center">
                         <x-nav-link href="/">BERANDA</x-nav-link>
                         <div class="relative group">
-                            <a class="flex items-center  hover:text-primaryhrv hover:bg-green-200  px-4 py-2 rounded-md"
+                            <a class="flex items-center cursor-pointer  hover:text-primaryhrv hover:bg-green-200  px-4 py-2 rounded-md"
                                 onclick="toggleDropdown()">
                                 INFORMASI
                                 <i class="fas fa-chevron-down ml-2"></i>

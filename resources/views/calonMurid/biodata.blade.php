@@ -4,7 +4,7 @@
     <x-tahapan></x-tahapan>
 
     <!-- Tabel Informasi dan Foto Samping -->
-    <div class="flex flex-col lg:flex-row gap-6">
+    <div class="flex flex-col lg:flex-row gap-6 ">
 
         <!-- Foto -->
         <div class="lg:w-1/4 w-full">
@@ -37,10 +37,10 @@
                 </div>
 
                 <!-- Tab Content -->
-                <div id="tab-content" class="p-6">
+                <div id="tab-content" class="p-6 w-3/4">
 
                     <!-- Tab 1 -->
-                    <div class="tab-panel" id="panel-0">
+                    <div class="tab-panel h-[100vh]" id="panel-0">
                         <div class="overflow-x-auto">
                             <table class="table-auto w-full border border-gray-300">
                                 <tbody>
@@ -136,7 +136,7 @@
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Nama Ibu</td>
                                         <td class="border px-4 py-2"><input type="text" class="editable-field"
-                                                value="{{ $all_data->nm_ibu}}"></td>
+                                                value="{{ $all_data->nm_ibu }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">NIK Ibu</td>
@@ -151,7 +151,7 @@
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Tanggal Lahir Ibu</td>
                                         <td class="border px-4 py-2"><input type="date" class="editable-field"
-                                                value="{{ $all_data->tgl_lhr_ibu}}"></td>
+                                                value="{{ $all_data->tgl_lhr_ibu }}"></td>
                                     </tr>
                                     <tr class="odd:bg-gray-100 even:bg-white">
                                         <td class="border px-4 py-2 font-bold">Alamat Ibu</td>
@@ -177,7 +177,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 
     <script>
         function showTab(index) {

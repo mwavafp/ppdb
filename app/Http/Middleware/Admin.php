@@ -32,7 +32,7 @@ class Admin
         if ($userRole === "admin" && $checkrole !== "admin") {
             return redirect()->route('admin.dashboard-admin')->withErrors('You do not have permission to access this page.');
         } elseif ($userRole === "superAdmin" && $checkrole !== "superAdmin") {
-            return redirect()->route('admin.dashboardSA')->withErrors('You do not have permission to access this page.');
+            return redirect()->route('admin.dashboardSuperAdmin')->withErrors('You do not have permission to access this page.');
         }
         // if (!$user || $user->role !== $checkrole) {
         //     return redirect()->route('admin.login')->withErrors('You do not have permission to access this page.');

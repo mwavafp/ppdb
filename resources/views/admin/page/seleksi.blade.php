@@ -116,7 +116,7 @@
             <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center">
                 <div class="bg-white w-96 p-6 rounded shadow">
                     <h2 class="text-xl font-semibold mb-4">Edit Data Siswa</h2>
-                    <form id="editForm">
+                    <form id="editForm" action="{{ route('update-tagihan', $item->id_bayar) }}" method="POST">
                         <div class="mb-4">
                             <label for="no" class="block text-sm font-medium">No</label>
                             <input type="text" id="no"
@@ -158,34 +158,7 @@
                 </div>
             </div>
 
-            <!-- Modal Detail -->
-            <div id="detailModal"
-                class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center">
-                <div class="bg-white w-96 p-6 rounded shadow">
-                    <h2 class="text-xl font-semibold mb-4">Detail Data Siswa</h2>
-                    <div class="mb-4">
-                        <strong>Nama:</strong> <span id="detailNama"></span>
-                    </div>
-                    <div class="mb-4">
-                        <strong>NISN:</strong> <span id="detailNISN"></span>
-                    </div>
-                    <div class="mb-4">
-                        <strong>Jenjang:</strong> <span id="detailJenjang"></span>
-                    </div>
-                    <div class="mb-4">
-                        <strong>Kelas:</strong> <span id="detailKelas"></span>
-                    </div>
-                    <div class="mb-4">
-                        <strong>Berkas:</strong> <span id="detailBerkas"></span>
-                    </div>
-                    <div class="mb-4">
-                        <strong>Status Seleksi:</strong> <span id="detailSeleksi"></span>
-                    </div>
-                    <div class="flex justify-end">
-                        <button onclick="closeDetailModal()" class="bg-gray-300 px-4 py-2 rounded">Close</button>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div>
 
