@@ -170,10 +170,13 @@ class SeleksiAdminController extends Controller
         'status_kip' => 'required|string',
     ]);
 
-    // Update kelas
-    $update1 = DB::table('user_unit_pendidikan')->where('id_user', $id)->update([
-        'id_kelas' => $request->kelas,
+    $update1 = DB::table('kelas as k1')
+    ->join('user_unit_pendidikan as uup', 'uup.id_kelas', '=', 'k1.id_kelas')
+    ->where('uup.id_user', $id) // Menggunakan id_user dari tabel user_unit_pendidikan
+    ->update([
+        'k1.kelas' => $request->kelas, // Update kolom kelas pada tabel k1
     ]);
+
 
     // Update status seleksi
     $update2 = DB::table('seleksi')->where('id_user', $id)->update([
@@ -188,10 +191,12 @@ class SeleksiAdminController extends Controller
         'kip' => $request->status_kip,
     ]);
 
-    if ($update1 && $update2 && $update3) {
+    if ($update1 || $update2 || $update3) {
+        // Jika salah satu update berhasil
         return redirect()->route('seleksi.index')->with('success', 'Berhasil diperbarui.');
     } else {
-        return redirect()->route('seleksi.index')->with('error', 'Berhasil coy.');
+        // Jika tidak ada baris yang diperbarui
+        return redirect()->route('seleksi.index')->with('error', 'Tidak ada perubahan data.');
     }
 }
-}
+}    

@@ -1,5 +1,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <x-layoute>
     <div class="px-9 py-3 flex justify-between items-center mb-4">
@@ -130,15 +131,18 @@
                 <div class="modal-body">
                     <!-- Input Kelas -->
                     <div class="mb-3">
-                        <label for="kelas" class="form-label">Kelas</label>
-                        <input 
-                            type="number" 
-                            id="kelas" 
-                            name="kelas" 
-                            value="{{ $student->kelas }}" 
-                            class="form-control" 
-                            required>
-                    </div>
+    <label for="kelas" class="form-label">Kelas</label>
+    <select id="kelas" name="kelas" class="form-select" required>
+        <option value="" disabled selected>Pilih Kelas</option>
+        @for($i = 1; $i <= 12; $i++)
+            <option value="{{ $i }}" {{ $student->kelas == $i ? 'selected' : '' }}>
+                Kelas {{ $i }}
+            </option>
+        @endfor
+    </select>
+</div>
+
+
 
                     <!-- Input Status Seleksi -->
                     <div class="mb-3">
@@ -199,7 +203,24 @@
                         </select>
                     </div>
                 </div>
-                
+                @if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses!',
+            text: "{{ session('success') }}",
+        });
+    </script>
+@elseif(session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: "{{ session('error') }}",
+        });
+    </script>
+@endif
+
                 <!-- Footer Modal -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
