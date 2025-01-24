@@ -15,55 +15,72 @@
         </div>
         <span class="bg-gray-200 text-black py-2 px-4 rounded-full">Nama Atmin</span>
     </div>
-    <!--Form Filter -->
-    <form method="GET" action="{{ route('filter') }}">
-        <div class="max-w-7xl mx-auto bg-white p-6 rounded-lg  shadow-md mt-4">
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Jenjang</label>
-                    <select name="unt_pendidikan"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
-                        <option value="">Semua</option>
-                        <option value="tk" {{ request('unt_pendidikan') == 'tk' ? 'selected' : '' }}>TK</option>
-                        <option value="sd" {{ request('unt_pendidikan') == 'sd' ? 'selected' : '' }}>SD</option>
-                        <option value="smp"{{ request('unt_pendidikan') == 'smp' ? 'selected' : '' }}>SMP</option>
-                        <option value="sma"{{ request('unt_pendidikan') == 'sma' ? 'selected' : '' }}>SMA</option>
-                        <option value="tpq"{{ request('unt_pendidikan') == 'tpq' ? 'selected' : '' }}>TPQ</option>
-                        <option value="madin"{{ request('unt_pendidikan') == 'madin' ? 'selected' : '' }}>MADIN
-                        </option>
-                        <option value="pondok"{{ request('unt_pendidikan') == 'pondok' ? 'selected' : '' }}>PONDOK
-                        </option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium">Tipe Pembayaran</label>
-                    <select name="status"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
-                        <option value="">Semua</option>
-                        <option value="Cicil"{{ request('status') == 'Cicil' ? 'selected' : '' }}>Cicil</option>
-                        <option value="Lunas"{{ request('status') == 'Lunas' ? 'selected' : '' }}>Lunas</option>
-                        <option value="DP"{{ request('status') == 'DP' ? 'selected' : '' }}>DP</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium">Status</label>
-                    <select name="dft_ulang"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
-                        <option value="">Semua</option>
-                        <option value="lunas"{{ request('dft_ulang') == 'lunas' ? 'selected' : '' }}>Lunas</option>
-                        <option value="belum"{{ request('dft_ulang') == 'belum' ? 'selected' : '' }}>Belum Lunas
-                        </option>
-                    </select>
-                </div>
-                <div class="flex mt-4 mx-4">
-                    <button type="submit"
-                        class="bg-green-500 text-white py-2 px-4 rounded-md mr-2 w-[100px] border border-transparent hover:bg-green-600 hover:border-green-600 transition">Cari</button>
-                    <a href="{{ route('filter') }}"
-                        class="bg-red-500 text-white py-2 px-4 rounded-md w-[100px] border border-transparent hover:bg-red-600 hover:border-red-600 transition text-center">Reset</a>
+
+    <div class="flex w-full mx-4">
+        <!--Form Filter -->
+        <form method="GET" action="{{ route('filter') }}">
+            <div class="max-w-7xl mx-auto bg-white ">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-2 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Jenjang</label>
+                        <select name="unt_pendidikan"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
+                            <option value="">Semua</option>
+                            <option value="tk" {{ request('unt_pendidikan') == 'tk' ? 'selected' : '' }}>TK</option>
+                            <option value="sd" {{ request('unt_pendidikan') == 'sd' ? 'selected' : '' }}>SD</option>
+                            <option value="smp"{{ request('unt_pendidikan') == 'smp' ? 'selected' : '' }}>SMP
+                            </option>
+                            <option value="sma"{{ request('unt_pendidikan') == 'sma' ? 'selected' : '' }}>SMA
+                            </option>
+                            <option value="tpq"{{ request('unt_pendidikan') == 'tpq' ? 'selected' : '' }}>TPQ
+                            </option>
+                            <option value="madin"{{ request('unt_pendidikan') == 'madin' ? 'selected' : '' }}>MADIN
+                            </option>
+                            <option value="pondok"{{ request('unt_pendidikan') == 'pondok' ? 'selected' : '' }}>PONDOK
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Tipe Pembayaran</label>
+                        <select name="status"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
+                            <option value="">Semua</option>
+                            <option value="Cicil"{{ request('status') == 'Cicil' ? 'selected' : '' }}>Cicil</option>
+                            <option value="Lunas"{{ request('status') == 'Lunas' ? 'selected' : '' }}>Lunas</option>
+                            <option value="DP"{{ request('status') == 'DP' ? 'selected' : '' }}>DP</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium">Status</label>
+                        <select name="dft_ulang"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
+                            <option value="">Semua</option>
+                            <option value="lunas"{{ request('dft_ulang') == 'lunas' ? 'selected' : '' }}>Lunas
+                            </option>
+                            <option value="belum"{{ request('dft_ulang') == 'belum' ? 'selected' : '' }}>Belum Lunas
+                            </option>
+                        </select>
+                    </div>
+                    <div class="flex mt-4 mx-4">
+                        <button type="submit"
+                            class="bg-green-500 text-white py-2 px-4 rounded-md mr-2 w-[100px] border border-transparent hover:bg-green-600 hover:border-green-600 transition">Cari</button>
+                        <a href="{{ route('filter') }}"
+                            class="bg-red-500 text-white py-2 px-4 rounded-md w-[100px] border border-transparent hover:bg-red-600 hover:border-red-600 transition text-center">Reset</a>
+                    </div>
+
                 </div>
             </div>
+
+        </form>
+        <div class="my-auto mx-4 ">
+            <form action="{{ route('tagihan.export') }}" method="GET">
+                <button type="submit" class="btn btn-primary">
+                    <span class="bg-primary text-white text-center px-6 py-4 rounded-md">Download
+                        Excel</span>
+                </button>
+            </form>
         </div>
-    </form>
+    </div>
 
 
     <div class="bg-white p-4 rounded-lg shadow">
