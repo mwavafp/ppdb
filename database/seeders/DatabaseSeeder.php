@@ -14,6 +14,7 @@ use App\Models\UserUnitPendidikan;
 use Database\Factories\AdminsFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Factories\BerkasFactory;
+use Database\Factories\TahunFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
@@ -85,23 +86,19 @@ class DatabaseSeeder extends Seeder
         //     'nmr_ibu_wa' => 123445
         // ]);
 
-        // Pembayaran::factory()->create([
-        //     'id_user' => $user->id_user,
-        //     'byr_dft_ulang' => 'lunas',
-        //     'status' => 'Lunas',
-        //     'jmlh_byr' => 300000
-        // ]);
-        // Tahun::factory()->create([
-        //     'nama' => 'Tahun Ajaran2024/2025',
-        //     'awal' => '2024-12-12',
-        //     'akhir' => '2025-12-12'
-        // ]);
-        // UserUnitPendidikan::factory()->create([
-        //     'id_user' => $user->id_user,
-        //     'id_kelas' => $kelas->id_kelas,
-        //     'status' => 'Siswa Aktif',
-        //     'tgl_mulai' => '2024-12-03',
-        //     'tgl_berakhir' => '2024-12-11'
+        Pembayaran::factory()->create([
+            'id_user' => $user->id_user,
+            'byr_dft_ulang' => 'lunas',
+            'status' => 'Lunas',
+            'jmlh_byr' => 300000
+        ]);
+
+        UserUnitPendidikan::factory()->create([
+            'id_user' => $user->id_user,
+            'id_kelas' => $kelas->id_kelas,
+            'status' => 'Siswa Aktif',
+            'tgl_mulai' => '2024-12-03',
+            'tgl_berakhir' => '2024-12-11'
 
         // ]);
         // Berkas::factory()->create([

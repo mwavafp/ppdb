@@ -186,9 +186,7 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
 
     Route::get('/siswa', [SiswaController::class, 'index'])->name('index');
     Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
-    Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('detail-user');
-    Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi-siswa');
-    Route::get('/edit-seleksi/{id}', [SeleksiAdminController::class, 'editData'])->name('edit-siswa');
+    Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('edit-user');
 
     Route::get('tagihan/export/', [TagihanAdmin::class, 'export'])->name('tagihan.export');
     Route::get('/tagihan-admin', [TagihanAdmin::class, 'showData'])->name('tagihan-admin');
