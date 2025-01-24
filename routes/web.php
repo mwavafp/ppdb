@@ -129,6 +129,7 @@ Route::middleware('auth:web')->group(function () {
     // Route::get('/biodata', function () {
     //     return view('calonMurid.biodata', ['title' => 'User Page']);
     // })->name('biodata');
+
     Route::get('/biodata', [BiodataController::class, 'showData'])->name('biodata');
 
     Route::get('/seleksi', [BerkasSeleksiControl::class, 'showData'])->name('seleksi');
@@ -185,11 +186,9 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
 
     Route::get('/siswa', [SiswaController::class, 'index'])->name('index');
     Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
-    Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('detail-user');
-    Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi-siswa');
-    Route::get('/edit-seleksi/{id}', [SeleksiAdminController::class, 'editData'])->name('edit-siswa');
+    Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('edit-user');
 
-
+    Route::get('tagihan/export/', [TagihanAdmin::class, 'export'])->name('tagihan.export');
     Route::get('/tagihan-admin', [TagihanAdmin::class, 'showData'])->name('tagihan-admin');
     Route::get('/edit-tagihan/{id}', [TagihanAdmin::class, 'editData'])->name('edit-tagihan');
     Route::post('update-tagihan/{id}', [TagihanAdmin::class, 'updateData'])->name('update-tagihan');
