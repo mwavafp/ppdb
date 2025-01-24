@@ -18,6 +18,10 @@ class SeleksiAdminController extends Controller
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas') // Relasi ke kelas
             // Relasi ke kelas
             ->leftJoin('berkas', 'users.id_user', '=', 'berkas.id_user') // Relasi ke berkas (left join untuk data berkas opsional)
+            ->whereBetween('users.created_at', [
+                DB::raw('(SELECT awal FROM tahun LIMIT 1)'),  
+                DB::raw('(SELECT akhir FROM tahun LIMIT 1)')  
+            ])
             ->select(
                 'users.name as nama',
                 'users.nisn',

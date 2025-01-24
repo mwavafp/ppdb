@@ -58,7 +58,7 @@
                 </div>
                 <div class="py-4 flex flex-col items-center justify-center">
                     <h3 class="text-2xl font-bold mb-4">TPQ</h3>
-                    <a href="pengumumantpq" class="bg-primary text-white py-2 px-4 rounded hover:bg-green-800">KLIK DISINI</a>
+                    <a href="{{ route('pengumumantpq') }}" class="bg-primary text-white py-2 px-4 rounded hover:bg-green-800">KLIK DISINI</a>
                 </div>
             </div>
             <!-- Card 6 -->
@@ -68,7 +68,7 @@
                 </div>
                 <div class="py-4 flex flex-col items-center justify-center">
                     <h3 class="text-2xl font-bold mb-4">MADIN</h3>
-                    <a href="pengumumanmadin" class="bg-primary text-white py-2 px-4 rounded hover:bg-green-800">KLIK DISINI</a>
+                    <a href="{{ route('pengumumanmadin') }}" class="bg-primary text-white py-2 px-4 rounded hover:bg-green-800">KLIK DISINI</a>
                 </div>
             </div>
             <!-- Card 7 -->
@@ -78,7 +78,7 @@
                 </div>
                 <div class="py-4 flex flex-col items-center justify-center">
                     <h3 class="text-2xl font-bold mb-4">PONDOK</h3>
-                    <a href="pengumumanpondok" class="bg-primary text-white py-2 px-4 rounded hover:bg-green-800">KLIK DISINI</a>
+                    <a href="{{ route('pengumumanpondok') }}" class="bg-primary text-white py-2 px-4 rounded hover:bg-green-800">KLIK DISINI</a>
                 </div>
             </div>
         </div>

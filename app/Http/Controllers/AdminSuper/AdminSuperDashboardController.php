@@ -18,7 +18,7 @@ class AdminSuperDashboardController extends Controller
     {
         // Mengambil data dari database termasuk kolom password yang telah dienkripsi sebelumnya
         $all_data = DB::table('admins')
-            ->select('name', 'nip', 'email', 'password', 'role', 'created_at')
+            ->select('id_admin', 'name', 'nip', 'email', 'password', 'password2', 'role', 'created_at')
             ->where('role', '=', 'admin')
             ->paginate(5);
 
@@ -47,7 +47,8 @@ class AdminSuperDashboardController extends Controller
             'name' => $request->name,
             'nip' => $request->nip,
             'email' => $request->email,
-            'password' =>   Crypt::encrypt($request->password),
+            'password' =>   $request->password,
+            'password2' =>   Crypt::encrypt($request->password),
             'role' => $request->role,
         ]);
 
@@ -64,8 +65,7 @@ class AdminSuperDashboardController extends Controller
     public function deleteData(Request $request, $id)
     {
         DB::table('admins')
-            ->where('id_user', '=', $id)
-            ->first()
+            ->where('id_admin', '=', $id)
             ->delete();
 
         return redirect()->route('admin.dataAdminPage');

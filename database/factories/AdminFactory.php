@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Str;
 
+use function Laravel\Prompts\password;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory
  */
@@ -27,7 +29,8 @@ class AdminFactory extends Factory
             'name' => $this->faker->name(), // Nama random
             'nip' => $this->faker->unique()->numerify('##########'), // NIP dengan 10 angka unik
             'email' => $this->faker->unique()->safeEmail(), // Email random
-            'password' => $this->faker->name(), // Password hash (default: "password")
+            'password' => Hash::make('password'),
+            'password2' => $this->faker->name(), // Password hash (default: "password")
             'role' => $this->faker->randomElement(['admin', 'superAdmin']), // Role random
         ];
     }
