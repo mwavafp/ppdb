@@ -13,12 +13,11 @@
                 <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
                     <p class="text-sm text-gray-500">Jumlah Total Pendaftar</p>
                     <p class="text-2xl font-semibold">{{ $all_user }}</p>
-                    <p class="text-green-500 text-sm mt-1">+33.45%</p>
+
                 </div>
                 <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
                     <p class="text-sm text-gray-500">Jumlah Pendapatan Pendaftaran</p>
-                    <p class="text-2xl font-semibold">$11.67M</p>
-                    <p class="text-green-500 text-sm mt-1">+33.45%</p>
+                    <p class="text-2xl font-semibold">@currency($total_bayar)</p>
                 </div>
             </div>
             <div class="flex w-1/2 flex-wrap">
@@ -27,7 +26,7 @@
                     <div class="flex-1 p-4 m-2 bg-white rounded-lg shadow-md text-center min-w-[200px]">
                         <p class="text-sm text-gray-500">{{ $user['title'] }}</p>
                         <p class="text-2xl font-semibold">{{ $user['fungsi'] }}</p>
-                        <p class="text-red-500 text-sm mt-1">-112.4%</p>
+
                     </div>
                 @endforeach
             </div>
@@ -36,7 +35,7 @@
         </div>
 
         <!-- Charts Section -->
-        <div class="flex  gap-4 mb-6 p-8 ">
+        <div class="flex  gap-8 mb-6 p-8 w-4/5 mx-auto">
             <!-- Contextual Pie Chart -->
             <div class="flex-1 bg-white p-4 rounded-lg shadow-md w-40">
                 <p class="text-lg font-semibold mb-4">Tipe Pendaftar</p>
@@ -47,16 +46,14 @@
 
 
             <!-- Impression Line Chart -->
-            <div class="flex-1 bg-white p-4 rounded-lg shadow-md min-w-[300px]">
-                <p class="text-lg font-semibold mb-4">Impression Measurement</p>
-                <canvas id="impressionChart"></canvas>
-            </div>
             <div class="flex-1 flex-wrap bg-white p-4 rounded-lg shadow-md mb-6">
-                <p class="text-lg font-semibold w-full mb-4">Spend by Channel</p>
-                <div class="w-full">
-                    <canvas id="spendChart"></canvas>
+                <p class="text-lg font-semibold w-full mb-4">Grafik Pembayaran</p>
+                <div class="w-full h-1/2 ">
+                    <canvas id="spendChart" class="px-16"></canvas>
                 </div>
             </div>
+
+
         </div>
 
 
@@ -66,6 +63,13 @@
 </x-layoute>
 <script>
     const genderLaki = @json($gender_laki);
+    const total_bayar_tpq = @json($total_bayar_tpq);
+    const total_bayar_pondok = @json($total_bayar_pondok);
+    const total_bayar_madin = @json($total_bayar_madin);
+    const total_bayar_tk = @json($total_bayar_tk);
+    const total_bayar_sd = @json($total_bayar_sd);
+    const total_bayar_smp = @json($total_bayar_smp);
+    const total_bayar_sma = @json($total_bayar_sma);
     const genderPerempuan = @json($gender_perempuan);
     // Contextual Chart (Pie)
     const ctxContextual = document.getElementById('contextualChart');
@@ -80,45 +84,28 @@
         }
     });
 
-    // Device Type Chart (Doughnut)
-    const ctxDevice = document.getElementById('deviceTypeChart');
-    new Chart(ctxDevice, {
-        type: 'doughnut',
-        data: {
-            labels: ['Mobile', 'Desktop', 'Tablet'],
-            datasets: [{
-                data: [45, 50, 5],
-                backgroundColor: ['#f472b6', '#818cf8', '#34d399'],
-            }]
-        }
-    });
 
-    // Impression Chart (Line)
-    const ctxImpression = document.getElementById('impressionChart');
-    new Chart(ctxImpression, {
-        type: 'line',
-        data: {
-            labels: ['Jun 16', 'Jun 17', 'Jun 18', 'Jun 19', 'Jun 20', 'Jun 21'],
-            datasets: [{
-                label: 'Impressions',
-                data: [300, 400, 200, 500, 350, 400],
-                borderColor: '#818cf8',
-                backgroundColor: 'rgba(129, 140, 248, 0.2)',
-                fill: true
-            }]
-        }
-    });
+
+
 
     // Spend Chart (Bar)
     const ctxSpend = document.getElementById('spendChart');
     new Chart(ctxSpend, {
         type: 'bar',
         data: {
-            labels: ['Meta', 'Google', 'YouTube', 'Amazon', 'Xandr'],
+            labels: ['TPQ', 'PONDOK', 'MADIN', 'TK', 'SD', 'SMP', 'SMA'],
             datasets: [{
                 label: 'Spend ($)',
-                data: [8000, 9000, 12000, 11000, 7000],
+                data: [total_bayar_tpq,
+                    total_bayar_pondok,
+                    total_bayar_madin,
+                    total_bayar_tk,
+                    total_bayar_sd,
+                    total_bayar_smp,
+                    total_bayar_sma
+                ],
                 backgroundColor: '#f472b6'
+
             }]
         }
     });

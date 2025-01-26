@@ -40,31 +40,36 @@ class DatabaseSeeder extends Seeder
             'asl_sekolah' => 'sdn Pekalongan DC',
 
         ]);
-        // $kelas = Kelas::factory()->create([
-        //     'unt_pendidikan' => 'sma',
-        //     'kelas' => '8',
-        //     'kls_identitas' => 'A',
-        //     'kls_status' => 'Siswa Aktif'
+        $kelas = Kelas::factory()->create([
+            'unt_pendidikan' => 'sma',
+            'kelas' => '8',
+            'kls_identitas' => 'A',
+            'kls_status' => 'Siswa Aktif'
+        ]);
+        Admin::factory()->createMany(
+            [
+                [
+                    'name' => 'cahyo',
+                    'nip' => 1231232,
+                    'email' => 'cahyo@gmail.com',
+                    'password' => bcrypt('cahyo123'),
+                    'password2' => Crypt::encrypt(('cahyo123')), // Jangan lupa hash password
+                    'role' => 'admin'
+                ],
+                [
+                    'name' => 'super',
+                    'nip' => 1231232,
+                    'email' => 'super@gmail.com',
+                    'password' => bcrypt('super'), // Jangan lupa hash password
+                    'role' => 'superAdmin'
+                ]
+            ]
+        );
+        // Tahun::factory()->create([
+        //     'nama' => 'Tahun Ajaran2024/2025',
+        //     'awal' => '2024-12-12',
+        //     'akhir' => '2025-12-12'
         // ]);
-        // Admin::factory()->createMany(
-        //     [
-        //         [
-        //             'name' => 'cahyo',
-        //             'nip' => 1231232,
-        //             'email' => 'cahyo@gmail.com',
-        //             'password' => bcrypt('cahyo123'),
-        //             'password2' => Crypt::encrypt(('cahyo123')), // Jangan lupa hash password
-        //             'role' => 'admin'
-        //         ],
-        //         [
-        //             'name' => 'super',
-        //             'nip' => 1231232,
-        //             'email' => 'super@gmail.com',
-        //             'password' => bcrypt('super'), // Jangan lupa hash password
-        //             'role' => 'superAdmin'
-        //         ]
-        //     ]
-        // );
 
 
         // Ortu::factory()->create([
@@ -100,7 +105,7 @@ class DatabaseSeeder extends Seeder
             'tgl_mulai' => '2024-12-03',
             'tgl_berakhir' => '2024-12-11'
 
-        // ]);
+        ]);
         // Berkas::factory()->create([
         //     'id_user' => $user->id_user,
         //     'kk' => 'belum_diserahkan',
