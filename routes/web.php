@@ -145,7 +145,7 @@ Route::middleware('auth:web')->group(function () {
 
     Route::get('/aya', function () {
         return view('calonMurid.b', ['title' => 'Informasi Pembayaran']);
-    });
+    });     
 
     Route::get('/verifikasi', [VerifikasiController::class, 'showData']);
 
@@ -183,6 +183,12 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
     Route::put('/pembagiankelas/{id}/update', [KelasController::class, 'update'])->name('pembagiankelas.update');
     Route::get('/pembagiankelas/search', [KelasController::class, 'search'])->name('pembagiankelas.search');
     Route::get('/pembagiankelas/filter', [KelasController::class, 'filter'])->name('pembagiankelas.filter');
+
+    Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi.index');
+    Route::get('/admin/seleksi/edit/{id}', [SeleksiAdminController::class, 'editData'])->name('seleksi.edit');
+    Route::put('/admin/seleksi/update/{id}', [SeleksiAdminController::class, 'update'])->name('seleksi.update');
+    Route::get('/seleksi/search', [SeleksiAdminController::class, 'search'])->name('seleksi.search');
+    Route::get('/seleksi/filter', [SeleksiAdminController::class, 'filter'])->name('seleksi.filter');
 
     Route::get('/siswa', [SiswaController::class, 'index'])->name('index');
     Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');

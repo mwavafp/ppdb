@@ -1,14 +1,48 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <div class="bg-gray-100 ">
+    <div class="bg-gray-100 my-4  ">
         <main class="container mx-auto mt-6">
             <div class="bg-primary text-white text-center py-4 rounded-md">
                 <h1 class="text-xl font-bold">
                     INFORMASI PONDOK
                 </h1>
             </div>
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="/images/compo_pondok.jpg" alt="" class="w-50 h-50 mx-auto mb-12">
+    </div>
+    <div class="bg-white p-4 rounded-md shadow-md">
+     <h2 class="text-lg font-bold">
+      Company Profile
+     </h2>
+     <p>
+      Lakukan pembayaran sesuai nominal dan nomer rekening yang tertera
+     </p>
+    </div>
+   </section>
+   <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <center>
+     <h2 class="text-primary text-lg font-bold mb-4">
+      VISI
+     </h2>
+     </center>
+     <p class="mt-4">
+      Berakhlak Mulia Dan Beribadah Sempurna Adalah karakter Siswa Santri Nurul Huda
+     </p>
+    </div>
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <center>
+     <h2 class="text-primary text-lg font-bold mb-4">
+      MISI
+     </h2>
+</center>
+     <p class="mt-4">
+      STEP 2 - ISI FORMULIR PENDAFTARAN
+     </p>
+    </div>
+   </section>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
 
                 <div class="bg-white p-6 rounded-md shadow-md">
@@ -115,28 +149,35 @@
                                 <i class="fas fa-check text-primary">
                                 </i>
                                 <span class="ml-2">
-                                    Akta Kelahiran
+                                Fotocopy Ijazah 3 Lembar
                                 </span>
                             </li>
                             <li class="flex items-center">
                                 <i class="fas fa-check text-primary">
                                 </i>
                                 <span class="ml-2">
-                                    Kartu Keluarga
+                                Fotocopy SKHUN 3 Lembar
                                 </span>
                             </li>
                             <li class="flex items-center">
                                 <i class="fas fa-check text-primary">
                                 </i>
                                 <span class="ml-2">
-                                    Data Diri Anak
+                                Fotocopy Akte Kelahiran 3 Lembar
                                 </span>
                             </li>
                             <li class="flex items-center">
                                 <i class="fas fa-check text-primary">
                                 </i>
                                 <span class="ml-2">
-                                    Data Diri Orang Tua
+                                Fotocopy KK 3 Lembar
+                                </span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary">
+                                </i>
+                                <span class="ml-2">
+                                Foto 3x4 3 Lembar
                                 </span>
                             </li>
                         </ul>
@@ -144,9 +185,12 @@
                 </div>
 
             </div>
-
-        </main>
-    </div>
-
+      
+           
+           
+        
+       </main>
+</div>
+  
 
 </x-layout>

@@ -1,17 +1,58 @@
-
 <x-layout>
   <x-slot:title>{{$title}}</x-slot:title>
-<div class="bg-gray-100">
+
+<div class="bg-gray-100 my-4  ">
   <main class="container mx-auto mt-6">
-      <div class="bg-red-600 text-white text-center py-4 rounded-md">
+      <div class="bg-primary text-white text-center py-4 rounded-md">
        <h1 class="text-xl font-bold">
         INFORMASI SMP
        </h1>
       </div>
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="/images/compro_smp.jpg" alt="" class="w-50 h-50 mx-auto mb-12">
+    </div>
+    <div class="bg-white p-4 rounded-md shadow-md">
+     <h2 class="text-lg font-bold">
+      Company Profile
+     </h2>
+     <p>
+      Lakukan pembayaran sesuai nominal dan nomer rekening yang tertera
+     </p>
+    </div>
+   </section>
+   <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <center>
+     <h2 class="text-primary text-lg font-bold mb-4">
+      VISI
+     </h2>
+     </center>
+     <p class="mt-4">
+      "MENCETAK GENERASI MASA DEPAN YANG BERTAQWA, BERILMU DAN BERAKHLAQUL KARIMAH".
+     </p>
+    </div>
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <center>
+     <h2 class="text-primary text-lg font-bold mb-4">
+      MISI
+     </h2>
+</center>
+     <p class="mt-4">
+     <ol>
+     <li> Menyelenggarakan Sekolah potensi dengan pendidikan nasional yang terintegrasi dengan pendidikan pesantren serta menjunjung tinggi norma.</li> <br>
+    <li> Mendidik siswa untuk menguasai ilmu pengetahan dan teknologi (IPTEK) serta mengajarkan keimanan dan ketaqwaan (IMTAQ) secara kooperatif pada era globalisasi.</li> <br>
+    <li> Membiasakan disiplin, semangat belajar, bergotong royong, dan berbusana, serta mengembangkan karakter kebangsaan.</li> <br>
+    <li> Menumbuhkembangkan minat bakat siswa untuk berprestasi dan sang juara pada lomba atau event internal dan eksternal.</li> <br>
+    <li> Melahirkan alumni yang berkemampuan intelektual dan berakhlak mulia sebagai generasi masa depan yang unggul dalam berfikir dan anggun dalam bersikap.</li>
+</ol>
+    </p> 
+    </div>
+   </section>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
        
        <div class="bg-white p-6 rounded-md shadow-md">
-        <h2 class="text-orange-600 text-lg font-bold mb-4">
+        <h2 class="text-primary text-lg font-bold mb-4">
          ALUR PENDAFTARAN
         </h2>
         <ul class="space-y-4">
@@ -79,7 +120,7 @@
        </div>
        <div class='flex flex-col'>
        <div class="bg-white p-6 rounded-md shadow-md mb-4 tabel-1">
-        <h2 class="text-orange-600 text-lg font-bold mb-4">
+        <h2 class="text-primary text-lg font-bold mb-4">
          JADWAL PENDAFTARAN
         </h2>
         <ul class="space-y-2 mb-4">
@@ -99,41 +140,55 @@
           1 Juni - 14 Juli 2025
          </li>
         </ul>
-        <a href="/form?unit_pendidikan=SMP" class="bg-orange-600 text-white py-2 px-4 rounded-md">
+        <a href="/form?unit_pendidikan=SMP" class="bg-primary text-white py-2 px-4 rounded-md">
          DAFTAR KLIK DISINI
-        </a>
+        </a>
        </div>
        <div class="bg-white p-6 rounded-md shadow-md  tabel-2">
-        <h2 class="text-orange-600 text-lg font-bold mt-6 mb-4">
+        <h2 class="text-primary text-lg font-bold mt-6 mb-4">
          BERKAS YANG HARUS DISIAPKAN
         </h2>
         <ul class="space-y-2">
          <li class="flex items-center">
-          <i class="fas fa-check text-green-500">
+          <i class="fas fa-check text-primary">
           </i>
           <span class="ml-2">
-           Akta Kelahiran
+          Fotocopy Ijazah SD/MI Yang di legalisir 2 Lembar
           </span>
          </li>
          <li class="flex items-center">
-          <i class="fas fa-check text-green-500">
+          <i class="fas fa-check text-primary">
           </i>
           <span class="ml-2">
-           Kartu Keluarga
+          Fotocopy SKHUN SD/MI Yang di legalisir 2 Lembar
           </span>
          </li>
          <li class="flex items-center">
-          <i class="fas fa-check text-green-500">
+          <i class="fas fa-check text-primary">
           </i>
           <span class="ml-2">
-           Data Diri Anak
+          Fotocopy KK 2 Lembar
           </span>
          </li>
          <li class="flex items-center">
-          <i class="fas fa-check text-green-500">
+          <i class="fas fa-check text-primary">
           </i>
           <span class="ml-2">
-           Data Diri Orang Tua
+          Fotocopy Akte Kelahiran 2 Lembar
+          </span>
+         </li>
+         <li class="flex items-center">
+          <i class="fas fa-check text-primary">
+          </i>
+          <span class="ml-2">
+          Foto Hitam Putih 3x4 2 Lembar
+          </span>
+         </li>
+         <li class="flex items-center">
+          <i class="fas fa-check text-primary">
+          </i>
+          <span class="ml-2">
+          Lembar NISN 
           </span>
          </li>
         </ul>
@@ -144,7 +199,5 @@
       
      </main>
 </div>
-
-
 
 </x-layout>
