@@ -67,6 +67,14 @@ class DatabaseSeeder extends Seeder
                 ]
             ]
         );
+<<<<<<< HEAD
+=======
+        // Tahun::factory()->create([
+        //     'nama' => 'Tahun Ajaran2024/2025',
+        //     'awal' => '2024-12-12',
+        //     'akhir' => '2025-12-12'
+        // ]);
+>>>>>>> 85ef93285bfd13bf19c033b3cda7874db2b9ecff
 
 
         Ortu::factory()->create([
@@ -103,12 +111,21 @@ class DatabaseSeeder extends Seeder
             'tgl_berakhir' => '2024-12-11'
 
         ]);
+<<<<<<< HEAD
         Berkas::factory()->create([
             'id_user' => $user->id_user,
             'kk' => 'belum_diserahkan',
             'pas_foto' => 'belum_diserahkan',
             'ijazah_akhir' => 'belum_diserahkan',
             'kip' => 'belum_diserahkan'
+=======
+        // Berkas::factory()->create([
+        //     'id_user' => $user->id_user,
+        //     'kk' => 'belum_diserahkan',
+        //     'pas_foto' => 'belum_diserahkan',
+        //     'ijazah_akhir' => 'belum_diserahkan',
+        //     'kip' => 'belum_diserahkan'
+>>>>>>> 85ef93285bfd13bf19c033b3cda7874db2b9ecff
 
         ]);
         Seleksi::factory()->create([

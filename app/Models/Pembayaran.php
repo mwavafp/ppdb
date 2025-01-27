@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasFormatRupiah;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Pembayaran extends Model
 {
     use HasFactory;
+
     protected $table = 'pembayaran';
     protected $primaryKey = 'id_bayar'; // digunakan untuk penggantian id
     public $incrementing = true;
