@@ -1,54 +1,98 @@
 <x-layout>
   <x-slot:title>{{$title}}</x-slot:title>
+    <div class="section-2  -">
+        <div class="text-3xl text-center font-bold bg-primary  text-white mb-8 rounded-b-full">
+            <p class="py-8">INFORMASI SD</p>
+        </div>
 
-<div class="bg-gray-100 my-4  ">
-  <main class="container mx-auto mt-6">
-      <div class="bg-primary text-white text-center py-4 rounded-md">
-       <h1 class="text-xl font-bold">
-        INFORMASI SD
-       </h1>
-      </div>
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-    <div class="bg-white p-4 rounded-md shadow-md">
-      <img src="/images/compro_sd.jpg" alt="" class="w-50 h-50 mx-auto mb-12">
+        <div class="section-3">
+    <div class="background flex bg-white p-16"> <!-- Mengubah bg-gradient menjadi bg-white -->
+        <div class="content-1 flex-1 mr-8">
+            <p class="text-left text-4xl font-bold mb-9 text-center text-green-600"> <!-- Mengubah warna teks menjadi hijau -->
+                Selamat Datang di <br> SD Nurul Huda
+            </p>
+            <div class="bg-gray-100 p-6 rounded-md shadow-lg transform transition-transform hover:scale-105"> <!-- Kotak kolom timbul -->
+                <p class="text-justify text-black">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+        <div class="content-2 flex-1 items-center flex">
+            <img src="/images/Compro_sd.jpg" alt="" class="mx-auto my-auto rounded-xl">
+        </div>
     </div>
-    <div class="bg-white p-4 rounded-md shadow-md">
-     <h2 class="text-lg font-bold">
-      Company Profile
-     </h2>
-     <p>
-      Lakukan pembayaran sesuai nominal dan nomer rekening yang tertera
-     </p>
+</div>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-gray-100 p-4 rounded-md shadow-md"> <!-- Mengubah bg-white menjadi bg-teal-400 -->
+        <center>
+            <h2 class="text-green-600 text-lg font-bold mb-4"> <!-- Mengubah warna teks menjadi putih -->
+                VISI
+            </h2>
+        </center>
+        <p class="mt-4 text-black"> <!-- Mengubah warna teks menjadi putih -->
+        SD Nurul Huda II sebagai pusat pengembangan Ilmu Pengetahuan dan Teknologi (IPTEK) serta meningkatkan Iman dan Taqwa (IMTAQ).
+        </p>
     </div>
-   </section>
-   <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-    <div class="bg-white p-4 rounded-md shadow-md">
-      <center>
-     <h2 class="text-primary text-lg font-bold mb-4">
-      VISI
-     </h2>
-     </center>
-     <p class="mt-4">
-      SD Nurul Huda II sebagai pusat pengembangan Ilmu Pengetahuan dan Teknologi (IPTEK) serta meningkatkan Iman dan Taqwa (IMTAQ).
-     </p>
+    <div class="bg-gray-100 p-4 rounded-md shadow-md"> <!-- Mengubah bg-white menjadi bg-teal-400 -->
+        <center>
+            <h2 class="text-green-600 text-lg font-bold mb-4"> <!-- Mengubah warna teks menjadi putih -->
+                MISI
+            </h2>
+        </center>
+        <p style="line-height: 1.5; text-align: justify; color: black;"> <!-- Mengubah warna teks menjadi putih -->
+            1. Meningkatkan taqwa terhadap Allah SWT. <br>
+            2. Melaksanakan pembelajaran yang menyenangkan, dinamis, kreatif, dialogis, dan produktif. <br>
+            3.  Menyediakan sarana dan prasarana pendidikan yang bermutu, lengkap dan efektif. <br>
+            4.  Menerapkan kedisiplinan yang konsisten dalam segala hal. <br>
+            5. Menerapkan pembelajaran pembiasaan.
+        </p>
     </div>
-    <div class="bg-white p-4 rounded-md shadow-md">
-      <center>
-     <h2 class="text-primary text-lg font-bold mb-4">
-      MISI
-     </h2>
-</center>
-     <p class="mt-4">
-     <ol class="list-decimal list-inside space-y-2 pl-4">
-     <li class="text-gray-700 leading-relaxed">  Meningkatkan taqwa terhadap Allah SWT.</li> <br>
-     <li class="text-gray-700 leading-relaxed">  Melaksanakan pembelajaran yang menyenangkan, dinamis, kreatif, dialogis, dan produktif.</li> <br>
-     <li class="text-gray-700 leading-relaxed">  Menyediakan sarana dan prasarana pendidikan yang bermutu, lengkap dan efektif.</li> <br>
-     <li class="text-gray-700 leading-relaxed">  Menerapkan kedisiplinan yang konsisten dalam segala hal.</li> <br>
-     <li class="text-gray-700 leading-relaxed">  Menerapkan pembelajaran pembiasaan.</li>
-</ol>
-     </p>
+</section>
+    <div class="section-7">
+        <div class="box p-12">
+            <p class="text-left text-4xl font-bold mb-9 text-center"><span class="text-orange">Ekstra</span> <span>Kurikuler</span></p>
+            <div class="card-box flex  justify-center">
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">1</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">BTQ (Baca Tulis Qur'an) </p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">2</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Tahfidzul Qur'an</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">3</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Samroh dan Banjari</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">4</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Pencak Silat (Pagar Nusa)</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">5</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Komputer</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+            </div>
+            
+        </div>
     </div>
-   </section>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
        
        <div class="bg-white p-6 rounded-md shadow-md">

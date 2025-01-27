@@ -1,54 +1,95 @@
 <x-layout>
   <x-slot:title>{{$title}}</x-slot:title>
+    <div class="section-2  -">
+        <div class="text-3xl text-center font-bold bg-primary  text-white mb-8 rounded-b-full">
+            <p class="py-8">INFORMASI TPQ</p>
+        </div>
 
-<div class="bg-gray-100 my-4  ">
-  <main class="container mx-auto mt-6">
-      <div class="bg-primary text-white text-center py-4 rounded-md">
-       <h1 class="text-xl font-bold">
-        INFORMASI TPQ
-       </h1>
-      </div>
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-    <div class="bg-white p-4 rounded-md shadow-md">
-      <img src="/images/compr_pondok2.jpg" alt="" class="w-50 h-50 mx-auto mb-12">
+        <div class="section-3">
+    <div class="background flex bg-white p-16"> <!-- Mengubah bg-gradient menjadi bg-white -->
+        <div class="content-1 flex-1 mr-8">
+            <p class="text-left text-4xl font-bold mb-9 text-center text-green-600"> <!-- Mengubah warna teks menjadi hijau -->
+                Selamat Datang di <br> TPQ Nurul Huda
+            </p>
+            <div class="bg-gray-100 p-6 rounded-md shadow-lg transform transition-transform hover:scale-105"> <!-- Kotak kolom timbul -->
+                <p class="text-justify text-black">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+        <div class="content-2 flex-1 items-center flex">
+            <img src="/images/compr_pondok2.jpg" alt="" class="mx-auto my-auto rounded-xl">
+        </div>
     </div>
-    <div class="bg-white p-4 rounded-md shadow-md">
-     <h2 class="text-lg font-bold">
-      Company Profile
-     </h2>
-     <p>
-      Lakukan pembayaran sesuai nominal dan nomer rekening yang tertera
-     </p>
+</div>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-gray-100 p-4 rounded-md shadow-md"> <!-- Mengubah bg-white menjadi bg-teal-400 -->
+        <center>
+            <h2 class="text-green-600 text-lg font-bold mb-4"> <!-- Mengubah warna teks menjadi putih -->
+                VISI
+            </h2>
+        </center>
+        <p class="mt-4 text-black"> <!-- Mengubah warna teks menjadi putih -->
+        Berakhlah Mulia dan Beribadah Sempurna Adalah Karakter Siswa Santri Nurul Huda.
+        </p>
     </div>
-   </section>
-   <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-    <div class="bg-white p-4 rounded-md shadow-md">
-      <center>
-     <h2 class="text-primary text-lg font-bold mb-4">
-      VISI
-     </h2>
-     </center>
-     <p class="mt-4">
-      STEP 1 - DAFTAR
-     </p>
-     <p>
-      Selesai mendaftar, pendaftar akan menerima notifikasi whatsapp untuk melanjutkan proses pembayaran
-     </p>
+    <div class="bg-gray-100 p-4 rounded-md shadow-md"> <!-- Mengubah bg-white menjadi bg-teal-400 -->
+        <center>
+            <h2 class="text-green-600 text-lg font-bold mb-4"> <!-- Mengubah warna teks menjadi putih -->
+                MISI
+            </h2>
+        </center>
+        <p style="line-height: 1.5; text-align: justify; color: black;"> <!-- Mengubah warna teks menjadi putih -->
+            1. Menegakkan dan menjunjung tinggi nilai-nilai ajaran islan yang bermaktub dalam Al-Qur'an dan Al-Hadits serta keteladanan Ulama Sholih.  <br>
+            2. Menjunjung tinggi nama baik Almamater Yayasan Pondok Pesantren Nurul Huda.  <br>
+            3. Menanamkan akhlakul karimah dalam bersikap, berbuat, berkata, dan berbusana di lingkungan Pesantren Nahdlatul Ulama.  <br>
+            4. Memberikan dasar arah dan pedoman berperilaku selama studi di Yayasan Pondok Pesantren Nurul Huda. 
+        </p>
     </div>
-    <div class="bg-white p-4 rounded-md shadow-md">
-      <center>
-     <h2 class="text-primary text-lg font-bold mb-4">
-      MISI
-     </h2>
-</center>
-     <p class="mt-4">
-      STEP 2 - ISI FORMULIR PENDAFTARAN
-     </p>
-     <p>
-      Isi dan lengkapi isi formulir pendaftaran dan pilih tujuan daftar (Daycare, Playgroup, TK).
-     </p>
-    </div>
-   </section>
+</section>
+    <div class="section-7">
+        <div class="box p-12">
+            <p class="text-left text-4xl font-bold mb-9 text-center"><span class="text-orange">Ekstra</span> <span>Kurikuler</span></p>
+            <div class="card-box flex  justify-center">
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">1</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">OSIS</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">2</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Futsal</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">3</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">English Club</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">4</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Paskibra</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">5</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Hadroh/Banjari</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+            </div>
+            
+        </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
        
        <div class="bg-white p-6 rounded-md shadow-md">
