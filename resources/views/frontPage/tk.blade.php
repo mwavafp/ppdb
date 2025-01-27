@@ -12,12 +12,13 @@
     <div class="bg-white p-4 rounded-md shadow-md">
       <img src="/images/compro_tk2.jpg" alt="" class="w-50 h-50 mx-auto mb-12">
     </div>
+    @foreach ($all_teks as $teks)
     <div class="bg-white p-4 rounded-md shadow-md">
      <h2 class="text-lg font-bold">
       Company Profile
      </h2>
      <p>
-      Lakukan pembayaran sesuai nominal dan nomer rekening yang tertera
+     {{ $teks->deskripsi }}
      </p>
     </div>
    </section>
@@ -29,19 +30,18 @@
      </h2>
      </center>
      <p class="mt-4">
-      Tk Nurul Huda II sebagai pusat pengembangan Ilmu Pengetahuan dan Teknologi (IPTEK) serta peningkatan Iman dan Taqwa (IMTAQ).
+     {{ $teks->visi }}
      </p>
     </div>
     <div class="bg-white p-4 rounded-md shadow-md">
       <center>
       <h3 style="text-align: center;">MISI</h3>
             <p style="line-height: 1.5; text-align: justify;">
-                1. Menyediakan Siswa untuk mempersiapkan diri dalam kehidupannya sesuai perkembangan zaman. <br>
-                2. Mendidik siswa untuk menguasai IPTEK secara Kooperatif pada era globalisasi dengan kemajuan teknologi dan komunikasi. <br>
-                3. Menumbuhkan nilai-nilai kompetensi yang dimiliki isi sesuai dengan ajaran-ajaran Agama dan kemajuan teknologi.
+            {{ $teks->misi }}
             </p>
     </div>
    </section>
+   @endforeach
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
       
        <div class="bg-white p-6 rounded-md shadow-md">

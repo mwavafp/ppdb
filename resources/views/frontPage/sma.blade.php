@@ -5,19 +5,20 @@
   <main class="container mx-auto mt-6">
       <div class="bg-primary text-white text-center py-4 rounded-md">
        <h1 class="text-xl font-bold">
-        INFORMASI SMP
+        INFORMASI SMA
        </h1>
       </div>
       <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
     <div class="bg-white p-4 rounded-md shadow-md">
       <img src="/images/compro_sma.jpg" alt="" class="w-50 h-50 mx-auto mb-12">
     </div>
+    @foreach ($all_teks as $teks)
     <div class="bg-white p-4 rounded-md shadow-md">
      <h2 class="text-lg font-bold">
       Company Profile
      </h2>
      <p>
-      Lakukan pembayaran sesuai nominal dan nomer rekening yang tertera
+     {{ $teks->deskripsi }}
      </p>
     </div>
    </section>
@@ -29,7 +30,7 @@
      </h2>
      </center>
      <p class="mt-4">
-     "MENCETAK GENERASI MASA DEPAN YANG BERTAQWA, BERILMU DAN BERAKHLAQUL KARIMAH".
+     {{ $teks->visi }}
      </p>
     </div>
     <div class="bg-white p-4 rounded-md shadow-md">
@@ -39,15 +40,11 @@
      </h2>
 </center>
      <p class="mt-4">
-     <ol class="list-decimal list-inside space-y-2">
-     <li class="text-gray-700"> Menegakkan dan menjunjung tinggi nilai-nilai ajaran islan yang bermaktub dalam Al-Qur'an dan Al-Hadits serta keteladanan Ulama Sholih.</li> <br>
-     <li class="text-gray-700"> Menjunjung tinggi nama baik Almamater Yayasan Pondok Pesantren Nurul Huda.</li> <br>
-     <li class="text-gray-700"> Menanamkan akhlakul karimah dalam bersikap, berbuat, berkata, dan berbusana di lingkungan Pesantren Nahdlatul Ulama.</li> <br>
-     <li class="text-gray-700"> Memberikan dasar arah dan pedoman berperilaku selama studi di Yayasan Pondok Pesantren Nurul Huda.</li> 
-</ol>
+     {{ $teks->misi }}
      </p>
     </div>
    </section>
+   @endforeach
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
        
        <div class="bg-white p-6 rounded-md shadow-md">

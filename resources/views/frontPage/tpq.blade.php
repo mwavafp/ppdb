@@ -12,12 +12,13 @@
     <div class="bg-white p-4 rounded-md shadow-md">
       <img src="/images/compr_pondok2.jpg" alt="" class="w-50 h-50 mx-auto mb-12">
     </div>
+    @foreach ($all_teks as $teks)
     <div class="bg-white p-4 rounded-md shadow-md">
      <h2 class="text-lg font-bold">
       Company Profile
      </h2>
      <p>
-      Lakukan pembayaran sesuai nominal dan nomer rekening yang tertera
+     {{ $teks->deskripsi }}
      </p>
     </div>
    </section>
@@ -29,10 +30,7 @@
      </h2>
      </center>
      <p class="mt-4">
-      STEP 1 - DAFTAR
-     </p>
-     <p>
-      Selesai mendaftar, pendaftar akan menerima notifikasi whatsapp untuk melanjutkan proses pembayaran
+     {{ $teks->visi }}
      </p>
     </div>
     <div class="bg-white p-4 rounded-md shadow-md">
@@ -42,13 +40,11 @@
      </h2>
 </center>
      <p class="mt-4">
-      STEP 2 - ISI FORMULIR PENDAFTARAN
-     </p>
-     <p>
-      Isi dan lengkapi isi formulir pendaftaran dan pilih tujuan daftar (Daycare, Playgroup, TK).
+     {{ $teks->misi }}
      </p>
     </div>
    </section>
+   @endforeach
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
        
        <div class="bg-white p-6 rounded-md shadow-md">

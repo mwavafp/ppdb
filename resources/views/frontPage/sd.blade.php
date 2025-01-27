@@ -12,12 +12,13 @@
     <div class="bg-white p-4 rounded-md shadow-md">
       <img src="/images/compro_sd.jpg" alt="" class="w-50 h-50 mx-auto mb-12">
     </div>
+    @foreach ($all_teks as $teks)
     <div class="bg-white p-4 rounded-md shadow-md">
      <h2 class="text-lg font-bold">
       Company Profile
      </h2>
      <p>
-      Lakukan pembayaran sesuai nominal dan nomer rekening yang tertera
+     {{ $teks->deskripsi }}
      </p>
     </div>
    </section>
@@ -29,7 +30,7 @@
      </h2>
      </center>
      <p class="mt-4">
-      SD Nurul Huda II sebagai pusat pengembangan Ilmu Pengetahuan dan Teknologi (IPTEK) serta meningkatkan Iman dan Taqwa (IMTAQ).
+     {{ $teks->visi }}
      </p>
     </div>
     <div class="bg-white p-4 rounded-md shadow-md">
@@ -39,16 +40,11 @@
      </h2>
 </center>
      <p class="mt-4">
-     <ol class="list-decimal list-inside space-y-2 pl-4">
-     <li class="text-gray-700 leading-relaxed">  Meningkatkan taqwa terhadap Allah SWT.</li> <br>
-     <li class="text-gray-700 leading-relaxed">  Melaksanakan pembelajaran yang menyenangkan, dinamis, kreatif, dialogis, dan produktif.</li> <br>
-     <li class="text-gray-700 leading-relaxed">  Menyediakan sarana dan prasarana pendidikan yang bermutu, lengkap dan efektif.</li> <br>
-     <li class="text-gray-700 leading-relaxed">  Menerapkan kedisiplinan yang konsisten dalam segala hal.</li> <br>
-     <li class="text-gray-700 leading-relaxed">  Menerapkan pembelajaran pembiasaan.</li>
-</ol>
+     {{ $teks->misi }}
      </p>
     </div>
    </section>
+   @endforeach
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
        
        <div class="bg-white p-6 rounded-md shadow-md">

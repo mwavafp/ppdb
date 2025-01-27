@@ -12,12 +12,13 @@
     <div class="bg-white p-4 rounded-md shadow-md">
       <img src="/images/compro_smp.jpg" alt="" class="w-50 h-50 mx-auto mb-12">
     </div>
+    @foreach ($all_teks as $teks)
     <div class="bg-white p-4 rounded-md shadow-md">
      <h2 class="text-lg font-bold">
       Company Profile
      </h2>
      <p>
-      Lakukan pembayaran sesuai nominal dan nomer rekening yang tertera
+     {{ $teks->deskripsi }}
      </p>
     </div>
    </section>
@@ -29,7 +30,7 @@
      </h2>
      </center>
      <p class="mt-4">
-      "MENCETAK GENERASI MASA DEPAN YANG BERTAQWA, BERILMU DAN BERAKHLAQUL KARIMAH".
+     {{ $teks->visi }}
      </p>
     </div>
     <div class="bg-white p-4 rounded-md shadow-md">
@@ -39,16 +40,11 @@
      </h2>
 </center>
      <p class="mt-4">
-     <ol>
-     <li> Menyelenggarakan Sekolah potensi dengan pendidikan nasional yang terintegrasi dengan pendidikan pesantren serta menjunjung tinggi norma.</li> <br>
-    <li> Mendidik siswa untuk menguasai ilmu pengetahan dan teknologi (IPTEK) serta mengajarkan keimanan dan ketaqwaan (IMTAQ) secara kooperatif pada era globalisasi.</li> <br>
-    <li> Membiasakan disiplin, semangat belajar, bergotong royong, dan berbusana, serta mengembangkan karakter kebangsaan.</li> <br>
-    <li> Menumbuhkembangkan minat bakat siswa untuk berprestasi dan sang juara pada lomba atau event internal dan eksternal.</li> <br>
-    <li> Melahirkan alumni yang berkemampuan intelektual dan berakhlak mulia sebagai generasi masa depan yang unggul dalam berfikir dan anggun dalam bersikap.</li>
-</ol>
+     {{ $teks->misi }}
     </p> 
     </div>
    </section>
+   @endforeach
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
        
        <div class="bg-white p-6 rounded-md shadow-md">
