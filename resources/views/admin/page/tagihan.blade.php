@@ -5,7 +5,7 @@
     <div class="px-9 py-5 flex justify-between items-center mb-4">
         <h1 class="font-bold text-xl mr-2">TAGIHAN BIAYA</h1>
         <!-- Form Search -->
-        <div class="relative">  
+        <div class="relative">
             <form method="GET" action="{{ route('search') }}" id="searchForm">
                 <input type="text" name="search" class="border border-gray-400 rounded-full py-2 px-4 pl-10 w-[500px]"
                     placeholder="Search" value="{{ old('search') }}"
@@ -155,7 +155,7 @@
                                             <!-- Konten Modal -->
                                             <!-- pemakaian include atau component sama saja dan yang wajib diteruskan adalah datanya -->
                                             <!-- Yand dirender menggunakan fungsi dari showData -->
-                                            <form action="{{ route('update-tagihan', $item->id_bayar) }}"
+                                            <form action="{{ route('update-tagihan', ['id' => $item->id_bayar]) }}"
                                                 method="POST">
                                                 @csrf
                                                 <div class="modal fade text-left" id="ModalCreate" tabindex="-1">

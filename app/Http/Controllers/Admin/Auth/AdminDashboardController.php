@@ -56,20 +56,27 @@ class AdminDashboardController extends Controller
         $gender_laki = User::where('gender', '=', 'laki-laki')->count();
         $gender_perempuan = User::where('gender', '=', 'perempuan')->count();
         //
-        $tipe_user = [
-            ['title' => 'Jumlah Pendaftar PONDOK', 'fungsi' => $user_pondok],
-            ['title' => 'Jumlah Pendaftar MADIN', 'fungsi' => $user_madin],
-            ['title' => 'Jumlah Pendaftar TPQ', 'fungsi' => $user_tpq],
-            ['title' => 'Jumlah Pendaftar TK', 'fungsi' => $user_tk],
-            ['title' => 'Jumlah Pendaftar SD', 'fungsi' => $user_sd],
-            ['title' => 'Jumlah Pendaftar SMP', 'fungsi' => $user_smp],
-            ['title' => 'Jumlah Pendaftar SMA', 'fungsi' => $user_sma]
-        ];
+        // $tipe_user = [
+        //     ['title' => 'Jumlah Pendaftar PONDOK', 'count_pondok' => $user_pondok],
+        //     ['title' => 'Jumlah Pendaftar MADIN', 'count_madin' => $user_madin],
+        //     ['title' => 'Jumlah Pendaftar TPQ', 'count_tpq' => $user_tpq],
+        //     ['title' => 'Jumlah Pendaftar TK', 'count_tk' => $user_tk],
+        //     ['title' => 'Jumlah Pendaftar SD', 'count_sd' => $user_sd],
+        //     ['title' => 'Jumlah Pendaftar SMP', 'count_smp' => $user_smp],
+        //     ['title' => 'Jumlah Pendaftar SMA', 'count_sma' => $user_sma]
+        // ];
         return view('admin.page.dashboard', compact(
             'all_user',
-            'tipe_user',
+
             'gender_laki',
             'gender_perempuan',
+            'user_tpq',
+            'user_tk',
+            'user_pondok',
+            'user_sma',
+            'user_smp',
+            'user_sd',
+            'user_madin',
             'total_bayar',
             'total_bayar_tpq',
             'total_bayar_tk',
@@ -124,20 +131,27 @@ class AdminDashboardController extends Controller
         $gender_laki = User::where('gender', '=', 'laki-laki')->count();
         $gender_perempuan = User::where('gender', '=', 'perempuan')->count();
         //
-        $tipe_user = [
-            ['title' => 'Jumlah Pendaftar PONDOK', 'fungsi' => $user_pondok],
-            ['title' => 'Jumlah Pendaftar MADIN', 'fungsi' => $user_madin],
-            ['title' => 'Jumlah Pendaftar TPQ', 'fungsi' => $user_tpq],
-            ['title' => 'Jumlah Pendaftar TK', 'fungsi' => $user_tk],
-            ['title' => 'Jumlah Pendaftar SD', 'fungsi' => $user_sd],
-            ['title' => 'Jumlah Pendaftar SMP', 'fungsi' => $user_smp],
-            ['title' => 'Jumlah Pendaftar SMA', 'fungsi' => $user_sma]
-        ];
+        // $tipe_user = [
+        //     ['title' => 'Jumlah Pendaftar PONDOK', 'count_pondok' => $user_pondok],
+        //     ['title' => 'Jumlah Pendaftar MADIN', 'count_madin' => $user_madin],
+        //     ['title' => 'Jumlah Pendaftar TPQ', 'count_tpq' => $user_tpq],
+        //     ['title' => 'Jumlah Pendaftar TK', 'count_tk' => $user_tk],
+        //     ['title' => 'Jumlah Pendaftar SD', 'count_sd' => $user_sd],
+        //     ['title' => 'Jumlah Pendaftar SMP', 'count_smp' => $user_smp],
+        //     ['title' => 'Jumlah Pendaftar SMA', 'count_sma' => $user_sma]
+        // ];
         return view('admin.page.dashboard', compact(
             'all_user',
-            'tipe_user',
+
             'gender_laki',
             'gender_perempuan',
+            'user_tpq',
+            'user_tk',
+            'user_pondok',
+            'user_sma',
+            'user_smp',
+            'user_sd',
+            'user_madin',
             'total_bayar',
             'total_bayar_tpq',
             'total_bayar_tk',

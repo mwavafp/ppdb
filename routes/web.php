@@ -20,11 +20,12 @@ use App\Http\Controllers\Auth\PengumumanController;
 use App\Http\Controllers\Auth\VerifikasiController;
 use App\Http\Controllers\BerkasSeleksiControl;
 use App\Http\Controllers\BiodataController;
+use App\Http\Controllers\TahunAjaranController;
 use App\Http\Controllers\UserBerkasController;
 
 
 //route untuk view pengaturan 
-Route::get('/', [PengaturanWebController::class, 'showDatahome']); 
+Route::get('/', [PengaturanWebController::class, 'showDatahome']);
 Route::get('/pondok', [PengaturanWebController::class, 'showDatapondok']);
 Route::get('/madin', [PengaturanWebController::class, 'showDatamadin']);
 Route::get('/tpq', [PengaturanWebController::class, 'showDatatpq']);
@@ -120,7 +121,7 @@ Route::middleware('auth:web')->group(function () {
 
     Route::get('/aya', function () {
         return view('calonMurid.b', ['title' => 'Informasi Pembayaran']);
-    });     
+    });
 
     Route::get('/verifikasi', [VerifikasiController::class, 'showData']);
 
@@ -192,38 +193,40 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
     Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
     Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
-    
+
 
     Route::get('/pengaturan-website', function () {
         return view('superAdmin.pengaturanweb', ['title' => 'Page Pengaturan']);
     });
-
+    Route::get('/tahun-ajaran-pengaturan', [TahunAjaranController::class, 'showData'])->name('tahun-ajaran');
+    // Route::get('/tahun-ajaran-pengaturan/edit', [TahunAjaranController::class, 'editId'])->name('tahun-edit');
+    Route::post('/tahun-ajaran-pengaturan/edit/update/{id}', [TahunAjaranController::class, 'edit'])->name('tahun-update');
     // Route pengaturan home dan setiap infoemasi jenjang
-    Route::get('/pengaturan-website',[PengaturanWebController::class, 'showpage'])->name('pengaturanpage');
+    Route::get('/pengaturan-website', [PengaturanWebController::class, 'showpage'])->name('pengaturanpage');
 
-    Route::get('/pengaturan-website/edit/home',[PengaturanWebController::class, 'edithome'])->name('pengaturanhome-edit');
-    Route::post('/pengaturan-website/update/home',[PengaturanWebController::class, 'updatehome'])->name('pengaturanhome-update');
+    Route::get('/pengaturan-website/edit/home', [PengaturanWebController::class, 'edithome'])->name('pengaturanhome-edit');
+    Route::post('/pengaturan-website/update/home', [PengaturanWebController::class, 'updatehome'])->name('pengaturanhome-update');
 
-    Route::get('/pengaturan-website/edit/tk',[PengaturanWebController::class, 'edittk'])->name('pengaturantk-edit');
-    Route::post('/pengaturan-website/update/tk',[PengaturanWebController::class, 'updatetk'])->name('pengaturantk-update');
+    Route::get('/pengaturan-website/edit/tk', [PengaturanWebController::class, 'edittk'])->name('pengaturantk-edit');
+    Route::post('/pengaturan-website/update/tk', [PengaturanWebController::class, 'updatetk'])->name('pengaturantk-update');
 
-    Route::get('/pengaturan-website/edit/sd',[PengaturanWebController::class, 'editsd'])->name('pengaturansd-edit');
-    Route::post('/pengaturan-website/update/sd',[PengaturanWebController::class, 'updatesd'])->name('pengaturansd-update');
+    Route::get('/pengaturan-website/edit/sd', [PengaturanWebController::class, 'editsd'])->name('pengaturansd-edit');
+    Route::post('/pengaturan-website/update/sd', [PengaturanWebController::class, 'updatesd'])->name('pengaturansd-update');
 
-    Route::get('/pengaturan-website/edit/smp',[PengaturanWebController::class, 'editsmp'])->name('pengaturansmp-edit');
-    Route::post('/pengaturan-website/update/smp',[PengaturanWebController::class, 'updatesmp'])->name('pengaturansmp-update');
+    Route::get('/pengaturan-website/edit/smp', [PengaturanWebController::class, 'editsmp'])->name('pengaturansmp-edit');
+    Route::post('/pengaturan-website/update/smp', [PengaturanWebController::class, 'updatesmp'])->name('pengaturansmp-update');
 
-    Route::get('/pengaturan-website/edit/sma',[PengaturanWebController::class, 'editsma'])->name('pengaturansma-edit');
-    Route::post('/pengaturan-website/update/sma',[PengaturanWebController::class, 'updatesma'])->name('pengaturansma-update');
+    Route::get('/pengaturan-website/edit/sma', [PengaturanWebController::class, 'editsma'])->name('pengaturansma-edit');
+    Route::post('/pengaturan-website/update/sma', [PengaturanWebController::class, 'updatesma'])->name('pengaturansma-update');
 
-    Route::get('/pengaturan-website/edit/tpq',[PengaturanWebController::class, 'edittpq'])->name('pengaturantpq-edit');
-    Route::post('/pengaturan-website/update/tpq',[PengaturanWebController::class, 'updatetpq'])->name('pengaturantpq-update');
-    
-    Route::get('/pengaturan-website/edit/madin',[PengaturanWebController::class, 'editmadin'])->name('pengaturanmadin-edit');
-    Route::post('/pengaturan-website/update/madin',[PengaturanWebController::class, 'updatemadin'])->name('pengaturanmadin-update');
+    Route::get('/pengaturan-website/edit/tpq', [PengaturanWebController::class, 'edittpq'])->name('pengaturantpq-edit');
+    Route::post('/pengaturan-website/update/tpq', [PengaturanWebController::class, 'updatetpq'])->name('pengaturantpq-update');
 
-    Route::get('/pengaturan-website/edit/pondok',[PengaturanWebController::class, 'editpondok'])->name('pengaturanpondok-edit');
-    Route::post('/pengaturan-website/update/pondok',[PengaturanWebController::class, 'updatepondok'])->name('pengaturanpondok-update');
+    Route::get('/pengaturan-website/edit/madin', [PengaturanWebController::class, 'editmadin'])->name('pengaturanmadin-edit');
+    Route::post('/pengaturan-website/update/madin', [PengaturanWebController::class, 'updatemadin'])->name('pengaturanmadin-update');
+
+    Route::get('/pengaturan-website/edit/pondok', [PengaturanWebController::class, 'editpondok'])->name('pengaturanpondok-edit');
+    Route::post('/pengaturan-website/update/pondok', [PengaturanWebController::class, 'updatepondok'])->name('pengaturanpondok-update');
 
     Route::post('/logoutz', [LoginController::class, 'destroy'])
         ->name('admin.logoutz');

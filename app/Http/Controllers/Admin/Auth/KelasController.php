@@ -16,15 +16,15 @@ class KelasController extends Controller
     public function showData()
     {
         $students = DB::table('kelas')
-        ->join('users', 'kelas.id_kelas', '=', 'users.id_user')
-        ->select(
-            'users.name',
-            'kelas.kelas',
-            'kelas.kls_identitas',
-            'kelas.unt_pendidikan',
-            'kelas.kls_status',
-            'kelas.id_kelas'
-        )
+            ->join('users', 'kelas.id_kelas', '=', 'users.id_user')
+            ->select(
+                'users.name',
+                'kelas.kelas',
+                'kelas.kls_identitas',
+                'kelas.unt_pendidikan',
+                'kelas.kls_status',
+                'kelas.id_kelas'
+            )
             ->paginate(10);
 
         return view('admin.page.pembagiankelas', compact('students'), ['title' => 'test']);
@@ -51,7 +51,7 @@ class KelasController extends Controller
 
         // Pastikan jika data ditemukan
         if (!$student) {
-            return redirect()->route('pembagiankelas')->with('error', 'Data tidak ditemukan!');
+            return redirect()->route('pembagiankelas');
         }
 
         return view('admin.page.modal.edit_pembagian_kelas', compact('student'), ['title' => 'Edit Pembagian Kelas']);
@@ -79,7 +79,7 @@ class KelasController extends Controller
             ]);
 
         // Redirect dengan pesan sukses setelah pembaruan
-        return redirect()->route('pembagiankelas')->with('success', 'Data berhasil diperbarui!');
+        return redirect()->route('pembagiankelas');
     }
 
     /**

@@ -68,11 +68,11 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Tahun::factory()->create([
-        //     'nama' => 'Tahun Ajaran2024/2025',
-        //     'awal' => '2024-12-12',
-        //     'akhir' => '2025-12-12'
-        // ]);
+        Tahun::factory()->create([
+            'nama' => 'Tahun Ajaran',
+            'awal' => '2024-12-12',
+            'akhir' => '2025-12-12'
+        ]);
 
 
 

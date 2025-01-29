@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('nama');
             $table->date('awal');
             $table->date('akhir');
-            });
+            $table->timestamps();
+        });
     }
 
     /**
