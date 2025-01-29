@@ -5,7 +5,7 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
 
-    <div class="contact-header bg-gradient-to-r from-orange to-reds text-white text-center py-5 text-2xl font-bold">
+    <div class="contact-header bg-green-600 text-white text-center py-5 text-2xl font-bold">
         CONTACT
     </div>
 
@@ -59,19 +59,11 @@
                 <a href="#" class="hover:scale-110 text-white text-2xl"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
-        <div class="image w-2/3">
-            <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/Pondok%20Nurul%20huda.jpg?raw=true" alt="Image of the building" class="rounded-lg w-full h-full object-cover">
+        <div class="image w-full lg:w-2/3 h-[700px]">
+            <img src="/images/Pondok Nurul huda.jpg" alt="Image of the building" class="rounded-lg w-full h-full object-cover">
         </div>
     </div>
-
-
-<div class="contact-form-map  bg-white rounded-lg shadow mx-6 my-10">
- 
-        <div class="map w-full h-96">
-            <div id="map" class="rounded-lg w-full h-full"></div>
-        </div>
-    </div>
-
+    <div>
     <script>
         const map = L.map('map').setView([-7.24917, 112.75083], 15); // Koordinat Surabaya, Indonesia
 
@@ -83,5 +75,5 @@
 
         marker.bindPopup("<b>Pondok Nurul Huda</b><br>Jalan Sencaki No. 64, Simolawang, Simokerto, Surabaya").openPopup();
     </script>
-
+    </div>
 </x-layout>

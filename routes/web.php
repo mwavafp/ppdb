@@ -155,7 +155,7 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
 
     Route::get('/pembagiankelas', [KelasController::class, 'showData'])->name('pembagiankelas');
     Route::get('/pembagiankelas/{id}/edit', [KelasController::class, 'edit'])->name('pembagiankelas.edit');
-    Route::put('/pembagiankelas/{id}/update', [KelasController::class, 'update'])->name('pembagiankelas.update');
+    Route::post('/pembagiankelas/{id}/update', [KelasController::class, 'update'])->name('pembagiankelas.update');
     Route::get('/pembagiankelas/search', [KelasController::class, 'search'])->name('pembagiankelas.search');
     Route::get('/pembagiankelas/filter', [KelasController::class, 'filter'])->name('pembagiankelas.filter');
 

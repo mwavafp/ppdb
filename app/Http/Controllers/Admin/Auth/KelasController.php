@@ -15,16 +15,16 @@ class KelasController extends Controller
      */
     public function showData()
     {
-        $students = DB::table('users')
-            ->join('kelas', 'users.id_user', '=', 'kelas.id_kelas')
-            ->select(
-                'users.name',
-                'kelas.kelas',
-                'kelas.kls_identitas',
-                'kelas.unt_pendidikan',
-                'kelas.kls_status',
-                'kelas.id_kelas'
-            )
+        $students = DB::table('kelas')
+        ->join('users', 'kelas.id_kelas', '=', 'users.id_user')
+        ->select(
+            'users.name',
+            'kelas.kelas',
+            'kelas.kls_identitas',
+            'kelas.unt_pendidikan',
+            'kelas.kls_status',
+            'kelas.id_kelas'
+        )
             ->paginate(10);
 
         return view('admin.page.pembagiankelas', compact('students'), ['title' => 'test']);
@@ -66,20 +66,15 @@ class KelasController extends Controller
         $validated = $request->validate([
             'kelas' => 'required|in:-,1,2,3,4,5,6,7,8,9,10,11,12',
             'kls_identitas' => 'required|in:-,A,B,C,D,E,F',
-            'unt_pendidikan' => 'required|in:tk,sd,smp,sma,tpq,madin,pondok',
-            'kls_status' => 'required|in:Belum Ditentukan,Lolos,Tidak Lolos',
+            'kls_status' => 'required|in:Alumni,Siswa Aktif,Siswa Tidak Aktif',
         ]);
-
-        // Debugging untuk memastikan data yang diterima sudah benar
-        dd($validated, $id);
 
         // Pastikan update pada kelas yang benar berdasarkan id_kelas
         DB::table('kelas')
             ->where('id_kelas', '=', $id)  // Memperbaiki ID yang digunakan
             ->update([
                 'kelas' => $validated['kelas'],
-                'kls_identitas' => $validated['kls_identitas'],
-                'unt_pendidikan' => $validated['unt_pendidikan'],  // Menambahkan 'unt_pendidikan' untuk pembaruan
+                'kls_identitas' => $validated['kls_identitas'], // Menambahkan 'unt_pendidikan' untuk pembaruan
                 'kls_status' => $validated['kls_status'],
             ]);
 
