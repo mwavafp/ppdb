@@ -199,4 +199,4 @@ class SeleksiAdminController extends Controller
         return redirect()->route('seleksi.index')->with('error', 'Tidak ada perubahan data.');
     }
 }
-}    
+}     
