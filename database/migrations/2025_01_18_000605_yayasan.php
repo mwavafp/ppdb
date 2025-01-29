@@ -14,10 +14,22 @@ return new class extends Migration
         Schema::create('yayasan', function (Blueprint $table) {
             $table->id('id_yayasan');
             $table->string('deskripsi');
+
+            $table->string('alasan_memilih_1');
+            $table->string('alasan_memilih_2');
+            $table->string('alasan_memilih_3');
+            $table->string('alasan_memilih_4');
+            $table->string('alasan_memilih_5');
+            $table->string('alasan_memilih_6');
+
             $table->string('keunggulan');
-            $table->string('visi');
-            $table->string('misi');
-            
+            $table->string('visi_misi');
+
+            $table->string('alur_pendaftaran_1');
+            $table->string('alur_pendaftaran_2');
+            $table->string('alur_pendaftaran_3');
+            $table->string('alur_pendaftaran_4');
+            $table->string('alur_pendaftaran_5');
         });
     }
 

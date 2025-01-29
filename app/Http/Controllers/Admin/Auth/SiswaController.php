@@ -15,22 +15,22 @@ class SiswaController extends Controller
         $search = $request->input('search', '');
         $gender = $request->input('gender', '');
         $status = $request->input('status', '');
-        $status = $request->input('status', ''); 
-        
+        $status = $request->input('status', '');
+
         // Query dasar dengan filter pencarian
         $query = User::with(['ortu', 'userUnitPendidikan', 'ortu']);
         $query = User::join('tahun', function ($join) {
             // Di sini kita tidak perlu menghubungkan ke 'kelas', 
             // tetapi langsung ke 'tahun', karena kita ingin memfilter berdasarkan tahun
-           
+
         })
-        ->select('users.*', 'tahun.awal', 'tahun.akhir'); // Mengambil kolom yang dibutuhkan
+            ->select('users.*', 'tahun.awal', 'tahun.akhir'); // Mengambil kolom yang dibutuhkan
         // Menambahkan filter pencarian jika ada
         if (!empty($search)) {
             $query->where('name', 'like', "%{$search}%")
-                  ->orWhere('alamat', 'like', "%{$search}%");
+                ->orWhere('alamat', 'like', "%{$search}%");
             $query->where('users.name', 'like', "%{$search}%")
-                  ->orWhere('users.alamat', 'like', "%{$search}%");
+                ->orWhere('users.alamat', 'like', "%{$search}%");
         }
 
         // Menambahkan filter berdasarkan gender jika ada
@@ -58,7 +58,6 @@ class SiswaController extends Controller
         return view('index', [
             'title' => 'Data Siswa',
             'all_data' => $siswa,
-            'all_data' => $siswa, // Mengirimkan data ke view dengan nama variabel all_data
         ]);
     }
 
@@ -128,10 +127,8 @@ class SiswaController extends Controller
                 'pekerjaan_ibu' => $request->input('pekerjaan_ibu'),
                 'nmr_ibu_wa' => $request->input('nmr_ibu_wa'),
             ]);
-        } 
+        }
         // Redirect atau kembalikan response setelah update
         return redirect()->route('index')->with('success', 'Data siswa berhasil diperbarui!');
     }
-
-
 }

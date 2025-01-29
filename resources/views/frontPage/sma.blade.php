@@ -5,6 +5,7 @@
             <p class="py-8">INFORMASI SMA</p>
         </div>
 
+<<<<<<< HEAD
         <div class="section-3">
     <div class="background flex bg-white p-16"> <!-- Mengubah bg-gradient menjadi bg-white -->
         <div class="content-1 flex-1 mr-8">
@@ -91,6 +92,48 @@
             
         </div>
     </div>
+<div class="bg-gray-100 my-4  ">
+  <main class="container mx-auto mt-6">
+      <div class="bg-primary text-white text-center py-4 rounded-md">
+       <h1 class="text-xl font-bold">
+        INFORMASI SMA
+       </h1>
+      </div>
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="/images/compro_sma.jpg" alt="" class="w-50 h-50 mx-auto mb-12">
+    </div>
+    <div class="bg-white p-4 rounded-md shadow-md">
+     <h2 class="text-lg font-bold">
+      Company Profile
+     </h2>
+     <p>
+     {{ $teks->deskripsi }}
+     </p>
+    </div>
+   </section>
+   <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <center>
+     <h2 class="text-primary text-lg font-bold mb-4">
+      VISI
+     </h2>
+     </center>
+     <p class="mt-4">
+     {{ $teks->visi }}
+     </p>
+    </div>
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <center>
+     <h2 class="text-primary text-lg font-bold mb-4">
+      MISI
+     </h2>
+</center>
+     <p class="mt-4">
+     {{ $teks->misi }}
+     </p>
+    </div>
+   </section>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
        
        <div class="bg-white p-6 rounded-md shadow-md">

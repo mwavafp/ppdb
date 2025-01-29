@@ -160,38 +160,41 @@ class SeleksiAdminController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'kelas' => 'required|integer|min:1',
-        'status_seleksi' => 'required|string|max:20',
-        'status_kk' => 'required|string', // pastikan validasi untuk berkas
-        'status_ijazah_akhir' => 'required|string',
-        'status_pas_foto' => 'required|string',
-        'status_kip' => 'required|string',
-    ]);
+    {
+        $request->validate([
+            'kelas' => 'required|integer|min:1',
+            'status_seleksi' => 'required|string|max:20',
+            'status_kk' => 'required|string', // pastikan validasi untuk berkas
+            'status_ijazah_akhir' => 'required|string',
+            'status_pas_foto' => 'required|string',
+            'status_kip' => 'required|string',
+        ]);
 
-    // Update kelas
-    $update1 = DB::table('user_unit_pendidikan')->where('id_user', $id)->update([
-        'id_kelas' => $request->kelas,
-    ]);
+        $update1 = DB::table('kelas as k1')
+            ->join('user_unit_pendidikan as uup', 'uup.id_kelas', '=', 'k1.id_kelas')
+            ->where('uup.id_user', $id) // Menggunakan id_user dari tabel user_unit_pendidikan
+            ->update([
+                'k1.kelas' => $request->kelas, // Update kolom kelas pada tabel k1
+            ]);
 
-    // Update status seleksi
-    $update2 = DB::table('seleksi')->where('id_user', $id)->update([
-        'status_seleksi' => $request->status_seleksi,
-    ]);
 
-    // Update status berkas
-    $update3 = DB::table('berkas')->where('id_user', $id)->update([
-        'kk' => $request->status_kk,
-        'ijazah_akhir' => $request->status_ijazah_akhir,
-        'pas_foto' => $request->status_pas_foto,
-        'kip' => $request->status_kip,
-    ]);
+        // Update status seleksi
+        $update2 = DB::table('seleksi')->where('id_user', $id)->update([
+            'status_seleksi' => $request->status_seleksi,
+        ]);
 
-    if ($update1 && $update2 && $update3) {
-        return redirect()->route('seleksi.index')->with('success', 'Berhasil diperbarui.');
-    } else {
-        return redirect()->route('seleksi.index')->with('error', 'Berhasil coy.');
+        // Update status berkas
+        $update3 = DB::table('berkas')->where('id_user', $id)->update([
+            'kk' => $request->status_kk,
+            'ijazah_akhir' => $request->status_ijazah_akhir,
+            'pas_foto' => $request->status_pas_foto,
+            'kip' => $request->status_kip,
+        ]);
+
+        if ($update1 && $update2 && $update3) {
+            return redirect()->route('seleksi.index')->with('success', 'Berhasil diperbarui.');
+        } else {
+            return redirect()->route('seleksi.index')->with('error', 'Berhasil coy.');
+        }
     }
-}
 }

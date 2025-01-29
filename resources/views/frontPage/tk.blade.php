@@ -5,11 +5,48 @@
             <p class="py-8">INFORMASI TK</p>
         </div>
 
+<<<<<<< HEAD
         <div class="section-3">
     <div class="background flex bg-white p-16"> <!-- Mengubah bg-gradient menjadi bg-white -->
         <div class="content-1 flex-1 mr-8">
             <p class="text-left text-4xl font-bold mb-9 text-center text-green-600"> <!-- Mengubah warna teks menjadi hijau -->
                 Selamat Datang di <br> TK Nurul Huda
+<div class="bg-gray-100 my-4  ">
+  <main class="container mx-auto mt-6">
+      <div class="bg-primary text-white text-center py-4 rounded-md">
+       <h1 class="text-xl font-bold">
+        INFORMASI TK
+       </h1>
+      </div>
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <img src="/images/compro_tk2.jpg" alt="" class="w-50 h-50 mx-auto mb-12">
+    </div>
+    <div class="bg-white p-4 rounded-md shadow-md">
+     <h2 class="text-lg font-bold">
+      Company Profile
+     </h2>
+     <p>
+     {{ $teks->deskripsi }}
+     </p>
+    </div>
+   </section>
+   <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <center>
+     <h2 class="text-primary text-lg font-bold mb-4">
+      VISI
+     </h2>
+     </center>
+     <p class="mt-4">
+     {{ $teks->visi }}
+     </p>
+    </div>
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <center>
+      <h3 style="text-align: center;">MISI</h3>
+            <p style="line-height: 1.5; text-align: justify;">
+            {{ $teks->misi }}
             </p>
             <div class="bg-gray-100 p-6 rounded-md shadow-lg transform transition-transform hover:scale-105"> <!-- Kotak kolom timbul -->
                 <p class="text-justify text-black">
@@ -21,6 +58,7 @@
             <img src="/images/compro_tk.jpg" alt="" class="mx-auto my-auto rounded-xl">
         </div>
     </div>
+<<<<<<< HEAD
 </div>
 
     <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -90,8 +128,7 @@
             
         </div>
     </div>
-
-
+   </section>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
       
        <div class="bg-white p-6 rounded-md shadow-md">

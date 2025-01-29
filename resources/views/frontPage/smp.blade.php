@@ -21,6 +21,7 @@
             <img src="/images/compro_smp2.jpg" alt="" class="mx-auto my-auto rounded-xl">
         </div>
     </div>
+<<<<<<< HEAD
 </div>
 
     <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -92,6 +93,37 @@
             
         </div>
     </div>
+    <div class="bg-white p-4 rounded-md shadow-md">
+     <h2 class="text-lg font-bold">
+      Company Profile
+     </h2>
+     <p>
+     {{ $teks->deskripsi }}
+     </p>
+    </div>
+   </section>
+   <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <center>
+     <h2 class="text-primary text-lg font-bold mb-4">
+      VISI
+     </h2>
+     </center>
+     <p class="mt-4">
+     {{ $teks->visi }}
+     </p>
+    </div>
+    <div class="bg-white p-4 rounded-md shadow-md">
+      <center>
+     <h2 class="text-primary text-lg font-bold mb-4">
+      MISI
+     </h2>
+</center>
+     <p class="mt-4">
+     {{ $teks->misi }}
+    </p> 
+    </div>
+   </section>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
        
        <div class="bg-white p-6 rounded-md shadow-md">

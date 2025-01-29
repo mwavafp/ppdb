@@ -62,11 +62,11 @@ class UsersExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'Nama Lengkap',
-            'Jenjang Pendidikan',
-            'Tipe Pembayaran',
-            'Jumlah Tagihan',
-            'Jumlah Bayar',
+            'Nama_Lengkap',
+            'Jenjang_Pendidikan',
+            'Tipe_Pembayaran',
+            'Jumlah_Tagihan',
+            'Jumlah_Bayar',
             'Status'
         ];
     }
