@@ -36,44 +36,44 @@ class PengaturanTablesFactory extends Factory
             ],
 
             'tk' => [
-                'deskripsi' => $this->faker->paragraph(2),
-                'visi' => $this->faker->sentence(8),
+                'deskripsi' => $this->faker->paragraph(6),
+                'visi' => 'Tk Nurul Huda II sebagai pusat pengembangan Ilmu Pengetahuan dan Teknologi (IPTEK) serta peningkatan Iman dan Taqwa (IMTAQ).',
                 'misi' => $this->faker->paragraph(2),
             ],
             // Data dummy untuk tabel sd
             'sd' => [
-                'deskripsi' => $this->faker->paragraph(2),
-                'visi' => $this->faker->sentence(8),
-                'misi' => $this->faker->paragraph(2),
+                'deskripsi' => $this->faker->paragraph(6),
+                'visi' => 'SD Nurul Huda II sebagai pusat pengembangan Ilmu Pengetahuan dan Teknologi (IPTEK) serta meningkatkan Iman dan Taqwa (IMTAQ).',
+                'misi' => $this->faker->paragraph(4),
             ],
             // Data dummy untuk tabel smp
             'smp' => [
-                'deskripsi' => $this->faker->paragraph(2),
-                'visi' => $this->faker->sentence(8),
+                'deskripsi' => $this->faker->paragraph(6),
+                'visi' => '"MENCETAK GENERASI MASA DEPAN YANG BERTAQWA, BERILMU DAN BERAKHLAQUL KARIMAH".',
                 'misi' => $this->faker->paragraph(2),
             ],
             // Data dummy untuk tabel sma
             'sma' => [
-                'deskripsi' => $this->faker->paragraph(2),
-                'visi' => $this->faker->sentence(8),
+                'deskripsi' => $this->faker->paragraph(6),
+                'visi' => '"MENCETAK GENERASI MASA DEPAN YANG BERTAQWA, BERILMU DAN BERAKHLAQUL KARIMAH".',
                 'misi' => $this->faker->paragraph(2),
             ],
 
             'tpq' => [
-                'deskripsi' => $this->faker->paragraph(2),
-                'visi' => $this->faker->sentence(8),
+                'deskripsi' => $this->faker->paragraph(6),
+                'visi' => 'Berakhlah Mulia dan Beribadah Sempurna Adalah Karakter Siswa Santri Nurul Huda.',
                 'misi' => $this->faker->paragraph(2),
             ],
 
             'madin' => [
-                'deskripsi' => $this->faker->paragraph(2),
-                'visi' => $this->faker->sentence(8),
+                'deskripsi' => $this->faker->paragraph(6),
+                'visi' => 'Berakhlah Mulia dan Beribadah Sempurna Adalah Karakter Siswa Santri Nurul Huda.',
                 'misi' => $this->faker->paragraph(2),
             ],
 
             'pondok' => [
-                'deskripsi' => $this->faker->paragraph(2),
-                'visi' => $this->faker->sentence(8),
+                'deskripsi' => $this->faker->paragraph(6),
+                'visi' => 'Berakhlah Mulia dan Beribadah Sempurna Adalah Karakter Siswa Santri Nurul Huda.',
                 'misi' => $this->faker->paragraph(2),
             ],
 

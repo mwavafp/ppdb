@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('tpq', function (Blueprint $table) {
             $table->id('id_tpq');
-            $table->string('deskripsi');
-            $table->string('visi');
-            $table->string('misi');
+            $table->text('deskripsi');
+            $table->text('visi');
+            $table->text('misi');
             });
     }
 

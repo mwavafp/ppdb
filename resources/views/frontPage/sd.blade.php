@@ -4,7 +4,7 @@
         <div class="text-3xl text-center font-bold bg-primary  text-white mb-8 rounded-b-full">
             <p class="py-8">INFORMASI SD</p>
         </div>
-
+        @foreach ($all_teks as $teks)
         <div class="section-3">
     <div class="background flex bg-white p-16"> <!-- Mengubah bg-gradient menjadi bg-white -->
         <div class="content-1 flex-1 mr-8">
@@ -13,7 +13,7 @@
             </p>
             <div class="bg-gray-100 p-6 rounded-md shadow-lg transform transition-transform hover:scale-105"> <!-- Kotak kolom timbul -->
                 <p class="text-justify text-black">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {!! nl2br(e($teks->deskripsi)) !!}
                 </p>
             </div>
         </div>
@@ -21,7 +21,6 @@
             <img src="/images/Compro_sd.jpg" alt="" class="mx-auto my-auto rounded-xl">
         </div>
     </div>
-<<<<<<< HEAD
 </div>
 
     <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -32,7 +31,7 @@
             </h2>
         </center>
         <p class="mt-4 text-black"> <!-- Mengubah warna teks menjadi putih -->
-        SD Nurul Huda II sebagai pusat pengembangan Ilmu Pengetahuan dan Teknologi (IPTEK) serta meningkatkan Iman dan Taqwa (IMTAQ).
+        {!! nl2br(e($teks->visi)) !!}
         </p>
     </div>
     <div class="bg-gray-100 p-4 rounded-md shadow-md"> <!-- Mengubah bg-white menjadi bg-teal-400 -->
@@ -42,14 +41,11 @@
             </h2>
         </center>
         <p style="line-height: 1.5; text-align: justify; color: black;"> <!-- Mengubah warna teks menjadi putih -->
-            1. Meningkatkan taqwa terhadap Allah SWT. <br>
-            2. Melaksanakan pembelajaran yang menyenangkan, dinamis, kreatif, dialogis, dan produktif. <br>
-            3.  Menyediakan sarana dan prasarana pendidikan yang bermutu, lengkap dan efektif. <br>
-            4.  Menerapkan kedisiplinan yang konsisten dalam segala hal. <br>
-            5. Menerapkan pembelajaran pembiasaan.
+        {!! nl2br(e($teks->misi)) !!}
         </p>
     </div>
 </section>
+@endforeach
     <div class="section-7">
         <div class="box p-12">
             <p class="text-left text-4xl font-bold mb-9 text-center"><span class="text-orange">Ekstra</span> <span>Kurikuler</span></p>

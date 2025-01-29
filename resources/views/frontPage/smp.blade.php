@@ -4,7 +4,7 @@
         <div class="text-3xl text-center font-bold bg-primary  text-white mb-8 rounded-b-full">
             <p class="py-8">INFORMASI SMP</p>
         </div>
-
+        @foreach ($all_teks as $teks)
         <div class="section-3">
     <div class="background flex bg-white p-16"> <!-- Mengubah bg-gradient menjadi bg-white -->
         <div class="content-1 flex-1 mr-8">
@@ -13,7 +13,7 @@
             </p>
             <div class="bg-gray-100 p-6 rounded-md shadow-lg transform transition-transform hover:scale-105"> <!-- Kotak kolom timbul -->
                 <p class="text-justify text-black">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {!! nl2br(e($teks->deskripsi)) !!}
                 </p>
             </div>
         </div>
@@ -21,7 +21,6 @@
             <img src="/images/compro_smp2.jpg" alt="" class="mx-auto my-auto rounded-xl">
         </div>
     </div>
-<<<<<<< HEAD
 </div>
 
     <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -32,7 +31,7 @@
             </h2>
         </center>
         <p class="mt-4 text-black"> <!-- Mengubah warna teks menjadi putih -->
-        "MENCETAK GENERASI MASA DEPAN YANG BERTAQWA, BERILMU DAN BERAKHLAQUL KARIMAH".
+        {!! nl2br(e($teks->visi)) !!}
         </p>
     </div>
     <div class="bg-gray-100 p-4 rounded-md shadow-md"> <!-- Mengubah bg-white menjadi bg-teal-400 -->
@@ -42,14 +41,11 @@
             </h2>
         </center>
         <p style="line-height: 1.5; text-align: justify; color: black;"> <!-- Mengubah warna teks menjadi putih -->
-            1. Menyelenggarakan Sekolah potensi dengan pendidikan nasional yang terintegrasi dengan pendidikan pesantren serta menjunjung tinggi norma. <br>
-            2. Mendidik siswa untuk menguasai ilmu pengetahan dan teknologi (IPTEK) serta mengajarkan keimanan dan ketaqwaan (IMTAQ) secara kooperatif pada era globalisasi. <br>
-            3. Membiasakan disiplin, semangat belajar, bergotong royong, dan berbusana, serta mengembangkan karakter kebangsaan. <br>
-            4. Menumbuhkembangkan minat bakat siswa untuk berprestasi dan sang juara pada lomba atau event internal dan eksternal.  <br>
-            5. Melahirkan alumni yang berkemampuan intelektual dan berakhlak mulia sebagai generasi masa depan yang unggul dalam berfikir dan anggun dalam bersikap. 
+        {!! nl2br(e($teks->misi)) !!}
         </p>
     </div>
 </section>
+@endforeach
     <div class="section-7">
         <div class="box p-12">
             <p class="text-left text-4xl font-bold mb-9 text-center"><span class="text-orange">Ekstra</span> <span>Kurikuler</span></p>
@@ -93,37 +89,7 @@
             
         </div>
     </div>
-    <div class="bg-white p-4 rounded-md shadow-md">
-     <h2 class="text-lg font-bold">
-      Company Profile
-     </h2>
-     <p>
-     {{ $teks->deskripsi }}
-     </p>
-    </div>
-   </section>
-   <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-    <div class="bg-white p-4 rounded-md shadow-md">
-      <center>
-     <h2 class="text-primary text-lg font-bold mb-4">
-      VISI
-     </h2>
-     </center>
-     <p class="mt-4">
-     {{ $teks->visi }}
-     </p>
-    </div>
-    <div class="bg-white p-4 rounded-md shadow-md">
-      <center>
-     <h2 class="text-primary text-lg font-bold mb-4">
-      MISI
-     </h2>
-</center>
-     <p class="mt-4">
-     {{ $teks->misi }}
-    </p> 
-    </div>
-   </section>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
        
        <div class="bg-white p-6 rounded-md shadow-md">
