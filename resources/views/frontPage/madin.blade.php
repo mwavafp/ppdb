@@ -1,50 +1,94 @@
 <x-layout>
   <x-slot:title>{{$title}}</x-slot:title>
+    <div class="section-2  -">
+        <div class="text-3xl text-center font-bold bg-primary  text-white mb-8 rounded-b-full">
+            <p class="py-8">INFORMASI MADIN</p>
+        </div>
+        @foreach ($all_teks as $teks)
+        <div class="section-3">
+    <div class="background flex bg-white p-16"> <!-- Mengubah bg-gradient menjadi bg-white -->
+        <div class="content-1 flex-1 mr-8">
+            <p class="text-left text-4xl font-bold mb-9 text-center text-green-600"> <!-- Mengubah warna teks menjadi hijau -->
+                Selamat Datang di <br> Madarasah Diniyah Nurul Huda
+            </p>
+            <div class="bg-gray-100 p-6 rounded-md shadow-lg transform transition-transform hover:scale-105"> <!-- Kotak kolom timbul -->
+                <p class="text-justify text-black">
+                {!! nl2br(e($teks->deskripsi)) !!}
+                </p>
+            </div>
+        </div>
+        <div class="content-2 flex-1 items-center flex">
+            <img src="/images/compr_pondok2.jpg" alt="" class="mx-auto my-auto rounded-xl">
+        </div>
+    </div>
 
-<div class="bg-gray-100 my-4  ">
-  <main class="container mx-auto mt-6">
-      <div class="bg-primary text-white text-center py-4 rounded-md">
-       <h1 class="text-xl font-bold">
-        INFORMASI MADIN
-       </h1>
-      </div>
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-    <div class="bg-white p-4 rounded-md shadow-md">
-     <img alt="Informational Poster" class="w-full rounded-md" height="300" src="https://storage.googleapis.com/a1aa/image/PEqUfIexZ1trwUEMnrfoiRof9ZuU7J1S5jBiYPe28wthQhfBF.jpg" width="400"/>
+</div>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-gray-100 p-4 rounded-md shadow-md"> <!-- Mengubah bg-white menjadi bg-teal-400 -->
+        <center>
+            <h2 class="text-green-600 text-lg font-bold mb-4"> <!-- Mengubah warna teks menjadi putih -->
+                VISI
+            </h2>
+        </center>
+        <p class="mt-4 text-black"> <!-- Mengubah warna teks menjadi putih -->
+        {!! nl2br(e($teks->visi)) !!}
+        </p>
     </div>
-    @foreach ($all_teks as $teks)
-    <div class="bg-white p-4 rounded-md shadow-md">
-     <h2 class="text-lg font-bold">
-      Company Profile
-     </h2>
-     <p>
-     {{ $teks->deskripsi }}
-     </p>
+    <div class="bg-gray-100 p-4 rounded-md shadow-md"> <!-- Mengubah bg-white menjadi bg-teal-400 -->
+        <center>
+            <h2 class="text-green-600 text-lg font-bold mb-4"> <!-- Mengubah warna teks menjadi putih -->
+                MISI
+            </h2>
+        </center>
+        <p style="line-height: 1.5; text-align: justify; color: black;"> <!-- Mengubah warna teks menjadi putih -->
+        {!! nl2br(e($teks->misi)) !!}
+        </p>
     </div>
-   </section>
-   <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-    <div class="bg-white p-4 rounded-md shadow-md">
-      <center>
-     <h2 class="text-primary text-lg font-bold mb-4">
-      VISI
-     </h2>
-     </center>
-     <p class="mt-4">
-     {{ $teks->visi }}
-     </p>
-    </div>
-    <div class="bg-white p-4 rounded-md shadow-md">
-      <center>
-     <h2 class="text-primary text-lg font-bold mb-4">
-      MISI
-     </h2>
-     </center>
-     <p class="mt-4">
-     {{ $teks->misi }}
-     </p>
-    </div>
-   </section>
-   @endforeach
+</section>
+@endforeach
+    <div class="section-7">
+        <div class="box p-12">
+            <p class="text-left text-4xl font-bold mb-9 text-center"><span class="text-orange">Jenis</span> <span>Kegiatan</span></p>
+            <div class="card-box flex  justify-center">
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">1</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">BTQ Metode Sidogiri</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">2</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Tahfidzul Qur'an</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">3</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">English Club</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">4</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Paskibra</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+                <div class=" w-72 mx-8  text-center">
+                    <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
+                        <p class="text-center text-3xl text-white font-bold">5</p>
+                    </div>
+                    <p class="text-xl font-bold mb-4 ">Hadroh/Banjari</p>
+                    <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                </div>
+            </div>
+            
+        </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
       
        <div class="bg-white p-6 rounded-md shadow-md">
