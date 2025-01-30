@@ -8,48 +8,39 @@
             <p class="text-3xl">Dashboard</p>
         </div>
         <!-- Header Metrics -->
-        <div class="flex p-8  gap-4 mb-6 flex-row items-stretch">
-            <div class="flex flex-col w-1/2 h-full justify-between ">
-                <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                    <p class="text-sm text-gray-500">Jumlah Total Pendaftar</p>
-                    <p class="text-2xl font-semibold">{{ $all_user }}</p>
+        <div class="flex  p-8   mb-2  w-full">
+            <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
+                <p class="text-sm text-gray-500">Jumlah Total Pendaftar</p>
+                <p class="text-2xl font-semibold">{{ $all_user }}</p>
 
-                </div>
-                <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                    <p class="text-sm text-gray-500">Jumlah Pendapatan Pendaftaran</p>
-                    <p class="text-2xl font-semibold">@currency($total_bayar)</p>
-                </div>
             </div>
-            <div class="flex w-1/2 flex-wrap">
-
-                @foreach ($tipe_user as $user)
-                    <div class="flex-1 p-4 m-2 bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                        <p class="text-sm text-gray-500">{{ $user['title'] }}</p>
-                        <p class="text-2xl font-semibold">{{ $user['fungsi'] }}</p>
-
-                    </div>
-                @endforeach
+            <div class="flex-1 p-4 m-2 h-full bg-white rounded-lg shadow-md text-center min-w-[200px]">
+                <p class="text-sm text-gray-500">Jumlah Pendapatan Pendaftaran</p>
+                <p class="text-2xl font-semibold">@currency($total_bayar)</p>
             </div>
-
-
         </div>
 
         <!-- Charts Section -->
-        <div class="flex  gap-8 mb-6 p-8 w-4/5 mx-auto">
-            <!-- Contextual Pie Chart -->
+        <div class="flex  gap-8 mb-6 px-8 w-full ">
+            <!-- Chart Pendaftar-->
             <div class="flex-1 bg-white p-4 rounded-lg shadow-md w-40">
                 <p class="text-lg font-semibold mb-4">Tipe Pendaftar</p>
                 <canvas id="contextualChart"></canvas>
             </div>
 
-            <!-- Device Type Doughnut Chart -->
-
-
-            <!-- Impression Line Chart -->
+            <!--Chart Keuntungan-->
             <div class="flex-1 flex-wrap bg-white p-4 rounded-lg shadow-md mb-6">
-                <p class="text-lg font-semibold w-full mb-4">Grafik Pembayaran</p>
+                <p class="text-lg font-semibold w-full mb-4">Grafik Pendapatan Pembayaran</p>
                 <div class="w-full">
                     <canvas id="spendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart Pendaftar perUnit -->
+            <div class="flex-1 flex-wrap bg-white p-4 rounded-lg shadow-md mb-6">
+                <p class="text-lg font-semibold w-full mb-4">Grafik Pendaftar per Unit Pendidikan</p>
+                <div class="w-full">
+                    <canvas id="unitChart"></canvas>
                 </div>
             </div>
 
@@ -63,14 +54,26 @@
 </x-layoute>
 <script>
     const genderLaki = @json($gender_laki);
-    const total_bayar_tpq = @json($total_bayar_tpq);
-    const total_bayar_pondok = @json($total_bayar_pondok);
-    const total_bayar_madin = @json($total_bayar_madin);
-    const total_bayar_tk = @json($total_bayar_tk);
-    const total_bayar_sd = @json($total_bayar_sd);
-    const total_bayar_smp = @json($total_bayar_smp);
-    const total_bayar_sma = @json($total_bayar_sma);
+    const totalBayar = {
+        tpq: @json($total_bayar_tpq),
+        pondok: @json($total_bayar_pondok),
+        madin: @json($total_bayar_madin),
+        tk: @json($total_bayar_tk),
+        sd: @json($total_bayar_sd),
+        smp: @json($total_bayar_smp),
+        sma: @json($total_bayar_sma)
+    };
     const genderPerempuan = @json($gender_perempuan);
+    const totalPendaftar = {
+        tpq: @json($user_tpq),
+        pondok: @json($user_pondok),
+        madin: @json($user_madin),
+        tk: @json($user_tk),
+        sd: @json($user_sd),
+        smp: @json($user_smp),
+        sma: @json($user_sma)
+    };
+
     // Contextual Chart (Pie)
     const ctxContextual = document.getElementById('contextualChart');
     new Chart(ctxContextual, {
@@ -88,37 +91,62 @@
 
 
 
-    // Spend Chart (Bar)
+    // totalKeuntunganChart (Bar)
     const ctxSpend = document.getElementById('spendChart');
     new Chart(ctxSpend, {
         type: 'bar',
         data: {
             labels: ['TPQ', 'PONDOK', 'MADIN', 'TK', 'SD', 'SMP', 'SMA'],
             datasets: [{
-                label: 'Spend ($)',
-                data: [total_bayar_tpq,
-                    total_bayar_pondok,
-                    total_bayar_madin,
-                    total_bayar_tk,
-                    total_bayar_sd,
-                    total_bayar_smp,
-                    total_bayar_sma
+                label: 'Pendapatan (Rp)',
+                data: [totalBayar.tpq,
+                    totalBayar.pondok,
+                    totalBayar.madin,
+                    totalBayar.tk,
+                    totalBayar.sd,
+                    totalBayar.smp,
+                    totalBayar.sma
                 ],
-                backgroundColor: '#f472b6'
+                backgroundColor: [
+                    '#f472b6', // pink
+                    '#34d399', // green
+                    '#fbbf24', // yellow
+                    '#ef4444', // red
+                    '#8b5cf6', // purple
+                    '#10b981', // emerald
+                    '#eab308'
+                ]
 
             }]
         }
     });
 
-    // Resonance Chart (Polar Area)
-    const ctxResonance = document.getElementById('resonanceChart');
-    new Chart(ctxResonance, {
-        type: 'polarArea',
+    //chart Pendaftar
+    const ctxPendaftar = document.getElementById('unitChart');
+    new Chart(ctxPendaftar, {
+        type: 'bar',
         data: {
-            labels: ['Creative A', 'Creative B', 'Creative C', 'Creative D'],
+            labels: ['TPQ', 'PONDOK', 'MADIN', 'TK', 'SD', 'SMP', 'SMA'],
             datasets: [{
-                data: [79, 82, 54, 67],
-                backgroundColor: ['#f472b6', '#818cf8', '#34d399', '#fbbf24']
+                label: 'Total Pendaftar',
+                data: [totalPendaftar.tpq,
+                    totalPendaftar.pondok,
+                    totalPendaftar.madin,
+                    totalPendaftar.tk,
+                    totalPendaftar.sd,
+                    totalPendaftar.smp,
+                    totalPendaftar.sma
+                ],
+                backgroundColor: [
+                    '#f472b6', // pink
+                    '#34d399', // green
+                    '#fbbf24', // yellow
+                    '#ef4444', // red
+                    '#8b5cf6', // purple
+                    '#10b981', // emerald
+                    '#eab308'
+                ]
+
             }]
         }
     });

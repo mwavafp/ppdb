@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class SeleksiFactory extends Factory
+class TahunFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +18,11 @@ class SeleksiFactory extends Factory
     {
         return [
 
-            'id_user' => User::factory(),
-            'status_seleksi' => $this->faker->randomElement(['TIDAK LOLOS', 'PENDING', 'LOLOS']),
+            'nama' => $this->faker->name(),
+            'awal'  => $this->faker->date('Y-m-d'),
+            'akhir' => $this->faker->date('Y-m-d'),
+
+
         ];
     }
 }
