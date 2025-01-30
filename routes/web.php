@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\SeleksiAdminController;
 use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
+use App\Http\Controllers\AdminSuper\TahunAjaranController;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
 use App\Http\Controllers\Auth\PengumumanController;
 use App\Http\Controllers\Auth\VerifikasiController;
@@ -187,6 +188,8 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
     Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
     Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
+    Route::get('/tahun-ajaran-pengaturan', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.tahun-ajaran-pengaturan');
+    Route::post('/tahun-ajaran/update/{id_tahun}', [TahunAjaranController::class, 'update'])->name('superAdmin.tahun-ajaran-update');
     Route::post('/logoutz', [LoginController::class, 'destroy'])
         ->name('admin.logoutz');
 });

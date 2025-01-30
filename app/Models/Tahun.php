@@ -9,6 +9,8 @@ class Tahun extends Model
 {
     use HasFactory;
     protected $table = 'tahun';
+    protected $primaryKey = 'id_tahun'; 
+    public $timestamps = false;
     protected $fillable = [
         'nama',
         'awal',
