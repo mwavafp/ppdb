@@ -1,138 +1,60 @@
 <x-layout>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengumuman Hasil Seleksi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>
-<body class="bg-gray-100">
-    <header class="bg-orange-600 text-white text-center py-4">
-        <h1 class="text-lg font-bold">PENGUMUMAN HASIL SELEKSI ASAL SEKOLAH PENDAFTAR</h1>
-    </header>
-    <main class="max-w-5xl mx-auto mt-8">
-        <div class="text-center mb-4">
-            <h2 class="text-xl font-semibold">Pengumuman Hasil Seleksi &gt; SMA &gt; Info Asal Sekolah Pendaftar</h2>
-        </div>
-        <div class="flex justify-center mb-4">
-            <div class="flex space-x-2">
-                <button class="bg-gray-200 px-4 py-2 rounded">Jenjang Pendidikan SMA</button>
-                <button class="bg-gray-200 px-4 py-2 rounded flex items-center space-x-1">
-                    <span>Pilih Jenis Sekolah</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <button class="bg-gray-200 px-4 py-2 rounded flex items-center space-x-1">
-                    <span>Pilih Kota</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="flex items-center border border-gray-300 rounded">
-                    <input type="text" placeholder="Nama Lengkap" class="px-4 py-2 outline-none">
-                    <button class="px-4 py-2 bg-gray-200 rounded-r">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
+    <div class="container mx-auto p-4">
+        <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">{{ $title }}</h2>
+        <div class="bg-white p-8 rounded-lg shadow-lg mx-auto mt-8 max-w-7xl">
+
+            <!-- Search Bar -->
+            <div class="flex items-center justify-between mb-6">
+                <form method="GET" action="{{ route('pengumumansma.search') }}" class="w-full max-w-lg">
+                    <div class="relative">
+                        <input
+                            type="text"
+                            name="search"
+                            class="w-full pl-10 pr-4 py-2 border rounded-lg shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
+                            placeholder="Cari berdasarkan nama atau NISN"
+                            value="{{ request('search') }}"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 10-14 0 7 7 0 0014 0z" />
+                        </svg>
+                    </div>
+                </form>
             </div>
-        </div>
-        <div class="overflow-x-auto">
-            <table class="min-w-full border-collapse border border-gray-300">
-                <thead>
-                    <tr class="bg-gray-200">
-                        <th class="border border-gray-300 px-4 py-2">No</th>
-                        <th class="border border-gray-300 px-4 py-2">Nama Sekolah</th>
-                        <th class="border border-gray-300 px-4 py-2">NPSN</th>
-                        <th class="border border-gray-300 px-4 py-2">Nama Lengkap</th>
-                        <th class="border border-gray-300 px-4 py-2">Kecamatan</th>
-                        <th class="border border-gray-300 px-4 py-2">Kelurahan</th>
+
+            <!-- Data Table -->
+            <table class="min-w-full divide-y divide-gray-300 border rounded-lg shadow-lg">
+                <thead class="bg-blue-100">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-blue-800 uppercase tracking-wide">No</th>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-blue-800 uppercase tracking-wide">Nama Lengkap</th>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-blue-800 uppercase tracking-wide">Alamat</th>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-blue-800 uppercase tracking-wide">NISN</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="bg-white">
-                        <td class="border border-gray-300 px-4 py-2 text-center">1.</td>
-                        <td class="border border-gray-300 px-4 py-2">SMAN 1 KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2">3130022039</td>
-                        <td class="border border-gray-300 px-4 py-2">Nadia Vennya Salsabila</td>
-                        <td class="border border-gray-300 px-4 py-2">KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2"></td>
-                    </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-300 px-4 py-2 text-center">2.</td>
-                        <td class="border border-gray-300 px-4 py-2">SMAN 1 KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2">3130022039</td>
-                        <td class="border border-gray-300 px-4 py-2">Nadia Vennya Salsabila</td>
-                        <td class="border border-gray-300 px-4 py-2">KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2"></td>
-                    </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-300 px-4 py-2 text-center">3.</td>
-                        <td class="border border-gray-300 px-4 py-2">SMAN 1 KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2">3130022039</td>
-                        <td class="border border-gray-300 px-4 py-2">Nadia Vennya Salsabila</td>
-                        <td class="border border-gray-300 px-4 py-2">KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2"></td>
-                    </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-300 px-4 py-2 text-center">4.</td>
-                        <td class="border border-gray-300 px-4 py-2">SMAN 1 KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2">3130022039</td>
-                        <td class="border border-gray-300 px-4 py-2">Nadia Vennya Salsabila</td>
-                        <td class="border border-gray-300 px-4 py-2">KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2"></td>
-                    </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-300 px-4 py-2 text-center">5.</td>
-                        <td class="border border-gray-300 px-4 py-2">SMAN 1 KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2">3130022039</td>
-                        <td class="border border-gray-300 px-4 py-2">Nadia Vennya Salsabila</td>
-                        <td class="border border-gray-300 px-4 py-2">KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2"></td>
-                    </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-300 px-4 py-2 text-center">2.</td>
-                        <td class="border border-gray-300 px-4 py-2">SMAN 1 KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2">3130022039</td>
-                        <td class="border border-gray-300 px-4 py-2">Nadia Vennya Salsabila</td>
-                        <td class="border border-gray-300 px-4 py-2">KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2"></td>
-                    </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-300 px-4 py-2 text-center">3.</td>
-                        <td class="border border-gray-300 px-4 py-2">SMAN 1 KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2">3130022039</td>
-                        <td class="border border-gray-300 px-4 py-2">Nadia Vennya Salsabila</td>
-                        <td class="border border-gray-300 px-4 py-2">KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2"></td>
-                    </tr>
-                    <tr class="bg-gray-100">
-                        <td class="border border-gray-300 px-4 py-2 text-center">4.</td>
-                        <td class="border border-gray-300 px-4 py-2">SMAN 1 KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2">3130022039</td>
-                        <td class="border border-gray-300 px-4 py-2">Nadia Vennya Salsabila</td>
-                        <td class="border border-gray-300 px-4 py-2">KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2"></td>
-                    </tr>
-                    <tr class="bg-white">
-                        <td class="border border-gray-300 px-4 py-2 text-center">5.</td>
-                        <td class="border border-gray-300 px-4 py-2">SMAN 1 KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2">3130022039</td>
-                        <td class="border border-gray-300 px-4 py-2">Nadia Vennya Salsabila</td>
-                        <td class="border border-gray-300 px-4 py-2">KEDAMEAN</td>
-                        <td class="border border-gray-300 px-4 py-2"></td>
-                    </tr>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    @if ($all_data->isEmpty())
+                        <tr>
+                            <td colspan="4" class="text-center py-4 text-gray-500">
+                                Data tidak ditemukan
+                            </td>
+                        </tr>
+                    @else
+                        @foreach ($all_data as $item)
+                            <tr class="hover:bg-blue-50 transition">
+                                <td class="px-6 py-4 text-gray-600">{{ $loop->iteration + ($all_data->currentPage() - 1) * $all_data->perPage() }}</td>
+                                <td class="px-6 py-4 text-gray-600">{{ $item->name }}</td>
+                                <td class="px-6 py-4 text-gray-600">{{ $item->alamat }}</td>
+                                <td class="px-6 py-4 text-gray-600">{{ $item->nisn }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
-        </div>
-        <div class="flex justify-center mt-4">
-            <button class="bg-red-600 text-white px-4 py-2 rounded-l"><i class="fas fa-chevron-left"></i></button>
-            <div class="flex space-x-2 bg-red-600 text-white px-4 py-2">
-                <button class="bg-white text-red-600 px-2 py-1 rounded">1</button>
-                <button class="px-2 py-1">2</button>
-                <button class="px-2 py-1">...</button>
-                <button class="px-2 py-1">6</button>
-                <button class="px-2 py-1">7</button>
-                <button class="px-2 py-1">8</button>
+
+            <!-- Pagination links -->
+            <div class="mt-6 flex justify-center">
+                {{ $all_data->appends(request()->except('page'))->links() }}
             </div>
-            <button class="bg-red-600 text-white px-4 py-2 rounded-r"><i class="fas fa-chevron-right"></i></button>
         </div>
-    </main>
-</body>
+    </div>
 </x-layout>

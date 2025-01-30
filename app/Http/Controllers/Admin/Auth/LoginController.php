@@ -28,8 +28,19 @@ class LoginController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-       
-        return redirect()->intended(route('admin.dashboard'));
+        $admin = Auth::guard('admin')->check();
+
+
+        if ($admin && Auth::guard('admin')->user()->role == 'admin') {
+            return redirect()->intended(route('admin.dashboard-admin'));
+        } elseif ($admin) {
+
+            return redirect()->intended(route('admin.dashboardSuperAdmin'));
+        }
+        // if ($admin) {
+        //     return redirect()->intended(route('admin.dashboard-admin'));
+        // }
+        return redirect()->intended(route('admin.login'));
     }
 
     /**

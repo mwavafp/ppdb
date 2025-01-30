@@ -3,23 +3,41 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Exports\UsersExport;
 use App\Http\Controllers\Controller;
 use App\Models\Pembayaran;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TagihanAdmin extends Controller
 {
     public function showData()
     {
+
+
         $all_data = DB::table('pembayaran')
             ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.id_user', 'pembayaran.id_bayar', 'kelas.unt_pendidikan', 'pembayaran.byr_dft_ulang', 'pembayaran.status', 'jmlh_byr')
+            ->whereBetween('users.created_at', [
+                DB::raw('(SELECT awal FROM tahun LIMIT 1)'),
+                DB::raw('(SELECT akhir FROM tahun LIMIT 1)')
+            ])
+            ->select(
+                'users.name',
+                'users.id_user',
+                'pembayaran.id_bayar',
+                'kelas.unt_pendidikan',
+                'pembayaran.byr_dft_ulang',
+                'pembayaran.status',
+                'pembayaran.jmlh_byr',
+                'seleksi.status_seleksi'
+            )
+            ->where('seleksi.status_seleksi', '=', 'LOLOS')
             ->paginate(10);
-
 
 
         return view('admin.page.tagihan', compact('all_data',), ['title' => 'test']);
@@ -64,8 +82,10 @@ class TagihanAdmin extends Controller
             ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->select('users.name', 'users.id_user', 'pembayaran.id_bayar', 'kelas.unt_pendidikan', 'pembayaran.byr_dft_ulang', 'pembayaran.status', 'jmlh_byr')
             ->where('users.name', 'LIKE', "%{$search}%")
+            ->where('seleksi.status_seleksi', '=', 'LOLOS')
             ->paginate(10);
 
         return view('admin.page.tagihan', compact('all_data'), ['title' => 'Search Results']);
@@ -81,6 +101,7 @@ class TagihanAdmin extends Controller
         ];
         $query = DB::table('pembayaran')
             ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
+            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
             ->select(
@@ -91,7 +112,7 @@ class TagihanAdmin extends Controller
                 'pembayaran.byr_dft_ulang',
                 'pembayaran.status',
                 'pembayaran.jmlh_byr'
-            );
+            )->where('seleksi.status_seleksi', '=', 'LOLOS');
 
 
         foreach ($filterCategory as $key => $value) {
@@ -106,5 +127,9 @@ class TagihanAdmin extends Controller
         $all_data->appends($request->all());
 
         return view('admin.page.tagihan', compact('all_data'), ['title' => 'Search Results']);
+    }
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

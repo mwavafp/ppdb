@@ -52,8 +52,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/pembayaran', function () {
         return view('calonMurid.pembayaran',['title'=>'Informasi Pembayaran']);
     });
-    Route::get('/biaya', function () {
-        return view('calonMurid.biaya',['title'=>'Informasi Pembayaran']);
+    Route::get('/bayar', function () {
+        return view('calonMurid.bayar',['title'=>'Informasi Pembayaran']);
     });
     
     Route::get('verify-email', EmailVerificationPromptController::class)

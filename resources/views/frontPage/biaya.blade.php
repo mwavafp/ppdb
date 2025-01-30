@@ -13,7 +13,10 @@
 
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+<<<<<<< HEAD:resources/views/calonMurid/biaya.blade.php
     <x-tahapan></x-tahapan>
+=======
+>>>>>>> a241e8483617a44058b60df6f3694210eb332c4b:resources/views/frontPage/biaya.blade.php
     <div class="container mx-auto p-4">
         <div class="bg-orange-500 text-black text-center py-4 font-bold text-lg">
             <p>Biaya Pendidikan</p>

@@ -2,13 +2,23 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
+use App\Models\Berkas;
 use App\Models\Kelas;
 use App\Models\Pembayaran;
+use App\Models\Seleksi;
 use App\Models\User;
 use App\Models\Ortu;
+use App\Models\Tahun;
 use App\Models\UserUnitPendidikan;
+use Database\Factories\AdminsFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\BerkasFactory;
+use Database\Factories\PengaturanTablesFactory;
+use Database\Factories\TahunFactory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -23,7 +33,6 @@ class DatabaseSeeder extends Seeder
 
         $user = User::factory()->create([
             'username' => 'user',
-            'email' => 'user@gmail.com',
             'password' => Hash::make('user1234'),
             'name' => 'User Prasetyo',
             'alamat' => 'Jalan User Tenggara no.23, welington, DC',
@@ -37,8 +46,35 @@ class DatabaseSeeder extends Seeder
             'unt_pendidikan' => 'sma',
             'kelas' => '8',
             'kls_identitas' => 'A',
-            'kls_status' => 'Lolos'
+            'kls_status' => 'Siswa Aktif'
         ]);
+        Admin::factory()->createMany(
+            [
+                [
+                    'name' => 'cahyo',
+                    'nip' => 1231232,
+                    'email' => 'cahyo@gmail.com',
+                    'password' => bcrypt('cahyo123'),
+                    'password2' => Crypt::encrypt(('cahyo123')), // Jangan lupa hash password
+                    'role' => 'admin'
+                ],
+                [
+                    'name' => 'super',
+                    'nip' => 1231232,
+                    'email' => 'super@gmail.com',
+                    'password' => bcrypt('super'), // Jangan lupa hash password
+                    'role' => 'superAdmin'
+                ]
+            ]
+        );
+
+        Tahun::factory()->create([
+            'nama' => 'Tahun Ajaran',
+            'awal' => '2024-12-12',
+            'akhir' => '2025-12-12'
+        ]);
+
+
 
         Ortu::factory()->create([
             'id_user' => $user->id_user,
@@ -65,14 +101,37 @@ class DatabaseSeeder extends Seeder
             'status' => 'Lunas',
             'jmlh_byr' => 300000
         ]);
+
         UserUnitPendidikan::factory()->create([
             'id_user' => $user->id_user,
             'id_kelas' => $kelas->id_kelas,
-            'status' => 'aktif',
+            'status' => 'Siswa Aktif',
             'tgl_mulai' => '2024-12-03',
             'tgl_berakhir' => '2024-12-11'
 
         ]);
+
+        Berkas::factory()->create([
+            'id_user' => $user->id_user,
+            'kk' => 'belum_diserahkan',
+            'pas_foto' => 'belum_diserahkan',
+            'ijazah_akhir' => 'belum_diserahkan',
+            'kip' => 'belum_diserahkan'
+
+            // Berkas::factory()->create([
+            //     'id_user' => $user->id_user,
+            //     'kk' => 'belum_diserahkan',
+            //     'pas_foto' => 'belum_diserahkan',
+            //     'ijazah_akhir' => 'belum_diserahkan',
+            //     'kip' => 'belum_diserahkan'
+
+
+        ]);
+        Seleksi::factory()->create([
+            'id_user' => $user->id_user,
+            'status_seleksi' => 'TIDAK LOLOS'
+        ]);
+
 
         //Automatic 100 dummy
 
@@ -86,11 +145,27 @@ class DatabaseSeeder extends Seeder
             UserUnitPendidikan::factory()->create([
                 'id_user' => $user->id_user, //penimpaan data
             ]);
+            Seleksi::factory()->create([
+                'id_user' => $user->id_user, //penimpaan data
+            ]);
+            Berkas::factory()->create([
+                'id_user' => $user->id_user, //penimpaan data
+            ]);
         });
         Kelas::factory(100)->create()->each(function ($kelas) {
             UserUnitPendidikan::factory()->create([
                 'id_kelas' => $kelas->id_kelas, //penimpaan data
             ]);
         });
+        $factoryData = PengaturanTablesFactory::new()->definition();
+
+        DB::table('yayasan')->insert($factoryData['yayasan']);
+        DB::table('tk')->insert($factoryData['tk']);
+        DB::table('sd')->insert($factoryData['sd']);
+        DB::table('smp')->insert($factoryData['smp']);
+        DB::table('sma')->insert($factoryData['sma']);
+        DB::table('tpq')->insert($factoryData['tpq']);
+        DB::table('madin')->insert($factoryData['madin']);
+        DB::table('pondok')->insert($factoryData['pondok']);
     }
 }

@@ -25,8 +25,9 @@
         <div class="background flex bg-gradient-to-r from-primary to-secondary text-white p-16 ">
             <div class="content-1 flex-1 mr-8">
                 <p class="text-right text-xl font-bold mb-8">Selamat Datang Di PMB Yayasan Nurul Huda</p>
+                @foreach ($all_teks as $teks)
                 <p class="text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {!! nl2br(e($teks->deskripsi)) !!}
                 </p>
             </div>
             <div class="content-2 flex-1 items-center flex ">
@@ -40,27 +41,27 @@
             <div class="card-box flex flex-wrap justify-center ">
                 <div class=" w-72 mx-16 my-8">
                     <img src="/images/book.png" alt="" class="w-32 h-32 mx-auto mb-12">
-                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <p class="text-justify"> {!! nl2br(e($teks->alasan_memilih_1)) !!}</p>
                 </div>
                 <div class=" w-72 mx-16 my-8">
                     <img src="/images/book.png" alt="" class="w-32 h-32 mx-auto mb-12">
-                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <p class="text-justify">{!! nl2br(e($teks->alasan_memilih_2)) !!}</p>
                 </div>
                 <div class=" w-72 mx-16 my-8">
                     <img src="/images/book.png" alt="" class="w-32 h-32 mx-auto mb-12">
-                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <p class="text-justify">{!! nl2br(e($teks->alasan_memilih_3)) !!}</p>
                 </div>
                 <div class=" w-72 mx-16 my-8">
                     <img src="/images/book.png" alt="" class="w-32 h-32 mx-auto mb-12">
-                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <p class="text-justify">{!! nl2br(e($teks->alasan_memilih_4)) !!}</p>
                 </div>
                 <div class=" w-72 mx-16 my-8">
                     <img src="/images/book.png" alt="" class="w-32 h-32 mx-auto mb-12">
-                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <p class="text-justify">{!! nl2br(e($teks->alasan_memilih_5)) !!}</p>
                 </div>
                 <div class=" w-72 mx-16 my-8">
                     <img src="/images/book.png" alt="" class="w-32 h-32 mx-auto mb-12">
-                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <p class="text-justify">{!! nl2br(e($teks->alasan_memilih_6)) !!}</p>
                 </div>
             </div>
             
@@ -74,10 +75,10 @@
             <div class="content-2 flex-initial ">
                 <p class="text-center text-xl font-bold mb-8">VISI & MISI</p>
                 <p class="text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {!! nl2br(e($teks->visi_misi)) !!}
                 </p>
             </div>
-            
+
         </div>
     </div>
     <div class="section-6 ">
@@ -85,7 +86,7 @@
             <div class="content-1 flex-1 mr-8 ">
                 <p class="text-center text-xl font-bold mb-8">KEUNGGULAN KAMI</p>
                 <p class="text-justify ">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {!! nl2br(e($teks->keunggulan)) !!}
                 </p>
             </div>
             <div class="content-2 flex-1 items-center flex">
@@ -104,35 +105,35 @@
                         <p class="text-center text-3xl text-white font-bold">1</p>
                     </div>
                     <p class="text-xl font-bold mb-4 ">Membawa Kk</p>
-                    <p class="text-justify text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <p class="text-justify text-sm">{!! nl2br(e($teks->alur_pendaftaran_1)) !!}</p>
                 </div>
                 <div class=" w-72 mx-8  text-center">
                     <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
                         <p class="text-center text-3xl text-white font-bold">2</p>
                     </div>
                     <p class="text-xl font-bold mb-4 ">Membawa Kk</p>
-                    <p class="text-justify text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <p class="text-justify text-sm">{!! nl2br(e($teks->alur_pendaftaran_2)) !!}</p>
                 </div>
                 <div class=" w-72 mx-8  text-center">
                     <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
                         <p class="text-center text-3xl text-white font-bold">3</p>
                     </div>
                     <p class="text-xl font-bold mb-4 ">Membawa Kk</p>
-                    <p class="text-justify text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <p class="text-justify text-sm">{!! nl2br(e($teks->alur_pendaftaran_3)) !!}</p>
                 </div>
                 <div class=" w-72 mx-8  text-center">
                     <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
                         <p class="text-center text-3xl text-white font-bold">4</p>
                     </div>
                     <p class="text-xl font-bold mb-4 ">Membawa Kk</p>
-                    <p class="text-justify text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <p class="text-justify text-sm">{!! nl2br(e($teks->alur_pendaftaran_4)) !!}</p>
                 </div>
                 <div class=" w-72 mx-8  text-center">
                     <div class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-blue to-purple rounded-full flex items-center justify-center">
                         <p class="text-center text-3xl text-white font-bold">5</p>
                     </div>
                     <p class="text-xl font-bold mb-4 ">Membawa Kk</p>
-                    <p class="text-justify text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <p class="text-justify text-sm">{!! nl2br(e($teks->alur_pendaftaran_5)) !!}</p>
                 </div>
             </div>
             
@@ -179,5 +180,6 @@
             </div>    
         </div>
     </div>
+@endforeach
   
 </x-layout>

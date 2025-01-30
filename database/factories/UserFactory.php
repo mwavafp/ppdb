@@ -34,8 +34,6 @@ class UserFactory extends Factory
             'tgl_lahir' => $this->faker->date,
             'asl_sekolah' => $this->faker->company,
             'status' => $this->faker->randomElement(['aktif', 'tidak_aktif']),
-            'email' => $this->faker->unique()->safeEmail,
-            'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ];
     }
