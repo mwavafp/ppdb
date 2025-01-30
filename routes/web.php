@@ -16,36 +16,25 @@ use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
 use App\Http\Controllers\AdminSuper\TahunAjaranController;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
+use App\Http\Controllers\AdminSuper\PengaturanWebController;
 use App\Http\Controllers\Auth\PengumumanController;
 use App\Http\Controllers\Auth\VerifikasiController;
 use App\Http\Controllers\BerkasSeleksiControl;
 use App\Http\Controllers\BiodataController;
+use App\Http\Controllers\TahunAjaranController;
 use App\Http\Controllers\UserBerkasController;
 
-Route::get('/', function () {
-    return view('frontPage.home', ['title' => 'Home Page']); //penggunaan nilai title
-});
-Route::get('/pondok', function () {
-    return view('frontPage.pondok', ['title' => 'Pondok Information Page']);
-});
-Route::get('/madin', function () {
-    return view('frontPage.madin', ['title' => 'Madin Information Page']);
-});
-Route::get('/tpq', function () {
-    return view('frontPage.tpq', ['title' => 'TPQ Information Page']);
-});
-Route::get('/tk', function () {
-    return view('frontPage.tk', ['title' => 'TK Information Page']);
-});
-Route::get('/sd', function () {
-    return view('frontPage.sd', ['title' => 'SD Information Page']);
-});
-Route::get('/smp', function () {
-    return view('frontPage.smp', ['title' => 'SMP Information Page']);
-});
-Route::get('/sma', function () {
-    return view('frontPage.sma', ['title' => 'SMA Information Page']);
-});
+
+//route untuk view pengaturan 
+Route::get('/', [PengaturanWebController::class, 'showDatahome']);
+Route::get('/pondok', [PengaturanWebController::class, 'showDatapondok']);
+Route::get('/madin', [PengaturanWebController::class, 'showDatamadin']);
+Route::get('/tpq', [PengaturanWebController::class, 'showDatatpq']);
+Route::get('/tk', [PengaturanWebController::class, 'showDatatk']);
+Route::get('/sd', [PengaturanWebController::class, 'showDatasd']);
+Route::get('/smp', [PengaturanWebController::class, 'showDatasmp']);
+Route::get('/sma', [PengaturanWebController::class, 'showDatasma']);
+
 Route::get('/biaya', function () {
     return view('frontpage.biaya', ['title' => 'Biaya Page']);
 });
@@ -57,9 +46,7 @@ Route::get('/kontak', function () {
 Route::get('/tagihan', function () {
     return view('frontPage.tagihan', ['title' => 'Tagihan Biaya']);
 });
-Route::get('/sd', function () {
-    return view('frontPage.sd', ['title' => 'Informasi Pembayaran']);
-});
+
 
 
 Route::get('/form', function (Request $request) {
@@ -89,12 +76,17 @@ Route::get('/pengumumanpondok', [PengumumanController::class, 'showDatapondok'])
 Route::get('/pengumumanpondok/search', [PengumumanController::class, 'searchpondok'])->name('pengumumanpondok.search');
 
 
+Route::get('/verifikasi-data', function () {
+    $pemberkasanLengkap = false; // Ganti sesuai status aktual
+    $pembayaranLunas = true; // Ganti sesuai status aktual
+
+    return view('calonMurid.verifikasi', ['title' => 'Verifikasi Data', 'pemberkasanLengkap' => $pemberkasanLengkap, 'pembayaranLunas' => $pembayaranLunas,]);
+});
 
 
 Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman', ['title' => 'About Page']);
 });
-
 
 
 //////////////////////////////////Route Auth/////////////////////////////////////
@@ -114,6 +106,7 @@ Route::middleware('auth:web')->group(function () {
     // Route::get('/biodata', function () {
     //     return view('calonMurid.biodata', ['title' => 'User Page']);
     // })->name('biodata');
+
     Route::get('/biodata', [BiodataController::class, 'showData'])->name('biodata');
 
     Route::get('/seleksi', [BerkasSeleksiControl::class, 'showData'])->name('seleksi');
@@ -129,10 +122,12 @@ Route::middleware('auth:web')->group(function () {
 
     Route::get('/aya', function () {
         return view('calonMurid.b', ['title' => 'Informasi Pembayaran']);
-    });     
+    });
+
     Route::get('/verifikasi', [VerifikasiController::class, 'showData']);
 
     Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
+
     Route::post('logouts', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logouts');
 });
@@ -162,17 +157,28 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
 
     Route::get('/pembagiankelas', [KelasController::class, 'showData'])->name('pembagiankelas');
     Route::get('/pembagiankelas/{id}/edit', [KelasController::class, 'edit'])->name('pembagiankelas.edit');
-    Route::put('/pembagiankelas/{id}/update', [KelasController::class, 'update'])->name('pembagiankelas.update');
+    Route::post('/pembagiankelas/{id}/update', [KelasController::class, 'update'])->name('pembagiankelas.update');
     Route::get('/pembagiankelas/search', [KelasController::class, 'search'])->name('pembagiankelas.search');
     Route::get('/pembagiankelas/filter', [KelasController::class, 'filter'])->name('pembagiankelas.filter');
 
+    Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi.index');
+    Route::get('/admin/seleksi/edit/{id}', [SeleksiAdminController::class, 'editData'])->name('seleksi.edit');
+    Route::put('/admin/seleksi/update/{id}', [SeleksiAdminController::class, 'update'])->name('seleksi.update');
+    Route::get('/seleksi/search', [SeleksiAdminController::class, 'search'])->name('seleksi.search');
+    Route::get('/seleksi/filter', [SeleksiAdminController::class, 'filter'])->name('seleksi.filter');
+
     Route::get('/siswa', [SiswaController::class, 'index'])->name('index');
     Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
-    Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('detail-user');
-    Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi-siswa');
-    Route::get('/edit-seleksi/{id}', [SeleksiAdminController::class, 'editData'])->name('edit-siswa');
+    Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('edit-user');
+
+    Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi.index');
+    Route::get('/admin/seleksi/edit/{id}', [SeleksiAdminController::class, 'editData'])->name('seleksi.edit');
+    Route::put('/admin/seleksi/update/{id}', [SeleksiAdminController::class, 'update'])->name('seleksi.update');
+    Route::get('/seleksi/search', [SeleksiAdminController::class, 'search'])->name('seleksi.search');
+    Route::get('/seleksi/filter', [SeleksiAdminController::class, 'filter'])->name('seleksi.filter');
 
 
+    Route::get('tagihan/export/', [TagihanAdmin::class, 'export'])->name('tagihan.export');
     Route::get('/tagihan-admin', [TagihanAdmin::class, 'showData'])->name('tagihan-admin');
     Route::get('/edit-tagihan/{id}', [TagihanAdmin::class, 'editData'])->name('edit-tagihan');
     Route::post('update-tagihan/{id}', [TagihanAdmin::class, 'updateData'])->name('update-tagihan');
@@ -188,8 +194,40 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
     Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
     Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
+
+
+    Route::get('/pengaturan-website', function () {
+        return view('superAdmin.pengaturanweb', ['title' => 'Page Pengaturan']);
+    });
     Route::get('/tahun-ajaran-pengaturan', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.tahun-ajaran-pengaturan');
     Route::post('/tahun-ajaran/update/{id_tahun}', [TahunAjaranController::class, 'update'])->name('superAdmin.tahun-ajaran-update');
+// Route pengaturan home dan setiap infoemasi jenjang
+    Route::get('/pengaturan-website', [PengaturanWebController::class, 'showpage'])->name('pengaturanpage');
+
+    Route::get('/pengaturan-website/edit/home', [PengaturanWebController::class, 'edithome'])->name('pengaturanhome-edit');
+    Route::post('/pengaturan-website/update/home', [PengaturanWebController::class, 'updatehome'])->name('pengaturanhome-update');
+
+    Route::get('/pengaturan-website/edit/tk', [PengaturanWebController::class, 'edittk'])->name('pengaturantk-edit');
+    Route::post('/pengaturan-website/update/tk', [PengaturanWebController::class, 'updatetk'])->name('pengaturantk-update');
+
+    Route::get('/pengaturan-website/edit/sd', [PengaturanWebController::class, 'editsd'])->name('pengaturansd-edit');
+    Route::post('/pengaturan-website/update/sd', [PengaturanWebController::class, 'updatesd'])->name('pengaturansd-update');
+
+    Route::get('/pengaturan-website/edit/smp', [PengaturanWebController::class, 'editsmp'])->name('pengaturansmp-edit');
+    Route::post('/pengaturan-website/update/smp', [PengaturanWebController::class, 'updatesmp'])->name('pengaturansmp-update');
+
+    Route::get('/pengaturan-website/edit/sma', [PengaturanWebController::class, 'editsma'])->name('pengaturansma-edit');
+    Route::post('/pengaturan-website/update/sma', [PengaturanWebController::class, 'updatesma'])->name('pengaturansma-update');
+
+    Route::get('/pengaturan-website/edit/tpq', [PengaturanWebController::class, 'edittpq'])->name('pengaturantpq-edit');
+    Route::post('/pengaturan-website/update/tpq', [PengaturanWebController::class, 'updatetpq'])->name('pengaturantpq-update');
+
+    Route::get('/pengaturan-website/edit/madin', [PengaturanWebController::class, 'editmadin'])->name('pengaturanmadin-edit');
+    Route::post('/pengaturan-website/update/madin', [PengaturanWebController::class, 'updatemadin'])->name('pengaturanmadin-update');
+
+    Route::get('/pengaturan-website/edit/pondok', [PengaturanWebController::class, 'editpondok'])->name('pengaturanpondok-edit');
+    Route::post('/pengaturan-website/update/pondok', [PengaturanWebController::class, 'updatepondok'])->name('pengaturanpondok-update');
+
     Route::post('/logoutz', [LoginController::class, 'destroy'])
         ->name('admin.logoutz');
 });

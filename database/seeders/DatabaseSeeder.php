@@ -14,8 +14,11 @@ use App\Models\UserUnitPendidikan;
 use Database\Factories\AdminsFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Factories\BerkasFactory;
+use Database\Factories\PengaturanTablesFactory;
+use Database\Factories\TahunFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -65,7 +68,11 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-
+        Tahun::factory()->create([
+            'nama' => 'Tahun Ajaran',
+            'awal' => '2024-12-12',
+            'akhir' => '2025-12-12'
+        ]);
 
 
 
@@ -94,11 +101,7 @@ class DatabaseSeeder extends Seeder
             'status' => 'Lunas',
             'jmlh_byr' => 300000
         ]);
-        Tahun::factory()->create([
-            'nama' => 'Tahun Ajaran2024/2025',
-            'awal' => '2024-12-12',
-            'akhir' => '2025-12-12'
-        ]);
+
         UserUnitPendidikan::factory()->create([
             'id_user' => $user->id_user,
             'id_kelas' => $kelas->id_kelas,
@@ -107,12 +110,21 @@ class DatabaseSeeder extends Seeder
             'tgl_berakhir' => '2024-12-11'
 
         ]);
+
         Berkas::factory()->create([
             'id_user' => $user->id_user,
             'kk' => 'belum_diserahkan',
             'pas_foto' => 'belum_diserahkan',
             'ijazah_akhir' => 'belum_diserahkan',
             'kip' => 'belum_diserahkan'
+
+            // Berkas::factory()->create([
+            //     'id_user' => $user->id_user,
+            //     'kk' => 'belum_diserahkan',
+            //     'pas_foto' => 'belum_diserahkan',
+            //     'ijazah_akhir' => 'belum_diserahkan',
+            //     'kip' => 'belum_diserahkan'
+
 
         ]);
         Seleksi::factory()->create([
@@ -145,5 +157,15 @@ class DatabaseSeeder extends Seeder
                 'id_kelas' => $kelas->id_kelas, //penimpaan data
             ]);
         });
+        $factoryData = PengaturanTablesFactory::new()->definition();
+
+        DB::table('yayasan')->insert($factoryData['yayasan']);
+        DB::table('tk')->insert($factoryData['tk']);
+        DB::table('sd')->insert($factoryData['sd']);
+        DB::table('smp')->insert($factoryData['smp']);
+        DB::table('sma')->insert($factoryData['sma']);
+        DB::table('tpq')->insert($factoryData['tpq']);
+        DB::table('madin')->insert($factoryData['madin']);
+        DB::table('pondok')->insert($factoryData['pondok']);
     }
 }

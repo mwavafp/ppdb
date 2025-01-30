@@ -21,8 +21,6 @@ class SeleksiFactory extends Factory
 
             'id_user' => User::factory(),
             'status_seleksi' => $this->faker->randomElement(['TIDAK LOLOS', 'PENDING', 'LOLOS']),
-
-
         ];
     }
 }
