@@ -21,7 +21,6 @@ use App\Http\Controllers\Auth\PengumumanController;
 use App\Http\Controllers\Auth\VerifikasiController;
 use App\Http\Controllers\BerkasSeleksiControl;
 use App\Http\Controllers\BiodataController;
-use App\Http\Controllers\TahunAjaranController;
 use App\Http\Controllers\UserBerkasController;
 
 
