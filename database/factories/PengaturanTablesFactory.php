@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory
  */
 class PengaturanTablesFactory extends Factory
 {
@@ -17,7 +17,7 @@ class PengaturanTablesFactory extends Factory
     public function definition(): array
     {
         return [
-            
+
             'yayasan' => [
                 'deskripsi' => $this->faker->paragraph(2),
                 'alasan_memilih_1' => $this->faker->sentence(6),
