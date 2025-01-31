@@ -14,13 +14,13 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\SeleksiAdminController;
 use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
+use App\Http\Controllers\AdminSuper\TahunAjaranController;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
 use App\Http\Controllers\AdminSuper\PengaturanWebController;
 use App\Http\Controllers\Auth\PengumumanController;
 use App\Http\Controllers\Auth\VerifikasiController;
 use App\Http\Controllers\BerkasSeleksiControl;
 use App\Http\Controllers\BiodataController;
-use App\Http\Controllers\TahunAjaranController;
 use App\Http\Controllers\UserBerkasController;
 
 
@@ -198,10 +198,9 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::get('/pengaturan-website', function () {
         return view('superAdmin.pengaturanweb', ['title' => 'Page Pengaturan']);
     });
-    Route::get('/tahun-ajaran-pengaturan', [TahunAjaranController::class, 'showData'])->name('tahun-ajaran');
-    // Route::get('/tahun-ajaran-pengaturan/edit', [TahunAjaranController::class, 'editId'])->name('tahun-edit');
-    Route::post('/tahun-ajaran-pengaturan/edit/update/{id}', [TahunAjaranController::class, 'edit'])->name('tahun-update');
-    // Route pengaturan home dan setiap infoemasi jenjang
+    Route::get('/tahun-ajaran-pengaturan', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.tahun-ajaran-pengaturan');
+    Route::post('/tahun-ajaran/update/{id_tahun}', [TahunAjaranController::class, 'update'])->name('superAdmin.tahun-ajaran-update');
+// Route pengaturan home dan setiap infoemasi jenjang
     Route::get('/pengaturan-website', [PengaturanWebController::class, 'showpage'])->name('pengaturanpage');
 
     Route::get('/pengaturan-website/edit/home', [PengaturanWebController::class, 'edithome'])->name('pengaturanhome-edit');

@@ -76,7 +76,7 @@
                         <td class="border px-4 py-2 text-center">{{ $item->status ?? '-' }}</td>
                         <td class="border px-4 py-2 text-center">
                         
-                            <div x-data="{ isEditModalOpen: false, isDetailModalOpen: false }">
+                            <div x-data="{ isEditModalOpen: false }">
                                 <!-- Tombol Edit -->
                                 <button @click="isEditModalOpen = true"
                                     class="bg-blue-500 text-white mx-2 px-3 py-1 rounded hover:bg-blue-600">
@@ -84,7 +84,8 @@
                                 </button>
 
                                 <!-- Modal Edit -->
-                                <div x-show="isEditModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+                                 <div x-show="isEditModalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50"
+                                        style="display: none;">
                                     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
                                         <button @click="isEditModalOpen = false" class="absolute top-2 right-2 text-gray-600">&times;</button>
                                         <h2 class="font-bold text-xl mb-4">Edit Data</h2>
@@ -236,139 +237,6 @@
                                         </form>
                                     </div>
                                 </div>
-
-                                <!-- Tombol Detail -->
-                                <button @click="isDetailModalOpen = true"
-                                    class="bg-green-500 text-white mx-2 px-3 py-1 rounded hover:bg-green-600">
-                                    Detail
-                                </button>
-
-                                <div x-show="isDetailModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl relative h-[80vh] overflow-y-auto">
-        <!-- Tombol Tutup -->
-        <button @click="isDetailModalOpen = false" class="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center">
-            &times;
-        </button>
-
-        <!-- Header -->
-        <h2 class="font-bold text-xl mb-4 text-center border-b pb-2">Detail Data</h2>
-
-        <!-- Konten Tabel -->
-        <table class="w-full text-left border-collapse">
-            <tbody>
-                <tr>
-                    <td class="font-bold py-2">Nama</td>
-                    <td>: {{ $item->name }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Alamat</td>
-                    <td>: {{ $item->alamat }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">NISN</td>
-                    <td>: {{ $item->nisn }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Gender</td>
-                    <td>: {{ $item->gender }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Tempat Lahir</td>
-                    <td>: {{ $item->tmpt_lahir }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Tanggal Lahir</td>
-                    <td>: {{ $item->tgl_lahir }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Asal Sekolah</td>
-                    <td>: {{ $item->asl_sekolah }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Status</td>
-                    <td>: {{ $item->status }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Email</td>
-                    <td>: {{ $item->email }}</td>
-                </tr>
-
-                <!-- Garis Pembatas Email - Nama Ayah -->
-                <tr>
-                    <td colspan="2" class="border-t border-gray-300 py-2"></td>
-                </tr>
-
-                <tr>
-                    <td class="font-bold py-2">Nomor KK (Ayah/Ibu)</td>
-                    <td>: {{ $item->ortu->nmr_kk }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Nama Ayah</td>
-                    <td>: {{ $item->ortu->nm_ayah }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">NIK Ayah</td>
-                    <td>: {{ $item->ortu->nik_ayah }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Tanggal Lahir Ayah</td>
-                    <td>: {{ $item->ortu->tgl_lhr_ayah }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Tempat Lahir Ayah</td>
-                    <td>: {{ $item->ortu->tmpt_lhr_ayah }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Alamat Ayah</td>
-                    <td>: {{ $item->ortu->almt_ayah }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Pekerjaan Ayah</td>
-                    <td>: {{ $item->ortu->pekerjaan_ayah }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Nomor WA Ayah</td>
-                    <td>: {{ $item->ortu->nmr_ayah_wa }}</td>
-                </tr>
-
-                <!-- Garis Pembatas Nomor WA Ayah - Nama Ibu -->
-                <tr>
-                    <td colspan="2" class="border-t border-gray-300 py-2"></td>
-                </tr>
-
-                <tr>
-                    <td class="font-bold py-2">Nama Ibu</td>
-                    <td>: {{ $item->ortu->nm_ibu }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">NIK Ibu</td>
-                    <td>: {{ $item->ortu->nik_ibu }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Tanggal Lahir Ibu</td>
-                    <td>: {{ $item->ortu->tgl_lhr_ibu }}</td>       
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Tempat Lahir Ibu</td>
-                    <td>: {{ $item->ortu->tmpt_lhr_ibu }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Alamat Ibu</td>
-                    <td>: {{ $item->ortu->almt_ibu }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Pekerjaan Ibu</td>
-                    <td>: {{ $item->ortu->pekerjaan_ibu }}</td>
-                </tr>
-                <tr>
-                    <td class="font-bold py-2">Nomor WA Ibu</td>
-                    <td>: {{ $item->ortu->nmr_ibu_wa }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
                             </div>
                         </td>
                     </tr>

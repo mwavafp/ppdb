@@ -1,3 +1,4 @@
+source code untuk menampilkan biaya pondok masih tidak bisa terpanggil hanya biaya pondok saja 
 <script>
     function selectTab(tab) {
         const sections = document.querySelectorAll('.education-section');
@@ -13,10 +14,7 @@
 
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
-<<<<<<< HEAD:resources/views/calonMurid/biaya.blade.php
     <x-tahapan></x-tahapan>
-=======
->>>>>>> a241e8483617a44058b60df6f3694210eb332c4b:resources/views/frontPage/biaya.blade.php
     <div class="container mx-auto p-4">
         <div class="bg-orange-500 text-black text-center py-4 font-bold text-lg">
             <p>Biaya Pendidikan</p>
@@ -26,10 +24,10 @@
             <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700" onclick="selectTab('SD')">SD</button>
             <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700" onclick="selectTab('SMP')">SMP</button>
             <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700" onclick="selectTab('SMA')">SMA</button>
-            <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700" onclick="selectTab('PONDOK')">PONDOK</button>
+            <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700" onclick="selectTab('Pondok')">PONDOK</button>
         </div>
 
-        <div id="TK" class="education-section active">
+        <div id="TK" class="education-section hidden">
             <table class="min-w-full border-2 border-black bg-white shadow-md">
                 <thead class="bg-orange-500 text-black">
                     <tr>
@@ -320,20 +318,10 @@
                 <tbody class='text-black'>
                     <tr>
                         <td class="border-2 border-black px-4 py-2">1</td>
-                        <td class="border-2 border-black px-4 py-2">Madin Dari Unit</td>
-                        <td class="border-2 border-black px-4 py-2">Rp 380.000</td>
-                        <td class="border-2 border-black px-4 py-2">Rp 380.000</td>
-                        <td class="border-2 border-black px-4 py-2">LUNAS</td>
-                    </tr>
-                </tbody>
-
-                <tbody class='text-black'>
-                    <tr>
-                        <td class="border-2 border-black px-4 py-2">1</td>
-                        <td class="border-2 border-black px-4 py-2">Madin Bukan Dari Unit</td>
-                        <td class="border-2 border-black px-4 py-2">Rp 590.000</td>
-                        <td class="border-2 border-black px-4 py-2">Rp 590.000</td>
-                        <td class="border-2 border-black px-4 py-2">LUNAS</td>
+                        <td class="border-2 border-black px-4 py-2">Total Biaya PONDOK</td>
+                        <td class="border-2 border-black px-4 py-2">Rp 1.500.000</td>
+                        <td class="border-2 border-black px-4 py-2">Rp 750.000</td>
+                        <td class="border-2 border-black px-4 py-2">Potongan Rp 100rb</td>
                     </tr>
                 </tbody>
             </table>

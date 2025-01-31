@@ -37,7 +37,7 @@
                         <option value="">Semua</option>
                         <option value="Alumni" {{ request('status') == 'Alumni' ? 'selected' : '' }}>Alumni</option>
                         <option value="Siswa Aktif" {{ request('status') == 'Siswa Aktif' ? 'selected' : '' }}>Siswa Aktif</option>
-                        <option value="Siswa Tidak Akif" {{ request('status') == 'Siswa Tidak Akif' ? 'selected' : '' }}>Siswa Tidak Aktif</option>
+                        <option value="Siswa Tidak Aktif" {{ request('status') == 'Siswa Tidak Aktif' ? 'selected' : '' }}>Siswa Tidak Aktif</option>
                     </select>
                 </div>
                 <div class="flex mt-4 mx-4">
