@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->enum('byr_dft_ulang', ['lunas', 'belum'])->default('belum'); // Status pembayaran (wajib diisi)
             $table->enum('status', ['Cicil', 'DP', 'Lunas'])->default('DP'); // Status pembayaran (wajib diisi)
-            $table->integer('jmlh_byr')->nullable(); // Jumlah pembayaran (wajib diisi)
+            $table->integer('jmlh_byr')->default(0); // Jumlah pembayaran (wajib diisi)
             $table->timestamps();
             $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
         });

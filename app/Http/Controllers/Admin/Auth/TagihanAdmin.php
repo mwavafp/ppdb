@@ -29,14 +29,14 @@ class TagihanAdmin extends Controller
             ->select(
                 'users.name',
                 'users.id_user',
+                'users.gender',
                 'pembayaran.id_bayar',
                 'kelas.unt_pendidikan',
                 'pembayaran.byr_dft_ulang',
                 'pembayaran.status',
                 'pembayaran.jmlh_byr',
-                'seleksi.status_seleksi'
+
             )
-            ->where('seleksi.status_seleksi', '=', 'LOLOS')
             ->paginate(10);
 
 
@@ -59,18 +59,21 @@ class TagihanAdmin extends Controller
     }
     public function updateData(Request $request, $id)
     {
+
         $validatedData = $request->validate([
 
             'jmlh_byr' => 'required|numeric',
             'status' => 'required|in:DP,Lunas,Cicil',
+            'byr_dft_ulang' => 'required|in:lunas,belum'
         ]);
 
         DB::table('pembayaran')
-            ->where('id_user', '=', $id)
+            ->where('id_bayar', '=', $id)
             ->update([
 
                 'jmlh_byr' => $validatedData['jmlh_byr'],
                 'status' => $validatedData['status'],
+                'byr_dft_ulang' => $validatedData['byr_dft_ulang']
             ]);
 
         return redirect()->route('tagihan-admin')->with('success', 'Data berhasil diperbarui!');
@@ -82,10 +85,8 @@ class TagihanAdmin extends Controller
             ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->select('users.name', 'users.id_user', 'pembayaran.id_bayar', 'kelas.unt_pendidikan', 'pembayaran.byr_dft_ulang', 'pembayaran.status', 'jmlh_byr')
             ->where('users.name', 'LIKE', "%{$search}%")
-            ->where('seleksi.status_seleksi', '=', 'LOLOS')
             ->paginate(10);
 
         return view('admin.page.tagihan', compact('all_data'), ['title' => 'Search Results']);
@@ -101,7 +102,6 @@ class TagihanAdmin extends Controller
         ];
         $query = DB::table('pembayaran')
             ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
-            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
             ->select(
@@ -112,7 +112,7 @@ class TagihanAdmin extends Controller
                 'pembayaran.byr_dft_ulang',
                 'pembayaran.status',
                 'pembayaran.jmlh_byr'
-            )->where('seleksi.status_seleksi', '=', 'LOLOS');
+            );
 
 
         foreach ($filterCategory as $key => $value) {

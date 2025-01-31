@@ -92,7 +92,10 @@
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang Pendidikan
                     </th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Tipe Pembayaran</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Minimal DP
+                    </th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Tagihan</th>
+
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Bayar</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Kekurangan
                     </th>
@@ -114,13 +117,42 @@
                             <td class="border px-4 py-2 text-center">{{ $item->name }}</td>
                             <td class="border px-4 py-2 text-center">{{ strtoupper($item->unt_pendidikan) }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->status }}</td>
-                            <td class="border px-4 py-2 text-center">100000</td>
-                            <td class="border px-4 py-2 text-center">{{ number_format($item->jmlh_byr) }}</td>
                             <td class="border px-4 py-2 text-center">
-                                {{ $item->jmlh_byr > 10000000 ? 0 : number_format(10000000 - $item->jmlh_byr) }}</td>
+                                @php
+                                    $pendidikan_dp = match ($item->unt_pendidikan) {
+                                        'tk', 'sd' => 500000,
+                                        'smp' => 1000000,
+                                        'sma' => 1500000,
+                                        'pondok', 'madin' => 0,
+                                        default => 0,
+                                    };
+                                @endphp
+                                <span>@currency($pendidikan_dp)</span>
+                            </td>
+                            <td class="border px-4 py-2 text-center">
+                                @php
+                                    $pendidikan_lunas = match ([$item->unt_pendidikan, $item->gender]) {
+                                        ['tk', 'perempuan'], ['tk', 'laki-laki'] => 1000000,
+                                        ['sd', 'perempuan'] => 895000,
+                                        ['sd', 'laki-laki'] => 860000,
+                                        ['smp', 'perempuan'] => 1890000,
+                                        ['smp', 'laki-laki'] => 1860000,
+                                        ['sma', 'perempuan'] => 2350000,
+                                        ['sma', 'laki-laki'] => 2250000,
+                                        ['pondok', 'perempuan'], ['pondok', 'laki-laki'] => 2345000,
+                                        ['madin', 'perempuan'], ['madin', 'laki-laki'] => 380000,
+                                        default => 0,
+                                    };
+                                @endphp
+                                <span>@currency($pendidikan_lunas)</span>
+                            </td>
+                            <td class="border px-4 py-2 text-center">@currency($item->jmlh_byr) </td>
+                            <td class="border px-4 py-2 text-center">
+                                @currency($item->jmlh_byr >= $pendidikan_lunas ? 0 : $pendidikan_lunas - $item->jmlh_byr)
+                            </td>
 
                             <td>
-                                @if ($item->byr_dft_ulang === 'lunas')
+                                @if ($item->jmlh_byr >= $pendidikan_lunas)
                                     <span class="border text-white  text-center bg-green-500 rounded-lg  px-4 py-2">
                                         {{ strtoupper($item->byr_dft_ulang) }}
                                     </span>
@@ -185,6 +217,18 @@
                                                             <option value="DP">DP</option>
                                                             <option value="Lunas">Lunas</option>
                                                             <option value="Cicil">Cicil</option>
+                                                        </select>
+
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="status"
+                                                            class="block text-gray-700 font-medium">Status
+                                                            Bayar</label>
+                                                        <select id="status" name="byr_dft_ulang"
+                                                            value="{{ $item->byr_dft_ulang }}"
+                                                            class="block w-full px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700 appearance-none">
+                                                            <option value="lunas">Lunas</option>
+                                                            <option value="belum">Belum</option>
                                                         </select>
 
                                                     </div>

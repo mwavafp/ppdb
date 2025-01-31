@@ -135,24 +135,24 @@ class DatabaseSeeder extends Seeder
 
         //Automatic 100 dummy
 
-        User::factory(100)->create()->each(function ($user) {
-            Ortu::factory()->create([
-                'id_user' => $user->id_user, //penimpaan data
-            ]);
-            Pembayaran::factory()->create([
-                'id_user' => $user->id_user, //penimpaan data
-            ]);
-            UserUnitPendidikan::factory()->create([
-                'id_user' => $user->id_user, //penimpaan data
-            ]);
-            Seleksi::factory()->create([
-                'id_user' => $user->id_user, //penimpaan data
-            ]);
-            Berkas::factory()->create([
-                'id_user' => $user->id_user, //penimpaan data
-            ]);
-        });
-        Kelas::factory(100)->create()->each(function ($kelas) {
+        // User::factory(100)->create()->each(function ($user) {
+        //     Ortu::factory()->create([
+        //         'id_user' => $user->id_user, //penimpaan data
+        //     ]);
+        //     Pembayaran::factory()->create([
+        //         'id_user' => $user->id_user, //penimpaan data
+        //     ]);
+        //     UserUnitPendidikan::factory()->create([
+        //         'id_user' => $user->id_user, //penimpaan data
+        //     ]);
+        //     Seleksi::factory()->create([
+        //         'id_user' => $user->id_user, //penimpaan data
+        //     ]);
+        //     Berkas::factory()->create([
+        //         'id_user' => $user->id_user, //penimpaan data
+        //     ]);
+        // });
+        Kelas::factory()->create()->each(function ($kelas) {
             UserUnitPendidikan::factory()->create([
                 'id_kelas' => $kelas->id_kelas, //penimpaan data
             ]);

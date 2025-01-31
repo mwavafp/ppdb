@@ -179,7 +179,7 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
 
     Route::get('tagihan/export/', [TagihanAdmin::class, 'export'])->name('tagihan.export');
     Route::get('/tagihan-admin', [TagihanAdmin::class, 'showData'])->name('tagihan-admin');
-    Route::get('/edit-tagihan/{id}', [TagihanAdmin::class, 'editData'])->name('edit-tagihan');
+    // Route::get('/edit-tagihan/{id}', [TagihanAdmin::class, 'editData'])->name('edit-tagihan');
     Route::post('update-tagihan/{id}', [TagihanAdmin::class, 'updateData'])->name('update-tagihan');
     Route::get('/search', [TagihanAdmin::class, 'search'])->name('search');
     Route::get('/filter', [TagihanAdmin::class, 'filter'])->name('filter');
@@ -228,6 +228,6 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::get('/pengaturan-website/edit/pondok', [PengaturanWebController::class, 'editpondok'])->name('pengaturanpondok-edit');
     Route::post('/pengaturan-website/update/pondok', [PengaturanWebController::class, 'updatepondok'])->name('pengaturanpondok-update');
 
-    Route::post('/logoutz', [LoginController::class, 'destroy'])
-        ->name('admin.logoutz');
+    Route::post('/logout', [LoginController::class, 'destroy'])
+        ->name('admin.logout');
 });
