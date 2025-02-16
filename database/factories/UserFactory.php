@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Harga;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory
  */
 class UserFactory extends Factory
 {
@@ -26,6 +27,7 @@ class UserFactory extends Factory
         return [
             'username' => $this->faker->userName,
             'password' => Hash::make($this->faker->password), // You can replace 'password' with a default value
+            'password2' => $this->faker->name(),
             'name' => $this->faker->name,
             'alamat' => $this->faker->address,
             'nisn' => $this->faker->randomNumber(8), // Generate random 8-digit NISN
@@ -34,6 +36,7 @@ class UserFactory extends Factory
             'tgl_lahir' => $this->faker->date,
             'asl_sekolah' => $this->faker->company,
             'status' => $this->faker->randomElement(['aktif', 'tidak_aktif']),
+            'tipe_siswa' => $this->faker->randomElement(['alumni', 'umum']),
             'remember_token' => Str::random(10),
         ];
     }

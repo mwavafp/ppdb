@@ -2,14 +2,17 @@
 
 namespace Database\Seeders;
 
+use App\Models\Acara;
 use App\Models\Admin;
 use App\Models\Berkas;
+use App\Models\Harga;
 use App\Models\Kelas;
 use App\Models\Pembayaran;
 use App\Models\Seleksi;
 use App\Models\User;
 use App\Models\Ortu;
 use App\Models\Tahun;
+use App\Models\UserGolongan;
 use App\Models\UserUnitPendidikan;
 use Database\Factories\AdminsFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -29,6 +32,37 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
+        Acara::factory()->create(
+
+            [
+                'namaAcara' => 'Gelombang1',
+                'status' => 'aktif',
+                'awal_acara' => '2024-12-03',
+                'akhir_acara' => '2024-12-03',
+
+            ],
+
+        );
+        Harga::factory()->createMany(
+            [
+                [
+                    'unitPendidikan' => 'sd',
+                    'gender' => 'perempuan',
+                    'tipe_siswa' => 'umum',
+                    'total_bayar_daful' => 1000000,
+                    'dp_daful' => 500000,
+                    'diskon' => 200000
+                ],
+                [
+                    'unitPendidikan' => 'sd',
+                    'gender' => 'laki-laki',
+                    'tipe_siswa' => 'umum',
+                    'total_bayar_daful' => 1000000,
+                    'dp_daful' => 500000,
+                    'diskon' => 200000
+                ],
+            ]
+        );
 
 
         $user = User::factory()->create([
@@ -131,7 +165,11 @@ class DatabaseSeeder extends Seeder
             'id_user' => $user->id_user,
             'status_seleksi' => 'TIDAK LOLOS'
         ]);
-
+        UserGolongan::create([
+            'id_acara' => 1,
+            'id_harga' => 1,
+            'id_user' => 1
+        ]);
 
         //Automatic 100 dummy
 

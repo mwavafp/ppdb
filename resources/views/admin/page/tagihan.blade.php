@@ -87,17 +87,18 @@
         <table class="min-w-full divide-y divide-gray-200" id="dataTable">
             <thead class="bg-gray-50 border-b-2">
                 <tr>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Lengkap</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang Pendidikan
+                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
+                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Lengkap</th>
+                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang Pendidikan
                     </th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Tipe Pembayaran</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Minimal DP
+                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Tipe Pembayaran</th>
+                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Minimal DP
                     </th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Tagihan</th>
+                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Tagihan</th>
+                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Diskon</th>
+                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Bayar</th>
 
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Bayar</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Kekurangan
+                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Kekurangan
                     </th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Status</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
@@ -113,46 +114,26 @@
                 @else
                     @foreach ($all_data as $item)
                         <tr class="hover:bg-gray-50 transition">
-                            <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
-                            <td class="border px-4 py-2 text-center">{{ $item->name }}</td>
-                            <td class="border px-4 py-2 text-center">{{ strtoupper($item->unt_pendidikan) }}</td>
-                            <td class="border px-4 py-2 text-center">{{ $item->status }}</td>
-                            <td class="border px-4 py-2 text-center">
-                                @php
-                                    $pendidikan_dp = match ($item->unt_pendidikan) {
-                                        'tk', 'sd' => 500000,
-                                        'smp' => 1000000,
-                                        'sma' => 1500000,
-                                        'pondok', 'madin' => 0,
-                                        default => 0,
-                                    };
-                                @endphp
-                                <span>@currency($pendidikan_dp)</span>
+                            <td class="border px-4 py-2 text-center text-sm">{{ $loop->iteration }}</td>
+                            <td class="border px-4 py-2 text-center text-sm">{{ $item->name }}</td>
+                            <td class="border px-4 py-2 text-center text-sm">{{ strtoupper($item->unt_pendidikan) }}
                             </td>
-                            <td class="border px-4 py-2 text-center">
-                                @php
-                                    $pendidikan_lunas = match ([$item->unt_pendidikan, $item->gender]) {
-                                        ['tk', 'perempuan'], ['tk', 'laki-laki'] => 1000000,
-                                        ['sd', 'perempuan'] => 895000,
-                                        ['sd', 'laki-laki'] => 860000,
-                                        ['smp', 'perempuan'] => 1890000,
-                                        ['smp', 'laki-laki'] => 1860000,
-                                        ['sma', 'perempuan'] => 2350000,
-                                        ['sma', 'laki-laki'] => 2250000,
-                                        ['pondok', 'perempuan'], ['pondok', 'laki-laki'] => 2345000,
-                                        ['madin', 'perempuan'], ['madin', 'laki-laki'] => 380000,
-                                        default => 0,
-                                    };
-                                @endphp
-                                <span>@currency($pendidikan_lunas)</span>
+                            <td class="border px-4 py-2 text-center text-sm">{{ $item->status }}</td>
+                            <td class="border px-4 py-2 text-center text-sm">@currency($item->dp_daful)
                             </td>
-                            <td class="border px-4 py-2 text-center">@currency($item->jmlh_byr) </td>
-                            <td class="border px-4 py-2 text-center">
-                                @currency($item->jmlh_byr >= $pendidikan_lunas ? 0 : $pendidikan_lunas - $item->jmlh_byr)
+                            <td class="border px-4 py-2 text-center text-sm">
+                                @currency($item->total_bayar_daful)
+                            </td>
+                            <td class="border px-4 py-2 text-center text-sm">
+                                @currency($item->diskon)
+                            </td>
+                            <td class="border px-4 py-2 text-center text-sm">@currency($item->jmlh_byr) </td>
+                            <td class="border px-4 py-2 text-center text-sm">
+                                @currency($item->jmlh_byr >= $item->total_bayar_daful ? 0 : $item->total_bayar_daful - $item->jmlh_byr)
                             </td>
 
                             <td>
-                                @if ($item->jmlh_byr >= $pendidikan_lunas)
+                                @if ($item->jmlh_byr >= $item->total_bayar_daful)
                                     <span class="border text-white  text-center bg-green-500 rounded-lg  px-4 py-2">
                                         {{ strtoupper($item->byr_dft_ulang) }}
                                     </span>

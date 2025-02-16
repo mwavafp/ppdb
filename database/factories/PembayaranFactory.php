@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory
  */
 class PembayaranFactory extends Factory
 {
@@ -18,9 +18,9 @@ class PembayaranFactory extends Factory
     public function definition(): array
     {
         return [
-           'id_user' => User::factory(),
+            'id_user' => User::factory(),
             'byr_dft_ulang' => $this->faker->randomElement(['lunas', 'belum']),
-            'status' => $this->faker->randomElement(['Cicil', 'DP','Lunas']),
+            'status' => $this->faker->randomElement(['Cicil', 'DP', 'Lunas']),
             'jmlh_byr' => $this->faker->numerify('#######'),
         ];
     }

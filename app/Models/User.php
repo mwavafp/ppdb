@@ -23,6 +23,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'password',
+        'password2',
         'name',
         'alamat',
         'gender',
@@ -30,7 +31,7 @@ class User extends Authenticatable
         'tgl_lahir',
         'tmpt_lahir',
         'asl_sekolah',
-
+        'tipe_siswa'
     ];
 
     /**
@@ -54,6 +55,10 @@ class User extends Authenticatable
 
             'password' => 'hashed',
         ];
+    }
+    public function userGolongan()
+    {
+        return $this->hasOne(UserGolongan::class, 'id_harga', 'id_harga');
     }
     public function ortu()
     {

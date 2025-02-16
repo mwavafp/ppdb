@@ -43,28 +43,30 @@
                         :value="old('name')" required />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
-                <div class=" items-center gap-6 mb-4 ">
+                <div class="items-center gap-6 mb-4">
                     <x-input-label for="name" :value="__('Jenis Kelamin')" />
                     <div class="flex mt-2">
                         <label for="pria" class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" id="pria" name="gender" value="laki-laki" class="hidden peer" />
+                            <input type="checkbox" id="pria" name="gender" value="laki-laki" class="hidden peer"
+                                onclick="toggleCheckbox(this, 'perempuan')" />
                             <!-- Kotak custom -->
                             <div
-                                class="rounded-md w-5 h-5 border-2 border-gray-300  peer-checked:bg-blue peer-checked:border-blue transition-all">
+                                class="rounded-md w-5 h-5 border-2 border-gray-300 peer-checked:bg-blue peer-checked:border-blue transition-all">
                             </div>
                             <span class="text-gray-700 peer-checked:font-semibold">Laki-Laki</span>
                         </label>
-                        <label for="wanita" class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" id="perempuan" name="gender" value="perempuan" class="hidden peer" />
+                        <label for="perempuan" class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" id="perempuan" name="gender" value="perempuan" class="hidden peer"
+                                onclick="toggleCheckbox(this, 'pria')" />
                             <div
-                                class="rounded-md w-5 h-5 border-2 border-gray-300  peer-checked:bg-pink-500 peer-checked:border-pink-500 transition-all">
+                                class="rounded-md w-5 h-5 border-2 border-gray-300 peer-checked:bg-pink-500 peer-checked:border-pink-500 transition-all">
                             </div>
                             <!-- Text Label -->
                             <span class="text-gray-700 peer-checked:font-semibold">Perempuan</span>
                         </label>
                     </div>
-
                 </div>
+
 
 
 
@@ -106,9 +108,27 @@
                     <x-input-error :messages="$errors->get('nisn')" class="mt-2" />
                 </div>
                 <div class="mb-4">
+                    <x-input-label for="nisn" :value="__('Status Pendaftar')" />
+                    <select class="block mt-1 w-full rounded-md" name="tipe_siswa" id="">
+                        <option>Pilih Status</option>
+                        <option value="umum">Umum</option>
+                        <option value="alumni">Alumni</option>
+                    </select>
+
+                    <x-input-error :messages="$errors->get('nisn')" class="mt-2" />
+                </div>
+                <div class="mb-4">
                     <x-input-label for="unt_pendidikan" :value="__('Unit Pendidikan')" />
                     <input id="unt_pendidikan" class="block mt-1 w-full" type="text" name='unt_pendidikan'
                         value='{{ $unitPendidikan }}'' readonly />
+                    <x-input-error :messages="$errors->get('unt_pendidikan')" class="mt-2" />
+                </div>
+
+                <div class="mb-4">
+                    <x-input-label for="gelombang" :value="__('Gelombang')" />
+                    <p>{{ $getGelombang->namaAcara }}</p>
+                    <input id="unt_pendidikan" class="block mt-1 w-full" type="text" name='id_acara'
+                        value='{{ $getGelombang->id_acara }}' readonly hidden />
                     <x-input-error :messages="$errors->get('unt_pendidikan')" class="mt-2" />
                 </div>
 
@@ -229,3 +249,13 @@
 
 
 </x-layout>
+<script>
+    function toggleCheckbox(currentCheckbox, otherCheckboxId) {
+        const otherCheckbox = document.getElementById(otherCheckboxId);
+
+        // Jika checkbox ini di-check, uncheck checkbox lainnya
+        if (currentCheckbox.checked) {
+            otherCheckbox.checked = false;
+        }
+    }
+</script>

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Acara;
 use App\Models\Kelas;
 use App\Models\User;
+use App\Models\UserGolongan;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
@@ -21,6 +24,13 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         return view('auth.register');
+    }
+    public function saver(Request $request)
+    {
+        $unitPendidikan = $request->query('unit_pendidikan', ''); // Nilai default kosong jika tidak ada parameter
+        $getGelombang = Acara::select('id_acara', 'namaAcara')->where('status', '=', 'aktif')->first();
+
+        return view('frontPage.formRegister', ['title' => 'test'], compact('unitPendidikan', 'getGelombang'));
     }
 
     /**
@@ -45,6 +55,26 @@ class RegisteredUserController extends Controller
             'tmpt_lahir' => $request->tmpt_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'asl_sekolah' => $request->asl_sekolah,
+            'tipe_siswa' => $request->tipe_siswa,
+
+        ]);
+        $id_harga = DB::table('harga')
+            ->join('user_golongan', 'harga.id_harga', '=', 'user_golongan.id_harga')  // Pastikan 'harga' di-join dengan 'user_golongan'
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')  // Join 'users' dengan 'user_golongan'
+            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->where('harga.gender', '=', $request->gender)
+            ->where('harga.tipe_siswa', '=', $request->tipe_siswa)
+            ->where('harga.unitPendidikan', '=', $request->unt_pendidikan)
+            ->select('harga.id_harga')  // Ambil id_harga dari tabel harga
+            ->first();
+
+
+        UserGolongan::create([
+            'id_acara' => $request->id_acara,
+            'id_user' => $user->id_user,
+            'id_harga' => $id_harga->id_harga
+
 
         ]);
 
@@ -68,6 +98,7 @@ class RegisteredUserController extends Controller
 
 
         ]);
+
         $user->seleksi()->create([
             'id_user' => $user->id_user,
         ]);
@@ -78,15 +109,12 @@ class RegisteredUserController extends Controller
         $user->userUnitPendidikan()->create([
             'id_user' => $user->id_user,
             'id_kelas' => $kelas->id_kelas,
-
-
         ]);
         $user->berkas()->create([
             'id_user' => $user->id_user,
         ]);
         $user->pembayaran()->create([
             'id_user' => $user->id_user,
-
         ]);
 
         event(new Registered($user));

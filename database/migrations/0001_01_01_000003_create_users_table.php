@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->string('username')->nullable();
             $table->string('password')->nullable();
+            $table->string('password2')->nullable();
             $table->string('name')->nullable();
             $table->string('alamat')->nullable();
             $table->integer('nisn')->nullable();
@@ -23,7 +24,9 @@ return new class extends Migration
             $table->string('tmpt_lahir')->nullable();
             $table->date('tgl_lahir')->nullable();
             $table->string('asl_sekolah')->nullable();
+            $table->enum('tipe_siswa', ['alumni', 'umum']);
             $table->enum('status', ['aktif', 'tidak_aktif'])->default('tidak_aktif');
+
             $table->rememberToken();
             $table->timestamps();
         });

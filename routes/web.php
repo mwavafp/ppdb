@@ -34,6 +34,7 @@ Route::get('/sd', [PengaturanWebController::class, 'showDatasd']);
 Route::get('/smp', [PengaturanWebController::class, 'showDatasmp']);
 Route::get('/sma', [PengaturanWebController::class, 'showDatasma']);
 
+
 Route::get('/biaya', function () {
     return view('frontpage.biaya', ['title' => 'Biaya Page']);
 });
@@ -48,10 +49,7 @@ Route::get('/tagihan', function () {
 
 
 
-Route::get('/form', function (Request $request) {
-    $unitPendidikan = $request->query('unit_pendidikan', ''); // Nilai default kosong jika tidak ada parameter
-    return view('frontPage.formRegister', ['title' => 'test'], compact('unitPendidikan'));
-});
+Route::get('/form', [RegisteredUserController::class, 'saver'])->name('form');
 
 Route::get('/pengumumansma', [PengumumanController::class, 'showDatasma'])->name('pengumumansma');
 Route::get('/pengumumansma/search', [PengumumanController::class, 'searchsma'])->name('pengumumansma.search');
@@ -200,7 +198,7 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     });
     Route::get('/tahun-ajaran-pengaturan', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.tahun-ajaran-pengaturan');
     Route::post('/tahun-ajaran/update/{id_tahun}', [TahunAjaranController::class, 'update'])->name('superAdmin.tahun-ajaran-update');
-// Route pengaturan home dan setiap infoemasi jenjang
+    // Route pengaturan home dan setiap infoemasi jenjang
     Route::get('/pengaturan-website', [PengaturanWebController::class, 'showpage'])->name('pengaturanpage');
 
     Route::get('/pengaturan-website/edit/home', [PengaturanWebController::class, 'edithome'])->name('pengaturanhome-edit');
