@@ -1,7 +1,7 @@
 <x-layout>
   <x-slot:title>{{$title}}</x-slot:title>
     <div class="section-2  -">
-        <div class="text-3xl text-center font-bold bg-primary  text-white mb-8 rounded-b-full">
+        <div class="text-3xl text-center font-bold bg-[oklch(62.7%_0.194_149.214)]  text-white mb-8 rounded-b-full">
             <p class="py-8">INFORMASI MADIN</p>
         </div>
         @foreach ($all_teks as $teks)
@@ -92,7 +92,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
       
        <div class="bg-white p-6 rounded-md shadow-md">
-        <h2 class="text-primary text-lg font-bold mb-4">
+        <h2 class="text-[oklch(62.7%_0.194_149.214)] text-lg font-bold mb-4">
          ALUR PENDAFTARAN
         </h2>
         <ul class="space-y-4">
@@ -160,7 +160,7 @@
        </div>
        <div class='flex flex-col'>
        <div class="bg-white p-6 rounded-md shadow-md mb-4 tabel-1">
-        <h2 class="text-primary text-lg font-bold mb-4">
+        <h2 class="text-[oklch(62.7%_0.194_149.214)] text-lg font-bold mb-4">
          JADWAL PENDAFTARAN
         </h2>
         <ul class="space-y-2 mb-4">
@@ -180,31 +180,31 @@
           1 Juni - 14 Juli 2025
          </li>
         </ul>
-        <a href="/form?unit_pendidikan=SMP" class="bg-primary text-white py-2 px-4 rounded-md">
+        <a href="/form?unit_pendidikan=SMP" class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
          DAFTAR KLIK DISINI
         </a>
        </div>
        <div class="bg-white p-6 rounded-md shadow-md  tabel-2">
-        <h2 class="text-primary text-lg font-bold mt-6 mb-4">
+        <h2 class="text-[oklch(62.7%_0.194_149.214)] text-lg font-bold mt-6 mb-4">
          BERKAS YANG HARUS DISIAPKAN
         </h2>
         <ul class="space-y-2">
          <li class="flex items-center">
-          <i class="fas fa-check text-primary">
+          <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
           </i>
           <span class="ml-2">
            Fotocopy KK 2 Lembar
           </span>
          </li>
          <li class="flex items-center">
-          <i class="fas fa-check text-primary">
+          <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
           </i>
           <span class="ml-2">
           Fotocopy Akte Kelahiran 2 Lembar
           </span>
          </li>
          <li class="flex items-center">
-          <i class="fas fa-check text-primary">
+          <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
           </i>
           <span class="ml-2">
            Foto Berwarna 3x4 2 Lembar

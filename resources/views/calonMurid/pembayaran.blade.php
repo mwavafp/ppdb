@@ -1,159 +1,140 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
     <x-tahapan></x-tahapan>
-    <h1 class="text-2xl text-center font-bold">Informasi Pembayaran</h1>
 
-    <div class="px-9 py-5 flex space-x-20">
-        <table>
-            <tr>
-                <td class="pr-2 py-1 font-medium">No.Pendaftaran</td>
-                <td class="pr-2">:</td>
-                <td>{{ $all_data->id_user }}</td>
-            </tr>
-            <tr>
-                <td class="pr-2 py-1 font-medium">Nama</td>
-                <td class="pr-2">:</td>
-                <td>{{ $all_data->name }}</td>
-            </tr>
-            <tr>
-                <td class="pr-2 py-1 font-medium">Jenjang</td>
-                <td class="pr-2">:</td>
-                <td>{{ strtoupper($all_data->unt_pendidikan) }}</td>
-            </tr>
-        </table>
+    <h1 class="text-2xl text-center font-bold my-6">Informasi Pembayaran</h1>
 
-        <table>
-            <tr>
-                <td class="pr-2 py-1 font-medium">Gelombang</td>
-                <td class="pr-2">:</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td class="pr-2 py-1 font-medium">Kategori</td>
-                <td class="pr-2">:</td>
-                <td>Alumni</td>
-            </tr>
-            <tr>
-                <td class="pr-2 py-1 font-medium">Status</td>
-                <td class="pr-2">:</td>
-                <td>
-                    {!! $all_data->byr_dft_ulang == 'belum'
-                        ? '<span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum Lunas</span>'
-                        : '<span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-green-700 rounded-lg">Lunas</span>' !!}
-                </td>
-                <!-- <span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-green-600 rounded-lg">lunas</span> -->
-            </tr>
-        </table>
+    <!-- Informasi Pendaftar -->
+    <div class="px-4 lg:px-9 py-5 flex flex-col lg:flex-row lg:space-x-20 space-y-4 lg:space-y-0">
+        <div>
+            <table>
+                <tr>
+                    <td class="pr-2 py-1 font-medium">No. Pendaftaran</td>
+                    <td class="pr-2">:</td>
+                    <td>{{ $all_data->id_user }}</td>
+                </tr>
+                <tr>
+                    <td class="pr-2 py-1 font-medium">Nama</td>
+                    <td class="pr-2">:</td>
+                    <td>{{ $all_data->name }}</td>
+                </tr>
+                <tr>
+                    <td class="pr-2 py-1 font-medium">Jenjang</td>
+                    <td class="pr-2">:</td>
+                    <td>{{ strtoupper($all_data->unt_pendidikan) }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <table>
+                <tr>
+                    <td class="pr-2 py-1 font-medium">Gelombang</td>
+                    <td class="pr-2">:</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td class="pr-2 py-1 font-medium">Kategori</td>
+                    <td class="pr-2">:</td>
+                    <td>Alumni</td>
+                </tr>
+                <tr>
+                    <td class="pr-2 py-1 font-medium">Status</td>
+                    <td class="pr-2">:</td>
+                    <td>
+                        {!! $all_data->byr_dft_ulang == 'belum'
+                            ? '<span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum Lunas</span>'
+                            : '<span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-green-700 rounded-lg">Lunas</span>' !!}
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
-    <div class="px-9 py-5">
-        <table class="w-full">
+    <!-- Rincian Pembayaran -->
+    <div class="px-4 lg:px-9 py-5 overflow-x-auto">
+        <table class="min-w-full text-sm">
             <thead class="bg-gray-300 border-b-2 border-gray-400">
                 <tr>
-                    <th class="p-3 text-sm tracking-wide text-center">No</th>
-                    <th class="p-3 text-sm tracking-wide text-center">Nama Komponen</th>
-                    <th class="p-3 text-sm tracking-wide text-center">Jumlah</th>
+                    <th class="p-3 text-center">No</th>
+                    <th class="p-3 text-center">Nama Komponen</th>
+                    <th class="p-3 text-center">Jumlah</th>
                 </tr>
             </thead>
             <tbody class="border-b-2 border-gray-400">
-                <tr class="bg-white">
-                    <td class="p-3 text sm text-center">1</td>
-                    <td class="p-3 text sm text-center">Formulir</td>
-                    <td class="p-3 text sm text-center"rupiah="100000"></td>
-                </tr>
-                <tr class="bg-gray-200">
-                    <td class="p-3 text text-center">2</td>
-                    <td class="p-3 text text-center">Uang Pendaftaran</td>
-                    <td class="p-3 text text-center"rupiah="200000"></td>
-                </tr>
-
-                <tr class="bg-white">
-                    <td class="p-3 text sm text-center">3</td>
-                    <td class="p-3 text sm text-center">SPP Bulanan</td>
-                    <td class="p-3 text sm text-center"rupiah="300000"></td>
-                </tr>
-                <tr class="bg-gray-200">
-                    <td class="p-3 text sm text-center">4</td>
-                    <td class="p-3 text sm text-center">Buku Paket</td>
-                    <td class="p-3 text sm text-center"rupiah="150000"></td>
-                </tr>
-                <tr class="bg-white">
-                    <td class="p-3 text sm text-center">5</td>
-                    <td class="p-3 text sm text-center">Ujian Semester</td>
-                    <td class="p-3 text sm text-center"rupiah="250000"></td>
-                </tr>
-                <tr class="bg-gray-200">
-                    <td class="p-3 text sm text-center">6</td>
-                    <td class="p-3 text sm text-center">Seragam</td>
-                    <td class="p-3 text sm text-center"rupiah="400000"></td>
-                </tr>
-
-                <tr class="bg-white">
-                    <td class="p-3 text sm text-center">7</td>
-                    <td class="p-3 text sm text-center">Asuransi</td>
-                    <td class="p-3 text sm text-center"rupiah="50000"></td>
-                </tr>
-
-                <tr class="bg-white">
-                    <td class="p-3 text sm text-center">8</td>
-                    <td class="p-3 text sm text-center">Ekstrakulikuler</td>
-                    <td class="p-3 text sm text-center"rupiah="100000"></td>
-                </tr>
-
+                @php
+                    $komponen = [
+                        ['Formulir', 100000],
+                        ['Uang Pendaftaran', 200000],
+                        ['SPP Bulanan', 300000],
+                        ['Buku Paket', 150000],
+                        ['Ujian Semester', 250000],
+                        ['Seragam', 400000],
+                        ['Asuransi', 50000],
+                        ['Ekstrakulikuler', 100000],
+                    ];
+                @endphp
+                @foreach ($komponen as $i => [$nama, $jumlah])
+                    <tr class="{{ $i % 2 == 0 ? 'bg-white' : 'bg-gray-200' }}">
+                        <td class="p-3 text-center">{{ $i + 1 }}</td>
+                        <td class="p-3 text-center">{{ $nama }}</td>
+                        <td class="p-3 text-center" rupiah="{{ $jumlah }}"></td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
 
-    <!-- tabel total -->
-    <div class="px-9 py-5">
-        <table class="w-full">
+    <!-- Tabel Total -->
+    <div class="px-4 lg:px-9 py-5 overflow-x-auto">
+        <table class="min-w-full text-sm">
             <thead class="bg-gray-300 border-b-2 border-gray-400">
                 <tr>
-                    <th class="p-3 text-sm tracking-wide text-center">DP</th>
-                    <th class="p-3 text-sm tracking-wide text-center">Jumlah yang sudah dibayar</th>
-                    <th class="p-3 text-sm tracking-wide text-center">Sisa Bayar</th>
+                    <th class="p-3 text-center">DP</th>
+                    <th class="p-3 text-center">Jumlah yang sudah dibayar</th>
+                    <th class="p-3 text-center">Sisa Bayar</th>
                 </tr>
             </thead>
-            <tbody class="border-b-2 border-gray-400">
+            <tbody>
+                @php
+                    $jmlh_byr = $all_data->jmlh_byr ?? 0;
+                    $total = 1050000;
+                @endphp
                 <tr class="bg-white">
-                    <td class="p-3 text sm text-center"rupiah="500000"></td>
-                    <td class="p-3 text sm text-center"
-                        rupiah="{{ $all_data->jmlh_byr === null ? 0 : $all_data->jmlh_byr }}"></td>
-                    <td class="p-3 text sm text-center" rupiah="{{ 1050000 - $all_data->jmlh_byr }}"></td>
+                    <td class="p-3 text-center" rupiah="500000"></td>
+                    <td class="p-3 text-center" rupiah="{{ $jmlh_byr }}"></td>
+                    <td class="p-3 text-center" rupiah="{{ $total - $jmlh_byr }}"></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <!-- informasi keterangan -->
-    <div class="px-9 py-5">
-        <div class="bg-gray-300 rounded-lg py-5 pl-5">
+    <!-- Keterangan -->
+    <div class="px-4 lg:px-9 py-5">
+        <div class="bg-gray-300 rounded-lg py-5 px-5">
             <h1 class="font-semibold text-2xl mb-4">Informasi:</h1>
-            <div class="flex">
-                <h2 class="font-semibold text-md ">Bonus : </h2>
-                <p class="ml-2">Lunas atau DP akan mendapatkan free sepatu 1  / tas  / 1 stel seragam  (boleh memilih
-                    selama persediaan masih ada).
-                </p>
+
+            <div class="mb-4">
+                <h2 class="font-semibold text-md inline-block">Bonus :</h2>
+                <p class="inline ml-2">Lunas atau DP akan mendapatkan free sepatu / tas / 1 stel seragam (boleh memilih
+                    selama persediaan masih ada).</p>
             </div>
 
-            <div class="flex items-start">
-                <h2 class="font-semibold text-md mr-4">Skema Pembayaran : </h2>
-                <ol class="list-decimal pl-3 text-base">
+            <div>
+                <h2 class="font-semibold text-md mb-2">Skema Pembayaran :</h2>
+                <ol class="list-decimal pl-5 space-y-1 text-base">
                     <li>Pembayaran SPP bisa dilakukan setiap awal bulan</li>
-                    <li>Pembayaran hanya bisa dilakukan secara offline / langsung ke yayasan nurul huda</li>
-                    <li>Seluruh komponen biaya awal (Biaya pendaftaran, pendidikan, lainnya) harus dilunasi sebelum
-                        tanggal penutupan pendaftaran.</li>
-                    <li>Bagi calon siswa yang memerlukan keringanan, tersedia program cicilan untuk biaya awal dan SPP.
-                    </li>
-                    <li>Untuk cicilan dapat dilakukan beberapa kali</li>
-                    <li>Minimum untuk pembayaran awal sebesar Rp 500.000,00</li>
+                    <li>Pembayaran hanya bisa dilakukan secara offline / langsung ke yayasan Nurul Huda</li>
+                    <li>Seluruh komponen biaya awal harus dilunasi sebelum tanggal penutupan pendaftaran</li>
+                    <li>Tersedia program cicilan untuk biaya awal dan SPP</li>
+                    <li>Cicilan dapat dilakukan beberapa kali</li>
+                    <li>Minimum pembayaran awal sebesar Rp 500.000,00</li>
                 </ol>
             </div>
         </div>
     </div>
-    </div>
 
-    <!-- Mata Uang -->
+    <!-- Script Format Rupiah -->
     <script>
         function formatRupiah(angka) {
             return new Intl.NumberFormat('id-ID', {
@@ -161,9 +142,12 @@
                 currency: 'IDR'
             }).format(angka);
         }
-        document.querySelectorAll('[rupiah]').forEach(function(element) {
-            const amount = parseInt(element.getAttribute('rupiah'));
-            element.textContent = formatRupiah(amount);
+
+        document.querySelectorAll('[rupiah]').forEach(function(el) {
+            const nilai = parseInt(el.getAttribute('rupiah'));
+            if (!isNaN(nilai)) {
+                el.textContent = formatRupiah(nilai);
+            }
         });
     </script>
 </x-layout>

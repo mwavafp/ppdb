@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\SendAccountController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
@@ -25,6 +26,10 @@ use App\Http\Controllers\UserBerkasController;
 
 
 //route untuk view pengaturan 
+Route::get('/sms', [SendAccountController::class, 'test']);
+Route::get('/pdf', function () {
+    return view('pdf.registration');
+});
 Route::get('/', [PengaturanWebController::class, 'showDatahome']);
 Route::get('/pondok', [PengaturanWebController::class, 'showDatapondok']);
 Route::get('/madin', [PengaturanWebController::class, 'showDatamadin']);

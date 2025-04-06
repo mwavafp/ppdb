@@ -75,7 +75,7 @@
         <div class="my-auto mx-4 ">
             <form action="{{ route('tagihan.export') }}" method="GET">
                 <button type="submit" class="btn btn-primary">
-                    <span class="bg-primary text-white text-center px-6 py-4 rounded-md">Download
+                    <span class="bg-[oklch(62.7%_0.194_149.214)] text-white text-center px-6 py-4 rounded-md">Download
                         Excel</span>
                 </button>
             </form>
@@ -215,7 +215,7 @@
                                                     </div>
                                                     <div class="flex justify-end">
                                                         <button type="submit"
-                                                            class="bg-blue-500 text-white px-4 py-2  bg-primary rounded-lg">
+                                                            class="bg-blue-500 text-white px-4 py-2  bg-[oklch(62.7%_0.194_149.214)] rounded-lg">
                                                             Simpan
                                                         </button>
                                                     </div>

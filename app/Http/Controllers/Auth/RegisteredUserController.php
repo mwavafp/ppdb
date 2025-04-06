@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Acara;
+use App\Models\Harga;
 use App\Models\Kelas;
 use App\Models\User;
 use App\Models\UserGolongan;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Barryvdh\DomPDF\PDF;
 
 class RegisteredUserController extends Controller
 {
@@ -30,7 +33,7 @@ class RegisteredUserController extends Controller
         $unitPendidikan = $request->query('unit_pendidikan', ''); // Nilai default kosong jika tidak ada parameter
         $getGelombang = Acara::select('id_acara', 'namaAcara')->where('status', '=', 'aktif')->first();
 
-        return view('frontPage.formRegister', ['title' => 'test'], compact('unitPendidikan', 'getGelombang'));
+        return view('frontPage.formRegister', ['title' => 'test'], compact('unitPendidikan', 'getGelombang',));
     }
 
     /**
@@ -58,22 +61,18 @@ class RegisteredUserController extends Controller
             'tipe_siswa' => $request->tipe_siswa,
 
         ]);
-        $id_harga = DB::table('harga')
-            ->join('user_golongan', 'harga.id_harga', '=', 'user_golongan.id_harga')  // Pastikan 'harga' di-join dengan 'user_golongan'
-            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')  // Join 'users' dengan 'user_golongan'
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
-            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->where('harga.gender', '=', $request->gender)
-            ->where('harga.tipe_siswa', '=', $request->tipe_siswa)
-            ->where('harga.unitPendidikan', '=', $request->unt_pendidikan)
-            ->select('harga.id_harga')  // Ambil id_harga dari tabel harga
-            ->first();
+        $harga_id = Harga::where('gender', $request->gender)
+            ->where('tipe_siswa', $request->tipe_siswa)
+            ->where('unitPendidikan', $request->unt_pendidikan)
+            ->where('id_acara', $request->id_acara)
+            ->value('id_harga');
+
 
 
         UserGolongan::create([
             'id_acara' => $request->id_acara,
             'id_user' => $user->id_user,
-            'id_harga' => $id_harga->id_harga
+            'id_harga' => $harga_id
 
 
         ]);
@@ -98,6 +97,12 @@ class RegisteredUserController extends Controller
 
 
         ]);
+        $identity = [
+            "plainPassword" => $request->password,
+            "unitPendidikan" => $request->unt_pendidikan,
+            "tipeSiswa" => $request->tipe_siswa
+        ];
+
 
         $user->seleksi()->create([
             'id_user' => $user->id_user,
@@ -117,10 +122,21 @@ class RegisteredUserController extends Controller
             'id_user' => $user->id_user,
         ]);
 
-        event(new Registered($user));
+        $pdf = $this->generatePDF($user, $identity);
+        $pdfContent = $pdf->output(); // hasil binary PDF
+        $pdfName = 'registration_' . $user->id_user . '.pdf';
+
+        // Simpan sekali ke session flash
+        session()->flash('pdf_download', [
+            'content' => base64_encode($pdfContent),
+            'filename' => $pdfName
+        ]);
 
         Auth::login($user);
-
-        return redirect(route('biodata', absolute: false));
+        return redirect()->route('biodata');
+    }
+    private function generatePDF($user, $identity)
+    {
+        return \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.registration', compact('user', 'identity'));
     }
 }

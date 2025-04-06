@@ -22,6 +22,10 @@ class Acara extends Model
     ];
     public function userGolongan()
     {
-        return $this->hasOne(UserGolongan::class, 'id_harga', 'id_harga');
+        return $this->hasOne(UserGolongan::class, 'id_acara', 'id_acara');
+    }
+    public function harga()
+    {
+        return $this->hasOne(Harga::class, 'id_acara', 'id_acara');
     }
 }

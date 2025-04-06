@@ -51,7 +51,8 @@ class DatabaseSeeder extends Seeder
                     'tipe_siswa' => 'umum',
                     'total_bayar_daful' => 1000000,
                     'dp_daful' => 500000,
-                    'diskon' => 200000
+                    'diskon' => 200000,
+                    'id_acara' => 1
                 ],
                 [
                     'unitPendidikan' => 'sd',
@@ -59,7 +60,8 @@ class DatabaseSeeder extends Seeder
                     'tipe_siswa' => 'umum',
                     'total_bayar_daful' => 1000000,
                     'dp_daful' => 500000,
-                    'diskon' => 200000
+                    'diskon' => 200000,
+                    'id_acara' => 1
                 ],
             ]
         );

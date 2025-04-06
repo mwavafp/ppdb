@@ -19,7 +19,8 @@ return new class extends Migration
             $table->bigInteger('total_bayar_daful');
             $table->bigInteger('dp_daful');
             $table->bigInteger('diskon')->nullable();
-
+            $table->foreign('id_acara')->references('id_acara')->on('acara')->onDelete('cascade');
+            $table->unsignedBigInteger('id_acara');
             $table->timestamps();
         });
     }

@@ -1,10 +1,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 
-
-
-<div class="border-b-2  border-black border-solid">
+<div class="border-b-2 border-black border-solid">
     <nav class="bg-white fixed top-0 left-0 right-0 z-50 shadow">
-
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between">
                 <!-- Logo -->
@@ -14,51 +11,52 @@
                 </div>
 
                 <!-- Desktop Menu and Login Button -->
-                <div class="flex items-center space-x-4">
-                    <!-- Menu -->
-                    <div class="hidden md:flex space-x-4 items-center">
-                        <x-nav-link href="/">BERANDA</x-nav-link>
-                        <div class="relative group">
-                            <a class="flex items-center cursor-pointer  hover:text-primaryhrv hover:bg-green-200  px-4 py-2 rounded-md"
-                                onclick="toggleDropdown()">
-                                INFORMASI
-                                <i class="fas fa-chevron-down ml-2"></i>
-                            </a>
-                            <!-- Dropdown -->
-                            <div id="dropdown-menu"
-                                class="absolute hidden bg-white text-black shadow-lg border rounded-lg mt-2 py-2 w-48 transition duration-700 ease-in-out">
-                                <x-nav-link href="/pondok" class="block px-4 py-2 hover:bg-gray-100">PONDOK</x-nav-link>
-                                <x-nav-link href="/madin" class="block px-4 py-2 hover:bg-gray-100">MADIN</x-nav-link>
-                                <x-nav-link href="/tpq" class="block px-4 py-2 hover:bg-gray-100">TPQ</x-nav-link>
-                                <x-nav-link href="/tk" class="block px-4 py-2 hover:bg-gray-100">TK</x-nav-link>
-                                <x-nav-link href="/sd" class="block px-4 py-2 hover:bg-gray-100">SD</x-nav-link>
-                                <x-nav-link href="/smp" class="block px-4 py-2 hover:bg-gray-100">SMP</x-nav-link>
-                                <x-nav-link href="/sma" class="block px-4 py-2 hover:bg-gray-100">SMA</x-nav-link>
-                            </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <x-nav-link href="/">BERANDA</x-nav-link>
+
+                    <!-- Dropdown -->
+                    <div class="relative group">
+                        <a class="flex items-center cursor-pointer hover:text-[oklch(62.7%_0.194_149.214)] hover:bg-green-200 px-4 py-2 rounded-md"
+                            onclick="toggleDropdown()">
+                            INFORMASI
+                            <i class="fas fa-chevron-down ml-2"></i>
+                        </a>
+                        <div id="dropdown-menu"
+                            class="absolute hidden bg-white text-black shadow-lg border rounded-lg mt-2 py-2 w-48 transition duration-300 ease-in-out z-50">
+                            <x-nav-link href="/pondok" class="block px-4 py-2 hover:bg-gray-100">PONDOK</x-nav-link>
+                            <x-nav-link href="/madin" class="block px-4 py-2 hover:bg-gray-100">MADIN</x-nav-link>
+                            <x-nav-link href="/tpq" class="block px-4 py-2 hover:bg-gray-100">TPQ</x-nav-link>
+                            <x-nav-link href="/tk" class="block px-4 py-2 hover:bg-gray-100">TK</x-nav-link>
+                            <x-nav-link href="/sd" class="block px-4 py-2 hover:bg-gray-100">SD</x-nav-link>
+                            <x-nav-link href="/smp" class="block px-4 py-2 hover:bg-gray-100">SMP</x-nav-link>
+                            <x-nav-link href="/sma" class="block px-4 py-2 hover:bg-gray-100">SMA</x-nav-link>
                         </div>
-                        <x-nav-link href="/biaya">BIAYA</x-nav-link>
-                        <x-nav-link href="/kontak">KONTAK</x-nav-link>
-                        <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
                     </div>
-                    <!-- Auth Buttons -->
+
+                    <x-nav-link href="/biaya">BIAYA</x-nav-link>
+                    <x-nav-link href="/kontak">KONTAK</x-nav-link>
+                    <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
+
+                    <!-- Auth -->
                     @if (Auth::check())
                         <form method="POST" action="{{ route('logouts') }}">
                             @csrf
                             <button onclick="event.preventDefault(); this.closest('form').submit();"
-                                class="py-2 px-4 mt-4 bg-primary text-white rounded-lg hover:bg-green-900 transition">
+                                class="py-2 px-4 mt-1 bg-[oklch(62.7%_0.194_149.214)] text-white rounded-lg hover:bg-green-900 transition">
                                 {{ __('Log Out') }}
                             </button>
                         </form>
                     @else
                         <a href="/login"
-                            class="py-2 px-4 bg-primary text-white rounded-lg hover:bg-green-900 transition">
+                            class="py-2 px-4 bg-[oklch(62.7%_0.194_149.214)] text-white rounded-lg hover:bg-green-900 transition">
                             Login
                         </a>
                     @endif
                 </div>
+
                 <!-- Mobile Menu Toggle -->
                 <button id="menu-toggle"
-                    class="md:hidden text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-600">
+                    class="md:hidden text-gray-500 focus:outline-none focus:ring-2 focus:ring-[oklch(62.7%_0.194_149.214)]">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -66,43 +64,46 @@
                     </svg>
                 </button>
             </div>
+        </div>
 
-
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden">
-                <div class="px-2 pb-3 pt-2 space-y-1">
-                    <x-nav-link href="/">BERANDA</x-nav-link>
-                    <div>
-                        <x-nav-link href="#" class="flex items-center justify-between">
-                            INFORMASI
-                            <i class="fas fa-chevron-down ml-2"></i>
-                        </x-nav-link>
-                        <div class="pl-4 space-y-1">
-
-                            <a href="/pondok" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">PONDOK</a>
-                            <a href="/madin" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MADIN</a>
-                            <a href="/tpq" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">TPQ</a>
-                            <a href="/tk" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">TK</a>
-                            <a href="/sd" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">SD</a>
-                            <a href="/smp" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">SMP</a>
-                            <a href="/sma" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">SMA</a>
-                        </div>
-                    </div>
-                    <x-nav-link href="/biaya">BIAYA</x-nav-link>
-                    <x-nav-link href="/kontak">KONTAK</x-nav-link>
-                    <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
-                    <a href="/login"
-                        class="block w-full text-center py-2 px-4 bg-primary text-white rounded-lg hover:bg-primary-600 transition">
-                        Login
-                    </a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 pt-2 space-y-1 transition-all duration-300 ease-in-out">
+            <x-nav-link href="/">BERANDA</x-nav-link>
+            <div>
+                <x-nav-link href="#" class="flex items-center justify-between">
+                    INFORMASI
+                    <i class="fas fa-chevron-down ml-2"></i>
+                </x-nav-link>
+                <div class="pl-4 space-y-1">
+                    <a href="/pondok" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">PONDOK</a>
+                    <a href="/madin" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MADIN</a>
+                    <a href="/tpq" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">TPQ</a>
+                    <a href="/tk" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">TK</a>
+                    <a href="/sd" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">SD</a>
+                    <a href="/smp" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">SMP</a>
+                    <a href="/sma" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">SMA</a>
                 </div>
             </div>
+            <x-nav-link href="/biaya">BIAYA</x-nav-link>
+            <x-nav-link href="/kontak">KONTAK</x-nav-link>
+            <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
+
+            <a href="/login"
+                class="block w-full text-center py-2 px-4 bg-[oklch(62.7%_0.194_149.214)] text-white rounded-lg hover:bg-green-900 transition">
+                Login
+            </a>
+        </div>
     </nav>
 </div>
 
 <script>
     function toggleDropdown() {
         const dropdown = document.getElementById("dropdown-menu");
-        dropdown.classList.toggle("hidden"); // Toggle 'hidden' class to show or hide the dropdown
+        dropdown.classList.toggle("hidden");
     }
+
+    document.getElementById("menu-toggle").addEventListener("click", function() {
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenu.classList.toggle("hidden");
+    });
 </script>

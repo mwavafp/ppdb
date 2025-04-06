@@ -1,3 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@source "../views";
+@theme {
+    /* --color-primary: #059669;
+    --color-secondary: #ffd23f;
+    --color-reds: #ffd23f;
+    --color-blue: #3c2eff;
+    --color-purple: #d70ebd; */
+}

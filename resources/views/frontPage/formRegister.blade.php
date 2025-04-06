@@ -120,7 +120,7 @@
                 <div class="mb-4">
                     <x-input-label for="unt_pendidikan" :value="__('Unit Pendidikan')" />
                     <input id="unt_pendidikan" class="block mt-1 w-full" type="text" name='unt_pendidikan'
-                        value='{{ $unitPendidikan }}'' readonly />
+                        value='{{ $unitPendidikan }}' readonly />
                     <x-input-error :messages="$errors->get('unt_pendidikan')" class="mt-2" />
                 </div>
 
@@ -129,6 +129,7 @@
                     <p>{{ $getGelombang->namaAcara }}</p>
                     <input id="unt_pendidikan" class="block mt-1 w-full" type="text" name='id_acara'
                         value='{{ $getGelombang->id_acara }}' readonly hidden />
+
                     <x-input-error :messages="$errors->get('unt_pendidikan')" class="mt-2" />
                 </div>
 
@@ -234,11 +235,6 @@
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
-
                     <x-primary-button class="ms-4">
                         {{ __('Register') }}
                     </x-primary-button>

@@ -24,6 +24,8 @@ class HargaFactory extends Factory
             'total_bayar_daful' => $this->faker->numerify('########'),
             'dp_daful' => $this->faker->numerify('########'),
             'diskon' => $this->faker->numerify('########'),
+            'id_acara' => $this->faker->numerify('########'),
+
         ];
     }
 }

@@ -26,4 +26,8 @@ class Harga extends Model
     {
         return $this->hasOne(UserGolongan::class, 'id_harga', 'id_harga');
     }
+    public function acara()
+    {
+        return $this->belongsTo(Acara::class, 'id_acara', 'id_acara');
+    }
 }
