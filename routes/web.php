@@ -122,10 +122,6 @@ Route::middleware('auth:web')->group(function () {
 
     Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
 
-    Route::get('/aya', function () {
-        return view('calonMurid.b', ['title' => 'Informasi Pembayaran']);
-    });
-
     Route::get('/verifikasi', [VerifikasiController::class, 'showData']);
 
     Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
@@ -186,8 +182,8 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
     Route::post('update-tagihan/{id}', [TagihanAdmin::class, 'updateData'])->name('update-tagihan');
     Route::get('/search', [TagihanAdmin::class, 'search'])->name('search');
     Route::get('/filter', [TagihanAdmin::class, 'filter'])->name('filter');
-    Route::post('/logout', [LoginController::class, 'destroy'])
-        ->name('admin.logout');
+    Route::post('/logout-admin', [LoginController::class, 'destroy'])
+        ->name('admin.logoutAdmin');
 });
 
 Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
@@ -229,7 +225,6 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
 
     Route::get('/pengaturan-website/edit/pondok', [PengaturanWebController::class, 'editpondok'])->name('pengaturanpondok-edit');
     Route::post('/pengaturan-website/update/pondok', [PengaturanWebController::class, 'updatepondok'])->name('pengaturanpondok-update');
-
-    Route::post('/logout', [LoginController::class, 'destroy'])
-        ->name('admin.logout');
+    Route::post('/logout-super', [LoginController::class, 'destroy'])
+        ->name('admin.logoutSuperAdmin');
 });
