@@ -4,6 +4,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <x-slot:title>{{ $title }}</x-slot:title>
 
+    
     <div class="bg-[oklch(62.7%_0.194_149.214)] text-white text-center py-5 text-2xl font-bold">
         CONTACT
     </div>
