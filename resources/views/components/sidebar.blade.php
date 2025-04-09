@@ -55,6 +55,22 @@
                 ],
                 'items' => [],
             ],
+            (object) [
+                'menu' => (object) [
+                    'icon' => 'fa-user-check',
+                    'title' => 'Pengaturan Gelombang',
+                    'link' => 'pengaturan-gelombang',
+                ],
+                'items' => [],
+            ],
+            (object) [
+                'menu' => (object) [
+                    'icon' => 'fa-user-check',
+                    'title' => 'Pengaturan Biaya Daftar',
+                    'link' => 'pengaturan-biaya-daftar',
+                ],
+                'items' => [],
+            ],
 
             (object) [
                 'menu' => (object) [
