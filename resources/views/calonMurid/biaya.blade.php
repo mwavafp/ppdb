@@ -16,11 +16,11 @@ source code untuk menampilkan biaya pondok masih tidak bisa terpanggil hanya bia
     <x-slot:title>{{$title}}</x-slot:title>
     <x-tahapan></x-tahapan>
     <div class="container mx-auto p-4">
-        <div class="bg-orange-500 text-black text-center py-4 font-bold text-lg">
+        <div class="bg-green-500 text-white text-center py-4 font-bold text-lg">
             <p>Biaya Pendidikan</p>
         </div>
         <div class="flex justify-center space-x-4 my-4">
-            <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700" onclick="selectTab('TK')">TK</button>
+            <button class="menu-btn bg-green text-white px-6 py-2 rounded hover:bg-orange-600 active:bg-green-700" onclick="selectTab('TK')">TK</button>
             <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700" onclick="selectTab('SD')">SD</button>
             <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700" onclick="selectTab('SMP')">SMP</button>
             <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700" onclick="selectTab('SMA')">SMA</button>
