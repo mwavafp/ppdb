@@ -27,6 +27,7 @@ class AdminSuperDashboardController extends Controller
         //     $item->password = Crypt::decryptString($item->password);
         // }
 
+
         return view('superAdmin.dataAdminPage', compact('all_data'), ['title' => 'Dashboard SuperAdmin']);
     }
     public function createData(Request $request): RedirectResponse

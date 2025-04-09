@@ -16,7 +16,8 @@
             <div x-data="{ isModalOpen: false }">
                 <!-- Tombol untuk membuka modal -->
 
-                <button @click="isModalOpen = true" class="bg-primary text-white p-2 rounded-md"><span>Tambah
+                <button @click="isModalOpen = true"
+                    class="bg-[oklch(62.7%_0.194_149.214)] text-white p-2 rounded-md"><span>Tambah
                         Akun</span></button>
 
 
@@ -72,7 +73,8 @@
                                         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
                                 <div class="flex justify-end">
-                                    <button type="submit" class=" text-white px-4 py-2  bg-primary rounded-lg">
+                                    <button type="submit"
+                                        class=" text-white px-4 py-2  bg-[oklch(62.7%_0.194_149.214)] rounded-lg">
                                         Simpan
                                     </button>
                                 </div>
@@ -85,7 +87,7 @@
 
         </div>
         <table class="min-w-full divide-y divide-gray-200 " id="dataTable">
-            <thead class="bg-primary text-white border-b-2 rounded-md">
+            <thead class="bg-[oklch(62.7%_0.194_149.214)] text-white border-b-2 rounded-md">
                 <tr class="rounded-md">
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Lengkap</th>
@@ -138,7 +140,8 @@
         <div class="my-4">
             {{ $all_data->links() }}
         </div>
-        <div class="note text-white bg-primary my-8 p-4 rounded-lg shadow flex flex-wrap flex-col w-1/2">
+        <div
+            class="note text-white bg-[oklch(62.7%_0.194_149.214)] my-8 p-4 rounded-lg shadow flex flex-wrap flex-col w-1/2">
             <p>Note:</p>
             <p>
                 Password berada didalam petik "password"

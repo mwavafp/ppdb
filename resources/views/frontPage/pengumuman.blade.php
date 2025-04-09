@@ -5,7 +5,7 @@
     <title>Pengumuman Hasil Seleksi</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <body class="bg-white">
+    <body class="bg-white h-[85vh]">
         <div class="bg-[oklch(62.7%_0.194_149.214)] text-white text-center py-4">
             <h1 class="text-xl font-bold">PENGUMUMAN HASIL SELEKSI ASAL SEKOLAH PENDAFTAR</h1>
         </div>
