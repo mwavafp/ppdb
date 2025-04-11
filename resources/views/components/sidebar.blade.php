@@ -86,7 +86,7 @@
 
 
 <div id="sidebar"
-    class="fixed top-0 left-0 m-0 z-10 h-screen w-64 bg-slate-50 border-r border-gray-200 dark:bg-zinc-800 dark:border-neutral-700 transition-all duration-300">
+    class="fixed top-0 left-0 m-0 z-10 h-screen w-64 bg-slate-50 border-r border-gray-200 dark:bg-zinc-800 dark:border-neutral-700 transition-all duration-300 p-4">
     <!-- Tombol Collapse -->
     <button id="toggleSidebar"
         class="absolute top-4 right-[-16px] w-8 h-8 bg-violet-500 text-white rounded-full shadow-md hover:bg-violet-600 flex items-center justify-center">

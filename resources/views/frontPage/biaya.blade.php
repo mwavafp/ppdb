@@ -18,15 +18,20 @@
             <p>Biaya Pendidikan</p>
         </div>
         <div class="flex justify-center space-x-4 my-4">
-            <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700"
+            <button
+                class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
                 onclick="selectTab('TK')">TK</button>
-            <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700"
+            <button
+                class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
                 onclick="selectTab('SD')">SD</button>
-            <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700"
+            <button
+                class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
                 onclick="selectTab('SMP')">SMP</button>
-            <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700"
+            <button
+                class="menu-btn bg-orange text-black hover:text-white  px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
                 onclick="selectTab('SMA')">SMA</button>
-            <button class="menu-btn bg-orange text-black px-6 py-2 rounded hover:bg-orange-600 active:bg-orange-700"
+            <button
+                class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
                 onclick="selectTab('PONDOK')">PONDOK</button>
         </div>
 

@@ -41,7 +41,7 @@ Route::get('/sma', [PengaturanWebController::class, 'showDatasma']);
 
 
 Route::get('/biaya', function () {
-    return view('frontpage.biaya', ['title' => 'Biaya Page']);
+    return view('frontPage.biaya', ['title' => 'Biaya Page']);
 });
 Route::get('/kontak', function () {
     return view('frontPage.kontak', ['title' => 'Kontak Page']);
