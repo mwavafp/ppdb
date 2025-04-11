@@ -9,8 +9,8 @@
         <div class="bg-[oklch(62.7%_0.194_149.214)] text-white text-center py-4">
             <h1 class="text-xl font-bold">PENGUMUMAN HASIL SELEKSI ASAL SEKOLAH PENDAFTAR</h1>
         </div>
-        <div class="container mx-auto px-4 py-[80px] pb-[107px]">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="container mx-auto px-4 py-[80px] pb-[107px] ">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
                 <!-- Card 1 -->
                 <div class="relative border-2 border-[oklch(62.7%_0.194_149.214)] rounded-lg p-7 text-center h-40">
                     <div

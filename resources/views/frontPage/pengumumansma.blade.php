@@ -1,6 +1,6 @@
 <x-layout>
     <div class="container mx-auto px-4 py-6">
-        <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">{{ $title }}</h2>
+        <h2 class="text-2xl font-bold mb-6 text-center text-[oklch(62.7%_0.194_149.214)]">{{ $title }}</h2>
 
         <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg mx-auto max-w-7xl">
 
@@ -24,7 +24,7 @@
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-300 border rounded-lg shadow">
                     <thead
-                        class="bg-blue-100 text-xs uppercase text-[oklch(45.7%_0.24_277.023)] font-bold tracking-wide">
+                        class="bg-[oklch(62.7%_0.194_149.214)] text-white text-xs uppercase font-bold tracking-wide">
                         <tr>
                             <th class="px-4 py-3 text-left">No</th>
                             <th class="px-4 py-3 text-left">Nama Lengkap</th>

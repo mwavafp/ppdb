@@ -4,11 +4,16 @@
         sections.forEach(section => section.classList.add('hidden'));
 
         const buttons = document.querySelectorAll('.menu-btn');
-        buttons.forEach(button => button.classList.remove('active'));
+        buttons.forEach(button => button.classList.remove('bg-[oklch(62.7%_0.194_149.214)]', 'text-white'));
 
         document.getElementById(tab).classList.remove('hidden');
-        document.querySelector(`[onclick="selectTab('${tab}')"]`).classList.add('active');
+        const activeButton = document.querySelector(`[onclick="selectTab('${tab}')"]`);
+        activeButton.classList.add('bg-[oklch(62.7%_0.194_149.214)]', 'text-white');
+        activeButton.classList.remove('hover:bg-green-200');
     }
+    window.onload = function() {
+        selectTab('TK');
+    };
 </script>
 
 <x-layout>
@@ -354,7 +359,7 @@
 
                 <tbody class='text-black'>
                     <tr>
-                        <td class="border-2 border-gray-200 px-4 py-2">1</td>
+                        <td class="border-2 border-gray-200 px-4 py-2">2</td>
                         <td class="border-2 border-gray-200 px-4 py-2">Madin Bukan Dari Unit</td>
                         <td class="border-2 border-gray-200 px-4 py-2">Rp 590.000</td>
                         <td class="border-2 border-gray-200 px-4 py-2">Rp 590.000</td>
