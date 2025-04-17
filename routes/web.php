@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
 use App\Http\Controllers\AdminSuper\TahunAjaranController;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
+use App\Http\Controllers\AdminSuper\PengaturanGelombang;
 use App\Http\Controllers\AdminSuper\PengaturanWebController;
 use App\Http\Controllers\Auth\PengumumanController;
 use App\Http\Controllers\Auth\VerifikasiController;
@@ -25,7 +26,7 @@ use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\UserBerkasController;
 
 
-//route untuk view pengaturan 
+//route untuk view pengaturan
 Route::get('/sms', [SendAccountController::class, 'test']);
 Route::get('/pdf', function () {
     return view('pdf.registration');
@@ -130,7 +131,7 @@ Route::middleware('auth:web')->group(function () {
         ->name('logouts');
 });
 ///////////////////////////////////Admin Auth///////////////////////////////////////////
-//prefix digunakan untuk penambahan awal sebelum view contoh 
+//prefix digunakan untuk penambahan awal sebelum view contoh
 //prefix(admin) pada view dashboard. maka nanti akan menjadi /admin/dashboard
 //guest digunakan khusus pengguna yang belum login sebagai admin
 //auth memerikasa pengguna sudah login
@@ -192,7 +193,8 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
     Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
     Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
-    Route::get('/pengaturan-gelombang', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.gelombang');
+    Route::get('/pengaturan-gelombang', [PengaturanGelombang::class, 'showGelombang'])->name('superAdmin.gelombang');
+    Route::put('/pengaturan-gelombang/update', [PengaturanGelombang::class, 'updateGelombang'])->name('superAdmin.gelombang.update');
     Route::get('/pengaturan-biaya-daftar', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.biaya-daftar');
 
 
