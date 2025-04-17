@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BiayaController;
 use App\Http\Controllers\SendAccountController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
 use App\Http\Controllers\AdminSuper\TahunAjaranController;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
+use App\Http\Controllers\AdminSuper\PengaturanBiayaDaftarController;
 use App\Http\Controllers\AdminSuper\PengaturanWebController;
 use App\Http\Controllers\Auth\PengumumanController;
 use App\Http\Controllers\Auth\VerifikasiController;
@@ -40,9 +42,7 @@ Route::get('/smp', [PengaturanWebController::class, 'showDatasmp']);
 Route::get('/sma', [PengaturanWebController::class, 'showDatasma']);
 
 
-Route::get('/biaya', function () {
-    return view('frontpage.biaya', ['title' => 'Biaya Page']);
-});
+Route::get('/biaya-unit', [BiayaController::class, 'showDataBiaya']);
 Route::get('/kontak', function () {
     return view('frontPage.kontak', ['title' => 'Kontak Page']);
 });
@@ -193,7 +193,7 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
     Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
     Route::get('/pengaturan-gelombang', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.gelombang');
-    Route::get('/pengaturan-biaya-daftar', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.biaya-daftar');
+    Route::get('/pengaturan-biaya-daftar', [PengaturanBiayaDaftarController::class, 'showDataBiaya'])->name('superAdmin.biaya-daftar');
 
 
     Route::get('/pengaturan-website', function () {

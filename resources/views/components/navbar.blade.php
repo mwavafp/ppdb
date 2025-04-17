@@ -33,7 +33,7 @@
                         </div>
                     </div>
 
-                    <x-nav-link href="/biaya">BIAYA</x-nav-link>
+                    <x-nav-link href="/biaya-unit">BIAYA</x-nav-link>
                     <x-nav-link href="/kontak">KONTAK</x-nav-link>
                     <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
 
