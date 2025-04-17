@@ -193,7 +193,9 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
     Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
     Route::get('/pengaturan-gelombang', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.gelombang');
-    Route::get('/pengaturan-biaya-daftar', [PengaturanBiayaDaftarController::class, 'showDataBiaya'])->name('superAdmin.biaya-daftar');
+
+    Route::get('/pengaturan-biaya-daftar', [PengaturanBiayaDaftarController::class, 'showDataBiaya'])->name('superAdmin-biaya-daftar');
+    Route::post('update-biaya-daftar/{id}', [PengaturanBiayaDaftarController::class, 'updateDataBiaya'])->name('update-biaya-daftar');
 
 
     Route::get('/pengaturan-website', function () {

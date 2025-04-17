@@ -33,7 +33,7 @@
         <span class="bg-gray-200 text-black py-2 px-4 rounded-full">Nama Atmin</span>
     </div>
 
-    <div class="flex w-full mx-4">
+    <div class="flex w-full px-16">
         <div class="flex justify-center space-x-4 my-4">
             <button
                 class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
@@ -67,13 +67,15 @@
 
     <div class="bg-white p-4 rounded-lg shadow">
         @foreach ($units as $unit)
-            <div id={{ strtoupper($unit) }} class="education-section hidden">
+            @php $unitId = strtoupper($unit); @endphp
+            <div id="{{ $unitId }}" class="education-section hidden">
                 <table class="min-w-full divide-y divide-gray-200" id="dataTable">
                     <thead class="bg-gray-50 border-b-2">
                         <tr>
                             <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang
-                                Pendidikan
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Gelombang
+                            </th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Pendidikan
                             </th>
                             <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Tipe Siswa
                             </th>
@@ -88,17 +90,18 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200" id="tableBody">
-                        @if ($all_data->isEmpty())
+                        @if (empty($all_data[$unitId]) || $all_data[$unitId]->isEmpty())
                             <tr>
                                 <td colspan="9" class="text-center py-4 text-gray-500">
                                     Data tidak ditemukan
                                 </td>
                             </tr>
                         @else
-                            @foreach ($all_data as $item)
+                            @foreach ($all_data[$unitId] as $item)
                                 <tr class="hover:bg-gray-50 transition">
                                     <td class="border px-4 py-2 text-center text-sm">{{ $loop->iteration }}</td>
                                     {{-- <td class="border px-4 py-2 text-center text-sm">{{ $item->name }}</td> --}}
+                                    <td class="border px-4 py-2 text-center text-sm">{{ $item->namaAcara }}</td>
                                     <td class="border px-4 py-2 text-center text-sm">
                                         {{ strtoupper($item->unitPendidikan) }}
                                     </td>
@@ -137,62 +140,56 @@
                                                     <!-- Konten Modal -->
                                                     <!-- pemakaian include atau component sama saja dan yang wajib diteruskan adalah datanya -->
                                                     <!-- Yand dirender menggunakan fungsi dari showData -->
-                                                    {{-- <form action="{{ route('update-tagihan', ['id' => $item->id_bayar]) }}"
-                                                method="POST">
-                                                @csrf
-                                                <div class="modal fade text-left" id="ModalCreate" tabindex="-1">
-                                                    <h1 class="font-bold text-xl mb-4">Edit Tagihan Mabro</h1>
-                                                    <div class="mb-4">
-                                                        <label for="name"
-                                                            class="block text-gray-700 font-medium">Nama</label>
-                                                        <label for="name"
-                                                            class="block text-gray-700 font-medium">{{ $item->name }}</label>
+                                                    <form
+                                                        action="{{ route('update-biaya-daftar', ['id' => $item->id_harga]) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <div class="modal fade text-left" id="ModalCreate"
+                                                            tabindex="-1">
+                                                            <h1 class="font-bold text-xl mb-4">Edit Biaya Pendaftaran
+                                                            </h1>
+                                                            <div class="mb-4">
+                                                                <label for="name"
+                                                                    class="block text-gray-700 font-medium">Gelombang</label>
+                                                                <label for="name"
+                                                                    class="block text-gray-700 font-medium">{{ $item->namaAcara }}</label>
 
-                                                    </div>
-                                                    <div class="mb-4">
-                                                        <label for="jmlh_byr"
-                                                            class="block text-gray-700 font-medium">Jumlah
-                                                            Bayar</label>
-                                                        <input type="number" id="jmlh_byr" name="jmlh_byr"
-                                                            value="{{ $item->jmlh_byr }}"
-                                                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                                    </div>
-                                                    <div class="mb-4">
-                                                        <label for="status"
-                                                            class="block text-gray-700 font-medium">Status
-                                                            Tipe Pembayaran </label>
-                                                        <select id="status" name="status"
-                                                            value="{{ $item->status }}"
-                                                            class="block w-full px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700 appearance-none">
-                                                            <option value="DP">DP</option>
-                                                            <option value="Lunas">Lunas</option>
-                                                            <option value="Cicil">Cicil</option>
-                                                        </select>
-
-                                                    </div>
-                                                    <div class="mb-4">
-                                                        <label for="status"
-                                                            class="block text-gray-700 font-medium">Status
-                                                            Bayar</label>
-                                                        <select id="status" name="byr_dft_ulang"
-                                                            value="{{ $item->byr_dft_ulang }}"
-                                                            class="block w-full px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700 appearance-none">
-                                                            <option value="lunas">Lunas</option>
-                                                            <option value="belum">Belum</option>
-                                                        </select>
-
-                                                    </div>
-                                                    <div class="flex justify-end">
-                                                        <button type="submit"
-                                                            class="bg-blue-500 text-white px-4 py-2  bg-[oklch(62.7%_0.194_149.214)] rounded-lg">
-                                                            Simpan
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="total_bayar_daful"
+                                                                    class="block text-gray-700 font-medium">Total Bayar
+                                                                </label>
+                                                                <input type="number" id="jmlh_byr"
+                                                                    name="total_bayar_daful"
+                                                                    value="{{ $item->total_bayar_daful }}"
+                                                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="dp_daful"
+                                                                    class="block text-gray-700 font-medium">DP Bayar
+                                                                </label>
+                                                                <input type="number" id="dp_daful" name="dp_daful"
+                                                                    value="{{ $item->dp_daful }}"
+                                                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="diskon"
+                                                                    class="block text-gray-700 font-medium">DISKON
+                                                                </label>
+                                                                <input type="number" id="dp_daful" name="diskon"
+                                                                    value="{{ $item->diskon }}"
+                                                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                                            </div>
 
 
-
-                                            </form> --}}
+                                                            <div class="flex justify-end">
+                                                                <button type="submit"
+                                                                    class="bg-[oklch(45.7%_0.24_277.023)] text-white px-4 py-2  bg-[oklch(62.7%_0.194_149.214)] rounded-lg">
+                                                                    Simpan
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -202,12 +199,11 @@
                         @endif
                     </tbody>
                 </table>
+                <!-- Pagination Controls -->
+
             </div>
         @endforeach
 
     </div>
-    <!-- Pagination Controls -->
-    <div class="mt-4">
-        {{ $all_data->appends(request()->except('page'))->links() }}
-    </div>
+
 </x-layoute>
