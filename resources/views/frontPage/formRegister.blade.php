@@ -51,7 +51,7 @@
                                 onclick="toggleCheckbox(this, 'perempuan')" />
                             <!-- Kotak custom -->
                             <div
-                                class="rounded-md w-5 h-5 border-2 border-gray-300 peer-checked:bg-blue peer-checked:border-blue transition-all">
+                                class="rounded-md w-5 h-5 border-2 border-gray-300 peer-checked:bg-[oklch(45.7%_0.24_277.023)] peer-checked:border-[oklch(45.7%_0.24_277.023)] transition-all">
                             </div>
                             <span class="text-gray-700 peer-checked:font-semibold">Laki-Laki</span>
                         </label>

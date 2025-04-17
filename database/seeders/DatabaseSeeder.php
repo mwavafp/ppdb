@@ -175,7 +175,7 @@ class DatabaseSeeder extends Seeder
 
         //Automatic 100 dummy
 
-        // User::factory(100)->create()->each(function ($user) {
+        // User::factory(1000000)->create()->each(function ($user) {
         //     Ortu::factory()->create([
         //         'id_user' => $user->id_user, //penimpaan data
         //     ]);
