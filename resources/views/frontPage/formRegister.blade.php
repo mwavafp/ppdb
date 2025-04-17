@@ -26,13 +26,29 @@
 
 
                 <!-- Password -->
-                <div class="mt-4">
+                <div class="mt-4 relative">
                     <x-input-label for="password" :value="__('Password')" />
 
-                    <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" />
+                    <!-- Kolom input dengan padding kanan untuk memberi ruang ikon -->
+                    <x-text-input id="password" class="block mt-1 w-full pr-10" type="password" name="password" />
+
+                    <!-- Ikon mata di dalam input, disesuaikan posisinya -->
+                    <span 
+                        class="absolute top-[75%] right-3 -translate-y-1/2 transform cursor-pointer" 
+                        onclick="togglePassword()"
+                    >
+                        <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                    </span>
 
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
+
 
 
                 <!-- Data Diri -->
@@ -51,7 +67,7 @@
                                 onclick="toggleCheckbox(this, 'perempuan')" />
                             <!-- Kotak custom -->
                             <div
-                                class="rounded-md w-5 h-5 border-2 border-gray-300 peer-checked:bg-blue peer-checked:border-blue transition-all">
+                                class="rounded-md w-5 h-5 border-2 border-gray-300 peer-checked:bg-[oklch(45.7%_0.24_277.023)] peer-checked:border-[oklch(45.7%_0.24_277.023)] transition-all">
                             </div>
                             <span class="text-gray-700 peer-checked:font-semibold">Laki-Laki</span>
                         </label>
@@ -103,14 +119,14 @@
 
                 <div class="mb-4">
                     <x-input-label for="nisn" :value="__('NISN')" />
-                    <x-text-input id="nisn" class="block mt-1 w-full" type="text" name="nisn"
+                    <x-text-input id="nisn" class="block mt-1 w-full" type="number" name="nisn" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                         :value="old('nisn')" required />
                     <x-input-error :messages="$errors->get('nisn')" class="mt-2" />
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 ">
                     <x-input-label for="nisn" :value="__('Status Pendaftar')" />
-                    <select class="block mt-1 w-full rounded-md" name="tipe_siswa" id="">
-                        <option>Pilih Status</option>
+                    <select class="block mt-1 w-full rounded-md border-2 border-gray-400" name="tipe_siswa" id="">
+                        <option >Pilih Status</option>
                         <option value="umum">Umum</option>
                         <option value="alumni">Alumni</option>
                     </select>
@@ -141,7 +157,7 @@
                 </div>
                 <div class="mb-4">
                     <x-input-label for="number_kk" :value="__('Nomor KK')" />
-                    <x-text-input id="number_kk" class="block mt-1 w-full" type="text" name="nmr_kk"
+                    <x-text-input id="number_kk" class="block mt-1 w-full" type="text" name="nmr_kk" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                         :value="old('nmr_kk')" required />
                     <x-input-error :messages="$errors->get('nmr_kk')" class="mt-2" />
                 </div>
@@ -154,7 +170,7 @@
 
                 <div class="mb-4">
                     <x-input-label for="number_daddy" :value="__('NIK Ayah')" />
-                    <x-text-input id="number_daddy" class="block mt-1 w-full" type="text" name="nik_ayah"
+                    <x-text-input id="number_daddy" class="block mt-1 w-full" type="text" name="nik_ayah" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                         :value="old('nik_ayah')" required />
                     <x-input-error :messages="$errors->get('nik_ayah')" class="mt-2" />
                 </div>
@@ -185,7 +201,7 @@
                 </div>
                 <div class="mb-4">
                     <x-input-label for="nisn" :value="__('Nomor Whatsapp Ayah')" />
-                    <x-text-input id="tes" class="block mt-1 w-full" type="number" name="nmr_ayah_wa"
+                    <x-text-input id="tes" class="block mt-1 w-full" type="number" name="nmr_ayah_wa" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                         :value="old('nmr_ayah_wa')" required />
                     <x-input-error :messages="$errors->get('nmr_ayah_wa')" class="mt-2" />
                 </div>
@@ -198,7 +214,8 @@
                 </div>
                 <div class="mb-4">
                     <x-input-label for="nik_ibu" :value="__('NIK Ibu')" />
-                    <x-text-input id="nik_ibu" class="block mt-1 w-full" type="text" name="nik_ibu"
+                    <x-text-input id="nik_ibu" class="block mt-1 w-full" type="text" name="nik_ibu" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+    onpaste="handlePaste(event)"
                         :value="old('nik_ibu')" required />
                     <x-input-error :messages="$errors->get('nik_ibu')" class="mt-2" />
                 </div>
@@ -229,7 +246,7 @@
                 </div>
                 <div class="mb-4">
                     <x-input-label for="nmr_ibu_wa" :value="__('Nomor Whatsapp Ibu')" />
-                    <x-text-input id="nmr_ibu_wa" class="block mt-1 w-full" type="number" name="nmr_ibu_wa"
+                    <x-text-input id="nmr_ibu_wa" class="block mt-1 w-full" type="number" name="nmr_ibu_wa" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                         :value="old('nmr_ibu_wa')" required />
                     <x-input-error :messages="$errors->get('nmr_ibu_wa')" class="mt-2" />
                 </div>
@@ -254,4 +271,31 @@
             otherCheckbox.checked = false;
         }
     }
+    function handlePaste(e) {
+        const paste = (e.clipboardData || window.clipboardData).getData('text');
+        if (!/^\d+$/.test(paste)) {
+            e.preventDefault(); // Tolak paste kalau mengandung non-digit
+        }
+    }
+    function togglePassword() {
+        const input = document.getElementById('password');
+        const icon = document.getElementById('eyeIcon');
+
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.innerHTML = `
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.953 9.953 0 012.182-3.362m3.687-2.58A9.956 9.956 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.956 9.956 0 01-1.507 2.888M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 6L6 6" />
+            `;
+        } else {
+            input.type = 'password';
+            icon.innerHTML = `
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            `;
+        }
+    }
 </script>
+

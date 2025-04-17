@@ -15,6 +15,6 @@ class SendAccountController extends Controller
             "title" => "SP2",
             "body" => "kETERLAMBATAN PENGERJAAN PPDB. KERJA WOI"
         ];
-        Mail::to("3130022023@student.unusa.ac.id")->send(new SendAccount($data));
+        Mail::to("3130022022@student.unusa.ac.id")->send(new SendAccount($data));
     }
 }

@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BiayaController;
 use App\Http\Controllers\SendAccountController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,11 @@ use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
 use App\Http\Controllers\AdminSuper\TahunAjaranController;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
+<<<<<<< HEAD
 use App\Http\Controllers\AdminSuper\PengaturanGelombang;
+=======
+use App\Http\Controllers\AdminSuper\PengaturanBiayaDaftarController;
+>>>>>>> 96891c50acddab55aa92d98778dc2f4c2d9456b9
 use App\Http\Controllers\AdminSuper\PengaturanWebController;
 use App\Http\Controllers\Auth\PengumumanController;
 use App\Http\Controllers\Auth\VerifikasiController;
@@ -41,9 +46,7 @@ Route::get('/smp', [PengaturanWebController::class, 'showDatasmp']);
 Route::get('/sma', [PengaturanWebController::class, 'showDatasma']);
 
 
-Route::get('/biaya', function () {
-    return view('frontpage.biaya', ['title' => 'Biaya Page']);
-});
+Route::get('/biaya-unit', [BiayaController::class, 'showDataBiaya']);
 Route::get('/kontak', function () {
     return view('frontPage.kontak', ['title' => 'Kontak Page']);
 });
@@ -193,9 +196,20 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
     Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
     Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
+<<<<<<< HEAD
     Route::get('/pengaturan-gelombang', [PengaturanGelombang::class, 'showGelombang'])->name('superAdmin.gelombang');
     Route::put('/pengaturan-gelombang/update', [PengaturanGelombang::class, 'updateGelombang'])->name('superAdmin.gelombang.update');
     Route::get('/pengaturan-biaya-daftar', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.biaya-daftar');
+=======
+    Route::get('/pengaturan-gelombang', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.gelombang');
+<<<<<<< HEAD
+    Route::get('/pengaturan-biaya-daftar', [PengaturanBiayaDaftarController::class, 'showDataBiaya'])->name('superAdmin.biaya-daftar');
+=======
+
+    Route::get('/pengaturan-biaya-daftar', [PengaturanBiayaDaftarController::class, 'showDataBiaya'])->name('superAdmin-biaya-daftar');
+    Route::post('update-biaya-daftar/{id}', [PengaturanBiayaDaftarController::class, 'updateDataBiaya'])->name('update-biaya-daftar');
+>>>>>>> b9e00e98f0fd8f61ee0aa755bd13ac306594ab44
+>>>>>>> 96891c50acddab55aa92d98778dc2f4c2d9456b9
 
 
     Route::get('/pengaturan-website', function () {

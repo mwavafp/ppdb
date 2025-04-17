@@ -88,15 +88,15 @@
             <p class="text-center text-4xl font-bold mb-12"><span class="text-orange">Alur</span>
                 <span>Pendaftaran</span>
             </p>
-            <div class="card-box flex flex-wrap justify-center gap-8">
+            <div class="card-box flex flex-wrap justify-center ">
                 @for ($i = 1; $i <= 5; $i++)
-                    <div class="w-full sm:w-72 text-center">
+                    <div class="w-full sm:w-1/3 sm:text-center text-center p-4">
                         <div
                             class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-[oklch(45.7%_0.24_277.023)] to-[oklch(51.8%_0.253_323.949)] rounded-full flex items-center justify-center">
                             <p class="text-3xl text-white font-bold">{{ $i }}</p>
                         </div>
                         <p class="text-xl font-bold mb-4">Membawa Kk</p>
-                        <p class="text-justify text-sm">{!! nl2br(e($teks->{'alur_pendaftaran_' . $i})) !!}</p>
+                        <p class="text-center text-sm">{!! nl2br(e($teks->{'alur_pendaftaran_' . $i})) !!}</p>
                     </div>
                 @endfor
             </div>

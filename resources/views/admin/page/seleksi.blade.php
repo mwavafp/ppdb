@@ -56,7 +56,7 @@
 
     <div class="bg-white p-4 rounded-lg shadow">
         <table class="min-w-full divide-y divide-gray-200" id="dataTable">
-            <thead class="bg-gray-50 border-b-2">
+            <thead class="bg-[oklch(62.7%_0.194_149.214)] text-white border-b-2">
                 <tr>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama</th>
