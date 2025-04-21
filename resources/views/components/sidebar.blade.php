@@ -80,6 +80,14 @@
                 ],
                 'items' => [],
             ],
+            (object) [
+                'menu' => (object) [
+                    'icon' => 'fa-file-invoice-dollar',
+                    'title' => 'Pengaturan CP',
+                    'link' => 'cp-admin',
+                ],
+                'items' => [],
+            ],
         ];
     @endphp
 @endif

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Acara;
 use App\Models\Admin;
 use App\Models\Berkas;
+use App\Models\Contact;
 use App\Models\Harga;
 use App\Models\Kelas;
 use App\Models\Pembayaran;
@@ -30,8 +31,8 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
 
-    public function run(): void
-    {
+     public function run(): void
+     {
         Acara::factory()->create(
 
             [
@@ -65,6 +66,8 @@ class DatabaseSeeder extends Seeder
                 ],
             ]
         );
+ 
+ 
 
 
         $user = User::factory()->create([
@@ -78,12 +81,22 @@ class DatabaseSeeder extends Seeder
             'asl_sekolah' => 'sdn Pekalongan DC',
 
         ]);
+        
+        // Buat contact terlebih dahulu dan simpan ke variabel
+        $contact = Contact::factory()->create([
+            'nama' => 'AdminC',
+            'cp' => '081722729279',
+        ]);
+
+        // Buat kelas dan hubungkan dengan contact yang barusan dibuat
         $kelas = Kelas::factory()->create([
             'unt_pendidikan' => 'sma',
             'kelas' => '8',
             'kls_identitas' => 'A',
-            'kls_status' => 'Siswa Aktif'
+            'kls_status' => 'Siswa Aktif',
+            'id_contact' => $contact->id_contact, // <- Hubungkan ke contact
         ]);
+
         Admin::factory()->createMany(
             [
                 [

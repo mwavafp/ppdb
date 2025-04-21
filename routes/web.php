@@ -18,17 +18,15 @@ use App\Http\Controllers\Admin\Auth\SiswaController;
 use App\Http\Controllers\Admin\Auth\TagihanAdmin;
 use App\Http\Controllers\AdminSuper\TahunAjaranController;
 use App\Http\Controllers\AdminSuper\AdminSuperDashboardController;
-<<<<<<< HEAD
-use App\Http\Controllers\AdminSuper\PengaturanGelombang;
-=======
-use App\Http\Controllers\AdminSuper\PengaturanBiayaDaftarController;
->>>>>>> 96891c50acddab55aa92d98778dc2f4c2d9456b9
 use App\Http\Controllers\AdminSuper\PengaturanWebController;
 use App\Http\Controllers\Auth\PengumumanController;
 use App\Http\Controllers\Auth\VerifikasiController;
 use App\Http\Controllers\BerkasSeleksiControl;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\UserBerkasController;
+use App\Http\Controllers\AdminSuper\PengaturanGelombang;
+use App\Http\Controllers\AdminSuper\PengaturanBiayaDaftarController;
+use App\Http\Controllers\AdminSuper\ContactController;
 
 
 //route untuk view pengaturan
@@ -114,6 +112,8 @@ Route::middleware('auth:web')->group(function () {
     // })->name('biodata');
 
     Route::get('/biodata', [BiodataController::class, 'showData'])->name('biodata');
+    Route::post('/biodata/update', [BiodataController::class, 'updateData'])->name('biodata.update');
+
 
     Route::get('/seleksi', [BerkasSeleksiControl::class, 'showData'])->name('seleksi');
 
@@ -196,20 +196,24 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
     Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
     Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
-<<<<<<< HEAD
+
+    Route::get('/cp-admin', [ContactController::class, 'showData'])->name('admin.pengaturanCp');
+    Route::post('/tambah-cp', [ContactController::class, 'createData'])->name('admin.tambah-admin');
+    Route::delete('/delete-cp/{id}', [ContactController::class, 'deleteData'])->name('admin.hapus-admin');
+
+
+    // Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
+    // Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
+    // Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
+
     Route::get('/pengaturan-gelombang', [PengaturanGelombang::class, 'showGelombang'])->name('superAdmin.gelombang');
     Route::put('/pengaturan-gelombang/update', [PengaturanGelombang::class, 'updateGelombang'])->name('superAdmin.gelombang.update');
     Route::get('/pengaturan-biaya-daftar', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.biaya-daftar');
-=======
-    Route::get('/pengaturan-gelombang', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.gelombang');
-<<<<<<< HEAD
-    Route::get('/pengaturan-biaya-daftar', [PengaturanBiayaDaftarController::class, 'showDataBiaya'])->name('superAdmin.biaya-daftar');
-=======
+    // Route::get('/pengaturan-gelombang', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.gelombang');
 
     Route::get('/pengaturan-biaya-daftar', [PengaturanBiayaDaftarController::class, 'showDataBiaya'])->name('superAdmin-biaya-daftar');
     Route::post('update-biaya-daftar/{id}', [PengaturanBiayaDaftarController::class, 'updateDataBiaya'])->name('update-biaya-daftar');
->>>>>>> b9e00e98f0fd8f61ee0aa755bd13ac306594ab44
->>>>>>> 96891c50acddab55aa92d98778dc2f4c2d9456b9
+
 
 
     Route::get('/pengaturan-website', function () {
