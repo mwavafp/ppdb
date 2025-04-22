@@ -61,7 +61,7 @@ class AdminSuperDashboardController extends Controller
         //     return back()->withErrors(['msg' => 'Gagal menambahkan admin, silakan coba lagi.']);
         // }
 
-        return to_route('admin.dataAdminPage');
+        return to_route('admin.dataAdminPage')->with('success', "Data Berhasil Di tambah");
     }
     public function deleteData(Request $request, $id)
     {
@@ -69,6 +69,6 @@ class AdminSuperDashboardController extends Controller
             ->where('id_admin', '=', $id)
             ->delete();
 
-        return redirect()->route('admin.dataAdminPage');
+        return redirect()->route('admin.dataAdminPage')->with('success', "Data Berhasil Di tambah");
     }
 }
