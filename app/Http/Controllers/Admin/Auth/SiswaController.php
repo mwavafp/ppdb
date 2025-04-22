@@ -129,6 +129,6 @@ class SiswaController extends Controller
             ]);
         }
         // Redirect atau kembalikan response setelah update
-        return redirect()->route('index')->with('success', 'Data siswa berhasil diperbarui!');
+        return redirect()->route('index')->with('success', 'Data Siswa Berhasil Diperbarui!');
     }
 }

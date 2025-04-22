@@ -33,7 +33,9 @@
         <span class="bg-gray-200 text-black py-2 px-4 rounded-full">Nama Atmin</span>
     </div>
 
+
     <div class="flex w-full px-16">
+
         <div class="flex justify-center space-x-4 my-4">
             <button
                 class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
@@ -69,23 +71,35 @@
         @foreach ($units as $unit)
             @php $unitId = strtoupper($unit); @endphp
             <div id="{{ $unitId }}" class="education-section hidden">
+
                 <table class="min-w-full divide-y divide-gray-200" id="dataTable">
                     <thead class="bg-gray-50 border-b-2">
                         <tr>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Gelombang
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">No
                             </th>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Pendidikan
-                            </th>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Tipe Siswa
-                            </th>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Gender</th>
 
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Total Bayar
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Gelombang
                             </th>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">DP Bayar</th>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Diskon</th>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Pendidikan
+
+                            </th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Tipe Siswa
+                            </th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Gender</th>
+
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Total Bayar
+                            </th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                DP Bayar</th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Diskon</th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Aksi</th>
 
                         </tr>
                     </thead>
@@ -99,14 +113,19 @@
                         @else
                             @foreach ($all_data[$unitId] as $item)
                                 <tr class="hover:bg-gray-50 transition">
-                                    <td class="border px-4 py-2 text-center text-sm">{{ $loop->iteration }}</td>
+                                    <td class="border px-4 py-2 text-center text-sm">{{ $loop->iteration }}
+                                    </td>
                                     {{-- <td class="border px-4 py-2 text-center text-sm">{{ $item->name }}</td> --}}
-                                    <td class="border px-4 py-2 text-center text-sm">{{ $item->namaAcara }}</td>
+                                    <td class="border px-4 py-2 text-center text-sm">{{ $item->namaAcara }}
+                                    </td>
+
                                     <td class="border px-4 py-2 text-center text-sm">
                                         {{ strtoupper($item->unitPendidikan) }}
                                     </td>
-                                    <td class="border px-4 py-2 text-center text-sm">{{ $item->tipe_siswa }}</td>
-                                    <td class="border px-4 py-2 text-center text-sm">{{ $item->gender }}</td>
+                                    <td class="border px-4 py-2 text-center text-sm">
+                                        {{ $item->tipe_siswa }}</td>
+                                    <td class="border px-4 py-2 text-center text-sm">{{ $item->gender }}
+                                    </td>
                                     <td class="border px-4 py-2 text-center text-sm">@currency($item->total_bayar_daful)
                                     </td>
                                     <td class="border px-4 py-2 text-center text-sm">
@@ -146,7 +165,8 @@
                                                         @csrf
                                                         <div class="modal fade text-left" id="ModalCreate"
                                                             tabindex="-1">
-                                                            <h1 class="font-bold text-xl mb-4">Edit Biaya Pendaftaran
+                                                            <h1 class="font-bold text-xl mb-4">Edit Biaya
+                                                                Pendaftaran
                                                             </h1>
                                                             <div class="mb-4">
                                                                 <label for="name"
@@ -157,7 +177,8 @@
                                                             </div>
                                                             <div class="mb-4">
                                                                 <label for="total_bayar_daful"
-                                                                    class="block text-gray-700 font-medium">Total Bayar
+                                                                    class="block text-gray-700 font-medium">Total
+                                                                    Bayar
                                                                 </label>
                                                                 <input type="number" id="jmlh_byr"
                                                                     name="total_bayar_daful"
@@ -166,7 +187,8 @@
                                                             </div>
                                                             <div class="mb-4">
                                                                 <label for="dp_daful"
-                                                                    class="block text-gray-700 font-medium">DP Bayar
+                                                                    class="block text-gray-700 font-medium">DP
+                                                                    Bayar
                                                                 </label>
                                                                 <input type="number" id="dp_daful" name="dp_daful"
                                                                     value="{{ $item->dp_daful }}"
@@ -199,7 +221,6 @@
                         @endif
                     </tbody>
                 </table>
-                <!-- Pagination Controls -->
 
             </div>
         @endforeach

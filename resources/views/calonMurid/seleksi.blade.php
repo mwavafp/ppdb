@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout-login>
     <x-slot:title>Hasil Seleksi</x-slot:title>
     <x-tahapan></x-tahapan>
     <main class="flex-grow w-full px-10 my-7 p-4">
@@ -30,9 +30,9 @@
                             <td class="border border-gray-500 py-2 text-center">Ijazah</td>
                             <td class="border border-gray-500 py-2 text-center">
                                 @if ($berkas->ijazah_akhir === 'diserahkan')
-                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/check-icon.png?raw=true" alt="Check Icon" class="h-6 w-6 mx-auto">
+                                    <i class="fa fa-check bg-green-500 text-2xl" aria-hidden="true"></i>
                                 @else
-                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/remove-icon.png?raw=true" alt="Cross Icon" class="h-6 w-6 mx-auto">
+                                    <i class="fa fa-times text-red-700 text-2xl" aria-hidden="true"></i>
                                 @endif
                             </td>
                         </tr>
@@ -40,9 +40,9 @@
                             <td class="border border-gray-500 py-2 text-center">Akta Kelahiran</td>
                             <td class="border border-gray-500 py-2 text-center">
                                 @if ($berkas->pas_foto === 'diserahkan')
-                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/check-icon.png?raw=true" alt="Check Icon" class="h-6 w-6 mx-auto">
+                                    <i class="fa fa-check bg-green-500 text-2xl" aria-hidden="true"></i>
                                 @else
-                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/remove-icon.png?raw=true" alt="Cross Icon" class="h-6 w-6 mx-auto">
+                                    <i class="fa fa-times text-red-700 text-2xl" aria-hidden="true"></i>
                                 @endif
                             </td>
                         </tr>
@@ -50,9 +50,9 @@
                             <td class="border border-gray-500 py-2 text-center">Kartu Keluarga</td>
                             <td class="border border-gray-500 py-2 text-center">
                                 @if ($berkas->kk === 'diserahkan')
-                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/check-icon.png?raw=true" alt="Check Icon" class="h-6 w-6 mx-auto">
+                                    <i class="fa fa-check bg-green-500 text-2xl" aria-hidden="true"></i>
                                 @else
-                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/remove-icon.png?raw=true" alt="Cross Icon" class="h-6 w-6 mx-auto">
+                                    <i class="fa fa-times text-red-700 text-2xl" aria-hidden="true"></i>
                                 @endif
                             </td>
                         </tr>
@@ -60,9 +60,9 @@
                             <td class="border border-gray-500 py-2 text-center">KIP</td>
                             <td class="border border-gray-500 py-2 text-center">
                                 @if ($berkas->kip === 'diserahkan')
-                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/check-icon.png?raw=true" alt="Check Icon" class="h-6 w-6 mx-auto">
+                                    <i class="fa fa-check bg-green-500 text-2xl" aria-hidden="true"></i>
                                 @else
-                                    <img src="https://github.com/0xcu8e5p4c3/Contact-Page/blob/master/img/remove-icon.png?raw=true" alt="Cross Icon" class="h-6 w-6 mx-auto">
+                                    <i class="fa fa-times text-red-700 text-2xl" aria-hidden="true"></i>
                                 @endif
                             </td>
                         </tr>
@@ -75,11 +75,12 @@
                             <li>Pastikan dokumen yang belum diunggah segera dilengkapi.</li>
                             <li>Datang ke sekolah untuk proses verifikasi data pada jadwal yang telah ditentukan.</li>
                             <li>Bawa seluruh dokumen asli untuk pengecekan oleh panitia.</li>
-                            <li>Untuk informasi lebih lanjut, silakan hubungi panitia melalui kontak yang tersedia di website ini.</li>
+                            <li>Untuk informasi lebih lanjut, silakan hubungi panitia melalui kontak yang tersedia di
+                                website ini.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-</x-layout>
+</x-layout-login>
