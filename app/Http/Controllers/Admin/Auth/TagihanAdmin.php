@@ -87,7 +87,7 @@ class TagihanAdmin extends Controller
                 'byr_dft_ulang' => $validatedData['byr_dft_ulang']
             ]);
 
-        return redirect()->route('tagihan-admin')->with('success', 'Data berhasil diperbarui!');
+        return redirect()->route('tagihan-admin')->with('success', 'Data berhasil disimpan!');
     }
     public function search(Request $request)
     {

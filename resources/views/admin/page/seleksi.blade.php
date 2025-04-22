@@ -13,12 +13,13 @@
                 <i class="fas fa-search absolute left-2 pt-[14px] text-gray-400"></i>
             </form>
         </div>
-        <span class=" text-white bg-primary py-2 px-4 rounded-md">{{ strtoupper(auth()->user()->name) }}</span>
+        <span
+            class=" text-white bg-[oklch(62.7%_0.194_149.214)] py-2 px-4 rounded-md">{{ strtoupper(auth()->user()->name) }}</span>
     </div>
 
     <!-- Form Filter -->
     <form method="GET" action="{{ route('seleksi.filter') }}">
-        <div class="max-w-7xl mx-auto bg-white p-6 rounded-lg shadow-md mt-4">
+        <div class="max-w-7xl px-8 bg-white   my-4">
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Status Seleksi</label>
@@ -54,7 +55,7 @@
         </div>
     </form>
 
-    <div class="bg-white p-4 rounded-lg shadow">
+    <div class="bg-white p-4 ">
         <table class="min-w-full divide-y divide-gray-200" id="dataTable">
             <thead class="bg-[oklch(62.7%_0.194_149.214)] text-white border-b-2">
                 <tr>
@@ -103,7 +104,9 @@
                                     KIP
                                 </p>
                             </td>
-                            <td class="border px-4 py-2 text-center"><span>{{ $student->byr_dft_ulang }}</span></td>
+                            <td class="border px-4 py-2 text-center">
+                                <span>{{ strtoupper($student->byr_dft_ulang) }}</span>
+                            </td>
                             <td class="border px-4 py-2 text-center">
                                 @if ($student->status_user === 'aktif')
                                     <span class="bg-green-500 text-white px-2 py-1 rounded text-sm">Aktif
@@ -117,7 +120,7 @@
                                         class="bg-green-500 text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
                                 @elseif($student->status_seleksi === 'PENDING')
                                     <span
-                                        class="bg-primary text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
+                                        class="bg-[oklch(62.7%_0.194_149.214)] text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
                                 @elseif($student->status_seleksi === 'TIDAK LOLOS')
                                     <span
                                         class="bg-red-500 text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
@@ -234,29 +237,13 @@
                                     </select>
                                 </div>
                             </div>
-                            @if (session('success'))
-                                <script>
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Sukses!',
-                                        text: "{{ session('success') }}",
-                                    });
-                                </script>
-                            @elseif(session('error'))
-                                <script>
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Error!',
-                                        text: "{{ session('error') }}",
-                                    });
-                                </script>
-                            @endif
-
                             <!-- Footer Modal -->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit"
+                                    class=" text-white px-4 py-2  bg-[oklch(62.7%_0.194_149.214)] rounded-lg">
+                                    Simpan
+                                </button>
+
                             </div>
                         </form>
 
@@ -273,4 +260,5 @@
 
     </div>
     </div>
+
 </x-layoute>

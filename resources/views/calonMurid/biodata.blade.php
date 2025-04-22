@@ -10,11 +10,14 @@
             <!-- Foto -->
             <div class="lg:w-1/4 w-full">
                 <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center justify-center">
-                    <img id="profile-photo" src="https://via.placeholder.com/200" alt="{{$all_data->nama}}"
+                    <img id="profile-photo" src="https://via.placeholder.com/200" alt="{{ $all_data->nama }}"
                         class="rounded-lg border border-gray-300 w-full h-auto object-cover">
                     <input id="profile-photo-input" type="file" class="hidden mt-2" accept="image/*">
-                    <a href="https://wa.me/+62{{$all_data->cp}}" target="_blank" class="whatsapp-button">
-                        <button type="button" class="whatsapp-btn">Chat with us on WhatsApp</button>
+                    <a href="https://wa.me/+62{{ $all_data->cp }}" target="_blank" class="whatsapp-button">
+                        <button type="button"
+                            class="cursor-pointer rounded-md whatsapp-btn bg-[oklch(62.7%_0.194_149.214)] hover:bg-green-500 text-white py-2 px-4">Chat
+                            with us on
+                            WhatsApp</button>
                     </a>
                     {{-- <h2>{{$all_data->cp}}</h2> --}}
                 </div>
@@ -35,8 +38,8 @@
 
                     <!-- Tab Navigation -->
                     <div class="flex flex-wrap border-b border-gray-300">
-                        <button onclick="showTab(0)" type="button" class="tab-btn px-4 py-2 focus:outline-none border-b-2"
-                            id="tab-0">Data Siswa</button>
+                        <button onclick="showTab(0)" type="button"
+                            class="tab-btn px-4 py-2 focus:outline-none border-b-2" id="tab-0">Data Siswa</button>
                         <button onclick="showTab(1)" type="button" class="tab-btn px-4 py-2 focus:outline-none"
                             id="tab-1">Data Wali</button>
                     </div>
@@ -44,7 +47,7 @@
                     <!-- Tab Content -->
                     <div id="tab-content" class="p-6 w-full overflow-auto">
                         <!-- Tab 1 -->
-                        <div class="tab-panel h-auto" id="panel-0">
+                        <div class="tab-panel h-auto mb-18" id="panel-0">
                             <div class="overflow-x-auto">
                                 <table class="table-auto w-full border border-gray-300">
                                     <tbody>

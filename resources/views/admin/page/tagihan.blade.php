@@ -13,10 +13,11 @@
             </form>
             <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
         </div>
-        <span class="bg-gray-200 text-black py-2 px-4 rounded-full">Nama Atmin</span>
+        <span
+            class=" text-white bg-[oklch(62.7%_0.194_149.214)] py-2 px-4 rounded-md">{{ strtoupper(auth()->user()->name) }}</span>
     </div>
 
-    <div class="flex w-full mx-4">
+    <div class="flex w-full px-8 my-8">
         <!--Form Filter -->
         <form method="GET" action="{{ route('filter') }}">
             <div class="max-w-7xl mx-auto bg-white ">
@@ -24,7 +25,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Jenjang</label>
                         <select name="unt_pendidikan"
-                            class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
                             <option value="">Semua</option>
                             <option value="tk" {{ request('unt_pendidikan') == 'tk' ? 'selected' : '' }}>TK</option>
                             <option value="sd" {{ request('unt_pendidikan') == 'sd' ? 'selected' : '' }}>SD</option>
@@ -43,7 +44,7 @@
                     <div>
                         <label class="block text-sm font-medium">Tipe Pembayaran</label>
                         <select name="status"
-                            class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
                             <option value="">Semua</option>
                             <option value="Cicil"{{ request('status') == 'Cicil' ? 'selected' : '' }}>Cicil</option>
                             <option value="Lunas"{{ request('status') == 'Lunas' ? 'selected' : '' }}>Lunas</option>
@@ -53,7 +54,7 @@
                     <div>
                         <label class="block text-sm font-medium">Status</label>
                         <select name="dft_ulang"
-                            class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
                             <option value="">Semua</option>
                             <option value="lunas"{{ request('dft_ulang') == 'lunas' ? 'selected' : '' }}>Lunas
                             </option>
@@ -72,7 +73,7 @@
             </div>
 
         </form>
-        <div class="my-auto mx-4 ">
+        <div class="my-auto ">
             <form action="{{ route('tagihan.export') }}" method="GET">
                 <button type="submit" class="btn btn-primary">
                     <span class="bg-[oklch(62.7%_0.194_149.214)] text-white text-center px-6 py-4 rounded-md">Download
@@ -83,10 +84,10 @@
     </div>
 
 
-    <div class="bg-white p-4 rounded-lg shadow">
+    <div class="bg-white px-8">
         <table class="min-w-full divide-y divide-gray-200" id="dataTable">
-            <thead class="bg-gray-50 border-b-2">
-                <tr>
+            <thead class="bg-[oklch(62.7%_0.194_149.214)] border-b-2">
+                <tr class="text-white">
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Lengkap</th>
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang Pendidikan
@@ -100,7 +101,7 @@
 
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Kekurangan
                     </th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Status</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Status Bayar</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
@@ -132,24 +133,24 @@
                                 @currency($item->jmlh_byr >= $item->total_bayar_daful ? 0 : $item->total_bayar_daful - $item->jmlh_byr)
                             </td>
 
-                            <td>
+                            <td class="p-4 border px-4 py-2 text-center">
                                 @if ($item->jmlh_byr >= $item->total_bayar_daful)
                                     <span class="border text-white  text-center bg-green-500 rounded-lg  px-4 py-2">
                                         {{ strtoupper($item->byr_dft_ulang) }}
                                     </span>
                                 @else
-                                    <span class="border text-white  text-center bg-red-500 rounded-lg  px-4 py-2">
+                                    <span class="border text-white  text-center bg-red-500 rounded-lg px-4 py-2">
                                         {{ strtoupper($item->byr_dft_ulang) }}
                                     </span>
                                 @endif
                             </td>
-                            <td>
+                            <td class="border px-4 py-2 text-center text-sm">
                                 <!-- Modal -->
 
                                 <div x-data="{ isModalOpen: false }">
                                     <!-- Tombol untuk membuka modal -->
                                     <button @click="isModalOpen = true"
-                                        class="bg-blue-500 text-white mx-4 my-2 px-4 py-2 rounded hover:bg-blue-600 flex items-center">
+                                        class="bg-blue-500 text-white right-4 text-md px-4 py-2 rounded hover:bg-blue-600 flex items-center">
                                         <i class="fas fa-edit "></i>
                                         <span>Edit</span>
                                     </button>
@@ -161,7 +162,7 @@
                                         <div class="bg-white rounded-lg shadow-lg w-3/4 md:w-1/2 p-6 relative">
                                             <!-- Tombol untuk menutup modal -->
                                             <button @click="isModalOpen = false"
-                                                class="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
+                                                class="absolute top-2 right-4 text-4xl right-2 text-gray-600 hover:text-gray-900">
                                                 &times;
                                             </button>
 
@@ -172,7 +173,7 @@
                                                 method="POST">
                                                 @csrf
                                                 <div class="modal fade text-left" id="ModalCreate" tabindex="-1">
-                                                    <h1 class="font-bold text-xl mb-4">Edit Tagihan Mabro</h1>
+                                                    <h1 class="font-bold text-xl mb-4">Edit Tagihan Biaya</h1>
                                                     <div class="mb-4">
                                                         <label for="name"
                                                             class="block text-gray-700 font-medium">Nama</label>
@@ -215,7 +216,7 @@
                                                     </div>
                                                     <div class="flex justify-end">
                                                         <button type="submit"
-                                                            class="bg-blue-500 text-white px-4 py-2  bg-[oklch(62.7%_0.194_149.214)] rounded-lg">
+                                                            class=" text-white px-4 py-2  bg-[oklch(62.7%_0.194_149.214)] rounded-lg">
                                                             Simpan
                                                         </button>
                                                     </div>
@@ -233,9 +234,10 @@
                 @endif
             </tbody>
         </table>
+    </div>
+    <!-- Pagination Controls -->
+    <div class="mt-4">
+        {{ $all_data->appends(request()->except('page'))->links() }}
+    </div>
 
-        <!-- Pagination Controls -->
-        <div class="mt-4">
-            {{ $all_data->appends(request()->except('page'))->links() }}
-        </div>
 </x-layoute>

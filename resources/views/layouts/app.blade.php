@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Home</title>
-    <link rel="icon" type="image/png" href="images/logo-yysn.png">
+
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-yysn.png') }}">
     <!-- Tambahkan Styles -->
     @vite('resources/css/app.css')
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
