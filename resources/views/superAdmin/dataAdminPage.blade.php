@@ -11,7 +11,7 @@
 
 
 
-    <div class="bg-gray-100 mx-8 p-4 rounded-lg shadow">
+    <div class="bg-white mx-8 p-4 ">
         <div class="text-right m-4">
             <div x-data="{ isModalOpen: false }">
                 <!-- Tombol untuk membuka modal -->
@@ -140,13 +140,7 @@
         <div class="my-4">
             {{ $all_data->links() }}
         </div>
-        <div
-            class="note text-white bg-[oklch(62.7%_0.194_149.214)] my-8 p-4 rounded-lg shadow flex flex-wrap flex-col w-1/2">
-            <p>Note:</p>
-            <p>
-                Password berada didalam petik "password"
-            </p>
-        </div>
+
     </div>
 </x-layoute>
 <script>

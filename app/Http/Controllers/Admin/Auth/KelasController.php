@@ -79,7 +79,7 @@ class KelasController extends Controller
             ]);
 
         // Redirect dengan pesan sukses setelah pembaruan
-        return redirect()->route('pembagiankelas');
+        return redirect()->route('pembagiankelas')->with('success', 'Data Berhasil Diperbarui!');
     }
 
     /**

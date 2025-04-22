@@ -34,7 +34,13 @@
                     oninput="document.getElementById('searchForm').submit()">
             </form>
 
+<<<<<<< HEAD
     <div class="flex w-full mx-4">
+=======
+
+    <div class="flex w-full px-16">
+
+>>>>>>> 1d10d44d7415aa8bacb76fb9f506b8d8db974c7b
         <div class="flex justify-center space-x-4 my-4">
             <button
                 class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
@@ -68,6 +74,7 @@
 
     <div class="bg-white p-4 rounded-lg shadow">
         @foreach ($units as $unit)
+<<<<<<< HEAD
             <div id={{ strtoupper($unit) }} class="education-section hidden">
                 <table class="min-w-full divide-y divide-gray-200" id="dataTable">
                     <thead class="bg-gray-50 border-b-2">
@@ -79,32 +86,76 @@
                             <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Tipe Siswa
                             </th>
                             <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Gender</th>
+=======
+            @php $unitId = strtoupper($unit); @endphp
+            <div id="{{ $unitId }}" class="education-section hidden">
 
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Total Bayar
+                <table class="min-w-full divide-y divide-gray-200" id="dataTable">
+                    <thead class="bg-gray-50 border-b-2">
+                        <tr>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">No
                             </th>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">DP Bayar</th>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Diskon</th>
-                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
+>>>>>>> 1d10d44d7415aa8bacb76fb9f506b8d8db974c7b
+
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Gelombang
+                            </th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Pendidikan
+
+                            </th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Tipe Siswa
+                            </th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Gender</th>
+
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Total Bayar
+                            </th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                DP Bayar</th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Diskon</th>
+                            <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Aksi</th>
 
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200" id="tableBody">
+<<<<<<< HEAD
                         @if ($all_data->isEmpty())
+=======
+                        @if (empty($all_data[$unitId]) || $all_data[$unitId]->isEmpty())
+>>>>>>> 1d10d44d7415aa8bacb76fb9f506b8d8db974c7b
                             <tr>
                                 <td colspan="9" class="text-center py-4 text-gray-500">
                                     Data tidak ditemukan
                                 </td>
                             </tr>
                         @else
+<<<<<<< HEAD
                             @foreach ($all_data as $item)
                                 <tr class="hover:bg-gray-50 transition">
                                     <td class="border px-4 py-2 text-center text-sm">{{ $loop->iteration }}</td>
                                     {{-- <td class="border px-4 py-2 text-center text-sm">{{ $item->name }}</td> --}}
+=======
+                            @foreach ($all_data[$unitId] as $item)
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="border px-4 py-2 text-center text-sm">{{ $loop->iteration }}
+                                    </td>
+                                    {{-- <td class="border px-4 py-2 text-center text-sm">{{ $item->name }}</td> --}}
+                                    <td class="border px-4 py-2 text-center text-sm">{{ $item->namaAcara }}
+                                    </td>
+
+>>>>>>> 1d10d44d7415aa8bacb76fb9f506b8d8db974c7b
                                     <td class="border px-4 py-2 text-center text-sm">
                                         {{ strtoupper($item->unitPendidikan) }}
                                     </td>
-                                    <td class="border px-4 py-2 text-center text-sm">{{ $item->tipe_siswa }}</td>
-                                    <td class="border px-4 py-2 text-center text-sm">{{ $item->gender }}</td>
+                                    <td class="border px-4 py-2 text-center text-sm">
+                                        {{ $item->tipe_siswa }}</td>
+                                    <td class="border px-4 py-2 text-center text-sm">{{ $item->gender }}
+                                    </td>
                                     <td class="border px-4 py-2 text-center text-sm">@currency($item->total_bayar_daful)
                                     </td>
                                     <td class="border px-4 py-2 text-center text-sm">
@@ -138,6 +189,7 @@
                                                     <!-- Konten Modal -->
                                                     <!-- pemakaian include atau component sama saja dan yang wajib diteruskan adalah datanya -->
                                                     <!-- Yand dirender menggunakan fungsi dari showData -->
+<<<<<<< HEAD
                                                     {{-- <form action="{{ route('update-tagihan', ['id' => $item->id_bayar]) }}"
                                                 method="POST">
                                                 @csrf
@@ -194,6 +246,61 @@
 
 
                                             </form> --}}
+=======
+                                                    <form
+                                                        action="{{ route('update-biaya-daftar', ['id' => $item->id_harga]) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <div class="modal fade text-left" id="ModalCreate"
+                                                            tabindex="-1">
+                                                            <h1 class="font-bold text-xl mb-4">Edit Biaya
+                                                                Pendaftaran
+                                                            </h1>
+                                                            <div class="mb-4">
+                                                                <label for="name"
+                                                                    class="block text-gray-700 font-medium">Gelombang</label>
+                                                                <label for="name"
+                                                                    class="block text-gray-700 font-medium">{{ $item->namaAcara }}</label>
+
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="total_bayar_daful"
+                                                                    class="block text-gray-700 font-medium">Total
+                                                                    Bayar
+                                                                </label>
+                                                                <input type="number" id="jmlh_byr"
+                                                                    name="total_bayar_daful"
+                                                                    value="{{ $item->total_bayar_daful }}"
+                                                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="dp_daful"
+                                                                    class="block text-gray-700 font-medium">DP
+                                                                    Bayar
+                                                                </label>
+                                                                <input type="number" id="dp_daful" name="dp_daful"
+                                                                    value="{{ $item->dp_daful }}"
+                                                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="diskon"
+                                                                    class="block text-gray-700 font-medium">DISKON
+                                                                </label>
+                                                                <input type="number" id="dp_daful" name="diskon"
+                                                                    value="{{ $item->diskon }}"
+                                                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                                            </div>
+
+
+                                                            <div class="flex justify-end">
+                                                                <button type="submit"
+                                                                    class="bg-[oklch(45.7%_0.24_277.023)] text-white px-4 py-2  bg-[oklch(62.7%_0.194_149.214)] rounded-lg">
+                                                                    Simpan
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+>>>>>>> 1d10d44d7415aa8bacb76fb9f506b8d8db974c7b
                                                 </div>
                                             </div>
                                         </div>
@@ -203,12 +310,19 @@
                         @endif
                     </tbody>
                 </table>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1d10d44d7415aa8bacb76fb9f506b8d8db974c7b
             </div>
         @endforeach
 
     </div>
+<<<<<<< HEAD
     <!-- Pagination Controls -->
     <div class="mt-4">
         {{ $all_data->appends(request()->except('page'))->links() }}
     </div>
+=======
+>>>>>>> 1d10d44d7415aa8bacb76fb9f506b8d8db974c7b
 </x-layoute>

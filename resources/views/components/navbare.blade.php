@@ -16,26 +16,26 @@
                 <!-- Desktop Menu and Login Button -->
                 <div class="flex items-center space-x-4">
                     <!-- Menu -->
-                    
+
                     <!-- Auth Buttons -->
                     @if (Auth::check())
                         <form method="POST" action="{{ route('logouts') }}">
                             @csrf
                             <button onclick="event.preventDefault(); this.closest('form').submit();"
-                                class="py-2 px-4 mt-4 bg-primary text-white rounded-lg hover:bg-green-900 transition">
+                                class="py-2 px-4  bg-[oklch(62.7%_0.194_149.214)] text-white rounded-lg hover:bg-green-900 transition">
                                 {{ __('Log Out') }}
                             </button>
                         </form>
                     @else
                         <a href="/login"
-                            class="py-2 px-4 bg-primary text-white rounded-lg hover:bg-green-900 transition">
+                            class="py-2 px-4 bg-[oklch(62.7%_0.194_149.214)] text-white rounded-lg hover:bg-green-900 transition">
                             Login
                         </a>
                     @endif
                 </div>
                 <!-- Mobile Menu Toggle -->
                 <button id="menu-toggle"
-                    class="md:hidden text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-600">
+                    class="md:hidden text-gray-500 focus:outline-none focus:ring-2 focus:ring-[oklch(62.7%_0.194_149.214)]-600">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -69,7 +69,7 @@
                     <x-nav-link href="/kontak">KONTAK</x-nav-link>
                     <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
                     <a href="/login"
-                        class="block w-full text-center py-2 px-4 bg-primary text-white rounded-lg hover:bg-primary-600 transition">
+                        class="block w-full text-center py-2 px-4 bg-[oklch(62.7%_0.194_149.214)] text-white rounded-lg hover:bg-[oklch(62.7%_0.194_149.214)]-600 transition">
                         Login
                     </a>
                 </div>

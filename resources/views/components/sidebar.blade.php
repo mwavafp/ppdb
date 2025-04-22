@@ -24,7 +24,7 @@
             ],
             (object) [
                 'menu' => (object) [
-                    'icon' => 'fa-file-invoice-dollar',
+                    'icon' => 'fa-graduation-cap',
                     'title' => 'Pembagian Kelas',
                     'link' => 'pembagiankelas',
                 ],
@@ -57,7 +57,7 @@
             ],
             (object) [
                 'menu' => (object) [
-                    'icon' => 'fa-user-check',
+                    'icon' => 'fa-calendar',
                     'title' => 'Pengaturan Gelombang',
                     'link' => 'pengaturan-gelombang',
                 ],
@@ -65,7 +65,7 @@
             ],
             (object) [
                 'menu' => (object) [
-                    'icon' => 'fa-user-check',
+                    'icon' => 'fa-file-invoice-dollar',
                     'title' => 'Pengaturan Biaya Daftar',
                     'link' => 'pengaturan-biaya-daftar',
                 ],
@@ -74,7 +74,7 @@
 
             (object) [
                 'menu' => (object) [
-                    'icon' => 'fa-file-invoice-dollar',
+                    'icon' => 'fa-wrench',
                     'title' => 'Pengaturan Website',
                     'link' => 'pengaturan-website',
                 ],
@@ -82,7 +82,7 @@
             ],
             (object) [
                 'menu' => (object) [
-                    'icon' => 'fa-file-invoice-dollar',
+                    'icon' => 'fa-address-book',
                     'title' => 'Pengaturan CP',
                     'link' => 'cp-admin',
                 ],

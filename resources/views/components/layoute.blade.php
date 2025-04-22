@@ -36,6 +36,7 @@
     <!-- jqgrid -->
     <!-- <script src="js/jquery.jqGrid.min.js"  type="text/ecmascript"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-yysn.png') }}">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
         integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
@@ -46,6 +47,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </head>
@@ -59,20 +61,22 @@
         <div class="w-full">
             <div class="main-content group-data-[sidebar-size=sm]:ml-[70px]">
                 <div class="page-content">
-                    <div>
-                        @if (session('error'))
-                            <div role="alert" class="alert alert-error mb-5">
-                                <i class="fa-regular fa-circle-xmark"></i>
-                                <span class="font-medium">{{ session('error') }}</span>
-                            </div>
-                        @elseif(session('success'))
-                            <div role="alert" class="alert alert-success mb-5">
-                                <i class="fa-regular fa-circle-check text-xl"></i>
-                                <span class="font-medium">{{ session('success') }}</span>
-                            </div>
-                        @endif
-
-                    </div>
+                    @if (Session::has('success'))
+                        <script>
+                            Swal.fire({
+                                title: "{{ Session::get('success') }}",
+                                icon: "success"
+                            });
+                        </script>
+                    @endif
+                    @if (Session::has('error'))
+                        <script>
+                            Swal.fire({
+                                title: "{{ Session::get('error') }}",
+                                icon: "error"
+                            });
+                        </script>
+                    @endif
                     {{ $slot }}
                 </div>
             </div>

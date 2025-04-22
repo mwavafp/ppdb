@@ -1,11 +1,11 @@
-<x-layout>
+<x-layout-login>
     <x-slot:title>test</x-slot:title>
 
     <div class="w-full m-auto">
         <x-tahapan></x-tahapan>
     </div>
 
-    <main class="container mx-auto mt-10 flex justify-center mb-[130px] px-4">
+    <main class="container mx-auto mt-10 flex justify-center mb-16 px-4 h-[60vh]">
         <div class="bg-white border-2 shadow-lg rounded-lg overflow-hidden w-full max-w-2xl">
             <!-- Header -->
             <div class="bg-green-500 text-white text-center py-4">
@@ -41,4 +41,4 @@
             </div>
         </div>
     </main>
-</x-layout>
+</x-layout-login>

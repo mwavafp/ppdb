@@ -1,10 +1,10 @@
-<x-layout>
+<x-layout-login>
     <x-slot:title>{{ $title }}</x-slot:title>
 
     <x-tahapan></x-tahapan>
 
 
-    <div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10 h-[100vh]">
+    <div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10 h-[80vh]">
 
 
         <!-- Informasi Pendaftar -->
@@ -89,4 +89,4 @@
         </table>
     </div>
 
-</x-layout>
+</x-layout-login>
