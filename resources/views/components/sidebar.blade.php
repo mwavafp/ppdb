@@ -66,6 +66,14 @@
             (object) [
                 'menu' => (object) [
                     'icon' => 'fa-user-check',
+                    'title' => 'Pengaturan Kelas',
+                    'link' => 'pengaturan-kelas',
+                ],
+                'items' => [],
+            ],
+            (object) [
+                'menu' => (object) [
+                    'icon' => 'fa-user-check',
                     'title' => 'Pengaturan Biaya Daftar',
                     'link' => 'pengaturan-biaya-daftar',
                 ],

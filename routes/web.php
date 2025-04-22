@@ -27,7 +27,7 @@ use App\Http\Controllers\UserBerkasController;
 use App\Http\Controllers\AdminSuper\PengaturanGelombang;
 use App\Http\Controllers\AdminSuper\PengaturanBiayaDaftarController;
 use App\Http\Controllers\AdminSuper\ContactController;
-
+use App\Http\Controllers\AdminSuper\PengaturanKelasController;
 
 //route untuk view pengaturan
 Route::get('/sms', [SendAccountController::class, 'test']);
@@ -201,6 +201,9 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::post('/tambah-cp', [ContactController::class, 'createData'])->name('admin.tambah-admin');
     Route::delete('/delete-cp/{id}', [ContactController::class, 'deleteData'])->name('admin.hapus-admin');
 
+    Route::get('/pengaturan-kelas', [PengaturanKelasController::class, 'showData'])->name('admin.pengaturanKelas');
+    Route::post('/tambah-kelas', [PengaturanKelasController::class, 'createData'])->name('admin.tambah-kelas');
+    Route::delete('/delete-kelas/{id}', [PengaturanKelasController::class, 'deleteData'])->name('admin.hapus-kelas');
 
     // Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
     // Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
