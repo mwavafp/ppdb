@@ -15,7 +15,7 @@
                         <div class="bg-gray-100 p-6 rounded-md shadow-lg transform transition-transform hover:scale-105">
                             <!-- Kotak kolom timbul -->
                             <p class="text-justify text-black">
-                                {!! nl2br(e($teks->deskripsi)) !!}
+                                {!! ($teks->deskripsi) !!}
                             </p>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         </h2>
                     </center>
                     <p class="mt-4 text-black"> <!-- Mengubah warna teks menjadi putih -->
-                        {!! nl2br(e($teks->visi)) !!}
+                        {!! ($teks->visi) !!}
                     </p>
                 </div>
                 <div class="bg-gray-100 p-4 rounded-md shadow-md"> <!-- Mengubah bg-white menjadi bg-teal-400 -->
@@ -45,7 +45,7 @@
                     </center>
                     <p style="line-height: 1.5; text-align: justify; color: black;">
                         <!-- Mengubah warna teks menjadi putih -->
-                        {!! nl2br(e($teks->misi)) !!}
+                        {!! ($teks->misi) !!}
                     </p>
                 </div>
             </section>

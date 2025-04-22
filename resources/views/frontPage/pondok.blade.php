@@ -16,7 +16,7 @@
                         </p>
                         <div class="bg-gray-100 p-4 md:p-6 rounded-md shadow-lg transition-transform hover:scale-105">
                             <p class="text-justify text-black">
-                                {!! nl2br(e($teks->deskripsi)) !!}
+                                {!! ($teks->deskripsi) !!}
                             </p>
                         </div>
                     </div>
@@ -29,12 +29,12 @@
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 mx-8">
                 <div class="bg-gray-100 p-4 rounded-md shadow-md">
                     <h2 class="text-green-600 text-lg font-bold mb-4 text-center">VISI</h2>
-                    <p class="text-black">{!! nl2br(e($teks->visi)) !!}</p>
+                    <p class="text-black">{!! ($teks->visi) !!}</p>
                 </div>
                 <div class="bg-gray-100 p-4 rounded-md shadow-md">
                     <h2 class="text-green-600 text-lg font-bold mb-4 text-center">MISI</h2>
                     <p class="text-black text-justify leading-relaxed">
-                        {!! nl2br(e($teks->misi)) !!}
+                        {!! ($teks->misi) !!}
                     </p>
                 </div>
             </section>

@@ -1,102 +1,49 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <x-layoute>
-    <x-slot:title></x-slot:title>
-    <title>Pengaturan Web</title>
+    <x-slot:title>Pengaturan Web</x-slot:title>
 
-    <body class="bg-white text-gray-800">
+    <body class="bg-gray-50 text-gray-800 min-h-screen">
 
         <!-- Header Section -->
-        <div class="bg-[oklch(62.7%_0.194_149.214)] text-white text-center py-6 shadow-lg rounded-lg mb-12">
-            <h1 class="text-3xl font-semibold">PENGATURAN WEBSITE</h1>
-        </div>
+        <header class="bg-white border-b shadow-sm py-5 mb-10">
+            <div class="container mx-auto px-4 flex flex-col">
+                <h1 class="text-2xl font-bold text-gray-800">Pengaturan Website</h1>
+                <p class="text-sm text-gray-500 mt-1">Manajemen Konten dan Tampilan Website</p>
+            </div>
+        </header>
 
         <!-- Main Content Section -->
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <main class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                <!-- Card 1 -->
-                <div
-                    class="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                    <h3 class="text-2xl font-bold mb-4 text-center">Home</h3>
-                    <a href="{{ route('pengaturanhome-edit') }}"
-                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-6 rounded-full block text-center hover:bg-green-800">
-                        EDIT
-                    </a>
-                </div>
+                @php
+                    $cards = [
+                        ['label' => 'Home', 'route' => 'pengaturanhome-edit', 'icon' => 'fas fa-home'],
+                        ['label' => 'TK', 'route' => 'pengaturantk-edit', 'icon' => 'fas fa-child'],
+                        ['label' => 'SD', 'route' => 'pengaturansd-edit', 'icon' => 'fas fa-school'],
+                        ['label' => 'SMP', 'route' => 'pengaturansmp-edit', 'icon' => 'fas fa-user-graduate'],
+                        ['label' => 'SMA', 'route' => 'pengaturansma-edit', 'icon' => 'fas fa-university'],
+                        ['label' => 'TPQ', 'route' => 'pengaturantpq-edit', 'icon' => 'fas fa-book-open'],
+                        ['label' => 'MADIN', 'route' => 'pengaturanmadin-edit', 'icon' => 'fas fa-mosque'],
+                        ['label' => 'Pondok', 'route' => 'pengaturanpondok-edit', 'icon' => 'fas fa-kaaba'],
+                    ];
+                @endphp
 
-                <!-- Card 2 -->
-                <div
-                    class="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                    <h3 class="text-2xl font-bold mb-4 text-center">TK</h3>
-                    <a href="{{ route('pengaturantk-edit') }}"
-                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-6 rounded-full block text-center hover:bg-green-800">
-                        EDIT
-                    </a>
-                </div>
-
-                <!-- Card 3 -->
-                <div
-                    class="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                    <h3 class="text-2xl font-bold mb-4 text-center">SD</h3>
-                    <a href="{{ route('pengaturansd-edit') }}"
-                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-6 rounded-full block text-center hover:bg-green-800">
-                        EDIT
-                    </a>
-                </div>
-
-                <!-- Card 4 -->
-                <div
-                    class="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                    <h3 class="text-2xl font-bold mb-4 text-center">SMP</h3>
-                    <a href="{{ route('pengaturansmp-edit') }}"
-                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-6 rounded-full block text-center hover:bg-green-800">
-                        EDIT
-                    </a>
-                </div>
-
-                <!-- Card 5 -->
-                <div
-                    class="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                    <h3 class="text-2xl font-bold mb-4 text-center">SMA</h3>
-                    <a href="{{ route('pengaturansma-edit') }}"
-                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-6 rounded-full block text-center hover:bg-green-800">
-                        EDIT
-                    </a>
-                </div>
-
-                <!-- Card 6 -->
-                <div
-                    class="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                    <h3 class="text-2xl font-bold mb-4 text-center">TPQ</h3>
-                    <a href="{{ route('pengaturantpq-edit') }}"
-                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-6 rounded-full block text-center hover:bg-green-800">
-                        EDIT
-                    </a>
-                </div>
-
-                <!-- Card 7 -->
-                <div
-                    class="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                    <h3 class="text-2xl font-bold mb-4 text-center">MADIN</h3>
-                    <a href="{{ route('pengaturanmadin-edit') }}"
-                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-6 rounded-full block text-center hover:bg-green-800">
-                        EDIT
-                    </a>
-                </div>
-
-                <!-- Card 8 -->
-                <div
-                    class="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl">
-                    <h3 class="text-2xl font-bold mb-4 text-center">Pondok</h3>
-                    <a href="{{ route('pengaturanpondok-edit') }}"
-                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-6 rounded-full block text-center hover:bg-green-800">
-                        EDIT
-                    </a>
-                </div>
+                @foreach ($cards as $card)
+                    <div class="bg-white rounded-xl shadow hover:shadow-lg transition duration-300 p-6 flex flex-col items-center text-center">
+                        <div class="text-green-600 text-4xl mb-4">
+                            <i class="{{ $card['icon'] }}"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">{{ $card['label'] }}</h3>
+                        <a href="{{ route($card['route']) }}"
+                           class="mt-auto bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-full transition">
+                            Edit
+                        </a>
+                    </div>
+                @endforeach
 
             </div>
-        </div>
-
+        </main>
     </body>
 </x-layoute>
