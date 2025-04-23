@@ -50,7 +50,7 @@
                             <td class="border border-gray-500 py-2 text-center">Kartu Keluarga</td>
                             <td class="border border-gray-500 py-2 text-center">
                                 @if ($berkas->kk === 'diserahkan')
-                                    <i class="fa fa-check bg-green-500 text-2xl" aria-hidden="true"></i>
+                                    <i class="fa fa-check text-green-500 text-2xl" aria-hidden="true"></i>
                                 @else
                                     <i class="fa fa-times text-red-700 text-2xl" aria-hidden="true"></i>
                                 @endif

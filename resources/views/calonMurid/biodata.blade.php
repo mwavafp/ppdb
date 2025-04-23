@@ -19,7 +19,7 @@
                             with us on
                             WhatsApp</button>
                     </a>
-                    {{-- <h2>{{$all_data->cp}}</h2> --}}
+
                 </div>
             </div>
 
@@ -55,7 +55,8 @@
                                             <td class="border px-4 py-2 font-bold">Nama Lengkap</td>
                                             <td class="border px-4 py-2"><input type="text" name="name"
                                                     class="editable-field w-full" value="{{ $all_data->name }}"
-                                                    disabled></td>
+                                                    disabled>
+                                            </td>
                                         </tr>
                                         <tr class="odd:bg-white even:bg-gray-50">
                                             <td class="border px-4 py-2 font-bold">Tempat Lahir Siswa</td>
@@ -73,7 +74,8 @@
                                             <td class="border px-4 py-2 font-bold">Alamat Siswa</td>
                                             <td class="border px-4 py-2"><input type="text" name="alamat"
                                                     class="editable-field w-full" value="{{ $all_data->alamat }}"
-                                                    disabled></td>
+                                                    disabled>
+                                            </td>
                                         </tr>
                                         <tr class="odd:bg-white even:bg-gray-50">
                                             <td class="border px-4 py-2 font-bold">Asal Sekolah</td>
@@ -85,7 +87,8 @@
                                             <td class="border px-4 py-2 font-bold">NISN</td>
                                             <td class="border px-4 py-2"><input type="number" name="nisn"
                                                     class="editable-field w-full" value="{{ $all_data->nisn }}"
-                                                    disabled></td>
+                                                    disabled>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -100,7 +103,8 @@
                                         <td class="border px-4 py-2 font-bold">Nama Ayah</td>
                                         <td class="border px-4 py-2"><input type="text" name="nm_ayah"
                                                 class="editable-field w-full" value="{{ $all_data->nm_ayah }}"
-                                                disabled></td>
+                                                disabled>
+                                        </td>
                                     </tr>
                                     <tr class="odd:bg-white even:bg-gray-50">
                                         <td class="border px-4 py-2 font-bold">No KK</td>
@@ -112,7 +116,8 @@
                                         <td class="border px-4 py-2 font-bold">NIK Ayah</td>
                                         <td class="border px-4 py-2"><input type="text" name="nik_ayah"
                                                 class="editable-field w-full" value="{{ $all_data->nik_ayah }}"
-                                                disabled></td>
+                                                disabled>
+                                        </td>
                                     </tr>
                                     <tr class="odd:bg-white even:bg-gray-50">
                                         <td class="border px-4 py-2 font-bold">Tempat Lahir Ayah</td>
@@ -148,13 +153,15 @@
                                         <td class="border px-4 py-2 font-bold">Nama Ibu</td>
                                         <td class="border px-4 py-2"><input type="text" name="nm_ibu"
                                                 class="editable-field w-full" value="{{ $all_data->nm_ibu }}"
-                                                disabled></td>
+                                                disabled>
+                                        </td>
                                     </tr>
                                     <tr class="odd:bg-white even:bg-gray-50">
                                         <td class="border px-4 py-2 font-bold">NIK Ibu</td>
                                         <td class="border px-4 py-2"><input type="text" name="nik_ibu"
                                                 class="editable-field w-full" value="{{ $all_data->nik_ibu }}"
-                                                disabled></td>
+                                                disabled>
+                                        </td>
                                     </tr>
                                     <tr class="odd:bg-white even:bg-gray-50">
                                         <td class="border px-4 py-2 font-bold">Tempat Lahir Ibu</td>
@@ -172,7 +179,8 @@
                                         <td class="border px-4 py-2 font-bold">Alamat Ibu</td>
                                         <td class="border px-4 py-2"><input type="text" name="almt_ibu"
                                                 class="editable-field w-full" value="{{ $all_data->almt_ibu }}"
-                                                disabled></td>
+                                                disabled>
+                                        </td>
                                     </tr>
                                     <tr class="odd:bg-white even:bg-gray-50">
                                         <td class="border px-4 py-2 font-bold">No WA Ibu</td>

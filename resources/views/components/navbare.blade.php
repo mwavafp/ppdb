@@ -22,7 +22,7 @@
                         <form method="POST" action="{{ route('logouts') }}">
                             @csrf
                             <button onclick="event.preventDefault(); this.closest('form').submit();"
-                                class="py-2 px-4  bg-[oklch(62.7%_0.194_149.214)] text-white rounded-lg hover:bg-green-900 transition">
+                                class="py-2 px-4 cursor-pointer bg-[oklch(62.7%_0.194_149.214)] text-white rounded-lg hover:bg-green-900 transition">
                                 {{ __('Log Out') }}
                             </button>
                         </form>

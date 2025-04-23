@@ -33,12 +33,10 @@
                     <x-text-input id="password" class="block mt-1 w-full pr-10" type="password" name="password" />
 
                     <!-- Ikon mata di dalam input, disesuaikan posisinya -->
-                    <span 
-                        class="absolute top-[75%] right-3 -translate-y-1/2 transform cursor-pointer" 
-                        onclick="togglePassword()"
-                    >
-                        <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
+                    <span class="absolute top-[75%] right-3 -translate-y-1/2 transform cursor-pointer"
+                        onclick="togglePassword()">
+                        <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -119,14 +117,15 @@
 
                 <div class="mb-4">
                     <x-input-label for="nisn" :value="__('NISN')" />
-                    <x-text-input id="nisn" class="block mt-1 w-full" type="number" name="nisn" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                        :value="old('nisn')" required />
+                    <x-text-input id="nisn" class="block mt-1 w-full" type="number" name="nisn"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" :value="old('nisn')" required />
                     <x-input-error :messages="$errors->get('nisn')" class="mt-2" />
                 </div>
                 <div class="mb-4 ">
                     <x-input-label for="nisn" :value="__('Status Pendaftar')" />
-                    <select class="block mt-1 w-full rounded-md border-2 border-gray-400" name="tipe_siswa" id="">
-                        <option >Pilih Status</option>
+                    <select class="block mt-1 w-full rounded-md border-2 border-gray-400" name="tipe_siswa"
+                        id="">
+                        <option>Pilih Status</option>
                         <option value="umum">Umum</option>
                         <option value="alumni">Alumni</option>
                     </select>
@@ -139,6 +138,10 @@
                         value='{{ $unitPendidikan }}' readonly />
                     <x-input-error :messages="$errors->get('unt_pendidikan')" class="mt-2" />
                 </div>
+
+                <input id="unt_pendidikan" class="block mt-1 w-full" type="text" name='cnt'
+                    value='{{ $cnt }}' hidden />
+
 
                 <div class="mb-4">
                     <x-input-label for="gelombang" :value="__('Gelombang')" />
@@ -157,8 +160,8 @@
                 </div>
                 <div class="mb-4">
                     <x-input-label for="number_kk" :value="__('Nomor KK')" />
-                    <x-text-input id="number_kk" class="block mt-1 w-full" type="text" name="nmr_kk" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                        :value="old('nmr_kk')" required />
+                    <x-text-input id="number_kk" class="block mt-1 w-full" type="text" name="nmr_kk"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" :value="old('nmr_kk')" required />
                     <x-input-error :messages="$errors->get('nmr_kk')" class="mt-2" />
                 </div>
                 <div class="mb-4">
@@ -170,8 +173,8 @@
 
                 <div class="mb-4">
                     <x-input-label for="number_daddy" :value="__('NIK Ayah')" />
-                    <x-text-input id="number_daddy" class="block mt-1 w-full" type="text" name="nik_ayah" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                        :value="old('nik_ayah')" required />
+                    <x-text-input id="number_daddy" class="block mt-1 w-full" type="text" name="nik_ayah"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" :value="old('nik_ayah')" required />
                     <x-input-error :messages="$errors->get('nik_ayah')" class="mt-2" />
                 </div>
                 <div class="mb-4">
@@ -201,8 +204,8 @@
                 </div>
                 <div class="mb-4">
                     <x-input-label for="nisn" :value="__('Nomor Whatsapp Ayah')" />
-                    <x-text-input id="tes" class="block mt-1 w-full" type="number" name="nmr_ayah_wa" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                        :value="old('nmr_ayah_wa')" required />
+                    <x-text-input id="tes" class="block mt-1 w-full" type="number" name="nmr_ayah_wa"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" :value="old('nmr_ayah_wa')" required />
                     <x-input-error :messages="$errors->get('nmr_ayah_wa')" class="mt-2" />
                 </div>
 
@@ -214,8 +217,8 @@
                 </div>
                 <div class="mb-4">
                     <x-input-label for="nik_ibu" :value="__('NIK Ibu')" />
-                    <x-text-input id="nik_ibu" class="block mt-1 w-full" type="text" name="nik_ibu" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-    onpaste="handlePaste(event)"
+                    <x-text-input id="nik_ibu" class="block mt-1 w-full" type="text" name="nik_ibu"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" onpaste="handlePaste(event)"
                         :value="old('nik_ibu')" required />
                     <x-input-error :messages="$errors->get('nik_ibu')" class="mt-2" />
                 </div>
@@ -246,8 +249,8 @@
                 </div>
                 <div class="mb-4">
                     <x-input-label for="nmr_ibu_wa" :value="__('Nomor Whatsapp Ibu')" />
-                    <x-text-input id="nmr_ibu_wa" class="block mt-1 w-full" type="number" name="nmr_ibu_wa" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                        :value="old('nmr_ibu_wa')" required />
+                    <x-text-input id="nmr_ibu_wa" class="block mt-1 w-full" type="number" name="nmr_ibu_wa"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" :value="old('nmr_ibu_wa')" required />
                     <x-input-error :messages="$errors->get('nmr_ibu_wa')" class="mt-2" />
                 </div>
 
@@ -271,12 +274,14 @@
             otherCheckbox.checked = false;
         }
     }
+
     function handlePaste(e) {
         const paste = (e.clipboardData || window.clipboardData).getData('text');
         if (!/^\d+$/.test(paste)) {
             e.preventDefault(); // Tolak paste kalau mengandung non-digit
         }
     }
+
     function togglePassword() {
         const input = document.getElementById('password');
         const icon = document.getElementById('eyeIcon');
@@ -298,4 +303,3 @@
         }
     }
 </script>
-

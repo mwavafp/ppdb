@@ -31,9 +31,10 @@ class RegisteredUserController extends Controller
     public function saver(Request $request)
     {
         $unitPendidikan = $request->query('unit_pendidikan', ''); // Nilai default kosong jika tidak ada parameter
+        $cnt = $request->query('cnt', '');
         $getGelombang = Acara::select('id_acara', 'namaAcara')->where('status', '=', 'aktif')->first();
 
-        return view('frontPage.formRegister', ['title' => 'test'], compact('unitPendidikan', 'getGelombang',));
+        return view('frontPage.formRegister', ['title' => 'test'], compact('unitPendidikan', 'getGelombang', 'cnt'));
     }
 
     /**
@@ -109,7 +110,8 @@ class RegisteredUserController extends Controller
         ]);
 
         $kelas = Kelas::create([
-            'unt_pendidikan' => strtolower($request->unt_pendidikan)
+            'unt_pendidikan' => strtolower($request->unt_pendidikan),
+            'id_contact' => $request->cnt
         ]);
         $user->userUnitPendidikan()->create([
             'id_user' => $user->id_user,

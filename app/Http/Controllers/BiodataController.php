@@ -14,19 +14,42 @@ class BiodataController extends Controller
         $catchUser = Auth::id();
 
         $all_data = DB::table('users')
-        
-        ->join('ortu', 'users.id_user', '=', 'ortu.id_user')
-        ->join('kelas', 'users.id_user', '=', 'kelas.id_contact')
-        ->join('contact', 'kelas.id_contact', '=', 'contact.id_contact')
-        ->select('users.name', 'users.alamat', 'users.nisn', 'users.gender', 
-        'users.tmpt_lahir', 'users.tgl_lahir', 'users.asl_sekolah','users.id_user', 
-        'nmr_kk', 'nm_ayah', 'nik_ayah', 'tgl_lhr_ayah', 'tmpt_lhr_ayah','almt_ayah',
-        'pekerjaan_ayah','nmr_ayah_wa','nm_ibu','nik_ibu','tgl_lhr_ibu','tmpt_lhr_ibu',
-        'almt_ibu','pekerjaan_ibu', 'nmr_ibu_wa','contact.nama', 'contact.cp')
-        ->where('users.id_user', '=', $catchUser)
-        ->first();
-          
-//kurang nik
+
+            ->join('ortu', 'users.id_user', '=', 'ortu.id_user')
+            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->join('contact', 'kelas.id_contact', '=', 'contact.id_contact')
+            ->select(
+                'users.name',
+                'users.alamat',
+                'users.nisn',
+                'users.gender',
+                'users.tmpt_lahir',
+                'users.tgl_lahir',
+                'users.asl_sekolah',
+                'users.id_user',
+                'nmr_kk',
+                'nm_ayah',
+                'nik_ayah',
+                'tgl_lhr_ayah',
+                'tmpt_lhr_ayah',
+                'almt_ayah',
+                'pekerjaan_ayah',
+                'nmr_ayah_wa',
+                'nm_ibu',
+                'nik_ibu',
+                'tgl_lhr_ibu',
+                'tmpt_lhr_ibu',
+                'almt_ibu',
+                'pekerjaan_ibu',
+                'nmr_ibu_wa',
+                'contact.nama',
+                'contact.cp'
+            )
+            ->where('users.id_user', '=', $catchUser)
+            ->first();
+
+        //kurang nik
 
         return view('calonMurid.biodata', compact('all_data',), ['title' => 'test']);
     }
@@ -73,6 +96,4 @@ class BiodataController extends Controller
 
         return redirect()->route('biodata')->with('success', 'Data berhasil diperbarui!');
     }
-
-
 }
