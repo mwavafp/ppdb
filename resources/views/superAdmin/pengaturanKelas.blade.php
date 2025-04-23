@@ -11,13 +11,13 @@
 
 
 
-    <div class="bg-gray-100 mx-8 p-4 rounded-lg shadow">
+    <div class=" mx-8 p-4">
         <div class="text-right m-4">
             <div x-data="{ isModalOpen: false }">
                 <!-- Tombol untuk membuka modal -->
 
                 <button @click="isModalOpen = true"
-                    class="bg-[oklch(62.7%_0.194_149.214)] text-white p-2 rounded-md"><span>Tambah
+                    class="bg-[oklch(62.7%_0.194_149.214)] text-white p-2  rounded-md"><span>Tambah
                         Akun</span></button>
 
 
@@ -28,7 +28,7 @@
                     <div class="bg-white rounded-lg shadow-lg w-3/4 md:w-1/2 p-6 relative">
                         <!-- Tombol untuk menutup modal -->
                         <button @click="isModalOpen = false"
-                            class="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
+                            class="absolute top-2 right-2 text-4xl text-gray-600 hover:text-gray-900">
                             &times;
                         </button>
 
@@ -42,7 +42,8 @@
 
                                 <div class="mb-4">
                                     <label class="block text-gray-700 font-medium">Jenjang</label>
-                                    <select name="unt_pendidikan" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <select name="unt_pendidikan"
+                                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                         <option disabled placeholder="Masukkan Unit Pendidikan">Pilih</option>
                                         <option value="tk">TK</option>
                                         <option value="sd">SD</option>
@@ -51,13 +52,14 @@
                                         <option value="tpq">TPQ</option>
                                         <option value="madin">MADIN</option>
                                         <option value="pondok">PONDOK</option>
-                                      </select>
+                                    </select>
 
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="block text-gray-700 font-medium">Kelas</label>
-                                    <select name="kelas" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <select name="kelas"
+                                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                         <option value="-" placeholder="Masukkan Kelas">-</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -71,12 +73,13 @@
                                         <option value="10">10</option>
                                         <option value="11">11</option>
                                         <option value="12">12</option>
-                                      </select>
+                                    </select>
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="name" class="block text-gray-700 font-medium">Ruang</label>
-                                    <select name="kls_identitas" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <select name="kls_identitas"
+                                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                         <option value="-" placeholder="Masukkan Ruang">-</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -84,25 +87,27 @@
                                         <option value="D">D</option>
                                         <option value="E">E</option>
                                         <option value="F">F</option>
-                                      </select>
+                                    </select>
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="kls_status" class="block text-gray-700 font-medium">Status</label>
-                                    <select name="kls_status" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <select name="kls_status"
+                                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                         <option value="Alumni">Alumni</option>
                                         <option value="Siswa Aktif">Siswa Aktif</option>
                                         <option value="Siswa Tidak Aktif">Siswa Tidak Aktif</option>
-                                      </select>
+                                    </select>
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="name" class="block text-gray-700 font-medium">Nama Admin</label>
-                                    <select name="id_contact" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                      <option disabled selected>Nama</option>
-                                      @foreach($opsi as $data)
-                                      <option value="{{ $data->id_contact}}"> {{ $data->nama }}</option>
-                                      @endforeach
+                                    <select name="id_contact"
+                                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                        <option disabled selected>Nama</option>
+                                        @foreach ($opsi as $data)
+                                            <option value="{{ $data->id_contact }}"> {{ $data->nama }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -148,13 +153,14 @@
                             <td class="border px-4 py-2 text-center">{{ $item->kls_identitas }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->kls_status }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->nama }}</td>
-                            <td class="border px-4 py-2 text-center">
-                                <form action="{{ route('admin.hapus-kelas', $item->id_kelas) }}" method="POST">
+                            <td class="border px-4 py-2 text-center align-middle">
+                                <form action="{{ route('admin.hapus-kelas', $item->id_kelas) }}" method="POST"
+                                    class="flex justify-center">
                                     @csrf
                                     @method('DELETE')
                                     <button
-                                        class="bg-blue-500 text-white mx-4 my-2 px-4 py-2 rounded hover:bg-blue-600 flex items-center">
-                                        <i class="fas fa-trash mr-2 "></i>
+                                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center justify-center space-x-2">
+                                        <i class="fas fa-trash"></i>
                                         <span>Hapus</span>
                                     </button>
                                 </form>
@@ -170,4 +176,3 @@
         </div>
     </div>
 </x-layoute>
-

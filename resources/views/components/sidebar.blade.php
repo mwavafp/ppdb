@@ -49,6 +49,14 @@
             ],
             (object) [
                 'menu' => (object) [
+                    'icon' => 'fa-graduation-cap',
+                    'title' => 'Pengaturan Kelas',
+                    'link' => 'pengaturan-kelas',
+                ],
+                'items' => [],
+            ],
+            (object) [
+                'menu' => (object) [
                     'icon' => 'fa-user-check',
                     'title' => 'Tahun Ajaran Pengaturan',
                     'link' => 'tahun-ajaran-pengaturan',
