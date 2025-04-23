@@ -2,10 +2,13 @@
 <x-layoute>
     <x-slot:title>{{ 'Tahun Ajaran' }}</x-slot:title>
 
-    <div class="bg-gray-100 px-6">
-        <div class="p-4">
-            <p class="text-3xl">Pengaturan Tahun Ajaran</p>
-        </div>
+    <header class="bg-white border-b shadow-sm py-5 mb-10">
+            <div class="container mx-auto px-4 flex flex-col">
+                <h1 class="text-2xl font-bold text-gray-800">Pengaturan Tahun Ajaran</h1>
+                <p class="text-sm text-gray-500 mt-1">Mengatur Tahun Ajaran</p>
+            </div>
+        </header>
+
 
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white rounded-lg shadow-md">

@@ -1,50 +1,63 @@
-<x-layout>
+<x-layout-login>
     <x-slot:title>Pengaturan Informasi PONDOK</x-slot:title>
 
     <title>Pengaturan Informasi PONDOK</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/loadingspin.css') }}">
+    <script src="{{ asset('js/loadingspin.js') }}"></script>
 
     <body class="bg-white text-gray-900">
-        <div class="container mx-auto px-6 py-12">
+    <div id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+    <div class="container mx-auto pb-12">
             <!-- Header Section -->
-            <div class="bg-primary text-white text-center py-6 mb-12 rounded-lg shadow-md">
-                <h1 class="text-3xl font-semibold">Pengaturan Informasi PONDOK</h1>
+            <header class="bg-green-500 border-b shadow-sm py-5 mb-10">
+            <div class="container mx-auto px-4 flex flex-col items-center">
+                <h1 class="text-2xl font-bold text-white">Pengaturan Website</h1>
+                <p class="text-sm text-white mt-1">Informasi Pondok</p>
             </div>
+        </header>
 
             <!-- Form Section -->
-            <div class="bg-white p-8 rounded-lg shadow-lg">
+            <div class="bg-white px-7 pb-7 rounded-lg shadow-lg">
                 <form method="POST" action="{{ route('pengaturanpondok-update') }}" class="space-y-8">
                     @csrf
                     <input type="hidden" name="id_pondok" value="{{ $data->id_pondok }}">
+
                     <!-- Deskripsi -->
                     <div>
                         <label for="deskripsi" class="block text-xl font-semibold mb-2">Deskripsi</label>
-                        <textarea id="deskripsi" name="deskripsi" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter the description...">{{ $data->deskripsi }}</textarea>
+                        <textarea id="deskripsi" name="deskripsi">{{ $data->deskripsi }}</textarea>
                     </div>
 
                     <!-- Visi -->
                     <div>
                         <label for="visi" class="block text-xl font-semibold mb-2">Visi</label>
-                        <textarea id="visi" name="visi" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter the advantages...">{{ $data->visi }}</textarea>
+                        <textarea id="visi" name="visi">{{ $data->visi }}</textarea>
                     </div>
 
                     <!-- Misi -->
                     <div>
-                        <label for="visi_misi" class="block text-xl font-semibold mb-2">Misi</label>
-                        <textarea id="misi" name="misi" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter vision and mission...">{{ $data->misi }}</textarea>
+                        <label for="misi" class="block text-xl font-semibold mb-2">Misi</label>
+                        <textarea id="misi" name="misi">{{ $data->misi }}</textarea>
                     </div>
 
                     <!-- Submit Button -->
                     <div class="text-center">
-                        <a href="{{ route('pengaturanpage') }}" class="mt-8 bg-red-500 text-white py-3 px-8 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-gray-500 mr-4">
+                        <a href="{{ route('pengaturanpage') }}" class="bg-red-500 text-white py-3 px-8 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-gray-500 mr-4">
                             Batal
                         </a>
-                        <button type="submit" class="mt-8 bg-primary text-white py-3 px-8 rounded-lg shadow-md hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-500">
+                        <button type="submit" class="bg-blue-500 text-white py-3 px-8 rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500">
                             Simpan Pengaturan
                         </button>
                     </div>
                 </form>
             </div>
         </div>
+
     </body>
-</x-layout>
+</x-layout-login>

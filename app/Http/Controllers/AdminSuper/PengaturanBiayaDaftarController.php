@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class PengaturanBiayaDaftarController extends Controller
 {
+<<<<<<< HEAD
+    public function showDataBiaya()
+    {
+        $all_data = DB::table('harga')->paginate(10);;
+        return view('superAdmin.pengaturan-biaya-daftar', compact('all_data'), ['title' => 'Pengaturan Biaya Daftar']);
+=======
     public function showDataBiaya(Request $request)
     {
         $units = ['TK', 'SD', 'SMP', 'SMA', 'PONDOK'];
@@ -47,5 +53,6 @@ class PengaturanBiayaDaftarController extends Controller
             );
 
         return redirect()->route('superAdmin-biaya-daftar')->with('success', 'Data berhasil diperbarui!');
+>>>>>>> 1d10d44d7415aa8bacb76fb9f506b8d8db974c7b
     }
 }

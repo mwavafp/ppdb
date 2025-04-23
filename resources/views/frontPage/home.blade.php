@@ -1,4 +1,5 @@
 <x-layout>
+    <link rel="stylesheet" href="{{ asset('css/tiptap.css') }}">
     <x-slot:title>{{ $title }}</x-slot:title>
 
     <div class="section-1 flex justify-center">
@@ -33,7 +34,7 @@
             <div class="content-1 flex-1 mb-8 md:mb-0 md:mr-8">
                 <p class="text-right text-xl font-bold mb-8">Selamat Datang Di PMB Yayasan Nurul Huda</p>
                 @foreach ($all_teks as $teks)
-                    <p class="text-justify">{!! nl2br(e($teks->deskripsi)) !!}</p>
+                    <p class="text-justify"> {!! $teks->deskripsi !!}</p>
             </div>
             <div class="content-2 flex-1 flex items-center justify-center">
                 <img src="/images/gambar-1.png" alt="" class="rounded-xl max-w-full h-auto">
@@ -50,7 +51,7 @@
                 @for ($i = 1; $i <= 6; $i++)
                     <div class="w-full sm:w-72 mx-4 sm:mx-8 my-8">
                         <img src="/images/book.png" alt="" class="w-32 h-32 mx-auto mb-12">
-                        <p class="text-justify">{!! nl2br(e($teks->{'alasan_memilih_' . $i})) !!}</p>
+                        <p class="text-justify">{!! ($teks->{'alasan_memilih_' . $i}) !!}</p>
                     </div>
                 @endfor
             </div>
@@ -65,7 +66,7 @@
             </div>
             <div class="content-2 flex-initial">
                 <p class="text-center text-xl font-bold mb-8">VISI & MISI</p>
-                <p class="text-justify">{!! nl2br(e($teks->visi_misi)) !!}</p>
+                <p class="text-justify">{!! ($teks->visi_misi) !!}</p>
             </div>
         </div>
     </div>
@@ -75,7 +76,7 @@
             class="background flex flex-col md:flex-row bg-gradient-to-r from-[oklch(45.7%_0.24_277.023)] to-[oklch(51.8%_0.253_323.949)] text-white px-4 md:px-16 py-8">
             <div class="content-1 flex-1 mb-8 md:mb-0 md:mr-8">
                 <p class="text-center text-xl font-bold mb-8">KEUNGGULAN KAMI</p>
-                <p class="text-justify">{!! nl2br(e($teks->keunggulan)) !!}</p>
+                <p class="text-justify">{!! ($teks->keunggulan) !!}</p>
             </div>
             <div class="content-2 flex-1 flex items-center justify-center">
                 <img src="/images/gambar-1.png" alt="" class="rounded-xl max-w-full h-auto">
@@ -96,7 +97,7 @@
                             <p class="text-3xl text-white font-bold">{{ $i }}</p>
                         </div>
                         <p class="text-xl font-bold mb-4">Membawa Kk</p>
-                        <p class="text-center text-sm">{!! nl2br(e($teks->{'alur_pendaftaran_' . $i})) !!}</p>
+                        <p class="text-center text-sm">{!! ($teks->{'alur_pendaftaran_' . $i}) !!}</p>
                     </div>
                 @endfor
             </div>

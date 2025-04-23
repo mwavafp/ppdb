@@ -2,12 +2,12 @@
 <x-layoute>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <div class="px-9 py-5 flex justify-between items-center mb-4">
-        <h1 class="font-bold text-xl mr-2">Akun Admin Panitia</h1>
-
-
-    </div>
-
+    <header class="bg-white border-b shadow-sm py-5 mb-10">
+            <div class="container mx-auto px-4 flex flex-col">
+                <h1 class="text-2xl font-bold text-gray-800">Manage User</h1>
+                <p class="text-sm text-gray-500 mt-1">Manajemen User dan Pengaturan User</p>
+            </div>
+        </header>
 
 
 
