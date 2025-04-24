@@ -203,6 +203,46 @@
             </div>
         </div>
     </form>
+    @if (session('pdf_download'))
+        <script>
+            //pembuatan pdf otomatis
+            document.addEventListener('DOMContentLoaded', function() {
+                const pdfData = "{{ session('pdf_download.content') }}";
+                const filename = "{{ session('pdf_download.filename') }}";
+
+                const blob = b64toBlob(pdfData, 'application/pdf');
+                const blobUrl = URL.createObjectURL(blob);
+
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(blobUrl);
+            });
+
+            // Helper untuk convert base64 ke blob
+            function b64toBlob(b64Data, contentType = '', sliceSize = 512) {
+                const byteCharacters = atob(b64Data);
+                const byteArrays = [];
+
+                for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                    const slice = byteCharacters.slice(offset, offset + sliceSize);
+                    const byteNumbers = new Array(slice.length);
+                    for (let i = 0; i < slice.length; i++) {
+                        byteNumbers[i] = slice.charCodeAt(i);
+                    }
+                    const byteArray = new Uint8Array(byteNumbers);
+                    byteArrays.push(byteArray);
+                }
+
+                return new Blob(byteArrays, {
+                    type: contentType
+                });
+            }
+        </script>
+    @endif
 
     <script>
         function showTab(index) {

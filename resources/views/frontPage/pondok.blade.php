@@ -16,7 +16,7 @@
                         </p>
                         <div class="bg-gray-100 p-4 md:p-6 rounded-md shadow-lg transition-transform hover:scale-105">
                             <p class="text-justify text-black">
-                                {!! ($teks->deskripsi) !!}
+                                {!! $teks->deskripsi !!}
                             </p>
                         </div>
                     </div>
@@ -29,12 +29,12 @@
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 mx-8">
                 <div class="bg-gray-100 p-4 rounded-md shadow-md">
                     <h2 class="text-green-600 text-lg font-bold mb-4 text-center">VISI</h2>
-                    <p class="text-black">{!! ($teks->visi) !!}</p>
+                    <p class="text-black">{!! $teks->visi !!}</p>
                 </div>
                 <div class="bg-gray-100 p-4 rounded-md shadow-md">
                     <h2 class="text-green-600 text-lg font-bold mb-4 text-center">MISI</h2>
                     <p class="text-black text-justify leading-relaxed">
-                        {!! ($teks->misi) !!}
+                        {!! $teks->misi !!}
                     </p>
                 </div>
             </section>
@@ -88,7 +88,7 @@
                             <li>Gelombang 2 :<br>1 Maret - 31 Mei 2025</li>
                             <li>Gelombang 3 :<br>1 Juni - 14 Juli 2025</li>
                         </ul>
-                        <a href="/form?unit_pendidikan=PONDOK"
+                        <a href="/form?unit_pendidikan=PONDOK&cnt=1"
                             class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md block text-center">
                             DAFTAR KLIK DISINI
                         </a>

@@ -126,7 +126,7 @@ class RegisteredUserController extends Controller
 
         $pdf = $this->generatePDF($user, $identity);
         $pdfContent = $pdf->output(); // hasil binary PDF
-        $pdfName = 'registration_' . $user->id_user . '.pdf';
+        $pdfName = 'KARTU_AKUN_' . $request->name . '.pdf';
 
         // Simpan sekali ke session flash
         session()->flash('pdf_download', [
