@@ -202,18 +202,16 @@
                                                         </select>
 
                                                     </div>
-                                                    <div class="mb-4">
+                                                    {{-- <div class="mb-4">
                                                         <label for="status"
                                                             class="block text-gray-700 font-medium">Status
                                                             Bayar</label>
-                                                        <select id="status" name="byr_dft_ulang"
+                                                            <input type="text"
+                                                            name="byr_dft_ulang"
                                                             value="{{ $item->byr_dft_ulang }}"
-                                                            class="block w-full px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700 appearance-none">
-                                                            <option value="lunas">Lunas</option>
-                                                            <option value="belum">Belum</option>
-                                                        </select>
-
-                                                    </div>
+                                                            readonly
+                                                            class="block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-sm text-gray-700" />
+                                                    </div> --}}
                                                     <div class="flex justify-end">
                                                         <button type="submit"
                                                             class=" text-white px-4 py-2  bg-[oklch(62.7%_0.194_149.214)] rounded-lg">

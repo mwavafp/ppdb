@@ -34,7 +34,7 @@ class SeleksiAdminController extends Controller
                 'berkas.ijazah_akhir as status_ijazah_akhir',
                 'berkas.kip as status_kip',
                 'pembayaran.byr_dft_ulang',
-                'seleksi.status_seleksi'
+                'seleksi.status_seleksi',
             );
 
         if ($request->filled('status')) {

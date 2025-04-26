@@ -65,7 +65,7 @@
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Kelas</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Berkas</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Status Bayar</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Status DP</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Status Calon</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Status Seleksi</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>

@@ -68,27 +68,28 @@ class TagihanAdmin extends Controller
 
         return view('admin.page.modal.edit_tagihan', compact('pembayaran'), ['title' => 'tes']);
     }
-    public function updateData(Request $request, $id)
-    {
+   public function updateData(Request $request, $id)
+{
+    $validatedData = $request->validate([
+        'jmlh_byr' => 'required|numeric',
+        'status' => 'required|in:DP,Lunas,Cicil',
+    ]);
 
-        $validatedData = $request->validate([
+    $pembayaran = DB::table('pembayaran')->where('id_bayar', $id)->first();
 
-            'jmlh_byr' => 'required|numeric',
-            'status' => 'required|in:DP,Lunas,Cicil',
-            'byr_dft_ulang' => 'required|in:lunas,belum'
+    $byr_dft_ulang = $validatedData['jmlh_byr'] >= $pembayaran->jmlh_byr ? 'lunas' : 'belum';
+
+    DB::table('pembayaran')
+        ->where('id_bayar', $id)
+        ->update([
+            'jmlh_byr' => $validatedData['jmlh_byr'],
+            'status' => $validatedData['status'],
+            'byr_dft_ulang' => $byr_dft_ulang,
         ]);
 
-        DB::table('pembayaran')
-            ->where('id_bayar', '=', $id)
-            ->update([
+    return redirect()->route('tagihan-admin')->with('success', 'Data berhasil disimpan!');
+}
 
-                'jmlh_byr' => $validatedData['jmlh_byr'],
-                'status' => $validatedData['status'],
-                'byr_dft_ulang' => $validatedData['byr_dft_ulang']
-            ]);
-
-        return redirect()->route('tagihan-admin')->with('success', 'Data berhasil disimpan!');
-    }
     public function search(Request $request)
     {
         $search = $request->search;
