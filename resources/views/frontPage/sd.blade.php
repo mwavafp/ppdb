@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>{{ $title }}</x-slot:title>
+    <x-slot:title>{{ $title }}\\\</x-slot:title>
     <div class="section-2  -">
         <div class="text-3xl text-center font-bold bg-[oklch(62.7%_0.194_149.214)]  text-white mb-8 rounded-b-full">
             <p class="py-8">INFORMASI SD</p>
@@ -177,26 +177,17 @@
                         JADWAL PENDAFTARAN
                     </h2>
                     <ul class="space-y-2 mb-4">
-                        <li>
-                            Gelombang 1 :
-                            <br />
-                            2 Desember 2024 - 28 Februari 2025
-                        </li>
-                        <li>
-                            Gelombang 2 :
-                            <br />
-                            1 Maret - 31 Mei 2025
-                        </li>
-                        <li>
-                            Gelombang 3 :
-                            <br />
-                            1 Juni - 14 Juli 2025
-                        </li>
-                    </ul>
-                    <a href='/form?unit_pendidikan=SD&cnt=5'
-                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
-                        DAFTAR KLIK DISINI
-                    </a>
+                        @foreach ($acara as $gelombang)
+                            <li>
+                                <strong>{{ $gelombang->namaAcara }}</strong><br />
+                                {{ $gelombang->awal_acara }} - {{ $gelombang->akhir_acara }}
+                            </li>
+                        @endforeach
+                        <br>
+                        <a href='/form?unit_pendidikan=SD&cnt=5'
+                            class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
+                            DAFTAR KLIK DISINI
+                        </a>
                 </div>
                 <div class="bg-white p-6 rounded-md shadow-md  tabel-2">
                     <h2 class="text-[oklch(62.7%_0.194_149.214)] text-lg font-bold mt-6 mb-4">

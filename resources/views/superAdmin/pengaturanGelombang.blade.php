@@ -92,7 +92,7 @@
                 <label class="block">Status</label>
                 <select name="status" id="edit-status" class="w-full border px-3 py-2 rounded" required>
                     <option value="aktif">Aktif</option>
-                    <option value="nonaktif">Nonaktif</option>
+                    <option value="tidak_aktif">Nonaktif</option>
                 </select>
             </div>
 

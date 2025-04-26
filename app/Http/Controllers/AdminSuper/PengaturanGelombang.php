@@ -19,11 +19,19 @@ class PengaturanGelombang extends Controller {
         $request->validate([
             'id_acara' => 'required|exists:acara,id_acara',
             'namaAcara' => 'required|string',
-            'status' => 'required|in:aktif,nonaktif',
+            'status' => 'required|in:aktif,tidak_aktif',
             'awal_acara' => 'required|date',
             'akhir_acara' => 'required|date|after_or_equal:awal_acara',
         ]);
 
+        $acara = Acara::findOrFail($request->id_acara);
+
+        // Jika status yang dikirim adalah "aktif" dan sebelumnya bukan aktif
+        if ($request->status === 'aktif' && $acara->status !== 'aktif') {
+            // Nonaktifkan semua gelombang lain
+            Acara::where('id_acara', '!=', $request->id_acara)->update(['status' => 'tidak_aktif']);
+        }
+        
         $acara = Acara::find($request->id_acara);
         $acara->namaAcara = $request->namaAcara;
         $acara->status = $request->status;
