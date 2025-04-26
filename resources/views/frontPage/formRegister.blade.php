@@ -161,7 +161,7 @@
                 <div class="mb-4">
                     <x-input-label for="number_kk" :value="__('Nomor KK')" />
                     <x-text-input id="number_kk" class="block mt-1 w-full" type="text" name="nmr_kk"
-                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" :value="old('nmr_kk')" required />
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="16" minlength="16" :value="old('nmr_kk')" required />
                     <x-input-error :messages="$errors->get('nmr_kk')" class="mt-2" />
                 </div>
                 <div class="mb-4">
@@ -174,7 +174,7 @@
                 <div class="mb-4">
                     <x-input-label for="number_daddy" :value="__('NIK Ayah')" />
                     <x-text-input id="number_daddy" class="block mt-1 w-full" type="text" name="nik_ayah"
-                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" :value="old('nik_ayah')" required />
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="16" minlength="16" :value="old('nik_ayah')" required />
                     <x-input-error :messages="$errors->get('nik_ayah')" class="mt-2" />
                 </div>
                 <div class="mb-4">
@@ -218,7 +218,7 @@
                 <div class="mb-4">
                     <x-input-label for="nik_ibu" :value="__('NIK Ibu')" />
                     <x-text-input id="nik_ibu" class="block mt-1 w-full" type="text" name="nik_ibu"
-                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" onpaste="handlePaste(event)"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="16" minlength="16"  onpaste="handlePaste(event)"
                         :value="old('nik_ibu')" required />
                     <x-input-error :messages="$errors->get('nik_ibu')" class="mt-2" />
                 </div>
