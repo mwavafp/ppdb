@@ -11,7 +11,7 @@ class PengaturanBiayaDaftarController extends Controller
 {
     public function showDataBiaya(Request $request)
     {
-        $units = ['TK', 'SD', 'SMP', 'SMA', 'PONDOK'];
+        $units = ['TK', 'SD', 'SMP', 'SMA', 'PONDOK', 'MADIN'];
         $data = [];
 
         foreach ($units as $unit) {

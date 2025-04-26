@@ -38,11 +38,14 @@
             <button
                 class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
                 onclick="selectTab('PONDOK')">PONDOK</button>
+            <button
+                class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
+                onclick="selectTab('MADIN')">MADIN</button>
         </div>
 
 
         @php
-            $units = ['tk', 'sd', 'smp', 'sma', 'pondok', 'smp'];
+            $units = ['tk', 'sd', 'smp', 'sma', 'pondok', 'smp', 'madin'];
 
         @endphp
         @foreach ($units as $unit)
@@ -55,7 +58,7 @@
                             <th class="border-2 border-gray-200 px-4 py-2" rowspan="2">Keterengan</th>
                             <th class="border-2 border-gray-200 px-4 py-2" colspan="2">Lunas</th>
                             <th class="border-2 border-gray-200 px-4 py-2" rowspan="2">DP</th>
-                            <th class="border-2 border-gray-200 px-4 py-2" rowspan="2">Keterangan Bonus/potongan</th>
+                            {{-- <th class="border-2 border-gray-200 px-4 py-2" rowspan="2">Keterangan Bonus/potongan</th> --}}
                         </tr>
                         <tr>
                             <th class="border-2 border-gray-200 px-4 py-2">Putra</th>
@@ -66,14 +69,14 @@
                         @forelse($data[$unit] ?? [] as $index => $row)
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                <td class="border-2 border-gray-200 px-4 py-2">{{ $row['acara'] }}(2 Des-28 Feb 2025)
+                                <td class="border-2 border-gray-200 px-4 py-2">{{ $row['nama'] }}
                                 </td>
                                 <td class="border-2 border-gray-200 px-4 py-2">{{ $row['tipe'] }}</td>
                                 <td class="border-2 border-gray-200 px-4 py-2">@currency($row['putra'])</td>
                                 <td class="border-2 border-gray-200 px-4 py-2">@currency($row['putri'])</td>
                                 <td class="border-2 border-gray-200 px-4 py-2">@currency($row['dp'])</td>
-                                <td class="border-2 border-gray-200 px-4 py-2">Free 250rb (Mendapatkan potongan sesuai
-                                    gelombangnya jika melakukan pembayaran minimal DP)</td>
+                                {{-- <td class="border-2 border-gray-200 px-4 py-2">Free 250rb (Mendapatkan potongan sesuai
+                                    gelombangnya jika melakukan pembayaran minimal DP)</td> --}}
                             </tr>
                         @empty
                             <tr>
@@ -85,6 +88,11 @@
 
 
                 </table>
+                @forelse($notes[$unit] ?? [] as $index => $row)
+                <h1>{{$row['catatan']}}</h1>
+                @empty
+                <h1> YASD</h1>
+                @endforelse
             </div>
         @endforeach
 

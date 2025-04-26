@@ -12,6 +12,7 @@ use App\Models\Pembayaran;
 use App\Models\Seleksi;
 use App\Models\User;
 use App\Models\Ortu;
+use App\Models\Note;
 use App\Models\Tahun;
 use App\Models\UserGolongan;
 use App\Models\UserUnitPendidikan;
@@ -33,37 +34,598 @@ class DatabaseSeeder extends Seeder
 
      public function run(): void
      {
-        Acara::factory()->create(
+        Acara::factory()->createMany(
 
             [
+                [
                 'namaAcara' => 'Gelombang1',
                 'status' => 'aktif',
-                'awal_acara' => '2024-12-03',
-                'akhir_acara' => '2024-12-03',
-
+                'awal_acara' => '2024-01-03',
+                'akhir_acara' => '2024-10-03',
+                ],
+                [
+                    'namaAcara' => 'Gelombang2',
+                    'status' => 'aktif',
+                    'awal_acara' => '2024-11-03',
+                    'akhir_acara' => '2024-12-03',
+    
+                ],
+                [
+                    'namaAcara' => 'Gelombang3',
+                    'status' => 'aktif',
+                    'awal_acara' => '2025-12-03',
+                    'akhir_acara' => '2025-12-03',
+    
+                ],
+                [
+                    'namaAcara' => 'Gelombang4',
+                    'status' => 'aktif',
+                    'awal_acara' => '2025-12-03',
+                    'akhir_acara' => '2025-12-03',
+    
+                ],
+                [
+                    'namaAcara' => 'Gelombang6',
+                    'status' => 'aktif',
+                    'awal_acara' => '2025-12-03',
+                    'akhir_acara' => '2025-12-03',
+    
+                ], 
+                [
+                    'namaAcara' => 'Gelombang5',
+                    'status' => 'aktif',
+                    'awal_acara' => '2025-12-03',
+                    'akhir_acara' => '2025-12-03',
+    
+                ]
             ],
+            
 
         );
         Harga::factory()->createMany(
             [
-                [
-                    'unitPendidikan' => 'sd',
-                    'gender' => 'perempuan',
-                    'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 1000000,
-                    'dp_daful' => 500000,
-                    'diskon' => 200000,
-                    'id_acara' => 1
-                ],
-                [
-                    'unitPendidikan' => 'sd',
-                    'gender' => 'laki-laki',
-                    'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 1000000,
-                    'dp_daful' => 500000,
-                    'diskon' => 200000,
-                    'id_acara' => 1
-                ],
+                
+                    [
+                        'unitPendidikan' => 'sd',
+                        'gender' => 'perempuan',
+                        'tipe_siswa' => 'umum',
+                        'total_bayar_daful' => 1000000,
+                        'dp_daful' => 500000,
+                        'diskon' => 200000,
+                        'id_acara' => 1
+                    ],
+                    [
+                        'unitPendidikan' => 'sd',
+                        'gender' => 'laki-laki',
+                        'tipe_siswa' => 'umum',
+                        'total_bayar_daful' => 1000000,
+                        'dp_daful' => 500000,
+                        'diskon' => 200000,
+                        'id_acara' => 1
+                    ],
+                    [
+                        'unitPendidikan' => 'sd',
+                        'gender' => 'laki-laki',
+                        'tipe_siswa' => 'alumni',
+                        'total_bayar_daful' => 860000,
+                        'dp_daful' => 500000,
+                        'diskon' => 0,
+                        'id_acara' => 1
+                    ],
+                    [
+                        'unitPendidikan' => 'sd',
+                        'gender' => 'perempuan',
+                        'tipe_siswa' => 'alumni',
+                        'total_bayar_daful' => 860000,
+                        'dp_daful' => 500000,
+                        'diskon' => 0,
+                        'id_acara' => 1
+                    ],
+                    [
+                        'unitPendidikan' => 'sd',
+                        'gender' => 'laki-laki',
+                        'tipe_siswa' => 'umum',
+                        'total_bayar_daful' => 860000,
+                        'dp_daful' => 500000,
+                        'diskon' => 0,
+                        'id_acara' => 2
+                    ],
+                    [
+                        'unitPendidikan' => 'sd',
+                        'gender' => 'perempuan',
+                        'tipe_siswa' => 'umum',
+                        'total_bayar_daful' => 860000,
+                        'dp_daful' => 500000,
+                        'diskon' => 0,
+                        'id_acara' => 2
+                    ],
+                    [
+                        'unitPendidikan' => 'sd',
+                        'gender' => 'laki-laki',
+                        'tipe_siswa' => 'alumni',
+                        'total_bayar_daful' => 860000,
+                        'dp_daful' => 500000,
+                        'diskon' => 0,
+                        'id_acara' => 2
+                    ],
+                    [
+                        'unitPendidikan' => 'sd',
+                        'gender' => 'perempuan',
+                        'tipe_siswa' => 'alumni',
+                        'total_bayar_daful' => 860000,
+                        'dp_daful' => 500000,
+                        'diskon' => 0,
+                        'id_acara' => 2
+                    ],
+                    [
+                        'unitPendidikan' => 'sd',
+                        'gender' => 'laki-laki',
+                        'tipe_siswa' => 'umum',
+                        'total_bayar_daful' => 860000,
+                        'dp_daful' => 500000,
+                        'diskon' => 0,
+                        'id_acara' => 3
+                    ],
+                    [
+                        'unitPendidikan' => 'sd',
+                        'gender' => 'perempuan',
+                        'tipe_siswa' => 'umum',
+                        'total_bayar_daful' => 860000,
+                        'dp_daful' => 500000,
+                        'diskon' => 0,
+                        'id_acara' => 3
+                    ],
+                    
+                        [
+                            'unitPendidikan' => 'sd',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 860000,
+                            'dp_daful' => 500000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'sd',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 860000,
+                            'dp_daful' => 500000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'tk',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1000000,
+                            'dp_daful' => 500000,
+                            'diskon' => 0,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'tk',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1000000,
+                            'dp_daful' => 500000,
+                            'diskon' => 0,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'tk',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1000000,
+                            'dp_daful' => 500000,
+                            'diskon' => 0,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'tk',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1000000,
+                            'dp_daful' => 500000,
+                            'diskon' => 0,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'tk',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1000000,
+                            'dp_daful' => 500000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'tk',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1000000,
+                            'dp_daful' => 500000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1710000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 150000,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1740000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 150000,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 1610000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 250000,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 1640000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 250000,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1760000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 100000,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1790000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 100000,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 1710000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 150000,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 1740000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 150000,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1860000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 1890000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 1760000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 100000,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'smp',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 1790000,
+                            'dp_daful' => 1000000,
+                            'diskon' => 100000,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2050000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 200000,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2150000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 200000,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 1950000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 300000,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 2050000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 300000,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2150000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 100000,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2250000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 100000,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 2050000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 200000,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 2150000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 200000,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2250000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2350000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 2150000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 100000,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'sma',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'alumni',
+                            'total_bayar_daful' => 2250000,
+                            'dp_daful' => 1500000,
+                            'diskon' => 100000,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'pondok',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2345000,
+                            'dp_daful' => 2345000,
+                            'diskon' => 0,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'pondok',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2345000,
+                            'dp_daful' => 2345000,
+                            'diskon' => 0,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'pondok',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2345000,
+                            'dp_daful' => 2345000,
+                            'diskon' => 0,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'pondok',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2345000,
+                            'dp_daful' => 2345000,
+                            'diskon' => 0,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'pondok',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2345000,
+                            'dp_daful' => 2345000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'pondok',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 2345000,
+                            'dp_daful' => 2345000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 1
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 2
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 3
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 4
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 4
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 5
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 5
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'laki-laki',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 6
+                        ],
+                        [
+                            'unitPendidikan' => 'madin',
+                            'gender' => 'perempuan',
+                            'tipe_siswa' => 'umum',
+                            'total_bayar_daful' => 380000,
+                            'dp_daful' => 380000,
+                            'diskon' => 0,
+                            'id_acara' => 6
+                        ],                                                    
             ]
         );
  
@@ -121,6 +683,34 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Tahun Ajaran',
             'awal' => '2024-12-12',
             'akhir' => '2025-12-12'
+        ]);
+
+        Note::factory()->createMany([
+            [
+                'unit' => 'TK',
+                'catatan' => 'tes tk',
+            ],
+            [
+                'unit' => 'SD',
+                'catatan' => 'tes sd',
+            ],
+            [
+                'unit' => 'SMP',
+                'catatan' => 'tes smp',
+            ],
+            [
+                'unit' => 'SMA',
+                'catatan' => 'tes sma',
+            ],
+            [
+                'unit' => 'PONDOK',
+                'catatan' => 'tes pondok',
+            ],
+            [
+                'unit' => 'MADIN',
+                'catatan' => 'tes madin',
+            ],
+           
         ]);
 
 
