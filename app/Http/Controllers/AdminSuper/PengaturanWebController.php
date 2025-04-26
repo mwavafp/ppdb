@@ -13,6 +13,7 @@ use App\Models\Sma;
 use App\Models\Tpq;
 use App\Models\Madin;
 use App\Models\Pondok;
+use App\Models\Acara;
 
 class PengaturanWebController extends Controller
 {
@@ -89,7 +90,9 @@ class PengaturanWebController extends Controller
         ->select('id_tk','deskripsi','visi','misi')
         ->get();
 
-        return view('frontPage.tk', compact('all_teks'), ['title' => 'TK Information Page']);
+        $acara = Acara::where('status','=','aktif')->get();
+
+        return view('frontPage.tk', compact('all_teks', 'acara'), ['title' => 'TK Information Page']);
 
     }
     public function edittk()
@@ -124,8 +127,10 @@ class PengaturanWebController extends Controller
         $all_teks = DB::table('sd')
         ->select('id_sd','deskripsi','visi','misi')
         ->get();
-   
-        return view('frontPage.sd', compact('all_teks'), ['title' => 'SD Information Page']);
+
+        $acara = Acara::where('status','=','aktif')->get();
+
+        return view('frontPage.sd', compact('all_teks','acara'), ['title' => 'SD Information Page']);
 
     }
     public function editsd()
@@ -161,7 +166,9 @@ class PengaturanWebController extends Controller
         ->select('id_smp','deskripsi','visi','misi')
         ->get();
 
-        return view('frontPage.smp', compact('all_teks'), ['title' => 'SMP Information Page']);
+        $acara = Acara::where('status','=','aktif')->get();
+
+        return view('frontPage.smp', compact('all_teks','acara'), ['title' => 'SMP Information Page']);
 
     }
     public function editsmp()
@@ -197,7 +204,9 @@ class PengaturanWebController extends Controller
         ->select('id_sma','deskripsi','visi','misi')
         ->get();
 
-        return view('frontPage.sma', compact('all_teks'), ['title' => 'SMA Information Page']);
+        $acara = Acara::where('status','=','aktif')->get();
+
+        return view('frontPage.sma', compact('all_teks', 'acara'), ['title' => 'SMA Information Page']);
 
     }
     public function editsma()
@@ -233,7 +242,9 @@ class PengaturanWebController extends Controller
         ->select('id_tpq','deskripsi','visi','misi')
         ->get();
 
-        return view('frontPage.tpq', compact('all_teks'), ['title' => 'TPQ Information Page']);
+        $acara = Acara::where('status','=','aktif')->get();
+
+        return view('frontPage.tpq', compact('all_teks', 'acara'), ['title' => 'TPQ Information Page']);
 
     }
     public function edittpq()
@@ -269,7 +280,9 @@ class PengaturanWebController extends Controller
         ->select('id_madin','deskripsi','visi','misi')
         ->get();
 
-        return view('frontPage.madin', compact('all_teks'), ['title' => 'Madin Information Page']);
+        $acara = Acara::where('status','=','aktif')->get();
+
+        return view('frontPage.madin', compact('all_teks', 'acara'), ['title' => 'Madin Information Page']);
 
     }
     public function editmadin()
@@ -305,7 +318,9 @@ class PengaturanWebController extends Controller
         ->select('id_pondok','deskripsi','visi','misi')
         ->get();
 
-        return view('frontPage.pondok', compact('all_teks'), ['title' => 'PONDOK Information Page']);
+        $acara = Acara::where('status','=','aktif')->get();
+
+        return view('frontPage.pondok', compact('all_teks', 'acara'), ['title' => 'PONDOK Information Page']);
 
     }
     public function editpondok()
@@ -333,4 +348,9 @@ class PengaturanWebController extends Controller
         ]);
         return redirect()->route('pengaturanpondok-edit')->with('success', 'Data berhasil diperbarui!');
     }
+    public function showGelombangSD(){
+        $acara = Acara::all();
+        return view ('frontPage.sd', compact('acara'));
+    }    
 }   
+
