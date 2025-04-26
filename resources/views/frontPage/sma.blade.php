@@ -177,21 +177,13 @@
                         JADWAL PENDAFTARAN
                     </h2>
                     <ul class="space-y-2 mb-4">
-                        <li>
-                            Gelombang 1 :
-                            <br />
-                            2 Desember 2024 - 28 Februari 2025
-                        </li>
-                        <li>
-                            Gelombang 2 :
-                            <br />
-                            1 Maret - 31 Mei 2025
-                        </li>
-                        <li>
-                            Gelombang 3 :
-                            <br />
-                            1 Juni - 14 Juli 2025
-                        </li>
+                        @foreach ($acara as $gelombang)
+                            <li>
+                                <strong>{{ $gelombang->namaAcara }}</strong><br />
+                                {{ $gelombang->awal_acara }} - {{ $gelombang->akhir_acara }}
+                            </li>
+                        @endforeach
+                        <br>
                     </ul>
                     <a href="/form?unit_pendidikan=SMA&cnt=7"
                         class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
