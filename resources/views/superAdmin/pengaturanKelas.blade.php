@@ -91,16 +91,6 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="kls_status" class="block text-gray-700 font-medium">Status</label>
-                                    <select name="kls_status"
-                                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                        <option value="Alumni">Alumni</option>
-                                        <option value="Siswa Aktif">Siswa Aktif</option>
-                                        <option value="Siswa Tidak Aktif">Siswa Tidak Aktif</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-4">
                                     <label for="name" class="block text-gray-700 font-medium">Nama Admin</label>
                                     <select name="id_contact"
                                         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">

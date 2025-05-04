@@ -193,9 +193,9 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
 Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
 
     Route::get('/dashboard-super-admin', [AdminDashboardController::class, 'showUserSuperAdmin'])->name('admin.dashboardSuperAdmin');
-    Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
-    Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
-    Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
+    Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.data-admin-Superadmin');
+    Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-Superadmin');
+    Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-Superadmin');
 
     Route::get('/cp-admin', [ContactController::class, 'showData'])->name('admin.pengaturanCp');
     Route::post('/tambah-cp', [ContactController::class, 'createData'])->name('admin.tambah-admin');

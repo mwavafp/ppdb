@@ -3,11 +3,11 @@
     <x-slot:title>{{ $title }}</x-slot:title>
 
     <header class="bg-white border-b shadow-sm py-5 mb-10">
-            <div class="container mx-auto px-4 flex flex-col">
-                <h1 class="text-2xl font-bold text-gray-800">Manage User</h1>
-                <p class="text-sm text-gray-500 mt-1">Manajemen User dan Pengaturan User</p>
-            </div>
-        </header>
+        <div class="container mx-auto px-4 flex flex-col">
+            <h1 class="text-2xl font-bold text-gray-800">Data User Admin</h1>
+            <p class="text-sm text-gray-500 mt-1">Manajemen dan Pengaturan Data User Admin</p>
+        </div>
+    </header>
 
 
 
@@ -35,7 +35,7 @@
                         <!-- Konten Modal -->
                         <!-- pemakaian include atau component sama saja dan yang wajib diteruskan adalah datanya -->
                         <!-- Yand dirender menggunakan fungsi dari showData -->
-                        <form action="{{ route('admin.tambah-admin') }}" method="POST">
+                        <form action="{{ route('admin.tambah-Superadmin') }}" method="POST">
                             @csrf
                             <div class="modal fade text-left" id="ModalCreate" tabindex="-1">
                                 <h1 class="font-bold text-xl mb-4">Tambahkan Akun Admin</h1>
@@ -121,7 +121,7 @@
                             <td class="border px-4 py-2 text-center">{{ $item->role }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->created_at }}</td>
                             <td class="border px-4 py-2 text-center">
-                                <form action="{{ route('admin.hapus-admin', $item->id_admin) }}" method="POST">
+                                <form action="{{ route('admin.hapus-Superadmin', $item->id_admin) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button

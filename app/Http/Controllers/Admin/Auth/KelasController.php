@@ -66,7 +66,7 @@ class KelasController extends Controller
         $validated = $request->validate([
             'kelas' => 'required|in:-,1,2,3,4,5,6,7,8,9,10,11,12',
             'kls_identitas' => 'required|in:-,A,B,C,D,E,F',
-            'kls_status' => 'required|in:Alumni,Siswa Aktif,Siswa Tidak Aktif',
+
         ]);
 
         // Pastikan update pada kelas yang benar berdasarkan id_kelas
@@ -75,7 +75,7 @@ class KelasController extends Controller
             ->update([
                 'kelas' => $validated['kelas'],
                 'kls_identitas' => $validated['kls_identitas'], // Menambahkan 'unt_pendidikan' untuk pembaruan
-                'kls_status' => $validated['kls_status'],
+
             ]);
 
         // Redirect dengan pesan sukses setelah pembaruan

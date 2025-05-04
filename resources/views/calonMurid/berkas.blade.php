@@ -17,7 +17,7 @@
             <thead>
                 <tr class="bg-gray-100">
                     <th class="border border-gray-300 px-4 py-2 text-left">No.</th>
-                    <th class="border border-gray-300 px-4 py-2 text-left">Jenis Berkas</th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Jenis Dokumen</th>
                     <th class="border border-gray-300 px-4 py-2 text-center">Status</th>
                 </tr>
             </thead>

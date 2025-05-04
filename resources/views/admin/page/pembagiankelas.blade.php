@@ -33,18 +33,7 @@
                         </option>
                     </select>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium">Status</label>
-                    <select name="status"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
-                        <option value="">Semua</option>
-                        <option value="Alumni" {{ request('status') == 'Alumni' ? 'selected' : '' }}>Alumni</option>
-                        <option value="Siswa Aktif" {{ request('status') == 'Siswa Aktif' ? 'selected' : '' }}>Siswa
-                            Aktif</option>
-                        <option value="Siswa Tidak Aktif"
-                            {{ request('status') == 'Siswa Tidak Aktif' ? 'selected' : '' }}>Siswa Tidak Aktif</option>
-                    </select>
-                </div>
+
                 <div class="flex mt-4 mx-4">
                     <button type="submit"
                         class="bg-green-500 text-white py-2 px-4 rounded-md mr-2 w-[100px] border border-transparent hover:bg-green-600 hover:border-green-600 transition">Cari</button>

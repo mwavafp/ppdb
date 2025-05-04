@@ -20,7 +20,7 @@ class AdminSuperDashboardController extends Controller
         $all_data = DB::table('admins')
             ->select('id_admin', 'name', 'nip', 'email', 'password', 'password2', 'role', 'created_at')
             ->where('role', '=', 'admin')
-            ->paginate(5);
+            ->paginate(10);
 
         // Dekripsi password untuk setiap item yang diambil (opsional)
         // foreach ($all_data as $item) {
@@ -32,15 +32,6 @@ class AdminSuperDashboardController extends Controller
     }
     public function createData(Request $request): RedirectResponse
     {
-        // dd($request->all());
-
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'nip' => ['required', 'numeric'],
-        //     'email' => ['required', 'string', 'max:255', 'email'],
-        //     'password' => ['required', Rules\Password::defaults()],
-        //     'role' => ['required', 'string'],
-        // ]);
 
 
 
@@ -61,7 +52,7 @@ class AdminSuperDashboardController extends Controller
         //     return back()->withErrors(['msg' => 'Gagal menambahkan admin, silakan coba lagi.']);
         // }
 
-        return to_route('admin.dataAdminPage')->with('success', "Data Berhasil Di tambah");
+        return to_route('admin.data-admin-Superadmin')->with('success', "Data Berhasil Di tambah");
     }
     public function deleteData(Request $request, $id)
     {
@@ -69,6 +60,6 @@ class AdminSuperDashboardController extends Controller
             ->where('id_admin', '=', $id)
             ->delete();
 
-        return redirect()->route('admin.dataAdminPage')->with('success', "Data Berhasil Di tambah");
+        return redirect()->route('admin.data-admin-Superadmin')->with('success', "Data Berhasil Di tambah");
     }
 }

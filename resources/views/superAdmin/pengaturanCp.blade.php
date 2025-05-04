@@ -3,11 +3,11 @@
     <x-slot:title>{{ $title }}</x-slot:title>
 
     <header class="bg-white border-b shadow-sm py-5 mb-10">
-            <div class="container mx-auto px-4 flex flex-col">
-                <h1 class="text-2xl font-bold text-gray-800">Pengaturan CP</h1>
-                <p class="text-sm text-gray-500 mt-1">Mengatur CP</p>
-            </div>
-        </header>
+        <div class="container mx-auto px-4 flex flex-col">
+            <h1 class="text-2xl font-bold text-gray-800">Pengaturan CP</h1>
+            <p class="text-sm text-gray-500 mt-1">Mengatur CP</p>
+        </div>
+    </header>
 
 
 
@@ -17,9 +17,9 @@
             <div x-data="{ isModalOpen: false }">
                 <!-- Tombol untuk membuka modal -->
 
-                <button @click="isModalOpen = true"
+                {{-- <button @click="isModalOpen = true"
                     class="bg-[oklch(62.7%_0.194_149.214)] text-white p-2 rounded-md"><span>Tambah
-                        Akun</span></button>
+                        Akun</span></button> --}}
 
 
                 <!-- Modal -->
@@ -69,11 +69,11 @@
             <thead class="bg-[oklch(62.7%_0.194_149.214)] text-white border-b-2 rounded-md">
                 <tr class="rounded-md">
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Lengkap</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">NIP
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Admin
+                        WhatsApp </th>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nomor WhatsApp
                     </th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Email</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Password</th>
+
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
@@ -90,14 +90,13 @@
                             <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->nama }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->cp }}</td>
-                            <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
-                            <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
+
                             <td class="border px-4 py-2 text-center">
                                 <form action="{{ route('admin.hapus-admin', $item->id_contact) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button
-                                        class="bg-blue-500 text-white mx-4 my-2 px-4 py-2 rounded hover:bg-blue-600 flex items-center">
+                                        class="bg-blue-500 text-center text-white mx-4 my-2 px-4 py-2 rounded hover:bg-blue-600 ">
                                         <i class="fas fa-trash mr-2 "></i>
                                         <span>Hapus</span>
                                     </button>
@@ -109,16 +108,6 @@
             </tbody>
         </table>
         <!-- Pagination Controls -->
-        <div class="my-4">
-            {{ $all_data->links() }}
-        </div>
-        <div
-            class="note text-white bg-[oklch(62.7%_0.194_149.214)] my-8 p-4 rounded-lg shadow flex flex-wrap flex-col w-1/2">
-            <p>Note:</p>
-            <p>
-                Password berada didalam petik "password"
-            </p>
-        </div>
+
     </div>
 </x-layoute>
-

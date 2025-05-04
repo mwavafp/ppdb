@@ -18,8 +18,8 @@ class ContactController extends Controller
     {
         // Mengambil data dari database termasuk kolom password yang telah dienkripsi sebelumnya
         $all_data = DB::table('contact')
-            ->select( 'id_contact' , 'nama', 'cp', 'created_at')
-            ->paginate(5);
+            ->select('id_contact', 'nama', 'cp', 'created_at')
+            ->get();
 
         // Dekripsi password untuk setiap item yang diambil (opsional)
         // foreach ($all_data as $item) {
@@ -46,7 +46,7 @@ class ContactController extends Controller
         Contact::create([
             'nama' => $request->nama,
             'cp' => $request->cp
-            
+
         ]);
 
         // dd($userAdmin->all());
