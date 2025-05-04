@@ -2,7 +2,7 @@
     <x-slot:title>{{ 'Data Siswa' }}</x-slot:title>
 
     <div class="px-9 py-5 flex justify-between items-center mb-4">
-        <h1 class="font-bold text-xl mr-2">DATA SISWA</h1>
+        <h1 class="font-bold text-xl mr-2">DATA PENDAFTAR</h1>
         <div class="relative">
             <form method="GET" action="{{ route('index') }}" id="searchForm">
                 <input type="text" name="search" class="border border-gray-400 rounded-full py-2 px-4 pl-10 w-[500px]"

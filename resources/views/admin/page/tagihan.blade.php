@@ -3,7 +3,7 @@
     <x-slot:title>{{ $title }}</x-slot:title>
 
     <div class="px-9 py-5 flex justify-between items-center mb-4">
-        <h1 class="font-bold text-xl mr-2">TAGIHAN BIAYA</h1>
+        <h1 class="font-bold text-xl mr-2">TAGIHAN PENDAFTAR</h1>
         <!-- Form Search -->
         <div class="relative">
             <form method="GET" action="{{ route('search') }}" id="searchForm">
@@ -48,11 +48,11 @@
                             <option value="">Semua</option>
                             <option value="Cicil"{{ request('status') == 'Cicil' ? 'selected' : '' }}>Cicil</option>
                             <option value="Lunas"{{ request('status') == 'Lunas' ? 'selected' : '' }}>Lunas</option>
-                            <option value="DP"{{ request('status') == 'DP' ? 'selected' : '' }}>DP</option>
+
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium">Status</label>
+                        <label class="block text-sm font-medium">Status DP</label>
                         <select name="dft_ulang"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
                             <option value="">Semua</option>
@@ -92,7 +92,7 @@
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Lengkap</th>
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang Pendidikan
                     </th>
-                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Tipe Pembayaran</th>
+                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Status Bayar DP</th>
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Minimal DP
                     </th>
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Tagihan</th>
@@ -101,7 +101,7 @@
 
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Kekurangan
                     </th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Status Bayar</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Tipe Pembayaran</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
@@ -119,22 +119,22 @@
                             <td class="border px-4 py-2 text-center text-sm">{{ $item->name }}</td>
                             <td class="border px-4 py-2 text-center text-sm">{{ strtoupper($item->unt_pendidikan) }}
                             </td>
-                            <td class="border px-4 py-2 text-center text-sm">{{ $item->status }}</td>
+                            <td class="border px-4 py-2 text-center text-sm">{{ $item->byr_dft_ulang }}</td>
                             <td class="border px-4 py-2 text-center text-sm">@currency($item->dp_daful)
                             </td>
                             <td class="border px-4 py-2 text-center text-sm">
                                 @currency($item->total_bayar_daful)
                             </td>
-                            <td class="border px-4 py-2 text-center text-sm">
+                            <td class="border px-4 py-2 text-center text-sm text-red-500">
                                 @currency($item->diskon)
                             </td>
                             <td class="border px-4 py-2 text-center text-sm">@currency($item->jmlh_byr) </td>
                             <td class="border px-4 py-2 text-center text-sm">
-                                @currency($item->jmlh_byr >= $item->total_bayar_daful ? 0 : $item->total_bayar_daful - $item->jmlh_byr)
+                                @currency($item->jmlh_byr >= $item->total_bayar_daful - $item->diskon ? 0 : $item->total_bayar_daful - $item->jmlh_byr - $item->diskon)
                             </td>
 
                             <td class="p-4 border px-4 py-2 text-center">
-                                @if ($item->jmlh_byr >= $item->total_bayar_daful)
+                                @if ($item->jmlh_byr >= $item->total_bayar_daful - $item->diskon)
                                     <span class="border text-white  text-center bg-green-500 rounded-lg  px-4 py-2">
                                         {{ strtoupper($item->status) }}
                                     </span>
@@ -187,21 +187,9 @@
                                                             Bayar</label>
                                                         <input type="number" id="jmlh_byr" name="jmlh_byr"
                                                             value="{{ $item->jmlh_byr }}"
-                                                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                                            class="mt-1 block w-full border-2 p-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                                     </div>
-                                                    <div class="mb-4">
-                                                        <label for="status"
-                                                            class="block text-gray-700 font-medium">Status
-                                                            Tipe Pembayaran </label>
-                                                        <select id="status" name="status"
-                                                            value="{{ $item->status }}"
-                                                            class="block w-full px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700 appearance-none">
 
-                                                            <option value="Lunas">Lunas</option>
-                                                            <option value="Cicil">Cicil</option>
-                                                        </select>
-
-                                                    </div>
 
                                                     <div class="flex justify-end">
                                                         <button type="submit"

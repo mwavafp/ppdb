@@ -4,7 +4,7 @@
 
 <x-layoute>
     <div class="px-9 py-3 flex justify-between items-center mb-4">
-        <h1 class="font-bold text-xl mr-2">SELEKSI SISWA</h1>
+        <h1 class="font-bold text-xl mr-2">SELEKSI PENDAFTAR</h1>
         <div class="relative pt-[20px]">
             <form method="GET" action="{{ route('seleksi.search') }}" id="searchForm">
                 <input type="text" id="searchInput" name="search"
