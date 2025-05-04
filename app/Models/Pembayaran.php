@@ -22,7 +22,7 @@ class Pembayaran extends Model
     ];
     protected $attributes = [
         'byr_dft_ulang' => 'belum',
-        'status' => 'DP',
+        'status' => 'Cicil',
     ];
     public function user()
     {

@@ -117,10 +117,10 @@
                             <td class="border px-4 py-2 text-center">
                                 @if ($student->status_seleksi === 'LOLOS')
                                     <span
-                                        class="bg-green-500 text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
+                                        class="bg-[oklch(62.7%_0.194_149.214)] text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
                                 @elseif($student->status_seleksi === 'PENDING')
                                     <span
-                                        class="bg-[oklch(62.7%_0.194_149.214)] text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
+                                        class="bg-blue-500 text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
                                 @elseif($student->status_seleksi === 'TIDAK LOLOS')
                                     <span
                                         class="bg-red-500 text-white px-2 py-1 rounded text-sm">{{ $student->status_seleksi }}</span>
@@ -169,9 +169,17 @@
                                         @endfor
                                     </select>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="status_user" class="form-label">Status Calon</label>
+                                    <select id="status_user" name="status" class="form-select">
+                                        <option value="aktif"
+                                            {{ $student->status_user == 'Aktif' ? 'selected' : '' }}>Aktif</option>
+                                        <option value="tidak_aktif"
+                                            {{ $student->status_user == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif
+                                        </option>
 
-
-
+                                    </select>
+                                </div>
                                 <!-- Input Status Seleksi -->
                                 <div class="mb-3">
                                     <label for="status_seleksi" class="form-label">Status Seleksi</label>

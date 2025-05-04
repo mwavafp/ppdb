@@ -64,31 +64,18 @@
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Kelas</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Golongan</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Unit Pendidikan</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Status Calon</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200" id="tableBody">
                 @foreach ($students as $item)
                     <tr class="hover:bg-gray-50 transition">
-                        <td class="border px-4 py-2 text-center">{{ $item->id_kelas }}</td>
+                        <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->name }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->kelas }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->kls_identitas }}</td>
                         <td class="border px-4 py-2 text-center">{{ strtoupper($item->unt_pendidikan) }}</td>
-                        <td class="border px-4 py-2 text-center">
-                            <span
-                                class="inline-block px-3 py-1 rounded-full text-white 
-                                {{ $item->kls_status == 'Alumni'
-                                    ? 'bg-blue-500'
-                                    : ($item->kls_status == 'Siswa Aktif'
-                                        ? 'bg-green-500'
-                                        : ($item->kls_status == 'Siswa Tidak Aktif'
-                                            ? 'bg-red-500'
-                                            : 'bg-yellow-500')) }}">
-                                {{ $item->kls_status }}
-                            </span>
-                        </td>
+
                         <td class="border px-4 py-2 text-center">
                             <div x-data="{ isModalOpen: false }">
                                 <button @click="isModalOpen = true"
@@ -153,7 +140,7 @@
                                                 <select id="kls_identitas" name="kls_identitas"
                                                     class="block w-full px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700 appearance-none">
                                                     <option value="-"
-                                                        {{ $item->kls_identitas == 'A' ? 'selected' : '' }}>-</option>
+                                                        {{ $item->kls_identitas == '-' ? 'selected' : '' }}>-</option>
                                                     <option value="A"
                                                         {{ $item->kls_identitas == 'A' ? 'selected' : '' }}>A</option>
                                                     <option value="B"
@@ -169,23 +156,6 @@
                                                 </select>
                                             </div>
 
-                                            <div class="mb-4">
-                                                <label for="kls_status"
-                                                    class="block text-left text-gray-700 font-medium">Status
-                                                    Calon</label>
-                                                <select id="kls_status" name="kls_status"
-                                                    class="block w-full px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700 appearance-none">
-                                                    <option value="Alumni"
-                                                        {{ $item->kls_status == 'Alumni' ? 'selected' : '' }}>Alumni
-                                                    </option>
-                                                    <option value="Siswa Aktif"
-                                                        {{ $item->kls_status == 'Siswa Aktif' ? 'selected' : '' }}>
-                                                        Siswa Aktif</option>
-                                                    <option value="Siswa Tidak Aktif"
-                                                        {{ $item->kls_status == 'Siswa Tidak Aktif' ? 'selected' : '' }}>
-                                                        Siswa Tidak Aktif</option>
-                                                </select>
-                                            </div>
 
                                             <div class="flex justify-end">
                                                 <button type="submit"

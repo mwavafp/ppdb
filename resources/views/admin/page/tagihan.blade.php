@@ -136,11 +136,11 @@
                             <td class="p-4 border px-4 py-2 text-center">
                                 @if ($item->jmlh_byr >= $item->total_bayar_daful)
                                     <span class="border text-white  text-center bg-green-500 rounded-lg  px-4 py-2">
-                                        {{ strtoupper($item->byr_dft_ulang) }}
+                                        {{ strtoupper($item->status) }}
                                     </span>
                                 @else
                                     <span class="border text-white  text-center bg-red-500 rounded-lg px-4 py-2">
-                                        {{ strtoupper($item->byr_dft_ulang) }}
+                                        {{ strtoupper($item->status) }}
                                     </span>
                                 @endif
                             </td>
@@ -196,22 +196,13 @@
                                                         <select id="status" name="status"
                                                             value="{{ $item->status }}"
                                                             class="block w-full px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700 appearance-none">
-                                                            <option value="DP">DP</option>
+
                                                             <option value="Lunas">Lunas</option>
                                                             <option value="Cicil">Cicil</option>
                                                         </select>
 
                                                     </div>
-                                                    {{-- <div class="mb-4">
-                                                        <label for="status"
-                                                            class="block text-gray-700 font-medium">Status
-                                                            Bayar</label>
-                                                            <input type="text"
-                                                            name="byr_dft_ulang"
-                                                            value="{{ $item->byr_dft_ulang }}"
-                                                            readonly
-                                                            class="block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg shadow-sm text-gray-700" />
-                                                    </div> --}}
+
                                                     <div class="flex justify-end">
                                                         <button type="submit"
                                                             class=" text-white px-4 py-2  bg-[oklch(62.7%_0.194_149.214)] rounded-lg">

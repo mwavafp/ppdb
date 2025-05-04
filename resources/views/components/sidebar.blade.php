@@ -6,22 +6,26 @@
                 'items' => [],
             ],
             (object) [
-                'menu' => (object) ['icon' => 'fa-users', 'title' => 'Data Siswa', 'link' => 'siswa'],
-                'items' => [],
-            ],
-            (object) [
-                'menu' => (object) ['icon' => 'fa-user-check', 'title' => 'Seleksi Siswa', 'link' => 'seleksiSiswa'],
-                'items' => [],
-            ],
-
-            (object) [
                 'menu' => (object) [
                     'icon' => 'fa-file-invoice-dollar',
-                    'title' => 'Tagihan Siswa',
+                    'title' => 'Tagihan Pendaftar',
                     'link' => 'tagihan-admin',
                 ],
                 'items' => [],
             ],
+            (object) [
+                'menu' => (object) ['icon' => 'fa-users', 'title' => 'Data Pendaftar', 'link' => 'siswa'],
+                'items' => [],
+            ],
+            (object) [
+                'menu' => (object) [
+                    'icon' => 'fa-user-check',
+                    'title' => 'Seleksi Pendaftar',
+                    'link' => 'seleksiSiswa',
+                ],
+                'items' => [],
+            ],
+
             (object) [
                 'menu' => (object) [
                     'icon' => 'fa-graduation-cap',

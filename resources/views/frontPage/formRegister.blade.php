@@ -16,7 +16,7 @@
                 <div class="border-b pb-2 mb-4">
                     <h2 class="text-md font-semibold">AKUN PESERTA DIDIK</h2>
                 </div>
-                <div>
+                <div class="mb-4 relative">
                     <x-input-label for="username" :value="__('Username')" />
                     <x-text-input id="username" class="block mt-1 w-full" type="text" name="username"
                         :value="old('username')" required autofocus autocomplete="name" />
@@ -26,7 +26,7 @@
 
 
                 <!-- Password -->
-                <div class="mt-4 relative">
+                <div class="mb-4 relative">
                     <x-input-label for="password" :value="__('Password')" />
 
                     <!-- Kolom input dengan padding kanan untuk memberi ruang ikon -->
@@ -160,8 +160,16 @@
                 </div>
                 <div class="mb-4">
                     <x-input-label for="number_kk" :value="__('Nomor KK')" />
-                    <x-text-input id="number_kk" class="block mt-1 w-full" type="text" name="nmr_kk"
-                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="16" minlength="16" :value="old('nmr_kk')" required />
+                    <x-text-input id="warning-16" class="block mt-1 w-full" type="text" name="nmr_kk"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="16"
+                        onpaste="handlePaste(event)" :value="old('nmr_kk')" required />
+
+                    {{-- Real-time warning --}}
+                    <p id="nik-warning" class="text-red-500 text-sm mt-1 hidden">
+                        Nomor KK harus terdiri dari 16 digit angka.
+                    </p>
+
+                    {{-- Laravel backend error --}}
                     <x-input-error :messages="$errors->get('nmr_kk')" class="mt-2" />
                 </div>
                 <div class="mb-4">
@@ -171,10 +179,19 @@
                     <x-input-error :messages="$errors->get('nm_ayah')" class="mt-2" />
                 </div>
 
+
                 <div class="mb-4">
-                    <x-input-label for="number_daddy" :value="__('NIK Ayah')" />
-                    <x-text-input id="number_daddy" class="block mt-1 w-full" type="text" name="nik_ayah"
-                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="16" minlength="16" :value="old('nik_ayah')" required />
+                    <x-input-label for="nik_ayah" :value="__('NIK Ayah')" />
+                    <x-text-input id="warning-16" class="block mt-1 w-full" type="text" name="nik_ayah"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="16"
+                        onpaste="handlePaste(event)" :value="old('nik_ayah')" required />
+
+                    {{-- Real-time warning --}}
+                    <p id="nik-warning" class="text-red-500 text-sm mt-1 hidden">
+                        Nomor NIK harus terdiri dari 16 digit angka.
+                    </p>
+
+                    {{-- Laravel backend error --}}
                     <x-input-error :messages="$errors->get('nik_ayah')" class="mt-2" />
                 </div>
                 <div class="mb-4">
@@ -217,9 +234,16 @@
                 </div>
                 <div class="mb-4">
                     <x-input-label for="nik_ibu" :value="__('NIK Ibu')" />
-                    <x-text-input id="nik_ibu" class="block mt-1 w-full" type="text" name="nik_ibu"
-                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="16" minlength="16"  onpaste="handlePaste(event)"
-                        :value="old('nik_ibu')" required />
+                    <x-text-input id="warning-16" class="block mt-1 w-full" type="text" name="nik_ibu"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="16"
+                        onpaste="handlePaste(event)" :value="old('nik_ibu')" required />
+
+                    {{-- Real-time warning --}}
+                    <p id="nik-warning" class="text-red-500 text-sm mt-1 hidden">
+                        Nomor NIK harus terdiri dari 16 digit angka.
+                    </p>
+
+                    {{-- Laravel backend error --}}
                     <x-input-error :messages="$errors->get('nik_ibu')" class="mt-2" />
                 </div>
                 <div class="mb-4">
@@ -266,6 +290,33 @@
 
 </x-layout>
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const nikInput = document.getElementById("warning-16");
+        const warning = document.getElementById("nik-warning");
+
+        nikInput.addEventListener("input", function() {
+            // Tampilkan warning kalau panjang bukan 16 atau ada karakter bukan angka
+
+            if (this.value.length !== 16 || !/^\d+$/.test(this.value)) {
+                warning.classList.remove("hidden");
+            } else {
+                warning.classList.add("hidden");
+            }
+        });
+    });
+
+    function handlePaste(e) {
+        const pasted = (e.clipboardData || window.clipboardData).getData('text');
+        const warning = document.getElementById("nik-warning");
+
+        if (!/^\d{16}$/.test(pasted)) {
+            e.preventDefault();
+            warning.classList.remove("hidden");
+        } else {
+            warning.classList.add("hidden");
+        }
+    }
+
     function toggleCheckbox(currentCheckbox, otherCheckboxId) {
         const otherCheckbox = document.getElementById(otherCheckboxId);
 

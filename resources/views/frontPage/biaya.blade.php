@@ -18,10 +18,11 @@
 
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <div class="container mx-auto p-4">
-        <div class="bg-[oklch(62.7%_0.194_149.214)] text-white text-center py-4 font-bold text-lg">
-            <p>Biaya Pendidikan</p>
-        </div>
+    <div class="bg-[oklch(62.7%_0.194_149.214)] w-full text-white text-center py-4 font-bold text-lg">
+        <p>Biaya Pendidikan</p>
+    </div>
+    <div class="container mx-auto px-12">
+
         <div class="flex justify-center space-x-4 my-4">
             <button
                 class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
@@ -89,9 +90,23 @@
 
                 </table>
                 @forelse($notes[$unit] ?? [] as $index => $row)
-                <h1>{{$row['catatan']}}</h1>
+                    <div class="mt-12 w-full bg-[oklch(62.7%_0.194_149.214)] p-8 rounded-lg shadow-md overflow-hidden">
+                        <div class="p-4 text-white">
+                            <h2 class="text-2xl font-semibold ">Bonus</h2>
+                            <p class="mt-2  text-sm">
+                                {{ $row['catatan'] }}
+                            </p>
+                        </div>
+                    </div>
                 @empty
-                <h1> YASD</h1>
+                    <div class="mt-12 w-full bg-[oklch(62.7%_0.194_149.214)] p-8 rounded-lg shadow-md overflow-hidden">
+                        <div class="p-4 text-white">
+                            <h2 class="text-2xl font-semibold ">Bonus</h2>
+                            <p class="mt-2  text-sm">
+                                -
+                            </p>
+                        </div>
+                    </div>
                 @endforelse
             </div>
         @endforeach

@@ -13,17 +13,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id('id_user');
-
             $table->string('username')->nullable();
             $table->string('password')->nullable();
             $table->string('password2')->nullable();
             $table->string('name')->nullable();
-            $table->string('alamat')->nullable();
-            $table->integer('nisn')->nullable();
+            $table->string('alamat', 300)->nullable();
+            $table->string('nisn', 10)->nullable();
             $table->enum('gender', ['laki-laki', 'perempuan']);
-            $table->string('tmpt_lahir')->nullable();
+            $table->string('tmpt_lahir', 100)->nullable();
             $table->date('tgl_lahir')->nullable();
-            $table->string('asl_sekolah')->nullable();
+            $table->string('asl_sekolah', 200)->nullable();
             $table->enum('tipe_siswa', ['alumni', 'umum']);
             $table->enum('status', ['aktif', 'tidak_aktif'])->default('tidak_aktif');
 

@@ -182,6 +182,9 @@ class SeleksiAdminController extends Controller
         $update2 = DB::table('seleksi')->where('id_user', $id)->update([
             'status_seleksi' => $request->status_seleksi,
         ]);
+        $update4 = DB::table('users')->where('id_user', $id)->update([
+            'status' => $request->status,
+        ]);
 
         // Update status berkas
         $update3 = DB::table('berkas')->where('id_user', $id)->update([
@@ -191,7 +194,7 @@ class SeleksiAdminController extends Controller
             'kip' => $request->status_kip,
         ]);
 
-        if ($update1 || $update2 || $update3) {
+        if ($update1 || $update2 || $update3 || $update4) {
             // Jika salah satu update berhasil
             return redirect()->route('seleksi.index')->with('success', 'Data berhasil Diperbarui!');
         } else {
