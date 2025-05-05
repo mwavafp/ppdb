@@ -59,12 +59,22 @@ class ContactController extends Controller
 
         return to_route('admin.pengaturanCp');
     }
-    public function deleteData(Request $request, $id)
+        public function updateData(Request $request, $id)
     {
-        DB::table('contact')
-            ->where('id_contact', '=', $id)
-            ->delete();
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'cp' => 'required|string|max:20',
+        ]);
 
-        return redirect()->route('admin.pengaturanCp');
+        DB::table('contact')
+            ->where('id_contact', $id)
+            ->update([
+                'nama' => $request->nama,
+                'cp' => $request->cp,
+                'updated_at' => now(),
+            ]);
+
+        return redirect()->route('admin.pengaturanCp')->with('success', 'Data berhasil diperbarui.');
     }
+
 }
