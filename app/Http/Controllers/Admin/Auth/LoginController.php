@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\AdminLoginRequest;
-
+use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,16 +31,26 @@ class LoginController extends Controller
         $admin = Auth::guard('admin')->check();
 
 
-        if ($admin && Auth::guard('admin')->user()->role == 'admin') {
-            return redirect()->intended(route('admin.dashboard-admin'));
-        } elseif ($admin) {
+        // if ($admin && Auth::guard('admin')->user()->role == 'admin') {
+        //     return redirect()->intended(route('admin.dashboard-admin'));
+        // } elseif ($admin) {
 
+        //     return redirect()->intended(route('admin.dashboardSuperAdmin'));
+        // }
+        if ($admin && Auth::guard('admin')->user()->role === 'admin') {
+            return redirect()->intended(route('admin.dashboard-admin'));
+        } elseif ($admin && Auth::guard('admin')->user()->role === 'superAdmin') {
             return redirect()->intended(route('admin.dashboardSuperAdmin'));
+        } else {
+            return redirect()->route('admin.login');
         }
+
+
         // if ($admin) {
         //     return redirect()->intended(route('admin.dashboard-admin'));
         // }
-        return redirect()->intended(route('admin.login'));
+
+
     }
 
     /**

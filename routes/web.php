@@ -150,7 +150,7 @@ Route::prefix('admin')->middleware('guest:admin')->group(function () {
     Route::post('login', [LoginController::class, 'store']);
 });
 
-Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
+Route::middleware(['auth:admin', 'checkrole:admin', 'no-cache'])->group(function () {
 
     // Route::get('/dashboard', function () {
     //     return view('admin.page.dashboard', ['title' => 'tes']);

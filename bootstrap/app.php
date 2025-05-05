@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\BlockedUser;
+use App\Http\Middleware\NoCacheMiddleware;
 use App\Http\Middleware\Panitia;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -15,7 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'checkrole' => Admin::class
+            'checkrole' => Admin::class,
+            'no-cache' => NoCacheMiddleware::class,
+
         ]);
     })
 
