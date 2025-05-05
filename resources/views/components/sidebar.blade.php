@@ -51,14 +51,7 @@
                 'menu' => (object) ['icon' => 'fa-users', 'title' => 'Data User Admin', 'link' => 'data-admin'],
                 'items' => [],
             ],
-            (object) [
-                'menu' => (object) [
-                    'icon' => 'fa-graduation-cap',
-                    'title' => 'Pengaturan Kelas',
-                    'link' => 'pengaturan-kelas',
-                ],
-                'items' => [],
-            ],
+            
             (object) [
                 'menu' => (object) [
                     'icon' => 'fa-user-check',
