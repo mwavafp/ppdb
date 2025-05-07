@@ -104,7 +104,7 @@ Route::middleware('guest:web')->group(function () {
         ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
-});
+    });
 
 Route::middleware('auth:web')->group(function () {
     // Route::get('/biodata', function () {
@@ -138,7 +138,7 @@ Route::middleware('auth:web')->group(function () {
 //prefix(admin) pada view dashboard. maka nanti akan menjadi /admin/dashboard
 //guest digunakan khusus pengguna yang belum login sebagai admin
 //auth memerikasa pengguna sudah login
-Route::prefix('admin')->middleware('guest:admin')->group(function () {
+Route::prefix('admin')->middleware('admin-role','no-cache')->group(function () {
     // Route::get('/dashboard', function () {
     //     return view('admin.dashboard',['title'=>'User Page']);
     // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -190,7 +190,7 @@ Route::middleware(['auth:admin', 'checkrole:admin', 'no-cache'])->group(function
         ->name('admin.logoutAdmin');
 });
 
-Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
+Route::middleware(['auth:admin', 'checkrole:superAdmin','no-cache'])->group(function () {
 
     Route::get('/dashboard-super-admin', [AdminDashboardController::class, 'showUserSuperAdmin'])->name('admin.dashboardSuperAdmin');
     Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.data-admin-Superadmin');
@@ -201,7 +201,7 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::post('/tambah-cp', [ContactController::class, 'createData'])->name('admin.tambah-admin');
     Route::put('/update-cp/{id}', [ContactController::class, 'updateData'])->name('admin.update-admin');
 
-   
+
     // Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
     // Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
     // Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
