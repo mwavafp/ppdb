@@ -97,7 +97,7 @@
             @foreach ($menu as $m)
                 <li>
                     <a href='/{{ $m->menu->link }}'
-                        class="flex items-center gap-4 py-2.5 px-4 text-sm font-medium text-gray-900 hover:text-violet-500 dark:text-gray-300 dark:hover:text-white">
+                        class="flex items-center gap-4 py-2.5 px-2 text-sm font-medium text-gray-900 hover:text-violet-500 dark:text-gray-300 dark:hover:text-white">
                         <i class="fa-solid {{ $m->menu->icon }}"></i>
                         <span class="menu-text">{{ $m->menu->title }}</span>
                     </a>
@@ -121,7 +121,7 @@
 </div>
 
 <!-- Konten Utama -->
-<div id="mainContent" class="ml-64 p-6 transition-all duration-300"></div>
+<div id="mainContent" class="ml-52 p-6 transition-all duration-300"></div>
 
 <!-- Script untuk Toggle Sidebar -->
 <script>
@@ -136,8 +136,9 @@
     toggleSidebar.addEventListener("click", () => {
         sidebar.classList.toggle("w-20");
         sidebar.classList.toggle("w-64");
-        mainContent.classList.toggle("ml-16");
-        mainContent.classList.toggle("ml-64");
+        mainContent.classList.toggle("ml-4");
+        mainContent.classList.toggle("ml-2");
+
 
         if (sidebar.classList.contains("w-20")) {
             toggleIcon.classList.replace("fa-chevron-left", "fa-chevron-right");
@@ -155,7 +156,7 @@
             text.classList.toggle("hidden");
             const parent = text.closest("a");
             parent.classList.toggle("justify-center");
-            parent.classList.toggle("gap-4");
+            // parent.classList.toggle("gap-4");
         });
     });
 </script>

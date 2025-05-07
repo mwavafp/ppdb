@@ -3,18 +3,16 @@
 <x-layoute>
     <x-slot:title>Pengaturan Web</x-slot:title>
 
-    <body class="bg-gray-50 text-gray-800 min-h-screen">
-
-        <!-- Header Section -->
-        <header class="bg-white border-b shadow-sm py-5 mb-10">
-            <div class="container mx-auto px-4 flex flex-col">
-                <h1 class="text-2xl font-bold text-gray-800">Pengaturan Website</h1>
+    <div class=" bg-gray-100 px-16 py-12 min-h-[100vh]">
+        <header class="mb-10">
+            <div class="container  flex flex-col">
+                <h1 class="text-3xl font-bold">Pengaturan Website</h1>
                 <p class="text-sm text-gray-500 mt-1">Manajemen Konten dan Tampilan Website</p>
             </div>
         </header>
 
         <!-- Main Content Section -->
-        <main class="container mx-auto px-4 py-8">
+        <main class="container  py-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
                 @php
@@ -31,13 +29,14 @@
                 @endphp
 
                 @foreach ($cards as $card)
-                    <div class="bg-white rounded-xl shadow hover:shadow-lg transition duration-300 p-6 flex flex-col items-center text-center">
+                    <div
+                        class="bg-white rounded-xl shadow hover:shadow-lg transition duration-300 p-6 flex flex-col items-center text-center">
                         <div class="text-green-600 text-4xl mb-4">
                             <i class="{{ $card['icon'] }}"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">{{ $card['label'] }}</h3>
                         <a href="{{ route($card['route']) }}"
-                           class="mt-auto bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-full transition">
+                            class="mt-auto bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-full transition">
                             Edit
                         </a>
                     </div>
@@ -45,5 +44,9 @@
 
             </div>
         </main>
-    </body>
+    </div>
+
+    <!-- Header Section -->
+
+
 </x-layoute>
