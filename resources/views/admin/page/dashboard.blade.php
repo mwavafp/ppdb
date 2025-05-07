@@ -79,10 +79,10 @@
     new Chart(ctxContextual, {
         type: 'pie',
         data: {
-            labels: ['Laki - laki', 'Perempuan'],
+            labels: ['Laki - laki', 'Perempuan', ],
             datasets: [{
                 data: [genderLaki, genderPerempuan],
-                backgroundColor: ['#f472b6', '#818cf8'],
+                backgroundColor: ['#818cf8', '#f472b6'],
             }]
         }
     });

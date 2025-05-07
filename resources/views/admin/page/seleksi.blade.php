@@ -13,8 +13,7 @@
                 <i class="fas fa-search absolute left-2 pt-[14px] text-gray-400"></i>
             </form>
         </div>
-        <span
-            class=" text-white bg-[oklch(62.7%_0.194_149.214)] py-2 px-4 rounded-md">{{ strtoupper(auth()->user()->name) }}</span>
+
     </div>
 
     <!-- Form Filter -->
