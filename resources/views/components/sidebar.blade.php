@@ -51,7 +51,7 @@
                 'menu' => (object) ['icon' => 'fa-users', 'title' => 'Data User Admin', 'link' => 'data-admin'],
                 'items' => [],
             ],
-            
+
             (object) [
                 'menu' => (object) [
                     'icon' => 'fa-user-check',
@@ -111,8 +111,13 @@
         <!-- Sidebar Menu -->
         <div class="pb-10 pt-2.5">
             <ul class="space-y-2">
-                <img src="images/logo-yysn.png" alt="Logo"
-                    class="w-12 h-12 object-cover rounded-full shadow-md mb-10 ml-2">
+
+                <div class="flex items-center space-x-3">
+                    <img src="{{ asset('images/logo-yysn.png') }}" alt="Logo"
+                         class="w-12 h-12 object-cover rounded-full shadow-md">
+                    <span class="font-semibold text-white">{{ strtoupper(auth()->user()->name) }}</span>
+                </div>
+
                 @foreach ($menu as $m)
                     <li>
                         <a href='/{{ $m->menu->link }}'
@@ -175,6 +180,22 @@
         // Sembunyikan atau tampilkan teks menu
         menuTexts.forEach(text => {
             text.classList.toggle("hidden");
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleBtn = document.getElementById('userDropdownToggle');
+        const dropdown = document.getElementById('userDropdown');
+
+        toggleBtn.addEventListener('click', function (e) {
+            e.stopPropagation(); // Mencegah event bubbling
+            dropdown.classList.toggle('hidden');
+        });
+
+        // Tutup dropdown jika klik di luar
+        document.addEventListener('click', function () {
+            dropdown.classList.add('hidden');
         });
     });
 </script>

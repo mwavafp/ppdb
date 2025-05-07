@@ -2,19 +2,17 @@
 <x-layoute>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <div class="px-9 py-5 flex justify-between items-center mb-4">
+    <div class="px-9 py-5 flex items-center mb-4">
         <h1 class="font-bold text-xl mr-2">TAGIHAN PENDAFTAR</h1>
         <!-- Form Search -->
-        <div class="relative">
+        <div class="flex-1 flex justify-center relative">
             <form method="GET" action="{{ route('search') }}" id="searchForm">
                 <input type="text" name="search" class="border border-gray-400 rounded-full py-2 px-4 pl-10 w-[500px]"
                     placeholder="Search" value="{{ old('search') }}"
                     oninput="document.getElementById('searchForm').submit()">
             </form>
-            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+            <i class="fas fa-search absolute left-[calc(50%-240px+12px)] top-3 text-gray-400"></i>
         </div>
-        <span
-            class=" text-white bg-[oklch(62.7%_0.194_149.214)] py-2 px-4 rounded-md">{{ strtoupper(auth()->user()->name) }}</span>
     </div>
 
     <div class="flex w-full px-8 my-8">

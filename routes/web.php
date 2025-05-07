@@ -138,7 +138,7 @@ Route::middleware('auth:web')->group(function () {
 //prefix(admin) pada view dashboard. maka nanti akan menjadi /admin/dashboard
 //guest digunakan khusus pengguna yang belum login sebagai admin
 //auth memerikasa pengguna sudah login
-Route::prefix('admin')->middleware('guest:admin')->group(function () {
+Route::prefix('admin')->middleware('admin-role', 'no-cache')->group(function () {
     // Route::get('/dashboard', function () {
     //     return view('admin.dashboard',['title'=>'User Page']);
     // })->middleware(['auth', 'verified'])->name('dashboard');
