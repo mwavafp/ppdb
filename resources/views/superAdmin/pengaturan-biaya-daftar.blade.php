@@ -39,7 +39,7 @@
                         onclick="selectTab('{{ $jenjang }}')">{{ $jenjang }}</button>
                 @endforeach
             </div>
-            <div class="my-auto mx-4 text-right">
+            {{-- <div class="my-auto mx-4 text-right">
                 <form action="{{ route('tagihan.export') }}" method="GET">
                     <button type="submit" class="btn btn-primary">
                         <span
@@ -47,7 +47,7 @@
                             Excel</span>
                     </button>
                 </form>
-            </div>
+            </div> --}}
         </div>
 
         @php

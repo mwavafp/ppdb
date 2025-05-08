@@ -91,12 +91,12 @@
                                                 @method('PUT')
                                                 <h2 class="text-xl font-bold mb-4">Edit CP</h2>
                                                 <div class="mb-4">
-                                                    <label class="block text-gray-700">Nama</label>
+                                                    <label class="text-left block text-gray-700">Nama</label>
                                                     <input type="text" name="nama" value="{{ $item->nama }}"
                                                         class="w-full border border-gray-300 rounded p-2" required>
                                                 </div>
                                                 <div class="mb-4">
-                                                    <label class="block text-gray-700">NIP</label>
+                                                    <label class="text-left block text-gray-700">Contact</label>
                                                     <input type="text" name="cp" value="{{ $item->cp }}"
                                                         class="w-full border border-gray-300 rounded p-2" required>
                                                 </div>

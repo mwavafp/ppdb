@@ -32,28 +32,28 @@ class AdminSuperDashboardController extends Controller
     }
     public function createData(Request $request): RedirectResponse
     {
-
-
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'nip' => 'required|numeric',
+            'email' => 'required|email|unique:admins,email',
+            'password' => 'required|string|min:6',
+            'role' => 'required|string',
+        ], [
+            'email.unique' => 'Email sudah digunakan. Silakan gunakan email yang berbeda.',
+        ]);
 
         Admin::create([
             'name' => $request->name,
             'nip' => $request->nip,
             'email' => $request->email,
-            'password' =>   $request->password,
-            'password2' =>   Crypt::encrypt($request->password),
+            'password' => $request->password,
+            'password2' => Crypt::encrypt($request->password),
             'role' => $request->role,
         ]);
 
-        // dd($userAdmin->all());
-        // event(new Registered($userAdmin));
-        // if ($userAdmin) {
-        //     return redirect(route('admin.dashboardSA'))->with('success', 'Admin berhasil ditambahkan!');
-        // } else {
-        //     return back()->withErrors(['msg' => 'Gagal menambahkan admin, silakan coba lagi.']);
-        // }
-
-        return to_route('admin.data-admin-Superadmin')->with('success', "Data Berhasil Di tambah");
+        return to_route('admin.data-admin-Superadmin')->with('success', 'Data berhasil ditambahkan');
     }
+
     public function deleteData(Request $request, $id)
     {
         DB::table('admins')
