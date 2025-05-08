@@ -59,7 +59,7 @@
 
         </div>
         <div class="w-full">
-            <div class="main-content group-data-[sidebar-size=sm]:ml-[70px]">
+            <div class="main-content group-data-[sidebar-size=sm]:ml-[0px]">
                 <div class="page-content">
                     @if (Session::has('success'))
                         <script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Exports\AllDataExport;
 use App\Models\Kelas;
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -9,6 +10,7 @@ use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminDashboardController extends Controller
 {
@@ -162,5 +164,9 @@ class AdminDashboardController extends Controller
             'total_bayar_madin',
 
         ), ['title' => 'test']);
+    }
+    public function export()
+    {
+        return Excel::download(new AllDataExport, 'Data PPDB.xlsx');
     }
 }

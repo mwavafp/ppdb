@@ -138,7 +138,7 @@ Route::middleware('auth:web')->group(function () {
 //prefix(admin) pada view dashboard. maka nanti akan menjadi /admin/dashboard
 //guest digunakan khusus pengguna yang belum login sebagai admin
 //auth memerikasa pengguna sudah login
-Route::prefix('admin')->middleware('guest:admin')->group(function () {
+Route::prefix('admin')->middleware('admin-role', 'no-cache')->group(function () {
     // Route::get('/dashboard', function () {
     //     return view('admin.dashboard',['title'=>'User Page']);
     // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -150,12 +150,13 @@ Route::prefix('admin')->middleware('guest:admin')->group(function () {
     Route::post('login', [LoginController::class, 'store']);
 });
 
-Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
+Route::middleware(['auth:admin', 'checkrole:admin', 'no-cache'])->group(function () {
 
     // Route::get('/dashboard', function () {
     //     return view('admin.page.dashboard', ['title' => 'tes']);
     // })->name('admin.dashboard');
     Route::get('/dashboard-admin', [AdminDashboardController::class, 'showUser'])->name('admin.dashboard-admin');
+    Route::get('dashboard-data/export/', [AdminDashboardController::class, 'export'])->name('admin.dahsboard-export');
 
     Route::get('/pembagiankelas', [KelasController::class, 'showData'])->name('pembagiankelas');
     Route::get('/pembagiankelas/{id}/edit', [KelasController::class, 'edit'])->name('pembagiankelas.edit');
@@ -190,9 +191,10 @@ Route::middleware(['auth:admin', 'checkrole:admin'])->group(function () {
         ->name('admin.logoutAdmin');
 });
 
-Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
+Route::middleware(['auth:admin', 'checkrole:superAdmin', 'no-cache'])->group(function () {
 
     Route::get('/dashboard-super-admin', [AdminDashboardController::class, 'showUserSuperAdmin'])->name('admin.dashboardSuperAdmin');
+    Route::get('dashboard-super-data/export/', [AdminDashboardController::class, 'export'])->name('admin.dahsboard-super-export');
     Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.data-admin-Superadmin');
     Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-Superadmin');
     Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-Superadmin');
@@ -201,7 +203,7 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin'])->group(function () {
     Route::post('/tambah-cp', [ContactController::class, 'createData'])->name('admin.tambah-admin');
     Route::put('/update-cp/{id}', [ContactController::class, 'updateData'])->name('admin.update-admin');
 
-   
+
     // Route::get('/data-admin', [AdminSuperDashboardController::class, 'showData'])->name('admin.dataAdminPage');
     // Route::post('/tambah-admin', [AdminSuperDashboardController::class, 'createData'])->name('admin.tambah-admin');
     // Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');

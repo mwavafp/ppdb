@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\AdminLoginRequest;
-
+use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -15,8 +16,9 @@ class LoginController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create()
     {
+
         return view('admin.auth.login');
     }
 
@@ -31,16 +33,26 @@ class LoginController extends Controller
         $admin = Auth::guard('admin')->check();
 
 
-        if ($admin && Auth::guard('admin')->user()->role == 'admin') {
-            return redirect()->intended(route('admin.dashboard-admin'));
-        } elseif ($admin) {
+        // if ($admin && Auth::guard('admin')->user()->role == 'admin') {
+        //     return redirect()->intended(route('admin.dashboard-admin'));
+        // } elseif ($admin) {
 
+        //     return redirect()->intended(route('admin.dashboardSuperAdmin'));
+        // }
+        if ($admin && Auth::guard('admin')->user()->role === 'admin') {
+            return redirect()->intended(route('admin.dashboard-admin'));
+        } elseif ($admin && Auth::guard('admin')->user()->role === 'superAdmin') {
             return redirect()->intended(route('admin.dashboardSuperAdmin'));
+        } else {
+            return redirect()->intended(route('admin.login'));
         }
+
+
         // if ($admin) {
         //     return redirect()->intended(route('admin.dashboard-admin'));
         // }
-        return redirect()->intended(route('admin.login'));
+
+
     }
 
     /**

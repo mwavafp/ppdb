@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Exports\TagihanExport;
 use App\Exports\UsersExport;
 use App\Http\Controllers\Controller;
 use App\Models\Pembayaran;
@@ -106,13 +107,39 @@ class TagihanAdmin extends Controller
     public function search(Request $request)
     {
         $search = $request->search;
-        $all_data = DB::table('pembayaran')
-            ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
+        $all_data = DB::table('harga')
+            ->join('user_golongan', 'harga.id_harga', '=', 'user_golongan.id_harga')  // Pastikan 'harga' di-join dengan 'user_golongan'
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')  // Join 'users' dengan 'user_golongan'
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.id_user', 'pembayaran.id_bayar', 'kelas.unt_pendidikan', 'pembayaran.byr_dft_ulang', 'pembayaran.status', 'jmlh_byr')
+            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
+            ->join('pembayaran', 'users.id_user', '=', 'pembayaran.id_user')
+            // ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
+            // ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+
+            // ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+
+            // ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->whereBetween('users.created_at', [
+                DB::raw('(SELECT awal FROM tahun LIMIT 1)'),
+                DB::raw('(SELECT akhir FROM tahun LIMIT 1)')
+            ])
+            ->select(
+                'users.name',
+                'users.id_user',
+                'pembayaran.id_bayar',
+                'kelas.unt_pendidikan',
+                'pembayaran.byr_dft_ulang',
+                'pembayaran.status',
+                'jmlh_byr',
+                'harga.total_bayar_daful',
+                'harga.dp_daful',
+                'harga.diskon'
+            )
+
             ->where('users.name', 'LIKE', "%{$search}%")
             ->paginate(10);
+
 
         return view('admin.page.tagihan', compact('all_data'), ['title' => 'Search Results']);
     }
@@ -176,6 +203,6 @@ class TagihanAdmin extends Controller
     }
     public function export()
     {
-        return Excel::download(new UsersExport, 'users.xlsx');
+        return Excel::download(new TagihanExport, 'Tagihan PPDB.xlsx');
     }
 }

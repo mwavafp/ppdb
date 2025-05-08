@@ -3,12 +3,22 @@
     <x-slot:title>{{ $title }}</x-slot:title>
 
 
-    <div class=" bg-gray-100">
-        <div class="p-4">
-            <p class="text-3xl">Dashboard</p>
+    <div class=" bg-gray-100 px-16 py-12">
+        <div class="">
+            <p class="text-3xl font-bold">Dashboard</p>
         </div>
+        <div class="text-right mb-8">
+            <form action="{{ route('admin.dahsboard-export') }}" method="GET">
+                <button type="submit" class="btn btn-primary">
+                    <span
+                        class="border-2 border-[oklch(62.7%_0.194_149.214)] text-[oklch(62.7%_0.194_149.214)]  hover:bg-[oklch(62.7%_0.194_149.214)] hover:text-white text-center px-6 py-4 rounded-md">Download
+                        Excel Data Pendaftar </span>
+                </button>
+            </form>
+        </div>
+
         <!-- Header Metrics -->
-        <div class="flex  p-8   mb-2  w-full">
+        <div class="flex    mb-2  w-full">
             <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
                 <p class="text-sm text-gray-500">Jumlah Total Pendaftar</p>
                 <p class="text-2xl font-semibold">{{ $all_user }}</p>
@@ -21,7 +31,7 @@
         </div>
 
         <!-- Charts Section -->
-        <div class="flex  gap-8 mb-6 px-8 w-full ">
+        <div class="flex  gap-8 mb-6  w-full ">
             <!-- Chart Pendaftar-->
             <div class="flex-1 bg-white p-4 rounded-lg shadow-md w-40">
                 <p class="text-lg font-semibold mb-4">Tipe Pendaftar</p>
@@ -79,10 +89,10 @@
     new Chart(ctxContextual, {
         type: 'pie',
         data: {
-            labels: ['Laki - laki', 'Perempuan'],
+            labels: ['Laki - laki', 'Perempuan', ],
             datasets: [{
                 data: [genderLaki, genderPerempuan],
-                backgroundColor: ['#f472b6', '#818cf8'],
+                backgroundColor: ['#818cf8', '#f472b6'],
             }]
         }
     });
