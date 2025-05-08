@@ -40,7 +40,7 @@
             (object) [
                 'menu' => (object) [
                     'icon' => 'fa-user-check',
-                    'title' => 'Tahun Ajaran Pengaturan',
+                    'title' => 'Pengaturan Tahun Ajaran',
                     'link' => 'tahun-ajaran-pengaturan',
                 ],
             ],
@@ -95,12 +95,17 @@
     <div data-simplebar class="flex-1 mt-4">
         <ul class="space-y-2">
             @foreach ($menu as $m)
+                    @php
+                        $isActive = Request::is($m->menu->link . '*');
+                    @endphp
                 <li>
-                    <a href='/{{ $m->menu->link }}'
-                        class="flex items-center gap-4 py-2.5 px-2 text-sm font-medium text-gray-900 hover:text-violet-500 dark:text-gray-300 dark:hover:text-white">
+                    <a href="/{{ $m->menu->link }}"
+                        class="flex items-center gap-4 py-2.5 px-4 text-sm font-medium rounded
+                            {{ $isActive ? 'text-violet-600 bg-gray-100 dark:bg-zinc-700 font-semibold' : 'text-gray-900 hover:text-violet-500 dark:text-gray-300 dark:hover:text-white' }}">
                         <i class="fa-solid {{ $m->menu->icon }}"></i>
                         <span class="menu-text">{{ $m->menu->title }}</span>
                     </a>
+                </li>
                 </li>
             @endforeach
             <li>

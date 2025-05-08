@@ -129,7 +129,7 @@
                         <option value="umum">Umum</option>
                         <option value="alumni">Alumni</option>
                     </select>
-                    {{-- 
+                    {{--
                     <x-input-error :messages="$errors->get('tipe_siswa')" class="mt-2" /> --}}
                 </div>
                 <div class="mb-4">

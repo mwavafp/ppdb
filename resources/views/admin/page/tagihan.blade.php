@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <x-layoute>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <div class=" bg-gray-100 px-16 py-12 min-h-[100vh]">
+    <div class=" bg-gray-100 pl-12 pr-5 py-12 min-h-[100vh]">
         <div class="  flex items-center mb-4">
             <h1 class="text-3xl font-bold">TAGIHAN PENDAFTAR</h1>
             <!-- Form Search -->
@@ -78,12 +78,11 @@
                 </div>
 
             </form>
-            <div class="text-right my-auto ">
+            <div class="text-right my-auto">
                 <form action="{{ route('tagihan.export') }}" method="GET">
                     <button type="submit" class="btn btn-primary">
                         <span
-                            class="border-2 border-[oklch(62.7%_0.194_149.214)] text-[oklch(62.7%_0.194_149.214)]  hover:bg-[oklch(62.7%_0.194_149.214)] hover:text-white text-center px-6 py-4 rounded-md">Download
-                            Excel</span>
+                            class="border-2 border-[oklch(62.7%_0.194_149.214)] text-[oklch(62.7%_0.194_149.214)]  hover:bg-[oklch(62.7%_0.194_149.214)] hover:text-white text-center px-6 py-4 rounded-md">Download Excel</span>
                     </button>
                 </form>
             </div>

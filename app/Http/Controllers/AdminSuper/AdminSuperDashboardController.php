@@ -60,6 +60,6 @@ class AdminSuperDashboardController extends Controller
             ->where('id_admin', '=', $id)
             ->delete();
 
-        return redirect()->route('admin.data-admin-Superadmin')->with('success', "Data Berhasil Di tambah");
+        return redirect()->route('admin.data-admin-Superadmin')->with('success', "Data Berhasil Di hapus");
     }
 }
