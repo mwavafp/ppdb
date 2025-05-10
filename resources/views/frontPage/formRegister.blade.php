@@ -26,27 +26,26 @@
 
 
                 <!-- Password -->
-                <div class="mb-4 relative">
+
+                <div class="mb-4">
                     <x-input-label for="password" :value="__('Password')" />
 
-                    <!-- Kolom input dengan padding kanan untuk memberi ruang ikon -->
-                    <x-text-input id="password" class="block mt-1 w-full pr-10" type="password" name="password" />
-
-                    <!-- Ikon mata di dalam input, disesuaikan posisinya -->
-                    <span class="absolute top-[75%] right-3 -translate-y-1/2 transform cursor-pointer"
-                        onclick="togglePassword()">
-                        <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                        </svg>
-                    </span>
+                    <div class="relative">
+                        <x-text-input id="password" class="block mt-1 w-full pr-10" type="password" name="password"
+                            onclick="togglePassword()" />
+                        <span class="absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer">
+                            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </span>
+                    </div>
 
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
-
 
 
                 <!-- Data Diri -->
@@ -61,7 +60,7 @@
                     <x-input-label for="name" :value="__('Jenis Kelamin')" />
                     <div class="flex mt-2">
                         <label for="pria" class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" id="pria" name="gender" value="laki-laki" class="hidden peer"
+                            <input type="radio" id="pria" name="gender" value="laki-laki" class="hidden peer"
                                 onclick="toggleCheckbox(this, 'perempuan')" />
                             <!-- Kotak custom -->
                             <div
@@ -70,7 +69,7 @@
                             <span class="text-gray-700 peer-checked:font-semibold">Laki-Laki</span>
                         </label>
                         <label for="perempuan" class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" id="perempuan" name="gender" value="perempuan" class="hidden peer"
+                            <input type="radio" id="perempuan" name="gender" value="perempuan" class="hidden peer"
                                 onclick="toggleCheckbox(this, 'pria')" />
                             <div
                                 class="rounded-md w-5 h-5 border-2 border-gray-300 peer-checked:bg-pink-500 peer-checked:border-pink-500 transition-all">
@@ -79,6 +78,7 @@
                             <span class="text-gray-700 peer-checked:font-semibold">Perempuan</span>
                         </label>
                     </div>
+                    <x-input-error :messages="$errors->get('gender')" class="mt-2" />
                 </div>
 
 
@@ -129,8 +129,7 @@
                         <option value="umum">Umum</option>
                         <option value="alumni">Alumni</option>
                     </select>
-                    {{--
-                    <x-input-error :messages="$errors->get('tipe_siswa')" class="mt-2" /> --}}
+                    <x-input-error :messages="$errors->get('tipe_siswa')" class="mt-2" />
                 </div>
                 <div class="mb-4">
                     <x-input-label for="unt_pendidikan" :value="__('Unit Pendidikan')" />

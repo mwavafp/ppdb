@@ -144,6 +144,8 @@ class RegisteredUserController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'password' => ['required', Rules\Password::defaults()],
             'nisn' => ['required', 'digits:10'],
+            'tipe_siswa' => ['required', 'in:umum,alumni'],
+            'gender' => ['required', 'in:laki-laki,perempuan'],
 
             // ORTU
             'nmr_kk' => ['required', 'digits:16'],
@@ -153,7 +155,7 @@ class RegisteredUserController extends Controller
             'tmpt_lhr_ayah' => ['required', 'string', 'max:255'],
             'almt_ayah' => ['required', 'string'],
             'pekerjaan_ayah' => ['required', 'string'],
-            'nmr_ayah_wa' => ['required', 'digits_between:12,13'],
+            'nmr_ayah_wa' => ['required', 'digits_between:11,13'],
             'nm_ibu' => ['required', 'string', 'max:255'],
             'nik_ibu' => ['required', 'digits:16'],
             'tgl_lhr_ibu' => ['required', 'date'],
@@ -166,14 +168,19 @@ class RegisteredUserController extends Controller
             'password.required' => 'Password wajib diisi.',
             'nisn.required' => 'NISN wajib diisi.',
             'nisn.digits' => 'NISN harus 10 digit.',
+            'gender.required' => 'Wajib untuk memilih',
+
+            'tipe_siswa.required' => 'Wajib untuk memilih',
+            'tipe_siswa.not_in' => 'Wajib untuk memilih',
+
             'nmr_kk.required' => 'Nomor KK wajib diisi.',
             'nmr_kk.digits' => 'Nomor KK harus 16 digit.',
             'nik_ayah.required' => 'NIK Ayah wajib diisi.',
             'nik_ayah.digits' => 'NIK Ayah harus 16 digit.',
             'nik_ibu.required' => 'NIK Ibu wajib diisi.',
             'nik_ibu.digits' => 'NIK Ibu harus 16 digit.',
-            'nmr_ayah_wa.digits_between' => 'Nomor WA Ayah harus 12-13 digit.',
-            'nmr_ibu_wa.digits_between' => 'Nomor WA Ibu harus 12-13 digit.',
+            'nmr_ayah_wa.digits_between' => 'Nomor WA Ayah harus 11-13 digit.',
+            'nmr_ibu_wa.digits_between' => 'Nomor WA Ibu harus 11-13 digit.',
             'tgl_lhr_ayah.date' => 'Tanggal lahir Ayah harus format tanggal.',
             'tgl_lhr_ibu.date' => 'Tanggal lahir Ibu harus format tanggal.',
         ]);
