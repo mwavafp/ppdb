@@ -1,4 +1,4 @@
-<x-layout-login>
+<x-layoute>
     <x-slot:title>Pengaturan Informasi SD</x-slot:title>
 
     <title>Pengaturan Informasi SD</title>
@@ -6,24 +6,20 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('css/loadingspin.css') }}">
-    <script src="{{ asset('js/loadingspin.js') }}"></script>
 
     <body class="bg-white text-gray-900">
-    <div id="loadingOverlay">
-        <div class="spinner"></div>
-    </div>
-    <div class="container mx-auto pb-12">
+
+    <div class=" bg-gray-100 px-16 py-12 min-h-[100vh]">
             <!-- Header Section -->
-            <header class="bg-green-500 border-b shadow-sm py-5 mb-10">
-            <div class="container mx-auto px-4 flex flex-col items-center">
-                <h1 class="text-2xl font-bold text-white">Pengaturan Website</h1>
-                <p class="text-sm text-white mt-1">Informasi SD</p>
+        <header class="mb-10">
+            <div class="container  flex flex-col">
+                <h1 class="text-3xl font-bold">Pengaturan Website</h1>
+                <p class="text-sm text-gray-500 mt-1">Halaman SD</p>
             </div>
         </header>
 
             <!-- Form Section -->
-            <div class="bg-white px-7 pb-7 rounded-lg shadow-lg">
+            <div class="bg-white px-7 pb-7 pt-1 rounded-lg shadow-lg">
                 <form method="POST" action="{{ route('pengaturansd-update') }}" class="space-y-8">
                     @csrf
                     <input type="hidden" name="id_sd" value="{{ $data->id_sd }}">
@@ -60,4 +56,13 @@
         </div>
 
     </body>
-</x-layout-login>
+    <script>
+        $(document).ready(function() {
+            $('#deskripsi, #visi, #misi').summernote({
+                placeholder: 'Tulis di sini...',
+                tabsize: 2,
+                height: 200
+            });
+        });
+    </script>
+</x-layoute>
