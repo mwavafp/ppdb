@@ -160,8 +160,8 @@
                 <div class="mb-4">
                     <x-input-label for="number_kk" :value="__('Nomor KK')" />
                     <x-text-input id="warning-16" class="block mt-1 w-full" type="text" name="nmr_kk"
-                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="16"
-                        onpaste="handlePaste(event)" :value="old('nmr_kk')" required />
+                        min="" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                        maxlength="16" onpaste="handlePaste(event)" :value="old('nmr_kk')" required />
 
                     {{-- Real-time warning --}}
                     <p id="nik-warning" class="text-red-500 text-sm mt-1 hidden">
