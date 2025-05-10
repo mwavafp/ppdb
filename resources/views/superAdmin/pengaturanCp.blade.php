@@ -48,33 +48,32 @@
                                             <i class="fas fa-edit mr-2"></i>Edit
                                         </button>
 
-                                        <!-- Modal Edit -->
-                                        <div x-show="isEditOpen" x-cloak
-                                            class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                                            <div class="bg-white p-6 rounded shadow-lg w-1/2 relative">
-                                                <button @click="isEditOpen = false"
-                                                    class="absolute top-2 right-2 text-gray-700 hover:text-black">&times;</button>
-                                                <form action="{{ route('admin.update-admin', $item->id_contact) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <h2 class="text-xl font-bold mb-4">Edit CP</h2>
-                                                    <div class="mb-4">
-                                                        <label class="block text-gray-700">Nama</label>
-                                                        <input type="text" name="nama" value="{{ $item->nama }}"
-                                                            class="w-full border border-gray-300 rounded p-2" required>
-                                                    </div>
-                                                    <div class="mb-4">
-                                                        <label class="block text-gray-700">NIP</label>
-                                                        <input type="text" name="cp" value="{{ $item->cp }}"
-                                                            class="w-full border border-gray-300 rounded p-2" required>
-                                                    </div>
-                                                    <div class="text-right">
-                                                        <button type="submit"
-                                                            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                    <!-- Modal Edit -->
+                                    <div x-show="isEditOpen" x-cloak
+                                        class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                                        <div class="bg-white p-6 rounded shadow-lg w-1/2 relative">
+                                            <button @click="isEditOpen = false"
+                                                class="absolute top-2 right-2 text-gray-700 hover:text-black">&times;</button>
+                                            <form action="{{ route('admin.update-admin', $item->id_contact) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <h2 class="text-xl font-bold mb-4">Edit CP</h2>
+                                                <div class="mb-4">
+                                                    <label class="text-left block text-gray-700">Nama</label>
+                                                    <input type="text" name="nama" value="{{ $item->nama }}"
+                                                        class="w-full border border-gray-300 rounded p-2" required>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="text-left block text-gray-700">Contact</label>
+                                                    <input type="text" name="cp" value="{{ $item->cp }}"
+                                                        class="w-full border border-gray-300 rounded p-2" required>
+                                                </div>
+                                                <div class="text-right">
+                                                    <button type="submit"
+                                                        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                     <!-- End Tombol Edit -->

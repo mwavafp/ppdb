@@ -118,13 +118,13 @@
                     totalBayar.sma
                 ],
                 backgroundColor: [
-                    '#f472b6', // pink
+                    '#ffffff', // pink
                     '#34d399', // green
                     '#fbbf24', // yellow
                     '#ef4444', // red
                     '#8b5cf6', // purple
                     '#10b981', // emerald
-                    '#eab308'
+                    '#00008B'
                 ]
 
             }]
@@ -148,13 +148,13 @@
                     totalPendaftar.sma
                 ],
                 backgroundColor: [
-                    '#f472b6', // pink
+                    '#ffffff', // pink
                     '#34d399', // green
                     '#fbbf24', // yellow
                     '#ef4444', // red
                     '#8b5cf6', // purple
                     '#10b981', // emerald
-                    '#eab308'
+                    '#00008B'
                 ]
 
             }]
