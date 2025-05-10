@@ -20,7 +20,7 @@
             <div class="max-w-7xl   px-8 my-8">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Sekolah</label>
+                        <label class="block text-sm font-medium">Jenjang</label>
                         <select name="unt_pendidikan"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
                             <option value="">Semua</option>
@@ -57,7 +57,7 @@
                         <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama</th>
                         <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Kelas</th>
                         <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Golongan</th>
-                        <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Unit Pendidikan</th>
+                        <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang Pendidikan</th>
                         <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
                     </tr>
                 </thead>

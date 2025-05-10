@@ -19,7 +19,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                     <!-- Filter Gender -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Gender</label>
+                        <label class="block text-sm font-medium">Gender</label>
                         <select name="gender"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
                             <option value="">Semua</option>
@@ -32,7 +32,7 @@
 
                     <!-- Filter Status -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Status</label>
+                        <label class="block text-sm font-medium">Status</label>
                         <select name="status"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
                             <option value="">Semua</option>

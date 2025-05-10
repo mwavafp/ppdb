@@ -19,7 +19,7 @@
             <div class="max-w-7xl my-4">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Status Seleksi</label>
+                        <label class="block text-sm font-medium">Status Seleksi</label>
                         <select name="status"
                             class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
                             <option value="">Semua Status</option>
@@ -29,7 +29,7 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Jenjang</label>
+                        <label class="block text-sm font-medium">Jenjang</label>
                         <select name="jenjang"
                             class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
                             <option value="">Semua Jenjang</option>

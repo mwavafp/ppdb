@@ -10,9 +10,9 @@
         <div class="text-right mb-8">
             <form action="{{ route('admin.dahsboard-export') }}" method="GET">
                 <button type="submit" class="btn btn-primary">
-                    <span
-                        class="border-2 border-[oklch(62.7%_0.194_149.214)] text-[oklch(62.7%_0.194_149.214)]  hover:bg-[oklch(62.7%_0.194_149.214)] hover:text-white text-center px-6 py-4 rounded-md">Download
-                        Excel Data Pendaftar </span>
+                    <span class="border-2 border-[oklch(62.7%_0.194_149.214)] bg-[oklch(62.7%_0.194_149.214)] text-white hover:bg-white hover:text-[oklch(62.7%_0.194_149.214)] text-center px-6 py-4 rounded-md transition">
+                        Download Excel Data Pendaftar
+                    </span>
                 </button>
             </form>
         </div>

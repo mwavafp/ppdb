@@ -9,7 +9,7 @@
                 <form method="GET" action="{{ route('search') }}" id="searchForm">
                     <input type="text" name="search"
                         class="border bg-white border-gray-400 rounded-full py-2 px-4 pl-10 w-[500px]"
-                        placeholder="Search" value="{{ old('search') }}"
+                        placeholder="Search" value="{{ request('search') }}"
                         oninput="document.getElementById('searchForm').submit()">
                 </form>
                 <i class="fas fa-search absolute left-[calc(50%-240px+12px)] top-3 text-gray-400"></i>
@@ -49,10 +49,10 @@
                             <select name="dft_ulang"
                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
                                 <option value="">Semua</option>
-                                <option value="lunas"{{ request('dft_ulang') == 'lunas' ? 'selected' : '' }}>Lunas
+                                <option value="lunas"{{ request('dft_ulang') == 'lunas' ? 'selected' : '' }}>Bayar
                                 </option>
                                 <option value="belum"{{ request('dft_ulang') == 'belum' ? 'selected' : '' }}>Belum
-                                    Lunas
+                                    Bayar
                                 </option>
                             </select>
                         </div>
@@ -85,8 +85,10 @@
                 <form action="{{ route('tagihan.export') }}" method="GET">
                     <button type="submit" class="btn btn-primary">
                         <span
-                            class="border-2 border-[oklch(62.7%_0.194_149.214)] text-[oklch(62.7%_0.194_149.214)]  hover:bg-[oklch(62.7%_0.194_149.214)] hover:text-white text-center px-6 py-4 rounded-md">Download Excel</span>
-                    </button>
+                        class="border-2 border-[oklch(62.7%_0.194_149.214)] bg-[oklch(62.7%_0.194_149.214)] text-white hover:bg-white hover:text-[oklch(62.7%_0.194_149.214)] text-center px-6 py-4 rounded-md transition">
+                        Download Excel
+                    </span>
+                </button>
                 </form>
             </div>
         </div>
@@ -101,7 +103,7 @@
                         <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang
                             Pendidikan
                         </th>
-                        <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Status Bayar DP
+                        <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Status DP
                         </th>
                         <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Minimal DP
                         </th>
@@ -131,7 +133,7 @@
                                 <td class="border px-4 py-2 text-center text-sm">
                                     {{ strtoupper($item->unt_pendidikan) }}
                                 </td>
-                                <td class="border px-4 py-2 text-center text-sm">{{ $item->byr_dft_ulang }}</td>
+                                <td class="border px-4 py-2 text-center text-sm">{{ $item->byr_dft_ulang === 'lunas'?"Bayar":"Belum Bayar"}}</td>
                                 <td class="border px-4 py-2 text-center text-sm">@currency($item->dp_daful)
                                 </td>
                                 <td class="border px-4 py-2 text-center text-sm">
