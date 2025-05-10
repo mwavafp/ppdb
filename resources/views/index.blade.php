@@ -132,13 +132,15 @@
                                                                             required>
                                                                     </div>
                                                                     <div class="mb-4">
-                                                                        <label for="nisn"
-                                                                            class="block text-lg font-semibold text-left mb-2">NISN</label>
-                                                                        <input type="text" id="nisn"
-                                                                            name="nisn" value="{{ $item->nisn }}"
-                                                                            class="w-full border px-3 py-2 rounded"
-                                                                            required>
+                                                                        <label for="nisn" class="block text-lg font-semibold text-left mb-2">NISN</label>
+                                                                        <input type="number" id="nisn" name="nisn"
+                                                                            value="{{ old('nisn', $item->nisn ?? '') }}"
+                                                                            class="w-full border px-3 py-2 rounded @error('nisn') border-red-500 @enderror"
+                                                                            maxlength="10" pattern="\d{10}" inputmode="numeric" required
+                                                                            title="NISN harus terdiri dari 10 digit angka"
+                                                                            oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10)">
                                                                     </div>
+
                                                                     <div class="mb-4">
                                                                         <label for="gender"
                                                                             class="block text-lg font-semibold text-left mb-2">Gender</label>
@@ -162,6 +164,7 @@
                                                                             value="{{ $item->tmpt_lahir }}"
                                                                             class="w-full border px-3 py-2 rounded">
                                                                     </div>
+
                                                                     <div class="mb-4">
                                                                         <label for="tgl_lahir"
                                                                             class="block text-lg font-semibold text-left mb-2">Tanggal
@@ -171,6 +174,7 @@
                                                                             value="{{ $item->tgl_lahir }}"
                                                                             class="w-full border px-3 py-2 rounded">
                                                                     </div>
+
                                                                     <div class="mb-4">
                                                                         <label for="asl_sekolah"
                                                                             class="block text-lg font-semibold text-left mb-2">Asal
@@ -180,6 +184,7 @@
                                                                             value="{{ $item->asl_sekolah }}"
                                                                             class="w-full border px-3 py-2 rounded">
                                                                     </div>
+
                                                                     <div class="mb-4">
                                                                         <label for="status"
                                                                             class="block text-lg font-semibold text-left mb-2">Status</label>
@@ -204,23 +209,24 @@
                                                                             value="{{ $item->ortu->nm_ayah ?? '' }}"
                                                                             class="w-full border px-3 py-2 rounded">
                                                                     </div>
+
                                                                     <div class="mb-4">
-                                                                        <label for="nmr_kk"
-                                                                            class="block text-lg font-semibold text-left mb-2">Nomor
-                                                                            KK</label>
-                                                                        <input type="text" id="nmr_kk"
-                                                                            name="nmr_kk"
-                                                                            value="{{ $item->ortu->nmr_kk ?? '' }}"
-                                                                            class="w-full border px-3 py-2 rounded">
+                                                                        <label for="nmr_kk" class="block text-lg font-semibold text-left mb-2">Nomor KK</label>
+                                                                        <input type="number" id="nmr_kk" name="nmr_kk"
+                                                                            value="{{ old('nmr_kk', $item->ortu->nmr_kk ?? '') }}"
+                                                                            class="w-full border px-3 py-2 rounded @error('nmr_kk') border-red-500 @enderror"
+                                                                            maxlength="16" pattern="\d{16}" inputmode="numeric" required
+                                                                            title="Nomor KK harus terdiri dari 16 digit angka"
+                                                                            oninput="if(this.value.length > 16) this.value = this.value.slice(0, 16)">
                                                                     </div>
+
                                                                     <div class="mb-4">
-                                                                        <label for="nik_ayah"
-                                                                            class="block text-lg font-semibold text-left mb-2">NIK
-                                                                            Ayah</label>
-                                                                        <input type="text" id="nik_ayah"
-                                                                            name="nik_ayah"
-                                                                            value="{{ $item->ortu->nik_ayah ?? '' }}"
-                                                                            class="w-full border px-3 py-2 rounded">
+                                                                        <label for="nik_ayah" class="block text-lg font-semibold text-left mb-2">NIK Ayah</label>
+                                                                        <input type="number" id="nik_ayah" name="nik_ayah"
+                                                                            value="{{ old('nik_ayah', $item->ortu->nik_ayah ?? '') }}"
+                                                                            class="w-full border px-3 py-2 rounded @error('nik_ayah') border-red-500 @enderror"
+                                                                            maxlength="16" inputmode="numeric" pattern="\d{16}"
+                                                                            oninput="if(this.value.length > 16) this.value = this.value.slice(0, 16)">
                                                                     </div>
                                                                 </div>
 
@@ -265,13 +271,13 @@
                                                                             class="w-full border px-3 py-2 rounded">
                                                                     </div>
                                                                     <div class="mb-4">
-                                                                        <label for="nmr_ayah_wa"
-                                                                            class="block text-lg font-semibold text-left mb-2">Nomor
-                                                                            WA Ayah</label>
-                                                                        <input type="text" id="nmr_ayah_wa"
-                                                                            name="nmr_ayah_wa"
-                                                                            value="{{ $item->ortu->nmr_ayah_wa ?? '' }}"
-                                                                            class="w-full border px-3 py-2 rounded">
+                                                                        <label for="nmr_ayah_wa" class="block text-lg font-semibold text-left mb-2">Nomor WA Ayah</label>
+                                                                        <input type="number" id="nmr_ayah_wa" name="nmr_ayah_wa"
+                                                                            value="{{ old('nmr_ayah_wa', $item->ortu->nmr_ayah_wa ?? '') }}"
+                                                                            class="w-full border px-3 py-2 rounded @error('nmr_ayah_wa') border-red-500 @enderror"
+                                                                            maxlength="15" pattern="\d{10,15}" inputmode="numeric" required
+                                                                            title="Nomor WA Ayah harus 10-15 digit angka"
+                                                                            oninput="if(this.value.length > 15) this.value = this.value.slice(0, 15)">
                                                                     </div>
 
                                                                     <!-- Data Ibu -->
@@ -285,14 +291,15 @@
                                                                             class="w-full border px-3 py-2 rounded">
                                                                     </div>
                                                                     <div class="mb-4">
-                                                                        <label for="nik_ibu"
-                                                                            class="block text-lg font-semibold text-left mb-2">NIK
-                                                                            Ibu</label>
-                                                                        <input type="text" id="nik_ibu"
-                                                                            name="nik_ibu"
-                                                                            value="{{ $item->ortu->nik_ibu ?? '' }}"
-                                                                            class="w-full border px-3 py-2 rounded">
+                                                                        <label for="nik_ibu" class="block text-lg font-semibold text-left mb-2">NIK Ibu</label>
+                                                                        <input type="number" id="nik_ibu" name="nik_ibu"
+                                                                            value="{{ old('nik_ibu', $item->ortu->nik_ibu ?? '') }}"
+                                                                            class="w-full border px-3 py-2 rounded @error('nik_ibu') border-red-500 @enderror"
+                                                                            maxlength="16" pattern="\d{16}" inputmode="numeric" required
+                                                                            title="NIK Ibu harus 16 digit"
+                                                                            oninput="if(this.value.length > 16) this.value = this.value.slice(0, 16)">
                                                                     </div>
+
                                                                     <div class="mb-4">
                                                                         <label for="tgl_lhr_ibu"
                                                                             class="block text-lg font-semibold text-left mb-2">Tanggal
@@ -330,14 +337,15 @@
                                                                             class="w-full border px-3 py-2 rounded">
                                                                     </div>
                                                                     <div class="mb-4">
-                                                                        <label for="nmr_ibu_wa"
-                                                                            class="block text-lg font-semibold text-left mb-2">Nomor
-                                                                            WA Ibu</label>
-                                                                        <input type="text" id="nmr_ibu_wa"
-                                                                            name="nmr_ibu_wa"
-                                                                            value="{{ $item->ortu->nmr_ibu_wa ?? '' }}"
-                                                                            class="w-full border px-3 py-2 rounded">
+                                                                        <label for="nmr_ibu_wa" class="block text-lg font-semibold text-left mb-2">Nomor WA Ibu</label>
+                                                                        <input type="number" id="nmr_ibu_wa" name="nmr_ibu_wa"
+                                                                            value="{{ old('nmr_ibu_wa', $item->ortu->nmr_ibu_wa ?? '') }}"
+                                                                            class="w-full border px-3 py-2 rounded @error('nmr_ibu_wa') border-red-500 @enderror"
+                                                                            maxlength="15" pattern="\d{10,15}" inputmode="numeric" required
+                                                                            title="Nomor WA Ibu harus 10-15 digit angka"
+                                                                            oninput="if(this.value.length > 15) this.value = this.value.slice(0, 15)">
                                                                     </div>
+
                                                                 </div>
                                                             </div>
                                                             <button type="button" @click="isEditModalOpen = false"

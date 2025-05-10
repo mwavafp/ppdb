@@ -57,8 +57,7 @@
                         <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama</th>
                         <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Kelas</th>
                         <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Golongan</th>
-                        <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Unit Pendidikan
-                        </th>
+                        <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Unit Pendidikan</th>
                         <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
                     </tr>
                 </thead>

@@ -22,7 +22,7 @@
                 <div class="max-w-7xl mx-auto  ">
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-2 mb-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Jenjang</label>
+                            <label class="block text-sm font-medium">Jenjang</label>
                             <select name="unt_pendidikan"
                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
                                 <option value="">Semua</option>
@@ -43,18 +43,7 @@
                                 </option>
                             </select>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium">Tipe Pembayaran</label>
-                            <select name="status"
-                                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
-                                <option value="">Semua</option>
-                                <option value="Cicil"{{ request('status') == 'Cicil' ? 'selected' : '' }}>Cicil
-                                </option>
-                                <option value="Lunas"{{ request('status') == 'Lunas' ? 'selected' : '' }}>Lunas
-                                </option>
 
-                            </select>
-                        </div>
                         <div>
                             <label class="block text-sm font-medium">Status DP</label>
                             <select name="dft_ulang"
@@ -67,6 +56,20 @@
                                 </option>
                             </select>
                         </div>
+
+                        <div>
+                            <label class="block text-sm font-medium">Tipe Pembayaran</label>
+                            <select name="status"
+                                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none  focus:border-black sm:text-sm">
+                                <option value="">Semua</option>
+                                <option value="Cicil"{{ request('status') == 'Cicil' ? 'selected' : '' }}>Cicil
+                                </option>
+                                <option value="Lunas"{{ request('status') == 'Lunas' ? 'selected' : '' }}>Lunas
+                                </option>
+
+                            </select>
+                        </div>
+
                         <div class="flex mt-4 mx-4">
                             <button type="submit"
                                 class="bg-green-500 text-white py-2 px-4 rounded-md mr-2 w-[100px] border border-transparent hover:bg-green-600 hover:border-green-600 transition">Cari</button>

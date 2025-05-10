@@ -8,7 +8,8 @@
                 <form method="GET" action="{{ route('seleksi.search') }}" id="searchForm">
                     <input type="text" id="searchInput" name="search"
                         class="border border-gray-400 bg-white rounded-full py-2 px-4 pl-10 w-[500px]"
-                        placeholder="Cari nama atau NISN..." oninput="document.getElementById('searchForm').submit()">
+                        placeholder="Cari nama atau NISN..."value="{{ request('search') }}"
+                        oninput="document.getElementById('searchForm').submit()">
                     <i class="fas fa-search absolute left-2 pt-[14px] text-gray-400"></i>
                 </form>
             </div>

@@ -12,6 +12,7 @@ class SiswaController extends Controller
 {
     public function index(Request $request)
     {
+
         $search = $request->input('search', '');
         $gender = $request->input('gender', '');
         $status = $request->input('status', '');
@@ -20,7 +21,7 @@ class SiswaController extends Controller
         // Query dasar dengan filter pencarian
         $query = User::with(['ortu', 'userUnitPendidikan', 'ortu']);
         $query = User::join('tahun', function ($join) {
-            // Di sini kita tidak perlu menghubungkan ke 'kelas', 
+            // Di sini kita tidak perlu menghubungkan ke 'kelas',
             // tetapi langsung ke 'tahun', karena kita ingin memfilter berdasarkan tahun
 
         })
