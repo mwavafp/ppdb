@@ -252,3 +252,4 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin', 'no-cache'])->group(fun
     Route::post('/logout-super', [LoginController::class, 'destroy'])
         ->name('admin.logoutSuperAdmin');
 });
+// require __DIR__.'/auth.php';
