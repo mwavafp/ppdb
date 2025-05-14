@@ -9,8 +9,8 @@
 
     <body class="bg-white text-gray-900">
 
-    <div class=" bg-gray-100 px-16 py-12 min-h-[100vh]">
-            <!-- Header Section -->
+
+        <!-- Header Section -->
         <header class="mb-10">
             <div class="container  flex flex-col">
                 <h1 class="text-3xl font-bold">Pengaturan Website</h1>
@@ -18,42 +18,44 @@
             </div>
         </header>
 
-            <!-- Form Section -->
-            <div class="bg-white px-7 pb-7 pt-1 rounded-lg shadow-lg">
-                <form method="POST" action="{{ route('pengaturanmadin-update') }}" class="space-y-8">
-                    @csrf
-                    <input type="hidden" name="id_madin" value="{{ $data->id_madin }}">
+        <!-- Form Section -->
+        <div class="bg-white px-7 pb-7 pt-1 rounded-lg shadow-lg">
+            <form method="POST" action="{{ route('pengaturanmadin-update') }}" class="space-y-8">
+                @csrf
+                <input type="hidden" name="id_madin" value="{{ $data->id_madin }}">
 
-                    <!-- Deskripsi -->
-                    <div>
-                        <label for="deskripsi" class="block text-xl font-semibold mb-2">Deskripsi</label>
-                        <textarea id="deskripsi" name="deskripsi">{{ $data->deskripsi }}</textarea>
-                    </div>
+                <!-- Deskripsi -->
+                <div>
+                    <label for="deskripsi" class="block text-xl font-semibold mb-2">Deskripsi</label>
+                    <textarea id="deskripsi" name="deskripsi">{{ $data->deskripsi }}</textarea>
+                </div>
 
-                    <!-- Visi -->
-                    <div>
-                        <label for="visi" class="block text-xl font-semibold mb-2">Visi</label>
-                        <textarea id="visi" name="visi">{{ $data->visi }}</textarea>
-                    </div>
+                <!-- Visi -->
+                <div>
+                    <label for="visi" class="block text-xl font-semibold mb-2">Visi</label>
+                    <textarea id="visi" name="visi">{{ $data->visi }}</textarea>
+                </div>
 
-                    <!-- Misi -->
-                    <div>
-                        <label for="misi" class="block text-xl font-semibold mb-2">Misi</label>
-                        <textarea id="misi" name="misi">{{ $data->misi }}</textarea>
-                    </div>
+                <!-- Misi -->
+                <div>
+                    <label for="misi" class="block text-xl font-semibold mb-2">Misi</label>
+                    <textarea id="misi" name="misi">{{ $data->misi }}</textarea>
+                </div>
 
-                    <!-- Submit Button -->
-                    <div class="text-center">
-                        <a href="{{ route('pengaturanpage') }}" class="bg-red-500 text-white py-3 px-8 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-gray-500 mr-4">
-                            Batal
-                        </a>
-                        <button type="submit" class="bg-blue-500 text-white py-3 px-8 rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500">
-                            Simpan Pengaturan
-                        </button>
-                    </div>
-                </form>
-            </div>
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <a href="{{ route('pengaturanpage') }}"
+                        class="bg-red-500 text-white py-3 px-8 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-gray-500 mr-4">
+                        Batal
+                    </a>
+                    <button type="submit"
+                        class="bg-blue-500 text-white py-3 px-8 rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500">
+                        Simpan Pengaturan
+                    </button>
+                </div>
+            </form>
         </div>
+
     </body>
     <script>
         $(document).ready(function() {

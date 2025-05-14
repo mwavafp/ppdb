@@ -3,64 +3,65 @@
     <x-slot:title>{{ $title }}</x-slot:title>
 
 
-    <div class=" bg-gray-100 px-16 py-12">
-        <div class="">
-            <p class="text-3xl font-bold">Dashboard</p>
-        </div>
-        <div class="text-right mb-8">
-            <form action="{{ route('admin.dahsboard-export') }}" method="GET">
-                <button type="submit" class="btn btn-primary">
-                    <span class="border-2 border-[oklch(62.7%_0.194_149.214)] bg-[oklch(62.7%_0.194_149.214)] text-white hover:bg-white hover:text-[oklch(62.7%_0.194_149.214)] text-center px-6 py-4 rounded-md transition">
-                        Download Excel Data Pendaftar
-                    </span>
-                </button>
-            </form>
-        </div>
 
-        <!-- Header Metrics -->
-        <div class="flex    mb-2  w-full">
-            <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">Jumlah Total Pendaftar</p>
-                <p class="text-2xl font-semibold">{{ $all_user }}</p>
+    <div class="">
+        <p class="text-3xl font-bold">Dashboard</p>
+    </div>
+    <div class="text-right mb-8">
+        <form action="{{ route('admin.dahsboard-export') }}" method="GET">
+            <button type="submit" class="btn btn-primary">
+                <span
+                    class="border-2 border-[oklch(62.7%_0.194_149.214)] bg-[oklch(62.7%_0.194_149.214)] text-white hover:bg-white hover:text-[oklch(62.7%_0.194_149.214)] text-center px-6 py-4 rounded-md transition">
+                    Download Excel Data Pendaftar
+                </span>
+            </button>
+        </form>
+    </div>
 
-            </div>
-            <div class="flex-1 p-4 m-2 h-full bg-white rounded-lg shadow-md text-center min-w-[200px]">
-                <p class="text-sm text-gray-500">Jumlah Pendapatan Pendaftaran</p>
-                <p class="text-2xl font-semibold">@currency($total_bayar)</p>
-            </div>
-        </div>
-
-        <!-- Charts Section -->
-        <div class="flex  gap-8 mb-6  w-full ">
-            <!-- Chart Pendaftar-->
-            <div class="flex-1 bg-white p-4 rounded-lg shadow-md w-40">
-                <p class="text-lg font-semibold mb-4">Tipe Pendaftar</p>
-                <canvas id="contextualChart"></canvas>
-            </div>
-
-            <!--Chart Keuntungan-->
-            <div class="flex-1 flex-wrap bg-white p-4 rounded-lg shadow-md mb-6">
-                <p class="text-lg font-semibold w-full mb-4">Grafik Pendapatan Pembayaran</p>
-                <div class="w-full">
-                    <canvas id="spendChart"></canvas>
-                </div>
-            </div>
-
-            <!-- Chart Pendaftar perUnit -->
-            <div class="flex-1 flex-wrap bg-white p-4 rounded-lg shadow-md mb-6">
-                <p class="text-lg font-semibold w-full mb-4">Grafik Pendaftar per Unit Pendidikan</p>
-                <div class="w-full">
-                    <canvas id="unitChart"></canvas>
-                </div>
-            </div>
-
+    <!-- Header Metrics -->
+    <div class="flex    mb-2  w-full">
+        <div class="flex-1 p-4 m-2 m bg-white rounded-lg shadow-md text-center min-w-[200px]">
+            <p class="text-sm text-gray-500">Jumlah Total Pendaftar</p>
+            <p class="text-2xl font-semibold">{{ $all_user }}</p>
 
         </div>
+        <div class="flex-1 p-4 m-2 h-full bg-white rounded-lg shadow-md text-center min-w-[200px]">
+            <p class="text-sm text-gray-500">Jumlah Pendapatan Pendaftaran</p>
+            <p class="text-2xl font-semibold">@currency($total_bayar)</p>
+        </div>
+    </div>
 
+    <!-- Charts Section -->
+    <div class="flex  gap-8 mb-6  w-full ">
+        <!-- Chart Pendaftar-->
+        <div class="flex-1 bg-white p-4 rounded-lg shadow-md w-40">
+            <p class="text-lg font-semibold mb-4">Tipe Pendaftar</p>
+            <canvas id="contextualChart"></canvas>
+        </div>
 
+        <!--Chart Keuntungan-->
+        <div class="flex-1 flex-wrap bg-white p-4 rounded-lg shadow-md mb-6">
+            <p class="text-lg font-semibold w-full mb-4">Grafik Pendapatan Pembayaran</p>
+            <div class="w-full">
+                <canvas id="spendChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Chart Pendaftar perUnit -->
+        <div class="flex-1 flex-wrap bg-white p-4 rounded-lg shadow-md mb-6">
+            <p class="text-lg font-semibold w-full mb-4">Grafik Pendaftar per Unit Pendidikan</p>
+            <div class="w-full">
+                <canvas id="unitChart"></canvas>
+            </div>
+        </div>
 
 
     </div>
+
+
+
+
+
 </x-layoute>
 <script>
     const genderLaki = @json($gender_laki);

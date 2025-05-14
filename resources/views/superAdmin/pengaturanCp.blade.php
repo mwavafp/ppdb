@@ -9,44 +9,44 @@
 
 <x-layoute>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <div class=" bg-gray-100 px-16 py-12 min-h-[100vh]">
-        <header class=" mb-10">
-            <div class="container  flex flex-col">
-                <h1 class="text-3xl font-bold">Pengaturan CP</h1>
-                <p class="text-sm text-gray-500 mt-1">Mengatur CP</p>
-            </div>
-        </header>
 
-        <div class=" rounded-lg shadow">
+    <header class=" mb-10">
+        <div class="container  flex flex-col">
+            <h1 class="text-3xl font-bold">Pengaturan CP</h1>
+            <p class="text-sm text-gray-500 mt-1">Mengatur CP</p>
+        </div>
+    </header>
 
-            <table class="min-w-full divide-y divide-gray-200" id="dataTable">
-                <thead class="bg-[oklch(62.7%_0.194_149.214)] text-white border-b-2 rounded-md">
+    <div class=" rounded-lg shadow">
+
+        <table class="w-full divide-y divide-gray-200" id="dataTable">
+            <thead class="bg-[oklch(62.7%_0.194_149.214)] text-white border-b-2 rounded-md">
+                <tr>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Admin</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nomor WhatsApp
+                    </th>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200" id="tableBody">
+                @if ($all_data->isEmpty())
                     <tr>
-                        <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
-                        <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Admin</th>
-                        <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nomor WhatsApp
-                        </th>
-                        <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
+                        <td colspan="4" class="text-center py-4 text-gray-500">Data tidak ditemukan</td>
                     </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200" id="tableBody">
-                    @if ($all_data->isEmpty())
-                        <tr>
-                            <td colspan="4" class="text-center py-4 text-gray-500">Data tidak ditemukan</td>
-                        </tr>
-                    @else
-                        @foreach ($all_data as $item)
-                            <tr class="hover:bg-gray-50 transition">
-                                <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
-                                <td class="border px-4 py-2 text-center">{{ $item->nama }}</td>
-                                <td class="border px-4 py-2 text-center">{{ $item->cp }}</td>
-                                <td class="border px-4 py-2 text-center">
-                                    <!-- Tombol Edit dan Modal -->
-                                    <div x-data="{ isEditOpen: false }" class="inline-block">
-                                        <button @click="isEditOpen = true"
-                                            class="text-white bg-amber-500 px-4 py-2 rounded-md hover:underline">
-                                            <i class="fas fa-edit mr-2"></i>Edit
-                                        </button>
+                @else
+                    @foreach ($all_data as $item)
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
+                            <td class="border px-4 py-2 text-center">{{ $item->nama }}</td>
+                            <td class="border px-4 py-2 text-center">{{ $item->cp }}</td>
+                            <td class="border px-4 py-2 text-center">
+                                <!-- Tombol Edit dan Modal -->
+                                <div x-data="{ isEditOpen: false }" class="inline-block">
+                                    <button @click="isEditOpen = true"
+                                        class="text-white bg-amber-500 px-4 py-2 rounded-md hover:underline">
+                                        <i class="fas fa-edit mr-2"></i>Edit
+                                    </button>
 
                                     <!-- Modal Edit -->
                                     <div x-show="isEditOpen" x-cloak
@@ -77,13 +77,13 @@
                                         </div>
                                     </div>
                                     <!-- End Tombol Edit -->
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
-                </tbody>
-            </table>
-        </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+            </tbody>
+        </table>
     </div>
+
 
 </x-layoute>

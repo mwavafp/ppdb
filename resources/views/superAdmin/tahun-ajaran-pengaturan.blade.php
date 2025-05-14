@@ -2,48 +2,48 @@
 <x-layoute>
     <x-slot:title>{{ 'Tahun Ajaran' }}</x-slot:title>
 
-    <div class=" bg-gray-100 px-16 py-12 min-h-[100vh]">
-        <header class="mb-10">
-            <div class="container mx-auto  flex flex-col">
-                <h1 class="text-3xl font-bold">Pengaturan Tahun Ajaran</h1>
-                <p class="text-sm text-gray-500 mt-1">Mengatur Tahun Ajaran</p>
-            </div>
-        </header>
 
-
-        <div class="overflow-x-auto">
-            <table class="min-w-full bg-white rounded-lg shadow-md">
-                <thead>
-                    <tr class="bg-[oklch(62.7%_0.194_149.214)] text-white">
-                        <th class="py-2 px-4">No</th>
-                        <th class="py-2 px-4">Nama</th>
-                        <th class="py-2 px-4">Awal</th>
-                        <th class="py-2 px-4">Akhir</th>
-                        <th class="py-2 px-4">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($tahunAjaran as $tahun)
-                        <tr class="border-b text-center">
-                            <td class="py-2 px-4">{{ $tahun->id_tahun }}</td>
-                            <td class="py-2 px-4">{{ $tahun->nama }}</td>
-                            <td class="py-2 px-4">{{ $tahun->awal }}</td>
-                            <td class="py-2 px-4">{{ $tahun->akhir }}</td>
-                            <td class="py-2 px-4">
-                                <button onclick="openEditModal({{ $tahun }})"
-                                    class="text-white bg-amber-500 px-4 py-2 rounded-md hover:underline">Edit</button>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5" class="py-2 px-4 text-center">Tidak ada data tahun ajaran.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+    <header class="mb-10">
+        <div class="container mx-auto  flex flex-col">
+            <h1 class="text-3xl font-bold">Pengaturan Tahun Ajaran</h1>
+            <p class="text-sm text-gray-500 mt-1">Mengatur Tahun Ajaran</p>
         </div>
-    </div>
-    </div>
+    </header>
+
+
+
+    <table class="w-full bg-white rounded-lg shadow-md">
+        <thead>
+            <tr class="bg-[oklch(62.7%_0.194_149.214)] text-white">
+                <th class="py-2 px-4">No</th>
+                <th class="py-2 px-4">Nama</th>
+                <th class="py-2 px-4">Awal</th>
+                <th class="py-2 px-4">Akhir</th>
+                <th class="py-2 px-4">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($tahunAjaran as $tahun)
+                <tr class="border-b text-center">
+                    <td class="py-2 px-4">{{ $tahun->id_tahun }}</td>
+                    <td class="py-2 px-4">{{ $tahun->nama }}</td>
+                    <td class="py-2 px-4">{{ $tahun->awal }}</td>
+                    <td class="py-2 px-4">{{ $tahun->akhir }}</td>
+                    <td class="py-2 px-4">
+                        <button onclick="openEditModal({{ $tahun }})"
+                            class="text-white bg-amber-500 px-4 py-2 rounded-md hover:underline">Edit</button>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="5" class="py-2 px-4 text-center">Tidak ada data tahun ajaran.</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+
+
+
 
     <!-- Modal Edit -->
     <div id="editModal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">

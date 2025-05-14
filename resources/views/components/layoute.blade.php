@@ -77,7 +77,9 @@
                             });
                         </script>
                     @endif
-                    {{ $slot }}
+                    <div class=" bg-gray-100 px-16 py-12 min-h-[100vh]">
+                        {{ $slot }}
+                    </div>
                 </div>
             </div>
         </div>
