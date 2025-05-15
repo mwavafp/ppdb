@@ -1,92 +1,84 @@
 <x-layout-login>
-    <x-slot:title>{{ $title }}</x-slot:title>
-
+    <x-slot:title>Hasil Seleksi</x-slot:title>
     <x-tahapan></x-tahapan>
+    <main class="flex-grow w-full px-10 my-7 p-4">
+        <div class="bg-white shadow-lg w-11/12 mx-auto rounded-lg h-auto">
 
-
-    <div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10 h-[80vh]">
-
-
-        <!-- Informasi Pendaftar -->
-        <div class="mb-4">
-            <p class="text-gray-600">Nama: <span class="border-b border-gray-400"> {{ $all_data->name }}</span></p>
-
+            <div class="p-8">
+                <div class="flex mt-1">
+                    <p class="pr-24">Nama</p>
+                    <p class="pr-2">:</p>
+                    <p>{{ $berkas->name }}</p>
+                </div>
+                <div class="flex mt-3">
+                    <p class="pr-6">No. Pendaftaran</p>
+                    <p class="pr-2">:</p>
+                    <p>{{ $berkas->nisn }}</p>
+                </div>
+                <p class="mt-9 font-bold">• Berkas Yang Telah Dikumpulkan Untuk Daftar Ulang</p>
+                <table class="w-full border-collapse border mt-5 border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-100 text-black">
+                            <th class="border border-gray-500 py-2">Jenis Dokumen</th>
+                            <th class="border border-gray-500 py-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-500 py-2 text-center">Ijazah</td>
+                            <td class="border border-gray-500 py-2 text-center">
+                                @if ($berkas->ijazah_akhir === 'diserahkan')
+                                    <i class="fa fa-check bg-green-500 text-2xl" aria-hidden="true"></i>
+                                @else
+                                    <i class="fa fa-times text-red-700 text-2xl" aria-hidden="true"></i>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-500 py-2 text-center">Akta Kelahiran</td>
+                            <td class="border border-gray-500 py-2 text-center">
+                                @if ($berkas->pas_foto === 'diserahkan')
+                                    <i class="fa fa-check bg-green-500 text-2xl" aria-hidden="true"></i>
+                                @else
+                                    <i class="fa fa-times text-red-700 text-2xl" aria-hidden="true"></i>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-500 py-2 text-center">Kartu Keluarga</td>
+                            <td class="border border-gray-500 py-2 text-center">
+                                @if ($berkas->kk === 'diserahkan')
+                                    <i class="fa fa-check text-green-500 text-2xl" aria-hidden="true"></i>
+                                @else
+                                    <i class="fa fa-times text-red-700 text-2xl" aria-hidden="true"></i>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-500 py-2 text-center">KIP</td>
+                            <td class="border border-gray-500 py-2 text-center">
+                                @if ($berkas->kip === 'diserahkan')
+                                    <i class="fa fa-check bg-green-500 text-2xl" aria-hidden="true"></i>
+                                @else
+                                    <i class="fa fa-times text-red-700 text-2xl" aria-hidden="true"></i>
+                                @endif
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="mt-8">
+                    <div class="bg-gray-100 p-4 rounded-md mt-6">
+                        <p class="font-bold">Langkah-Langkah Selanjutnya:</p>
+                        <ul class="list-disc pl-6 mt-3">
+                            <li>Pastikan dokumen yang belum diunggah segera dilengkapi.</li>
+                            <li>Datang ke sekolah untuk proses verifikasi data pada jadwal yang telah ditentukan.</li>
+                            <li>Bawa seluruh dokumen asli untuk pengecekan oleh panitia.</li>
+                            <li>Untuk informasi lebih lanjut, silakan hubungi panitia melalui kontak yang tersedia di
+                                website ini.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Tabel Checklist -->
-        <table class="w-full border-collapse border border-gray-300">
-            <thead>
-                <tr class="bg-gray-100">
-                    <th class="border border-gray-300 px-4 py-2 text-left">No.</th>
-                    <th class="border border-gray-300 px-4 py-2 text-left">Jenis Dokumen</th>
-                    <th class="border border-gray-300 px-4 py-2 text-center">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Baris 1 -->
-                <tr class="bg-white hover:bg-gray-50">
-                    <td class="border border-gray-300 px-4 py-2 text-center">1</td>
-                    <td class="border border-gray-300 px-4 py-2"> Fotocopy Kartu Keluarga</td>
-
-                    <td class="border border-gray-300 px-4 py-2 text-center">
-                        @if ($all_data->kk === 'diserahkan')
-                            <span
-                                class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-green-600 rounded-lg">Sudah</span>
-                        @else
-                            <span
-                                class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum</span>
-                        @endif
-                    </td>
-
-                    <!-- Baris 2 -->
-                <tr class="bg-white hover:bg-gray-50">
-                    <td class="border border-gray-300 px-4 py-2 text-center">3</td>
-                    <td class="border border-gray-300 px-4 py-2">Pas Foto 3x4 (2 Lembar) </td>
-
-                    <td class="border border-gray-300 px-4 py-2 text-center">
-                        @if ($all_data->pas_foto === 'diserahkan')
-                            <span
-                                class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-green-600 rounded-lg">Sudah</span>
-                        @else
-                            <span
-                                class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum</span>
-                        @endif
-                    </td>
-                </tr>
-                <!-- Baris 3 -->
-                <tr class="bg-white hover:bg-gray-50">
-                    <td class="border border-gray-300 px-4 py-2 text-center">4</td>
-                    <td class="border border-gray-300 px-4 py-2">Ijazah Akhir</td>
-
-                    <td class="border border-gray-300 px-4 py-2 text-center">
-
-                        @if ($all_data->ijazah_akhir === 'diserahkan')
-                            <span
-                                class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-green-600 rounded-lg">Sudah</span>
-                        @else
-                            <span
-                                class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum</span>
-                        @endif
-                    </td>
-                </tr>
-                <!-- Baris 4 -->
-                <tr class="bg-white hover:bg-gray-50">
-                    <td class="border border-gray-300 px-4 py-2 text-center">5</td>
-                    <td class="border border-gray-300 px-4 py-2">KIP</td>
-
-                    <td class="border border-gray-300 px-4 py-2 text-center">
-
-                        @if ($all_data->kip === 'diserahkan')
-                            <span
-                                class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-green-600 rounded-lg">Sudah</span>
-                        @else
-                            <span
-                                class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum</span>
-                        @endif
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
+    </main>
 </x-layout-login>

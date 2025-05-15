@@ -95,9 +95,9 @@
     <div data-simplebar class="flex-1 mt-4">
         <ul class="space-y-2">
             @foreach ($menu as $m)
-                    @php
-                        $isActive = Request::is($m->menu->link . '*');
-                    @endphp
+                @php
+                    $isActive = Request::is($m->menu->link . '*');
+                @endphp
                 <li>
                     <a href="/{{ $m->menu->link }}"
                         class="flex items-center gap-4 py-2.5 px-4 text-sm font-medium rounded

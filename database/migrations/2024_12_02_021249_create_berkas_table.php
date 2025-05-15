@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('pas_foto', ['diserahkan', 'belum_diserahkan'])->default('belum_diserahkan');
             $table->enum('ijazah_akhir', ['diserahkan', 'belum_diserahkan'])->default('belum_diserahkan');
             $table->enum('kip', ['diserahkan', 'belum_diserahkan'])->default('belum_diserahkan');
+            $table->enum('akta_lahir', ['diserahkan', 'belum_diserahkan'])->default('belum_diserahkan');
             $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

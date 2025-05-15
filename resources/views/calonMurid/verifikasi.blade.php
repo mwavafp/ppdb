@@ -9,35 +9,52 @@
         <div class="bg-white border-2 shadow-lg rounded-lg overflow-hidden w-full max-w-2xl">
             <!-- Header -->
             <div class="bg-green-500 text-white text-center py-4">
-                <h1 class="text-xl font-bold">Verifikasi Data Siswa</h1>
+                <h1 class="text-xl font-bold">Pengumuman Data Siswa</h1>
             </div>
 
             <!-- Tabel Data -->
             <div class="p-6 overflow-x-auto">
-                <table class="min-w-full text-sm border border-gray-300">
+                <table class="w-full text-sm border border-gray-300  mb-10">
                     <tbody>
                         <tr class="border border-gray-300">
                             <td class="p-2 font-bold border border-gray-300 w-1/3">Nama</td>
-                            <td class="p-2">{{ $all_data[0]->name }}</td>
+                            <td class="p-2">{{ $all_data->name }}</td>
                         </tr>
                         <tr class="border border-gray-300">
                             <td class="p-2 font-bold border border-gray-300">NISN</td>
-                            <td class="p-2">{{ $all_data[0]->nisn }}</td>
+                            <td class="p-2">{{ $all_data->nisn }}</td>
                         </tr>
                         <tr class="border border-gray-300">
                             <td class="p-2 font-bold border border-gray-300">Jenjang</td>
-                            <td class="p-2">{{ $all_data[0]->unt_pendidikan }}</td>
+                            <td class="p-2">{{ $all_data->unt_pendidikan }}</td>
                         </tr>
                         <tr class="border border-gray-300">
                             <td class="p-2 font-bold border border-gray-300">Kelas</td>
-                            <td class="p-2">{{ $all_data[0]->kelas }}</td>
+                            <td class="p-2">{{ $all_data->kelas }}{{ $all_data->kls_identitas }}</td>
                         </tr>
                         <tr class="border border-gray-300">
                             <td class="p-2 font-bold border border-gray-300">Alamat</td>
-                            <td class="p-2">{{ $all_data[0]->alamat }}</td>
+                            <td class="p-2">{{ $all_data->alamat }}</td>
                         </tr>
                     </tbody>
                 </table>
+                @if (
+                    $seleksi_user->akta_lahir === 'diserahkan' &&
+                        $seleksi_user->kk === 'diserahkan' &&
+                        $seleksi_user->byr_dft_ulang === 'lunas')
+                    <div class="bg-green-500 text-center text-white py-4 w-full rounded-lg font-bold">
+                        SELAMAT ANDA TELAH DINYATAKAN LOLOS SELEKSI PPDB
+                    </div>
+                @elseif($gelombang_user->akhir_acara >= date('Y-m-d'))
+                    <div class="bg-blue-500 text-center text-white py-4 w-full rounded-lg font-bold">
+                        MOHON UNTUK MENYELESAIKAN ADMINISTRASI SELEKSI PPDB
+                    </div>
+                @else
+                    <div class="bg-red-500 text-center text-white py-4 w-full rounded-lg font-bold">
+                        MOHON MAAF DINYATAKAN TIDAK LOLOS SELEKSI PPDB
+                    </div>
+                @endif
+
             </div>
         </div>
     </main>
