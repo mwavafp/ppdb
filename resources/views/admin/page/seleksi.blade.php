@@ -86,7 +86,7 @@
                         <td class="border px-2 py-2 text-center">{{ ucfirst($student->jenjang) }}</td>
                         <td class="border px-2 py-2 text-center">{{ $student->kelas ?? '-' }}</td>
                         <td class="border px-2 py-2">
-                            @foreach (['kk' => 'Kartu Keluarga', 'pas_foto' => 'Pas Foto', 'ijazah_akhir' => 'Ijazah Akhir', 'kip' => 'KIP'] as $key => $label)
+                            @foreach (['kk' => 'Kartu Keluarga', 'pas_foto' => 'Pas Foto', 'ijazah_akhir' => 'Ijazah Akhir', 'kip' => 'KIP','akta' => 'akta'] as $key => $label)
                                 <p
                                     class="{{ $student->{'status_' . $key} === 'diserahkan' ? 'bg-green-500' : 'bg-red-500' }} text-white rounded-lg px-2 text-center my-2">
                                     {{ $label }}
@@ -145,7 +145,7 @@
                                             </div>
 
                                             <div class="mb-4">
-                                                <label class="block mb-1 font-medium">Status Calon</label>
+                                                <label class="block mb-1 font-medium text-left">Status Calon</label>
                                                 <select name="status"
                                                     class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                                     <option value="aktif"
@@ -158,7 +158,7 @@
                                             </div>
 
                                             <div class="mb-4">
-                                                <label class="block mb-1 font-medium">Status Seleksi</label>
+                                                <label class="block mb-1 font-medium text-left">Status Seleksi</label>
                                                 <select name="status_seleksi"
                                                     class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                                     <option value="LOLOS"
@@ -173,9 +173,9 @@
                                                 </select>
                                             </div>
 
-                                            @foreach (['kk' => 'KK', 'ijazah_akhir' => 'Ijazah Terakhir', 'pas_foto' => 'Pas Foto', 'kip' => 'KIP'] as $field => $label)
+                                            @foreach (['kk' => 'KK', 'ijazah_akhir' => 'Ijazah Terakhir', 'pas_foto' => 'Pas Foto', 'kip' => 'KIP', 'akta' => 'akta'] as $field => $label)
                                                 <div class="mb-4">
-                                                    <label class="block mb-1 font-medium">Status
+                                                    <label class="block mb-1 font-medium text-left">Status
                                                         {{ $label }}</label>
                                                     <select name="status_{{ $field }}"
                                                         class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
