@@ -113,20 +113,20 @@ Route::middleware('auth:web')->group(function () {
     Route::post('/biodata/update', [BiodataController::class, 'updateData'])->name('biodata.update');
 
 
-    Route::get('/seleksi', [BerkasSeleksiControl::class, 'showData'])->name('seleksi');
 
-    Route::get('/berkas', [UserBerkasController::class, 'showData'])->name('berkas');
+
+    Route::get('/berkas-user', [BerkasSeleksiControl::class, 'showData'])->name('berkas');
 
 
     // Route::get('/verifikasi-data', function () {
     //     return view('calonMurid.verifikasi', ['title' => 'User Page']);
     // });
 
-    Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
+    Route::get('/pembayaran-user', [DaftarUlangController::class, 'showData'])->name('pembayaran');
 
-    Route::get('/verifikasi', [VerifikasiController::class, 'showData']);
+    Route::get('/pengumuman-user', [VerifikasiController::class, 'showData']);
 
-    Route::get('/pembayaran', [DaftarUlangController::class, 'showData'])->name('pembayaran');
+
 
     Route::post('logouts', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logouts');

@@ -33,6 +33,7 @@ class SeleksiAdminController extends Controller
                 'berkas.pas_foto as status_pas_foto',
                 'berkas.ijazah_akhir as status_ijazah_akhir',
                 'berkas.kip as status_kip',
+                'berkas.akta_lahir as status_akta',
                 'pembayaran.byr_dft_ulang',
                 'seleksi.status_seleksi',
             );
@@ -73,6 +74,7 @@ class SeleksiAdminController extends Controller
                 'berkas.pas_foto as status_pas_foto',
                 'berkas.ijazah_akhir as status_ijazah_akhir',
                 'berkas.kip as status_kip',
+                'berkas.akta_lahir as status_akta',
                 'pembayaran.byr_dft_ulang',
                 'seleksi.status_seleksi'
             )
@@ -104,6 +106,7 @@ class SeleksiAdminController extends Controller
                 'berkas.pas_foto as status_pas_foto',
                 'berkas.ijazah_akhir as status_ijazah_akhir',
                 'berkas.kip as status_kip',
+                'berkas.akta_lahir as status_akta',
                 'pembayaran.byr_dft_ulang',
                 'seleksi.status_seleksi'
             );
@@ -146,6 +149,7 @@ class SeleksiAdminController extends Controller
                 'berkas.pas_foto as status_pas_foto',
                 'berkas.ijazah_akhir as status_ijazah_akhir',
                 'berkas.kip as status_kip',
+                'berkas.akta_lahir as status_akta',
                 'pembayaran.byr_dft_ulang',
                 'seleksi.status_seleksi as status_seleksi'
             )
@@ -168,6 +172,7 @@ class SeleksiAdminController extends Controller
             'status_ijazah_akhir' => 'required|string',
             'status_pas_foto' => 'required|string',
             'status_kip' => 'required|string',
+            'status_akta' => 'required|string',
         ]);
 
         $update1 = DB::table('kelas as k1')
@@ -192,6 +197,7 @@ class SeleksiAdminController extends Controller
             'ijazah_akhir' => $request->status_ijazah_akhir,
             'pas_foto' => $request->status_pas_foto,
             'kip' => $request->status_kip,
+            'akta_lahir' => $request->status_akta,
         ]);
 
         if ($update1 || $update2 || $update3 || $update4) {
