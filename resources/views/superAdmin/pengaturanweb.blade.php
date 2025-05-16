@@ -25,6 +25,7 @@
                         ['label' => 'TPQ', 'route' => 'pengaturantpq-edit', 'icon' => 'fas fa-book-open'],
                         ['label' => 'MADIN', 'route' => 'pengaturanmadin-edit', 'icon' => 'fas fa-mosque'],
                         ['label' => 'Pondok', 'route' => 'pengaturanpondok-edit', 'icon' => 'fas fa-kaaba'],
+                        ['label' => 'Kontak', 'route' => 'contact-settings', 'icon' => 'fas fa-envelope'],
                     ];
                 @endphp
 
