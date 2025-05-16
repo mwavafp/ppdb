@@ -10,7 +10,8 @@
             <p class="text-sm text-gray-500 mt-1">Manajemen Konten dan Tampilan Website</p>
         </div>
     </header>
-
+    <main class="container  py-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @php
                     $cards = [
                         ['label' => 'Home', 'route' => 'pengaturanhome-edit', 'icon' => 'fas fa-home'],
