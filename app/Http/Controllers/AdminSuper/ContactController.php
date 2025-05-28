@@ -18,7 +18,12 @@ class ContactController extends Controller
     {
         // Mengambil data dari database termasuk kolom password yang telah dienkripsi sebelumnya
         $all_data = DB::table('contact')
-            ->select('id_contact', 'nama', 'cp', 'created_at')
+            ->join('kelas', 'contact.id_contact', '=', 'kelas.id_kelas')
+            ->select('contact.id_contact',
+                     'contact.nama',
+                     'contact.cp',
+                     'contact.created_at',
+                     'kelas.unt_pendidikan')
             ->get();
 
         // Dekripsi password untuk setiap item yang diambil (opsional)
