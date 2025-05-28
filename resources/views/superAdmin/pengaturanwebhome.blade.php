@@ -93,19 +93,18 @@
                     $('#' + id).summernote({
                         placeholder: 'Tulis konten di sini...',
                         tabsize: 2,
-                        height: 200
+                        height: 200,
+                        toolbar: [
+                            ['style', ['bold', 'italic', 'underline', 'clear']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['insert', ['link']],
+                            ['color', ['color']],
+                            ['fontsize', ['fontsize']],
+                            ['height', ['height']]
+                        ]
                     });
                 });
             });
         </script>
     </body>
-    <script>
-        $(document).ready(function() {
-            $('#deskripsi, #visi, #misi').summernote({
-                placeholder: 'Tulis di sini...',
-                tabsize: 2,
-                height: 200
-            });
-        });
-    </script>
 </x-layoute>
