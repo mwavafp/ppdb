@@ -18,7 +18,7 @@ class NoteFactory extends Factory
     {
         return [
 
-            'unit' => $this->faker->randomElement(['tk', 'sd', 'smp', 'sma', 'pondok','madin']),
+            'unit' => $this->faker->randomElement(['tk', 'sd', 'smp', 'sma', 'pondok', 'madin']),
             'catatan' => $this->faker->name,
 
 

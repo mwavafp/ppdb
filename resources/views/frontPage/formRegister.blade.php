@@ -27,28 +27,29 @@
 
                 <!-- Password -->
 
-               <div class="mb-4">
-    <x-input-label for="password" :value="__('Password')" />
+                <div class="mb-4">
+                    <x-input-label for="password" :value="__('Password')" />
 
-    <div class="relative">
-        <x-text-input id="password" class="block mt-1 w-full pr-10" type="password" name="password" required />
+                    <div class="relative">
+                        <x-text-input id="password" class="block mt-1 w-full pr-10" type="password" name="password"
+                            required />
 
-        <span class="absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer"
-              onclick="togglePassword()">
-            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
-                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path id="eyeIconPath1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path id="eyeIconPath2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943
+                        <span class="absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer"
+                            onclick="togglePassword()">
+                            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path id="eyeIconPath1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path id="eyeIconPath2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943
                       9.542 7-1.274 4.057-5.065 7-9.542 7
                       -4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
-        </span>
-    </div>
+                            </svg>
+                        </span>
+                    </div>
 
-    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-</div>
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
 
                 <!-- Data Diri -->
 
@@ -363,4 +364,38 @@
             `;
         }
     }
+    document.addEventListener('DOMContentLoaded', function() {
+        const input = document.getElementById('username');
+        const message = document.createElement('div');
+        message.classList.add('text-sm', 'mt-1');
+        input.parentNode.appendChild(message);
+
+        let timeout = null;
+
+        input.addEventListener('input', function() {
+            clearTimeout(timeout);
+            const username = input.value;
+
+            if (username.length < 3) {
+                message.textContent = '';
+                return;
+            }
+
+            timeout = setTimeout(() => {
+                fetch(`/check-username?username=${encodeURIComponent(username)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.available) {
+                            message.textContent = '✅ Username tersedia';
+                            message.classList.remove('text-red-600');
+                            message.classList.add('text-green-600');
+                        } else {
+                            message.textContent = '❌ Username sudah digunakan';
+                            message.classList.remove('text-green-600');
+                            message.classList.add('text-red-600');
+                        }
+                    });
+            }, 500); // delay biar gak spam server
+        });
+    });
 </script>

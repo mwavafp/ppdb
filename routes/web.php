@@ -55,6 +55,8 @@ Route::get('/tagihan', function () {
 Route::get('/kontak', [KontakController::class, 'index'])->name('kontak');
 
 Route::get('/form', [RegisteredUserController::class, 'saver'])->name('form');
+Route::get('/check-username', [RegisteredUserController::class, 'checkUsername'])->name('check.username');
+
 
 Route::get('/pengumumansma', [PengumumanController::class, 'showDatasma'])->name('pengumumansma');
 Route::get('/pengumumansma/search', [PengumumanController::class, 'searchsma'])->name('pengumumansma.search');
@@ -214,11 +216,11 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin', 'no-cache'])->group(fun
     Route::get('/pengaturan-biaya-daftar', [PengaturanBiayaDaftarController::class, 'showDataBiaya'])->name('superAdmin-biaya-daftar');
     Route::post('update-biaya-daftar/{id}', [PengaturanBiayaDaftarController::class, 'updateDataBiaya'])->name('update-biaya-daftar');
 
-        Route::get('/contact-settings', [ContactSettingsController::class, 'index'])->name('contact-settings');
-        Route::put('/contact-settings/update-general', [ContactSettingsController::class, 'updateGeneral'])->name('contact-update-general');
-        Route::post('/contact-settings/contact-person', [ContactSettingsController::class, 'storeContactPerson'])->name('contact-store');
-        Route::put('/contact-settings/contact-person/{id}', [ContactSettingsController::class, 'updateContactPerson'])->name('contact-update');
-        Route::delete('/contact-settings/contact-person/{id}', [ContactSettingsController::class, 'deleteContactPerson'])->name('contact-delete');
+    Route::get('/contact-settings', [ContactSettingsController::class, 'index'])->name('contact-settings');
+    Route::put('/contact-settings/update-general', [ContactSettingsController::class, 'updateGeneral'])->name('contact-update-general');
+    Route::post('/contact-settings/contact-person', [ContactSettingsController::class, 'storeContactPerson'])->name('contact-store');
+    Route::put('/contact-settings/contact-person/{id}', [ContactSettingsController::class, 'updateContactPerson'])->name('contact-update');
+    Route::delete('/contact-settings/contact-person/{id}', [ContactSettingsController::class, 'deleteContactPerson'])->name('contact-delete');
 
 
     Route::get('/pengaturan-website', function () {

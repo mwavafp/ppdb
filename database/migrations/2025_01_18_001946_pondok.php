@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->text('visi');
             $table->text('misi');
-            });
+        });
     }
 
     /**
