@@ -24,8 +24,8 @@
                 <tr>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Admin</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nomor WhatsApp
-                    </th>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nomor WhatsApp</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
@@ -40,6 +40,7 @@
                             <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->nama }}</td>
                             <td class="border px-4 py-2 text-center">{{ $item->cp }}</td>
+                            <td class="border px-4 py-2 text-center">{{ $item->unt_pendidikan }}</td>
                             <td class="border px-4 py-2 text-center">
                                 <!-- Tombol Edit dan Modal -->
                                 <div x-data="{ isEditOpen: false }" class="inline-block">

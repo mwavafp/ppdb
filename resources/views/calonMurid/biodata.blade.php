@@ -279,9 +279,9 @@
         });
     </script>
 
-    <style>
+    {{-- <style>
         .editing .editable-field:enabled {
             background-color: #fffbcc;
         }
-    </style>
+    </style> --}}
 </x-layout-login>

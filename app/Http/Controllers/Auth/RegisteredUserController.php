@@ -137,11 +137,21 @@ class RegisteredUserController extends Controller
     //     Auth::login($user);
     //     return redirect()->route('biodata');
     // }
+    public function checkUsername(Request $request)
+    {
+        $username = $request->query('username');
+
+        $exists = User::where('username', $username)->exists();
+
+        return response()->json(['available' => !$exists]);
+    }
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
             // USER
-            'username' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users,username'],
+
             'password' => ['required', Rules\Password::defaults()],
             'nisn' => ['required', 'digits:10'],
             'tipe_siswa' => ['required', 'in:umum,alumni'],

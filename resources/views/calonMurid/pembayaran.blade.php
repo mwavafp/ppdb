@@ -96,14 +96,13 @@
                 </tr>
             </thead>
             <tbody>
-                @php
-                    $jmlh_byr = $all_data->jmlh_byr ?? 0;
-                    $total = 1050000;
-                @endphp
                 <tr class="bg-white">
-                    <td class="p-3 text-center" rupiah="500000"></td>
-                    <td class="p-3 text-center" rupiah="{{ $jmlh_byr }}"></td>
-                    <td class="p-3 text-center" rupiah="{{ $total - $jmlh_byr }}"></td>
+                    @foreach ($biaya_murid as $item)
+                        <td class="p-3 text-center">@currency($item->dp_daful)</td>
+                        <td class="p-3 text-center">@currency($item->jmlh_byr)</td>
+                        <td class="p-3 text-center">@currency($item->total_bayar_daful - $item->jmlh_byr)</td>
+                    @endforeach
+
                 </tr>
             </tbody>
         </table>

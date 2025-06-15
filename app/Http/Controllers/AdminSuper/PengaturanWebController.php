@@ -45,20 +45,20 @@ class PengaturanWebController extends Controller
     public function updatehome(Request $request)
     {
         $validatedData = $request->validate([
-            'deskripsi' => 'nullable|string|max:3000',
-            'keunggulan' => 'nullable|string|max:1000',
-            'visi_misi' => 'nullable|string|max:1000',
-            'alasan_memilih_1' => 'nullable|string|max:1000',
-            'alasan_memilih_2' => 'nullable|string|max:1000',
-            'alasan_memilih_3' => 'nullable|string|max:1000',
-            'alasan_memilih_4' => 'nullable|string|max:1000',
-            'alasan_memilih_5' => 'nullable|string|max:1000',
-            'alasan_memilih_6' => 'nullable|string|max:1000',
-            'alur_pendaftaran_1' => 'nullable|string|max:1000',
-            'alur_pendaftaran_2' => 'nullable|string|max:1000',
-            'alur_pendaftaran_3' => 'nullable|string|max:1000',
-            'alur_pendaftaran_4' => 'nullable|string|max:1000',
-            'alur_pendaftaran_5' => 'nullable|string|max:1000',
+            'deskripsi' => 'nullable|string',
+            'keunggulan' => 'nullable|string',
+            'visi_misi' => 'nullable|string',
+            'alasan_memilih_1' => 'nullable|string',
+            'alasan_memilih_2' => 'nullable|string',
+            'alasan_memilih_3' => 'nullable|string',
+            'alasan_memilih_4' => 'nullable|string',
+            'alasan_memilih_5' => 'nullable|string',
+            'alasan_memilih_6' => 'nullable|string',
+            'alur_pendaftaran_1' => 'nullable|string',
+            'alur_pendaftaran_2' => 'nullable|string',
+            'alur_pendaftaran_3' => 'nullable|string',
+            'alur_pendaftaran_4' => 'nullable|string',
+            'alur_pendaftaran_5' => 'nullable|string',
         ]);
 
         DB::table('yayasan')
@@ -105,9 +105,9 @@ class PengaturanWebController extends Controller
     public function updatetk(Request $request)
     {
         $validatedData = $request->validate([
-            'deskripsi' => 'nullable|string|max:3000',
-            'visi' => 'nullable|string|max:1000',
-            'misi' => 'nullable|string|max:1000',
+            'deskripsi' => 'nullable|string',
+            'visi' => 'nullable|string',
+            'misi' => 'nullable|string',
         ]);
 
         DB::table('tk')
@@ -142,9 +142,9 @@ class PengaturanWebController extends Controller
     public function updatesd(Request $request)
     {
         $validatedData = $request->validate([
-            'deskripsi' => 'nullable|string|max:3000',
-            'visi' => 'nullable|string|max:1000',
-            'misi' => 'nullable|string|max:1000',
+            'deskripsi' => 'nullable|string',
+            'visi' => 'nullable|string',
+            'misi' => 'nullable|string',
         ]);
 
         DB::table('sd')
@@ -179,9 +179,9 @@ class PengaturanWebController extends Controller
     public function updatesmp(Request $request)
     {
         $validatedData = $request->validate([
-            'deskripsi' => 'nullable|string|max:3000',
-            'visi' => 'nullable|string|max:1000',
-            'misi' => 'nullable|string|max:1000',
+            'deskripsi' => 'nullable|string',
+            'visi' => 'nullable|string',
+            'misi' => 'nullable|string',
         ]);
 
         DB::table('smp')
@@ -216,9 +216,9 @@ class PengaturanWebController extends Controller
     public function updatesma(Request $request)
     {
         $validatedData = $request->validate([
-            'deskripsi' => 'nullable|string|max:3000',
-            'visi' => 'nullable|string|max:1000',
-            'misi' => 'nullable|string|max:1000',
+            'deskripsi' => 'nullable|string',
+            'visi' => 'nullable|string',
+            'misi' => 'nullable|string',
         ]);
 
         DB::table('sma')
@@ -253,9 +253,9 @@ class PengaturanWebController extends Controller
     public function updatetpq(Request $request)
     {
         $validatedData = $request->validate([
-            'deskripsi' => 'nullable|string|max:3000',
-            'visi' => 'nullable|string|max:1000',
-            'misi' => 'nullable|string|max:1000',
+            'deskripsi' => 'nullable|string',
+            'visi' => 'nullable|string',
+            'misi' => 'nullable|string',
         ]);
 
         DB::table('tpq')
@@ -290,9 +290,9 @@ class PengaturanWebController extends Controller
     public function updatemadin(Request $request)
     {
         $validatedData = $request->validate([
-            'deskripsi' => 'nullable|string|max:3000',
-            'visi' => 'nullable|string|max:1000',
-            'misi' => 'nullable|string|max:1000',
+            'deskripsi' => 'nullable|string',
+            'visi' => 'nullable|string',
+            'misi' => 'nullable|string',
         ]);
 
         DB::table('madin')
@@ -327,9 +327,9 @@ class PengaturanWebController extends Controller
     public function updatepondok(Request $request)
     {
         $validatedData = $request->validate([
-            'deskripsi' => 'nullable|string|max:3000',
-            'visi' => 'nullable|string|max:1000',
-            'misi' => 'nullable|string|max:1000',
+            'deskripsi' => 'nullable|string',
+            'visi' => 'nullable|string',
+            'misi' => 'nullable|string',
         ]);
 
         DB::table('pondok')

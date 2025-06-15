@@ -18,7 +18,7 @@ class HargaFactory extends Factory
     public function definition(): array
     {
         return [
-            'unitPendidikan' => $this->faker->randomElement(['tk', 'sd', 'smp', 'sma', 'tpq', 'madin', 'pondok']),
+            'unitPendidikan' => $this->faker->randomElement(['tk', 'sd', 'smp', 'sma', 'madin', 'pondok_sma', 'pondok_smp']),
             'gender' => $this->faker->randomElement(['laki-laki', 'perempuan']),
             'tipe_siswa' => $this->faker->randomElement(['alumni', 'umum']),
             'total_bayar_daful' => $this->faker->numerify('########'),
