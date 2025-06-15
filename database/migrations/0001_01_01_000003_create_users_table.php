@@ -25,7 +25,8 @@ return new class extends Migration
             $table->string('asl_sekolah', 200)->nullable();
             $table->enum('tipe_siswa', ['alumni', 'umum']);
             $table->enum('status', ['aktif', 'tidak_aktif'])->default('tidak_aktif');
-
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreign('updated_by')->references('id_admin')->on('admins')->onDelete('set null');
             $table->rememberToken();
             $table->timestamps();
         });

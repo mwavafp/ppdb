@@ -170,9 +170,9 @@ Route::middleware(['auth:admin', 'checkrole:admin', 'no-cache'])->group(function
     Route::get('/seleksi/search', [SeleksiAdminController::class, 'search'])->name('seleksi.search');
     Route::get('/seleksi/filter', [SeleksiAdminController::class, 'filter'])->name('seleksi.filter');
 
-    Route::get('/siswa', [SiswaController::class, 'index'])->name('index');
-    Route::put('/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
-    Route::get('/siswa/{id}/detail', [SiswaController::class, 'show'])->name('edit-user');
+    Route::get('/Datasiswa', [SiswaController::class, 'siswa'])->name('siswa');
+    Route::put('/admin/siswa/{id}/update', [SiswaController::class, 'update'])->name('siswa.update');
+    Route::get('siswa/{id}/detail', [SiswaController::class, 'show'])->name('edit-user');
 
     Route::get('/seleksiSiswa', [SeleksiAdminController::class, 'showData'])->name('seleksi.index');
     Route::get('/admin/seleksi/edit/{id}', [SeleksiAdminController::class, 'editData'])->name('seleksi.edit');

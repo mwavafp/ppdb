@@ -3,7 +3,7 @@
         $menu = [
             (object) ['menu' => (object) ['icon' => 'fa-house', 'title' => 'Dashboard', 'link' => 'dashboard-admin']],
             
-            (object) ['menu' => (object) ['icon' => 'fa-users', 'title' => 'Data Pendaftar', 'link' => 'siswa']],
+            (object) ['menu' => (object) ['icon' => 'fa-users', 'title' => 'Data Pendaftar', 'link' => 'Datasiswa']],
             (object) [
                 'menu' => (object) [
                     'icon' => 'fa-file-invoice-dollar',

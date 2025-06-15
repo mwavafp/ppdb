@@ -16,6 +16,7 @@ class SeleksiAdminController extends Controller
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
             ->leftJoin('berkas', 'users.id_user', '=', 'berkas.id_user')
+            ->leftJoin('admins', 'berkas.updated_by', '=', 'admins.id_admin')
             ->whereBetween('users.created_at', [
                 DB::raw('(SELECT awal FROM tahun LIMIT 1)'),
                 DB::raw('(SELECT akhir FROM tahun LIMIT 1)')
@@ -34,6 +35,8 @@ class SeleksiAdminController extends Controller
                 'berkas.ijazah_akhir as status_ijazah_akhir',
                 'berkas.kip as status_kip',
                 'berkas.akta_lahir as status_akta',
+                'berkas.updated_at',
+                'admins.name as nama_admin',
                 'pembayaran.byr_dft_ulang',
                 'seleksi.status_seleksi',
             );
@@ -61,6 +64,7 @@ class SeleksiAdminController extends Controller
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
             ->leftJoin('berkas', 'users.id_user', '=', 'berkas.id_user')
+            ->leftJoin('admins', 'berkas.updated_by', '=', 'admins.id_admin')
             ->select(
                 'users.id_user',
                 'users.name as nama',
@@ -74,6 +78,8 @@ class SeleksiAdminController extends Controller
                 'berkas.pas_foto as status_pas_foto',
                 'berkas.ijazah_akhir as status_ijazah_akhir',
                 'berkas.kip as status_kip',
+                'berkas.updated_at',
+                'admins.name as nama_admin',
                 'berkas.akta_lahir as status_akta',
                 'pembayaran.byr_dft_ulang',
                 'seleksi.status_seleksi'
@@ -93,6 +99,7 @@ class SeleksiAdminController extends Controller
             ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
             ->leftJoin('berkas', 'users.id_user', '=', 'berkas.id_user')
+            ->leftJoin('admins', 'berkas.updated_by', '=', 'admins.id_admin')
             ->select(
                 'users.id_user',
                 'users.name as nama',
@@ -107,6 +114,8 @@ class SeleksiAdminController extends Controller
                 'berkas.ijazah_akhir as status_ijazah_akhir',
                 'berkas.kip as status_kip',
                 'berkas.akta_lahir as status_akta',
+                'berkas.updated_at',
+                'admins.name as nama_admin',
                 'pembayaran.byr_dft_ulang',
                 'seleksi.status_seleksi'
             );
@@ -133,6 +142,8 @@ class SeleksiAdminController extends Controller
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
             ->leftJoin('berkas', 'users.id_user', '=', 'berkas.id_user')
+            ->leftJoin('admins', 'berkas.updated_by', '=', 'admins.id_admin')
+
             ->select(
                 'user_unit_pendidikan.id_user',
                 'seleksi.id_user',
@@ -150,8 +161,12 @@ class SeleksiAdminController extends Controller
                 'berkas.ijazah_akhir as status_ijazah_akhir',
                 'berkas.kip as status_kip',
                 'berkas.akta_lahir as status_akta',
+                'berkas.updated_by',
+                'berkas.updated_at',
                 'pembayaran.byr_dft_ulang',
-                'seleksi.status_seleksi as status_seleksi'
+                'seleksi.status_seleksi as status_seleksi',
+                'admins.name as nama_admin',
+                
             )
             ->where('users.id_user', $id)
             ->first();
@@ -198,6 +213,8 @@ class SeleksiAdminController extends Controller
             'pas_foto' => $request->status_pas_foto,
             'kip' => $request->status_kip,
             'akta_lahir' => $request->status_akta,
+            'updated_by' => auth('admin')->id(),
+            'updated_at' => now(),
         ]);
 
         if ($update1 || $update2 || $update3 || $update4) {

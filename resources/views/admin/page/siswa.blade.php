@@ -4,7 +4,7 @@
     <div class=" flex justify-between items-center mb-4">
         <h1 class="text-3xl font-bold ">DATA PENDAFTAR</h1>
         <div class="relative">
-            <form method="GET" action="{{ route('index') }}" id="searchForm">
+            <form method="GET" action="{{ route('siswa') }}" id="searchForm">
                 <input type="text" name="search"
                     class="border border-gray-400 bg-white rounded-full py-2 px-4 pl-10 w-[500px]"
                     placeholder="Cari siswa..." value="{{ request('search') }}"
@@ -15,7 +15,7 @@
 
     </div>
 
-    <form method="GET" action="{{ route('index') }}">
+    <form method="GET" action="{{ route('siswa') }}">
         <div class="max-w-7xl  my-8">
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                 <!-- Filter Gender -->
@@ -69,7 +69,7 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                @forelse ($all_data as $index => $item)
+                @forelse ($all_data as $siswa => $item)
                     <tr class="hover:bg-gray-50 transition">
                         <td class="border px-4 py-2 text-center">{{ $loop->iteration }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->name }}</td>
@@ -245,6 +245,7 @@
                                                                         pattern="\d{16}"
                                                                         oninput="if(this.value.length > 16) this.value = this.value.slice(0, 16)">
                                                                 </div>
+                                                                
                                                             </div>
 
                                                             <!-- Kolom Kanan -->
@@ -374,22 +375,29 @@
                                                                         title="Nomor WA Ibu harus 10-15 digit angka"
                                                                         oninput="if(this.value.length > 15) this.value = this.value.slice(0, 15)">
                                                                 </div>
+                                                                
 
                                                             </div>
+                                                            
                                                         </div>
 
 
                                                         <!-- Tombol Cancel -->
 
                                                         <!-- Tombol Update -->
+                                                        
                                                         <div class="flex justify-end">
                                                             <button type="submit"
                                                                 class="bg-blue-500 text-right items-end text-white px-4 py-2 rounded  hover:bg-blue-700">
                                                                 Update
                                                             </button>
                                                         </div>
-
-
+                                                        @if ($item->updated_by && $item->admin)
+                                                            <div class="text-sm text-gray-600 mt-4">
+                                                                Terakhir diupdate oleh <span class="font-semibold"> {{ $item->admin->name ?? '' }}</span>
+                                                                pada <span>{{ \Carbon\Carbon::parse($item->updated_at)}}</span>
+                                                            </div>
+                                                        @endif
                                                     </form>
                                                 </div>
                                         </div>
