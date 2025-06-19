@@ -56,7 +56,7 @@
 
                     <!-- Tipe Pembayaran -->
                     <div>
-                        <label class="block text-sm font-medium">Tipe Pembayaran</label>
+                        <label class="block text-sm font-medium">Status Tagihan</label>
                         <select name="status"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
                             <option value="">Semua</option>
@@ -101,15 +101,15 @@
                     </th>
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Status DP
                     </th>
-                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Minimal DP
+                    {{-- <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Minimal DP --}}
                     </th>
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Tagihan</th>
-                    <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Diskon</th>
+                    {{-- <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Diskon</th> --}}
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Bayar</th>
 
                     <th class="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Jumlah Kekurangan
                     </th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Tipe Pembayaran
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Status Tagihan
                     </th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
                 </tr>
@@ -131,21 +131,21 @@
                             </td>
                             <td class="border px-4 py-2 text-center text-sm">
                                 {{ $item->byr_dft_ulang === 'lunas' ? 'Bayar' : 'Belum Bayar' }}</td>
-                            <td class="border px-4 py-2 text-center text-sm">@currency($item->dp_daful)
-                            </td>
+                            {{-- <td class="border px-4 py-2 text-center text-sm">@currency($item->dp_daful)
+                            </td> --}}
                             <td class="border px-4 py-2 text-center text-sm">
-                                @currency($item->total_bayar_daful)
+                                @currency($item->total_bayar_daful - $item->diskon)
                             </td>
-                            <td class="border px-4 py-2 text-center text-sm text-red-500">
+                            {{-- <td class="border px-4 py-2 text-center text-sm text-red-500">
                                 @currency($item->diskon)
-                            </td>
-                            <td class="border px-4 py-2 text-center text-sm">@currency($item->jmlh_byr) </td>
+                            </td> --}}
+                            <td class="border px-4 py-2 text-center text-sm">@currency($item->jmlh_byr + $item->jmlh_byr2 + $item->jmlh_byr3 + $item->jmlh_byr4) </td>
                             <td class="border px-4 py-2 text-center text-sm">
-                                @currency($item->jmlh_byr >= $item->total_bayar_daful - $item->diskon ? 0 : $item->total_bayar_daful - $item->jmlh_byr - $item->diskon)
+                                @currency($item->jmlh_byr >= $item->total_bayar_daful - $item->diskon ? 0 : $item->total_bayar_daful - $item->jmlh_byr - $item->jmlh_byr2 - $item->jmlh_byr3 - $item->jmlh_byr4 - $item->diskon)
                             </td>
 
                             <td class="p-4 border px-4 py-2 text-center">
-                                @if ($item->jmlh_byr >= $item->total_bayar_daful - $item->diskon)
+                                @if (strtoupper($item->status) === 'LUNAS')
                                     <span class="border text-white  text-center bg-green-500 rounded-lg  px-4 py-2">
                                         {{ strtoupper($item->status) }}
                                     </span>
@@ -158,13 +158,18 @@
                             <td class="border px-4 py-2 text-center text-sm">
                                 <!-- Modal -->
 
-                                <div x-data="{ isModalOpen: false }">
+                                <div x-data="{ isModalOpen: false, isDetailOpen: false }">
                                     <!-- Tombol untuk membuka modal -->
-                                    <button @click="isModalOpen = true"
-                                        class="bg-blue-500 text-white right-4 text-md px-4 py-2 rounded hover:bg-blue-600 flex items-center">
-                                        <i class="fas fa-edit "></i>
-                                        <span>Edit</span>
-                                    </button>
+                                    <div class="flex justify-between">
+                                        <button @click="isModalOpen = true"
+                                            class="bg-blue-500 text-white text-md px-3 py-2 rounded hover:bg-blue-600 flex items-center">
+                                            <i class="fas fa-dollar-sign"></i>
+                                        </button>
+                                        <button @click="isDetailOpen = true"
+                                            class="bg-yellow-500 text-white text-md px-3 py-2 rounded hover:bg-yellow-600 flex items-center">
+                                            <i class="fas fa-info"></i>
+                                        </button>
+                                    </div>
 
                                     <!-- Modal -->
                                     <div x-show="isModalOpen"
@@ -173,52 +178,223 @@
                                         <div class="bg-white rounded-lg shadow-lg w-3/4 md:w-1/2 p-6 relative">
                                             <!-- Tombol untuk menutup modal -->
                                             <button @click="isModalOpen = false"
-                                                class="absolute top-2 right-4 text-4xl right-2 text-gray-600 hover:text-gray-900">
+                                                class="absolute top-2 right-4 text-4xl text-gray-600 hover:text-gray-900">
                                                 &times;
                                             </button>
 
                                             <!-- Konten Modal -->
-                                            <!-- pemakaian include atau component sama saja dan yang wajib diteruskan adalah datanya -->
-                                            <!-- Yand dirender menggunakan fungsi dari showData -->
                                             <form action="{{ route('update-tagihan', ['id' => $item->id_bayar]) }}"
                                                 method="POST">
                                                 @csrf
                                                 <div class="modal fade text-left" id="ModalCreate" tabindex="-1">
-                                                    <h1 class="font-bold text-xl mb-4">Edit Tagihan Biaya</h1>
-                                                    <div class="mb-4">
-                                                        <label for="name"
-                                                            class="block text-gray-700 font-medium">Nama</label>
-                                                        <label for="name"
-                                                            class="block text-gray-700 font-medium">{{ $item->name }}</label>
+                                                    <h1 class="font-bold text-xl mb-6">Edit Tagihan Biaya</h1>
 
+                                                    <!-- Nama -->
+                                                    <div class="flex items-center mb-4">
+                                                        <label class="w-1/3 text-gray-700 font-medium">Nama</label>
+                                                        <div class="w-2/3">{{ $item->name }}</div>
                                                     </div>
-                                                    <div class="mb-4">
+
+                                                    <!-- Jumlah Bayar 1 -->
+                                                    <div class="flex items-center mb-4">
                                                         <label for="jmlh_byr"
-                                                            class="block text-gray-700 font-medium">Jumlah
-                                                            Bayar</label>
+                                                            class="w-1/3 text-gray-700 font-medium">Pembayaran
+                                                            1</label>
                                                         <input type="number" id="jmlh_byr" name="jmlh_byr"
                                                             value="{{ $item->jmlh_byr }}"
-                                                            class="mt-1 block w-full border-2 p-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                                            class="w-2/3 border-2 p-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
                                                     </div>
-                                                                                                                        <div class="text-sm text-gray-600 mt-4">
-                                                                Terakhir diupdate oleh <span class="font-semibold"> {{ $item->nama_admin ?? '' }}</span>
-                                                                pada <span>{{ \Carbon\Carbon::parse($item->updated_at)}}</span>
-                                                            </div>
 
+                                                    <!-- Pembayaran 2 -->
+                                                    @if ($item->jmlh_byr != 0)
+                                                        <div class="flex items-center mb-4">
+                                                            <label for="jmlh_byr2"
+                                                                class="w-1/3 text-gray-700 font-medium">Pembayaran
+                                                                2</label>
+                                                            <input type="number" id="jmlh_byr2" name="jmlh_byr2"
+                                                                value="{{ $item->jmlh_byr2 }}"
+                                                                class="w-2/3 border-2 p-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+                                                        </div>
+                                                    @else
+                                                        <input type="hidden" name="jmlh_byr2" value="0">
+                                                    @endif
 
-                                                    <div class="flex justify-end">
+                                                    <!-- Pembayaran 3 -->
+                                                    @if ($item->jmlh_byr2 != 0)
+                                                        <div class="flex items-center mb-4">
+                                                            <label for="jmlh_byr3"
+                                                                class="w-1/3 text-gray-700 font-medium">Pembayaran
+                                                                3</label>
+                                                            <input type="number" id="jmlh_byr3" name="jmlh_byr3"
+                                                                value="{{ $item->jmlh_byr3 }}"
+                                                                class="w-2/3 border-2 p-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+                                                        </div>
+                                                    @else
+                                                        <input type="hidden" name="jmlh_byr3" value="0">
+                                                    @endif
+
+                                                    <!-- Pembayaran 4 -->
+                                                    @if ($item->jmlh_byr3 != 0)
+                                                        <div class="flex items-center mb-4">
+                                                            <label for="jmlh_byr4"
+                                                                class="w-1/3 text-gray-700 font-medium">Pembayaran
+                                                                4</label>
+                                                            <input type="number" id="jmlh_byr4" name="jmlh_byr4"
+                                                                value="{{ $item->jmlh_byr4 }}"
+                                                                class="w-2/3 border-2 p-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+                                                        </div>
+                                                    @else
+                                                        <input type="hidden" name="jmlh_byr4" value="0">
+                                                    @endif
+
+                                                    <!-- Info Admin & Tanggal -->
+                                                    <div class="text-sm text-gray-600 mt-4">
+                                                        Terakhir diupdate oleh <span
+                                                            class="font-semibold">{{ $item->nama_admin ?? '' }}</span>
+                                                        pada
+                                                        <span>{{ \Carbon\Carbon::parse($item->updated_at) }}</span>
+                                                    </div>
+
+                                                    <!-- Tombol Simpan -->
+                                                    <div class="flex justify-end mt-6">
                                                         <button type="submit"
-                                                            class=" text-white px-4 py-2  bg-[oklch(62.7%_0.194_149.214)] rounded-lg">
+                                                            class="text-white px-4 py-2 bg-[oklch(62.7%_0.194_149.214)] rounded-lg">
                                                             Simpan
                                                         </button>
                                                     </div>
                                                 </div>
-
-
-
                                             </form>
                                         </div>
                                     </div>
+
+
+                                    <!-- Modal Detail Pembayaran -->
+                                    <div x-show="isDetailOpen"
+                                        class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50"
+                                        style="display: none;">
+                                        <div
+                                            class="bg-white rounded-lg shadow-lg w-11/12 md:w-3/4 lg:w-1/2 p-6 relative max-h-[80vh] overflow-auto">
+                                            <!-- Tombol Close -->
+                                            <button @click="isDetailOpen = false"
+                                                class="absolute top-2 right-4 text-3xl text-gray-500 hover:text-gray-800">&times;</button>
+
+                                            <h1 class="text-2xl font-semibold text-gray-800 border-b pb-3 mb-6">Detail
+                                                Pembayaran</h1>
+
+                                            <!-- Informasi Umum -->
+                                            <!-- Informasi Umum sebagai Tabel Tersembunyi -->
+                                            <!-- Informasi Umum dengan Tampilan Rapi dan Tidak Seperti Tabel -->
+                                            <div class="mb-6 text-sm text-left text-gray-700">
+                                                <table class="w-1/2 border-collapse border-spacing-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="p-0 pr-2 font-semibold">Nama</td>
+                                                            <td class="p-0 pr-2">:</td>
+                                                            <td class="p-0">{{ $item->name }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-0 pr-2 font-semibold">Jenjang</td>
+                                                            <td class="p-0 pr-2">:</td>
+                                                            <td class="p-0">{{ $item->unt_pendidikan }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-0 pr-2 font-semibold">Status tagihan</td>
+                                                            <td class="p-0 pr-2">:</td>
+                                                            <td class="p-0">{{ $item->status }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-0 pr-2 font-semibold">Status DP</td>
+                                                            <td class="p-0 pr-2">:</td>
+                                                            <td class="p-0">{{ ucfirst($item->byr_dft_ulang) }}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                            <!-- Tabel Rincian Pembayaran -->
+                                            <div class="overflow-x-auto mb-6">
+                                                <table class="min-w-full border border-gray-300 text-sm">
+                                                    <thead class="bg-gray-100">
+                                                        <tr>
+                                                            <th class="border border-gray-300 px-4 py-2 text-left">
+                                                                Jenis Bayar</th>
+                                                            <th class="border border-gray-300 px-4 py-2 text-right">
+                                                                Jumlah Bayar (Rp)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @php $total_bayar = 0; @endphp
+                                                        @for ($i = 1; $i <= 4; $i++)
+                                                            @php
+                                                                $field = $i === 1 ? 'jmlh_byr' : 'jmlh_byr' . $i;
+                                                                $nilai = $item->$field ?? 0;
+                                                            @endphp
+                                                            @if ($nilai > 0)
+                                                                @php $total_bayar += $nilai; @endphp
+                                                                <tr class="odd:bg-white even:bg-gray-50">
+                                                                    <td class="border border-gray-300 px-4 py-2">
+                                                                        Pembayaran ke- {{ $i }}</td>
+                                                                    <td
+                                                                        class="border border-gray-300 px-4 py-2 text-right">
+                                                                        {{ number_format($nilai, 0, ',', '.') }}
+                                                                    </td>
+                                                                </tr>
+                                                            @endif
+                                                        @endfor
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+
+                                            <!-- Tabel Ringkasan Pembayaran -->
+                                            <div class="overflow-x-auto">
+                                                <table class="min-w-full border border-gray-300 text-sm">
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <td class="border border-gray-300 px-4 py-2 font-semibold">
+                                                                Total Tagihan</td>
+                                                            <td class="border border-gray-300 px-4 py-2 text-right">Rp
+                                                                {{ number_format($item->total_bayar_daful ?? 0, 0, ',', '.') }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="bg-gray-100">
+                                                            <td class="border border-gray-300 px-4 py-2 font-semibold">
+                                                                Diskon</td>
+                                                            <td class="border border-gray-300 px-4 py-2 text-right">Rp
+                                                                {{ number_format($item->diskon ?? 0, 0, ',', '.') }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="bg-gray-100">
+                                                            <td class="border border-gray-300 px-4 py-2 font-semibold">
+                                                                Total Pembayaran</td>
+                                                            <td class="border border-gray-300 px-4 py-2 text-right">Rp
+                                                                {{ number_format($total_bayar, 0, ',', '.') }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-300 px-4 py-2 font-semibold">
+                                                                Sisa Kekurangan</td>
+                                                            <td class="border border-gray-300 px-4 py-2 text-right">
+                                                                Rp
+                                                                {{ number_format(($item->total_bayar_daful ?? 0) - $total_bayar - ($item->diskon ?? 0), 0, ',', '.') }}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <!-- Footer Info -->
+                                            <p class="mt-6 text-xs text-gray-500">
+                                                Diperbarui oleh <span
+                                                    class="font-semibold">{{ $item->nama_admin ?? '-' }}</span> pada
+                                                <span>{{ \Carbon\Carbon::parse($item->updated_at)->translatedFormat('d F Y H:i') }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </td>
                         </tr>

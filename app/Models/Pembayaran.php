@@ -19,6 +19,9 @@ class Pembayaran extends Model
         'byr_dft_ulang',
         'status',
         'jmlh_byr',
+        'jmlh_byr2',
+        'jmlh_byr3',
+        'jmlh_byr4',
     ];
     protected $attributes = [
         'byr_dft_ulang' => 'belum',

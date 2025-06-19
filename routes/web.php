@@ -183,7 +183,7 @@ Route::middleware(['auth:admin', 'checkrole:admin', 'no-cache'])->group(function
 
     Route::get('tagihan/export/', [TagihanAdmin::class, 'export'])->name('tagihan.export');
     Route::get('/tagihan-admin', [TagihanAdmin::class, 'showData'])->name('tagihan-admin');
-    // Route::get('/edit-tagihan/{id}', [TagihanAdmin::class, 'editData'])->name('edit-tagihan');
+    Route::get('/detail-tagihan/{id}', [TagihanAdmin::class, 'detailData'])->name('detail-tagihan');
     Route::post('update-tagihan/{id}', [TagihanAdmin::class, 'updateData'])->name('update-tagihan');
     Route::get('/search', [TagihanAdmin::class, 'search'])->name('search');
     Route::get('/filter', [TagihanAdmin::class, 'filter'])->name('filter');

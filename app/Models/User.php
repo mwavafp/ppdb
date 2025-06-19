@@ -79,7 +79,7 @@ class User extends Authenticatable
     }
     public function userUnitPendidikan()
     {
-        return $this->hasMany(UserUnitPendidikan::class, 'updated_by', 'id_user'); // user_id foreign key di ortu
+        return $this->hasMany(UserUnitPendidikan::class, 'id_user', 'id_user'); // user_id foreign key di ortu
     }
     public function admin()
     {
