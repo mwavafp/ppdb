@@ -31,7 +31,8 @@ class User extends Authenticatable
         'tgl_lahir',
         'tmpt_lahir',
         'asl_sekolah',
-        'tipe_siswa'
+        'tipe_siswa',
+        'updated_by',
     ];
 
     /**
@@ -78,7 +79,11 @@ class User extends Authenticatable
     }
     public function userUnitPendidikan()
     {
-        return $this->hasMany(UserUnitPendidikan::class, 'id_user', 'id_user'); // user_id foreign key di ortu
+        return $this->hasMany(UserUnitPendidikan::class, 'updated_by', 'id_user'); // user_id foreign key di ortu
+    }
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'updated_by', 'id_admin');
     }
     public function kelas()
     {

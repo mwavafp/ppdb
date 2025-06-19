@@ -20,6 +20,8 @@ return new class extends Migration
             $table->enum('kip', ['diserahkan', 'belum_diserahkan'])->default('belum_diserahkan');
             $table->enum('akta_lahir', ['diserahkan', 'belum_diserahkan'])->default('belum_diserahkan');
             $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreign('updated_by')->references('id_admin')->on('admins')->onDelete('set null');
             $table->timestamps();
         });
     }

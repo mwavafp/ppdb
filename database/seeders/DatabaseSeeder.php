@@ -443,64 +443,236 @@ class DatabaseSeeder extends Seeder
                     'diskon' => 100000,
                     'id_acara' => 3
                 ],
+                // Pondok SMP - Gelombang 1
                 [
-                    'unitPendidikan' => 'pondok',
+                    'unitPendidikan' => 'pondok_smp',
                     'gender' => 'laki-laki',
-                    'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 2345000,
-                    'dp_daful' => 2345000,
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 1560000,
+                    'dp_daful' => 2345000 + 1560000,
                     'diskon' => 0,
                     'id_acara' => 1
                 ],
                 [
-                    'unitPendidikan' => 'pondok',
+                    'unitPendidikan' => 'pondok_smp',
                     'gender' => 'perempuan',
-                    'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 2345000,
-                    'dp_daful' => 2345000,
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 1590000,
+                    'dp_daful' => 2345000 + 1590000,
                     'diskon' => 0,
                     'id_acara' => 1
                 ],
                 [
-                    'unitPendidikan' => 'pondok',
+                    'unitPendidikan' => 'pondok_smp',
                     'gender' => 'laki-laki',
                     'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 2345000,
-                    'dp_daful' => 2345000,
+                    'total_bayar_daful' => 2345000 + 1660000,
+                    'dp_daful' => 2345000 + 1660000,
                     'diskon' => 0,
-                    'id_acara' => 2
+                    'id_acara' => 1
                 ],
                 [
-                    'unitPendidikan' => 'pondok',
+                    'unitPendidikan' => 'pondok_smp',
                     'gender' => 'perempuan',
                     'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 2345000,
-                    'dp_daful' => 2345000,
+                    'total_bayar_daful' => 2345000 + 1690000,
+                    'dp_daful' => 2345000 + 1690000,
+                    'diskon' => 0,
+                    'id_acara' => 1
+                ],
+
+                // Pondok SMP - Gelombang 2
+                [
+                    'unitPendidikan' => 'pondok_smp',
+                    'gender' => 'laki-laki',
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 1660000,
+                    'dp_daful' => 2345000 + 1660000,
                     'diskon' => 0,
                     'id_acara' => 2
                 ],
                 [
-                    'unitPendidikan' => 'pondok',
+                    'unitPendidikan' => 'pondok_smp',
+                    'gender' => 'perempuan',
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 1690000,
+                    'dp_daful' => 2345000 + 1690000,
+                    'diskon' => 0,
+                    'id_acara' => 2
+                ],
+                [
+                    'unitPendidikan' => 'pondok_smp',
                     'gender' => 'laki-laki',
                     'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 2345000,
+                    'total_bayar_daful' => 2345000 + 1760000,
+                    'dp_daful' => 2345000 + 1760000,
+                    'diskon' => 0,
+                    'id_acara' => 2
+                ],
+                [
+                    'unitPendidikan' => 'pondok_smp',
+                    'gender' => 'perempuan',
+                    'tipe_siswa' => 'umum',
+                    'total_bayar_daful' => 2345000 + 1790000,
+                    'dp_daful' => 2345000 + 1790000,
+                    'diskon' => 0,
+                    'id_acara' => 2
+                ],
+
+                // Pondok SMP - Gelombang 3
+                [
+                    'unitPendidikan' => 'pondok_smp',
+                    'gender' => 'laki-laki',
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 1760000,
+                    'dp_daful' => 2345000 + 1760000,
+                    'diskon' => 0,
+                    'id_acara' => 3
+                ],
+                [
+                    'unitPendidikan' => 'pondok_smp',
+                    'gender' => 'perempuan',
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 1790000,
+                    'dp_daful' => 2345000 + 1790000,
+                    'diskon' => 0,
+                    'id_acara' => 3
+                ],
+                [
+                    'unitPendidikan' => 'pondok_smp',
+                    'gender' => 'laki-laki',
+                    'tipe_siswa' => 'umum',
+                    'total_bayar_daful' => 2345000 + 1860000,
+                    'dp_daful' => 2345000 + 1860000,
+                    'diskon' => 0,
+                    'id_acara' => 3
+                ],
+                [
+                    'unitPendidikan' => 'pondok_smp',
+                    'gender' => 'perempuan',
+                    'tipe_siswa' => 'umum',
+                    'total_bayar_daful' => 2345000 + 1890000,
+                    'dp_daful' => 2345000 + 1890000,
+                    'diskon' => 0,
+                    'id_acara' => 3
+                ],
+                // Pondok SMA Gelombang 1
+                [
+                    'unitPendidikan' => 'pondok_sma',
+                    'gender' => 'laki-laki',
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 1950000,
+                    'dp_daful' => 2345000 + 1950000,
+                    'diskon' => 0,
+                    'id_acara' => 1
+                ],
+                [
+                    'unitPendidikan' => 'pondok_sma',
+                    'gender' => 'perempuan',
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 2050000,
+                    'dp_daful' => 2345000 + 2050000,
+                    'diskon' => 0,
+                    'id_acara' => 1
+                ],
+                [
+                    'unitPendidikan' => 'pondok_sma',
+                    'gender' => 'laki-laki',
+                    'tipe_siswa' => 'umum',
+                    'total_bayar_daful' => 2345000 + 2050000,
+                    'dp_daful' => 2345000 + 2050000,
+                    'diskon' => 0,
+                    'id_acara' => 1
+                ],
+                [
+                    'unitPendidikan' => 'pondok_sma',
+                    'gender' => 'perempuan',
+                    'tipe_siswa' => 'umum',
+                    'total_bayar_daful' => 2345000 + 2150000,
+                    'dp_daful' => 2345000 + 2150000,
+                    'diskon' => 0,
+                    'id_acara' => 1
+                ],
+
+                // Pondok SMA Gelombang 2
+                [
+                    'unitPendidikan' => 'pondok_sma',
+                    'gender' => 'laki-laki',
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 2050000,
+                    'dp_daful' => 2345000 + 2050000,
+                    'diskon' => 0,
+                    'id_acara' => 2
+                ],
+                [
+                    'unitPendidikan' => 'pondok_sma',
+                    'gender' => 'perempuan',
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 2150000,
+                    'dp_daful' => 2345000 + 2150000,
+                    'diskon' => 0,
+                    'id_acara' => 2
+                ],
+                [
+                    'unitPendidikan' => 'pondok_sma',
+                    'gender' => 'laki-laki',
+                    'tipe_siswa' => 'umum',
+                    'total_bayar_daful' => 2345000 + 2150000,
+                    'dp_daful' => 2345000 + 2150000,
+                    'diskon' => 0,
+                    'id_acara' => 2
+                ],
+                [
+                    'unitPendidikan' => 'pondok_sma',
+                    'gender' => 'perempuan',
+                    'tipe_siswa' => 'umum',
+                    'total_bayar_daful' => 2345000 + 2250000,
+                    'dp_daful' => 2345000 + 2250000,
+                    'diskon' => 0,
+                    'id_acara' => 2
+                ],
+
+                // Pondok SMA Gelombang 3
+                [
+                    'unitPendidikan' => 'pondok_sma',
+                    'gender' => 'laki-laki',
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 2150000,
+                    'dp_daful' => 2345000 + 2150000,
+                    'diskon' => 0,
+                    'id_acara' => 3
+                ],
+                [
+                    'unitPendidikan' => 'pondok_sma',
+                    'gender' => 'perempuan',
+                    'tipe_siswa' => 'alumni',
+                    'total_bayar_daful' => 2345000 + 2250000,
+                    'dp_daful' => 2345000 + 2250000,
+                    'diskon' => 0,
+                    'id_acara' => 3
+                ],
+                [
+                    'unitPendidikan' => 'pondok_sma',
+                    'gender' => 'laki-laki',
+                    'tipe_siswa' => 'umum',
+                    'total_bayar_daful' => 2345000 + 2250000,
                     'dp_daful' => 2345000,
                     'diskon' => 0,
                     'id_acara' => 3
                 ],
                 [
-                    'unitPendidikan' => 'pondok',
+                    'unitPendidikan' => 'pondok_sma',
                     'gender' => 'perempuan',
                     'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 2345000,
-                    'dp_daful' => 2345000,
+                    'total_bayar_daful' => 2345000 + 2350000,
+                    'dp_daful' => 2345000 + 2350000,
                     'diskon' => 0,
                     'id_acara' => 3
                 ],
                 [
                     'unitPendidikan' => 'madin',
                     'gender' => 'laki-laki',
-                    'tipe_siswa' => 'umum',
+                    'tipe_siswa' => 'alumni',
                     'total_bayar_daful' => 380000,
                     'dp_daful' => 380000,
                     'diskon' => 0,
@@ -509,7 +681,7 @@ class DatabaseSeeder extends Seeder
                 [
                     'unitPendidikan' => 'madin',
                     'gender' => 'perempuan',
-                    'tipe_siswa' => 'umum',
+                    'tipe_siswa' => 'alumni',
                     'total_bayar_daful' => 380000,
                     'dp_daful' => 380000,
                     'diskon' => 0,
@@ -519,38 +691,21 @@ class DatabaseSeeder extends Seeder
                     'unitPendidikan' => 'madin',
                     'gender' => 'laki-laki',
                     'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 380000,
-                    'dp_daful' => 380000,
+                    'total_bayar_daful' => 590000,
+                    'dp_daful' => 590000,
                     'diskon' => 0,
-                    'id_acara' => 2
+                    'id_acara' => 1
                 ],
                 [
                     'unitPendidikan' => 'madin',
                     'gender' => 'perempuan',
                     'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 380000,
-                    'dp_daful' => 380000,
+                    'total_bayar_daful' => 590000,
+                    'dp_daful' => 590000,
                     'diskon' => 0,
-                    'id_acara' => 2
+                    'id_acara' => 1
                 ],
-                [
-                    'unitPendidikan' => 'madin',
-                    'gender' => 'laki-laki',
-                    'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 380000,
-                    'dp_daful' => 380000,
-                    'diskon' => 0,
-                    'id_acara' => 3
-                ],
-                [
-                    'unitPendidikan' => 'madin',
-                    'gender' => 'perempuan',
-                    'tipe_siswa' => 'umum',
-                    'total_bayar_daful' => 380000,
-                    'dp_daful' => 380000,
-                    'diskon' => 0,
-                    'id_acara' => 3
-                ],
+
 
             ]
         );
@@ -571,19 +726,52 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Buat contact terlebih dahulu dan simpan ke variabel
-        $contact = Contact::factory()->create([
-            'nama' => 'AdminC',
-            'cp' => '081722729279',
+
+        $contact = Contact::factory()->createMany([
+            [
+                'id_contact' => 1,
+                'nama' => 'AdminA',
+                'cp' => '081722729279',
+            ],
+            [
+                'id_contact' => 2,
+                'nama' => 'AdminB',
+                'cp' => '081722729279',
+            ],
+            [
+                'id_contact' => 3,
+                'nama' => 'AdminC',
+                'cp' => '081722729279',
+            ],
+            [
+                'id_contact' => 4,
+                'nama' => 'AdminD',
+                'cp' => '081722729279',
+            ],
+            [
+                'id_contact' => 5,
+                'nama' => 'AdminE',
+                'cp' => '081722729279',
+            ],
+            [
+                'id_contact' => 6,
+                'nama' => 'AdminF',
+                'cp' => '081722729279',
+            ],
+
         ]);
 
         // Buat kelas dan hubungkan dengan contact yang barusan dibuat
-        $kelas = Kelas::factory()->create([
-            'unt_pendidikan' => 'sma',
-            'kelas' => '8',
-            'kls_identitas' => 'A',
-            'kls_status' => 'Siswa Aktif',
-            'id_contact' => $contact->id_contact, // <- Hubungkan ke contact
-        ]);
+
+        foreach ($contact as $contacts) {
+            $kelas = Kelas::factory()->create([
+                'unt_pendidikan' => 'sma',
+                'kelas' => '8',
+                'kls_identitas' => 'A',
+                'kls_status' => 'Siswa Aktif',
+                'id_contact' => $contacts->id_contact, // Ini sudah aman!
+            ]);
+        }
 
         Admin::factory()->createMany(
             [

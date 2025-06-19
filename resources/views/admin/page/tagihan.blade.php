@@ -200,6 +200,10 @@
                                                             value="{{ $item->jmlh_byr }}"
                                                             class="mt-1 block w-full border-2 p-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                                     </div>
+                                                                                                                        <div class="text-sm text-gray-600 mt-4">
+                                                                Terakhir diupdate oleh <span class="font-semibold"> {{ $item->nama_admin ?? '' }}</span>
+                                                                pada <span>{{ \Carbon\Carbon::parse($item->updated_at)}}</span>
+                                                            </div>
 
 
                                                     <div class="flex justify-end">

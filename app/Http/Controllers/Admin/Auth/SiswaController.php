@@ -7,10 +7,11 @@ use App\Models\Tahun; // Pastikan mengimpor model Tahun jika diperlukan
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Termwind\Components\Dd;
 
 class SiswaController extends Controller
 {
-    public function index(Request $request)
+    public function siswa(Request $request)
     {
 
         $search = $request->input('search', '');
@@ -20,13 +21,13 @@ class SiswaController extends Controller
 
         // Query dasar dengan filter pencarian
         $query = User::with(['ortu', 'userUnitPendidikan', 'ortu']);
+        $query = User::select('users.*', 'admins.name as nama_admin')
+        ->leftJoin('admins', 'users.updated_by', '=', 'admins.id_admin');
+
         $query = User::join('tahun', function ($join) {
-            // Di sini kita tidak perlu menghubungkan ke 'kelas',
-            // tetapi langsung ke 'tahun', karena kita ingin memfilter berdasarkan tahun
 
         })
-            ->select('users.*', 'tahun.awal', 'tahun.akhir'); // Mengambil kolom yang dibutuhkan
-        // Menambahkan filter pencarian jika ada
+        ->select('users.*', 'tahun.awal', 'tahun.akhir'); 
         if (!empty($search)) {
             $query->where('name', 'like', "%{$search}%")
                 ->orWhere('alamat', 'like', "%{$search}%");
@@ -46,20 +47,17 @@ class SiswaController extends Controller
             $query->where('users.status', $status);
         }
 
-        // Menambahkan filter berdasarkan rentang tanggal yang ada pada tabel 'tahun'
-        // Pastikan untuk menggunakan DB::raw agar bisa menggunakan referensi kolom dari tabel 'tahun'
         $query->whereBetween('users.created_at', [
             DB::raw('tahun.awal'),
             DB::raw('tahun.akhir')
         ]);
         // Ambil data siswa dengan pagination (halaman 10 data per halaman)
         $siswa = $query->paginate(10);
-        // dd($query->toSql(), $query->getBindings());
-
-        return view('index', [
-            'title' => 'Data Siswa',
-            'all_data' => $siswa,
-        ]);
+        // dd($query->toSql(), $query->getBindings());s
+        return view('admin.page.siswa', [
+        'title' => 'DataSiswa',
+        'all_data' => $siswa,
+    ]);
     }
 
 
@@ -107,6 +105,8 @@ class SiswaController extends Controller
             'asl_sekolah' => $request->input('asl_sekolah'),
             'status' => $request->input('status'),
             'email' => $request->input('email'),
+            'updated_by' => auth('admin')->id(),
+
         ]);
 
         // Jika data ortu ada, update data ortu
@@ -130,6 +130,6 @@ class SiswaController extends Controller
             ]);
         }
         // Redirect atau kembalikan response setelah update
-        return redirect()->route('index')->with('success', 'Data Siswa Berhasil Diperbarui!');
+        return redirect()->route('siswa')->with('success', 'Data Siswa Berhasil Diperbarui!');
     }
 }
