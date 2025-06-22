@@ -38,7 +38,10 @@
                 onclick="selectTab('SMA')">SMA</button>
             <button
                 class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
-                onclick="selectTab('PONDOK')">PONDOK</button>
+                onclick="selectTab('PONDOK_SMP')">PONDOK+SMP</button>
+            <button
+                class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
+                onclick="selectTab('PONDOK_SMA')">PONDOK+SMA</button>
             <button
                 class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
                 onclick="selectTab('MADIN')">MADIN</button>
@@ -46,7 +49,7 @@
 
 
         @php
-            $units = ['tk', 'sd', 'smp', 'sma', 'pondok', 'smp', 'madin'];
+            $units = ['tk', 'sd', 'smp', 'sma', 'pondok_sma', 'pondok_smp', 'smp', 'madin'];
 
         @endphp
         @foreach ($units as $unit)
