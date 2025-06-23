@@ -16,7 +16,14 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->text('visi');
             $table->text('misi');
-            });
+            $table->string('image_smp')->nullable();
+            $table->string('gallery_smp_a')->nullable();
+            $table->string('gallery_smp_b')->nullable();
+            $table->string('gallery_smp_c')->nullable();
+            $table->string('gallery_smp_d')->nullable();
+            $table->string('gallery_smp_e')->nullable();
+            $table->string('gallery_smp_f')->nullable();
+        });
     }
 
     /**

@@ -19,8 +19,10 @@
                             </p>
                         </div>
                     </div>
-                    <div class="content-2 flex-1 items-center flex">
-                        <img src="/images/compr_pondok2.jpg" alt="" class="mx-auto my-auto rounded-xl">
+                    <div
+                        class="content-2 flex-1 flex items-center justify-center object-cover transition-transform duration-300 hover:scale-120">
+                        <img src="{{ asset('storage/' . $teks->image_madin) }}"
+                            class="rounded-xl max-w-full max-h-[600px] object-cover object-center " alt="">
                     </div>
                 </div>
 
@@ -50,53 +52,38 @@
                 </div>
             </section>
         @endforeach
-        <div class="section-7">
-            <div class="box p-12">
-                <p class="text-left text-4xl font-bold mb-9 text-center"><span class="text-orange">Jenis</span>
-                    <span>Kegiatan</span>
+        <div class="section-7 mt-12">
+            <div class="box px-4 md:px-12">
+                <p class="text-3xl md:text-4xl font-bold mb-8 text-center">
+                    <span class="text-[oklch(62.7%_0.194_149.214)]">Gallery Kegiatan</span>
                 </p>
-                <div class="card-box flex  justify-center">
-                    <div class=" w-72 mx-8  text-center">
-                        <div
-                            class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-[oklch(45.7%_0.24_277.023)] to-[oklch(51.8%_0.253_323.949)] rounded-full flex items-center justify-center">
-                            <p class="text-center text-3xl text-white font-bold">1</p>
-                        </div>
-                        <p class="text-xl font-bold mb-4 ">BTQ Metode Sidogiri</p>
-                        <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
-                    </div>
-                    <div class=" w-72 mx-8  text-center">
-                        <div
-                            class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-[oklch(45.7%_0.24_277.023)] to-[oklch(51.8%_0.253_323.949)] rounded-full flex items-center justify-center">
-                            <p class="text-center text-3xl text-white font-bold">2</p>
-                        </div>
-                        <p class="text-xl font-bold mb-4 ">Tahfidzul Qur'an</p>
-                        <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
-                    </div>
-                    <div class=" w-72 mx-8  text-center">
-                        <div
-                            class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-[oklch(45.7%_0.24_277.023)] to-[oklch(51.8%_0.253_323.949)] rounded-full flex items-center justify-center">
-                            <p class="text-center text-3xl text-white font-bold">3</p>
-                        </div>
-                        <p class="text-xl font-bold mb-4 ">English Club</p>
-                        <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
-                    </div>
-                    <div class=" w-72 mx-8  text-center">
-                        <div
-                            class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-[oklch(45.7%_0.24_277.023)] to-[oklch(51.8%_0.253_323.949)] rounded-full flex items-center justify-center">
-                            <p class="text-center text-3xl text-white font-bold">4</p>
-                        </div>
-                        <p class="text-xl font-bold mb-4 ">Paskibra</p>
-                        <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
-                    </div>
-                    <div class=" w-72 mx-8  text-center">
-                        <div
-                            class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-[oklch(45.7%_0.24_277.023)] to-[oklch(51.8%_0.253_323.949)] rounded-full flex items-center justify-center">
-                            <p class="text-center text-3xl text-white font-bold">5</p>
-                        </div>
-                        <p class="text-xl font-bold mb-4 ">Hadroh/Banjari</p>
-                        <img src="/images/compro_tk.jpg" alt="Deskripsi Gambar" class="w-full h-auto mb-4" />
+                <div id="gallery-photo" class="max-w-full mx-auto px-4 py-8 max-h-1/2">
+                    <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+                        @foreach ($all_teks as $data)
+                            @php
+                                $photos = [
+                                    $data->gallery_madin_a,
+                                    $data->gallery_madin_b,
+                                    $data->gallery_madin_c,
+                                    $data->gallery_madin_d,
+                                    $data->gallery_madin_e,
+                                    $data->gallery_madin_f,
+                                ];
+                            @endphp
+
+                            @foreach ($photos as $photo)
+                                @if ($photo)
+                                    <div
+                                        class="overflow-hidden rounded-xl break-inside-avoid object-cover transition-transform duration-300 hover:scale-120">
+                                        <img src="{{ asset('storage/' . $photo) }}" class="w-full h-auto  "
+                                            alt="">
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endforeach
                     </div>
                 </div>
+
 
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">

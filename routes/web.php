@@ -230,6 +230,8 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin', 'no-cache'])->group(fun
     Route::post('/tahun-ajaran/update/{id_tahun}', [TahunAjaranController::class, 'update'])->name('superAdmin.tahun-ajaran-update');
     // Route pengaturan home dan setiap infoemasi jenjang
     Route::get('/pengaturan-website', [PengaturanWebController::class, 'showpage'])->name('pengaturanpage');
+    // Route::get('/photo/{id}', [PengaturanWebController::class, 'editPhoto'])->name('photo.edit');
+    // Route::put('/photo/{id}/edit', [PengaturanWebController::class, 'updatePhoto'])->name('photo.update');
 
     Route::get('/pengaturan-website/edit/home', [PengaturanWebController::class, 'edithome'])->name('pengaturanhome-edit');
     Route::post('/pengaturan-website/update/home', [PengaturanWebController::class, 'updatehome'])->name('pengaturanhome-update');

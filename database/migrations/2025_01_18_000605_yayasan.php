@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('yayasan', function (Blueprint $table) {
             $table->id('id_yayasan');
             $table->text('deskripsi');
-
+            $table->string('image_banner')->nullable();
+            $table->string('image_selamat_datang')->nullable();
+            $table->string('image_visi')->nullable();
+            $table->string('image_keunggulan')->nullable();
+            $table->string('image_daftar')->nullable();
             $table->text('alasan_memilih_1');
             $table->text('alasan_memilih_2');
             $table->text('alasan_memilih_3');

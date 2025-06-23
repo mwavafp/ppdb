@@ -16,6 +16,13 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->text('visi');
             $table->text('misi');
+            $table->string('image_pondok')->nullable();
+            $table->string('gallery_pondok_a')->nullable();
+            $table->string('gallery_pondok_b')->nullable();
+            $table->string('gallery_pondok_c')->nullable();
+            $table->string('gallery_pondok_d')->nullable();
+            $table->string('gallery_pondok_e')->nullable();
+            $table->string('gallery_pondok_f')->nullable();
         });
     }
 

@@ -11,12 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        
-     Schema::create('sma', function (Blueprint $table) {
-        $table->id('id_sma');
-        $table->text('deskripsi');
-        $table->text('visi');
-        $table->text('misi');
+
+        Schema::create('sma', function (Blueprint $table) {
+            $table->id('id_sma');
+            $table->text('deskripsi');
+            $table->text('visi');
+            $table->text('misi');
+            $table->string('image_sma')->nullable();
+            $table->string('gallery_sma_a')->nullable();
+            $table->string('gallery_sma_b')->nullable();
+            $table->string('gallery_sma_c')->nullable();
+            $table->string('gallery_sma_d')->nullable();
+            $table->string('gallery_sma_e')->nullable();
+            $table->string('gallery_sma_f')->nullable();
         });
     }
 
