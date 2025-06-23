@@ -23,7 +23,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Tambahkan kolom building_image dengan tipe LONGBLOB via raw SQL
         DB::statement('ALTER TABLE contact_settings ADD building_image LONGBLOB NULL');
     }
 
