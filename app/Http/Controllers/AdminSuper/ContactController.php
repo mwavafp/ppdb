@@ -3,68 +3,74 @@
 namespace App\Http\Controllers\AdminSuper;
 
 use App\Http\Controllers\Controller;
-use App\Models\Contact;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class ContactController extends Controller
 {
     public function showData()
     {
-        // Mengambil data dari database termasuk kolom password yang telah dienkripsi sebelumnya
-        $all_data = DB::table('contact')
+        // Ambil data untuk id 1 sampai 6 secara individual
+        $data1 = DB::table('contact')
             ->join('kelas', 'contact.id_contact', '=', 'kelas.id_kelas')
-            ->select('contact.id_contact',
-                     'contact.nama',
-                     'contact.cp',
-                     'contact.created_at',
-                     'kelas.unt_pendidikan')
-            ->get();
+            ->where('contact.id_contact', 1)
+            ->select('contact.id_contact', 'contact.nama', 'contact.cp', 'kelas.unt_pendidikan')
+            ->first();
 
-        // Dekripsi password untuk setiap item yang diambil (opsional)
-        // foreach ($all_data as $item) {
-        //     $item->password = Crypt::decryptString($item->password);
-        // }
+        $data2 = DB::table('contact')
+            ->join('kelas', 'contact.id_contact', '=', 'kelas.id_kelas')
+            ->where('contact.id_contact', 2)
+            ->select('contact.id_contact', 'contact.nama', 'contact.cp', 'kelas.unt_pendidikan')
+            ->first();
 
+        $data3 = DB::table('contact')
+            ->join('kelas', 'contact.id_contact', '=', 'kelas.id_kelas')
+            ->where('contact.id_contact', 3)
+            ->select('contact.id_contact', 'contact.nama', 'contact.cp', 'kelas.unt_pendidikan')
+            ->first();
 
-        return view('superAdmin.pengaturanCp', compact('all_data'), ['title' => 'pengaturan-cp']);
-    }
-    public function createData(Request $request): RedirectResponse
-    {
-        // dd($request->all());
+        $data4 = DB::table('contact')
+            ->join('kelas', 'contact.id_contact', '=', 'kelas.id_kelas')
+            ->where('contact.id_contact', 4)
+            ->select('contact.id_contact', 'contact.nama', 'contact.cp', 'kelas.unt_pendidikan')
+            ->first();
 
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'nip' => ['required', 'numeric'],
-        //     'email' => ['required', 'string', 'max:255', 'email'],
-        //     'password' => ['required', Rules\Password::defaults()],
-        //     'role' => ['required', 'string'],
-        // ]);
+        $data5 = DB::table('contact')
+            ->join('kelas', 'contact.id_contact', '=', 'kelas.id_kelas')
+            ->where('contact.id_contact', 5)
+            ->select('contact.id_contact', 'contact.nama', 'contact.cp', 'kelas.unt_pendidikan')
+            ->first();
 
+        $data6 = DB::table('contact')
+            ->join('kelas', 'contact.id_contact', '=', 'kelas.id_kelas')
+            ->where('contact.id_contact', 6)
+            ->select('contact.id_contact', 'contact.nama', 'contact.cp', 'kelas.unt_pendidikan')
+            ->first();
 
-
-        Contact::create([
-            'nama' => $request->nama,
-            'cp' => $request->cp
-
+        return view('superAdmin.pengaturanCp', [
+            'title' => 'pengaturan-cp',
+            'data1' => $data1,
+            'data2' => $data2,
+            'data3' => $data3,
+            'data4' => $data4,
+            'data5' => $data5,
+            'data6' => $data6,
         ]);
+    }
 
-        // dd($userAdmin->all());
-        // event(new Registered($userAdmin));
-        // if ($userAdmin) {
-        //     return redirect(route('admin.dashboardSA'))->with('success', 'Admin berhasil ditambahkan!');
-        // } else {
-        //     return back()->withErrors(['msg' => 'Gagal menambahkan admin, silakan coba lagi.']);
-        // }
+    public function createData(Request $request)
+    {
+        DB::table('contact')->insert([
+            'nama' => $request->nama,
+            'cp' => $request->cp,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
         return to_route('admin.pengaturanCp');
     }
-        public function updateData(Request $request, $id)
+
+    public function updateData(Request $request, $id)
     {
         $request->validate([
             'nama' => 'required|string|max:255',
@@ -81,5 +87,4 @@ class ContactController extends Controller
 
         return redirect()->route('admin.pengaturanCp')->with('success', 'Data berhasil diperbarui.');
     }
-
 }
