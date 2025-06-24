@@ -25,7 +25,7 @@
                         <div id="dropdown-menu"
                             class="absolute hidden bg-white text-black shadow-lg border rounded-lg mt-2 py-2 w-48 transition duration-300 ease-in-out z-50">
                             <x-nav-link href="/pondok" class="block px-4 py-2 hover:bg-gray-100">PONDOK</x-nav-link>
-                            <x-nav-link href="/madin" class="block px-4 py-2 hover:bg-gray-100">MADIN</x-nav-link>
+                            <x-nav-link href="/madin" class="block px-4 py-2 hover:bg-gray-100">MADIN & TPQ</x-nav-link>
 
                             <x-nav-link href="/tk" class="block px-4 py-2 hover:bg-gray-100">TK</x-nav-link>
                             <x-nav-link href="/sd" class="block px-4 py-2 hover:bg-gray-100">SD</x-nav-link>

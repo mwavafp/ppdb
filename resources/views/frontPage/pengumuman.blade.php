@@ -64,18 +64,7 @@
                     </div>
                 </div>
                 <!-- Card 5 -->
-                <div class="relative border-2 border-[oklch(62.7%_0.194_149.214)] rounded-lg p-7 text-center h-40">
-                    <div
-                        class="absolute top-0 left-0 bg-[oklch(62.7%_0.194_149.214)] text-white px-2 py-1 rounded-br-lg">
-                        <span class="text-sm">📢 Pengumuman</span>
-                    </div>
-                    <div class="py-4 flex flex-col items-center justify-center">
-                        <h3 class="text-2xl font-bold mb-4">TPQ</h3>
-                        <a href="{{ route('pengumumantpq') }}"
-                            class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded hover:bg-green-800">KLIK
-                            DISINI</a>
-                    </div>
-                </div>
+                
                 <!-- Card 6 -->
                 <div class="relative border-2 border-[oklch(62.7%_0.194_149.214)] rounded-lg p-7 text-center h-40">
                     <div
@@ -83,7 +72,7 @@
                         <span class="text-sm">📢 Pengumuman</span>
                     </div>
                     <div class="py-4 flex flex-col items-center justify-center">
-                        <h3 class="text-2xl font-bold mb-4">MADIN</h3>
+                        <h3 class="text-2xl font-bold mb-4">MADIN & TPQ</h3>
                         <a href="{{ route('pengumumanmadin') }}"
                             class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded hover:bg-green-800">KLIK
                             DISINI</a>

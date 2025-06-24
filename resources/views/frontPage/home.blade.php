@@ -22,8 +22,8 @@
 
         </div>
         <div class="flex flex-wrap justify-center gap-4 mb-8">
-            <x-card-sekolah href="/tpq">TPQ</x-card-sekolah>
-            <x-card-sekolah href="/madin">MADIN</x-card-sekolah>
+           
+            <x-card-sekolah href="/madin">MADIN & TPQ</x-card-sekolah>
             <x-card-sekolah href="/pondok">PONDOK</x-card-sekolah>
         </div>
     </div>

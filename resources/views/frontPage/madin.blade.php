@@ -2,7 +2,7 @@
     <x-slot:title>{{ $title }}</x-slot:title>
     <div class="section-2  -">
         <div class="text-3xl text-center font-bold bg-[oklch(62.7%_0.194_149.214)]  text-white mb-8 rounded-b-full">
-            <p class="py-8">INFORMASI MADIN</p>
+            <p class="py-8">INFORMASI MADIN & TPQ</p>
         </div>
         @foreach ($all_teks as $teks)
             <div class="section-3">
@@ -10,7 +10,7 @@
                     <div class="content-1 flex-1 mr-8">
                         <p class="text-left text-4xl font-bold mb-9 text-center text-green-600">
                             <!-- Mengubah warna teks menjadi hijau -->
-                            Selamat Datang di <br> Madarasah Diniyah Nurul Huda
+                            Selamat Datang di <br> Madrasah Diniyah dan Taman Pendidikan Qur'an Nurul Huda
                         </p>
                         <div class="bg-gray-100 p-6 rounded-md shadow-lg transform transition-transform hover:scale-105">
                             <!-- Kotak kolom timbul -->
@@ -171,23 +171,45 @@
                     </ul>
                 </div>
                 <div class='flex flex-col'>
-                    <div class="bg-white p-6 rounded-md shadow-md mb-4 tabel-1">
-                        <h2 class="text-[oklch(62.7%_0.194_149.214)] text-lg font-bold mb-4">
-                            JADWAL PENDAFTARAN
-                        </h2>
-                        <ul class="space-y-2 mb-4">
-                            @foreach ($acara as $gelombang)
-                                <li>
-                                    <strong>{{ $gelombang->namaAcara }}</strong><br />
-                                    {{ $gelombang->awal_acara }} - {{ $gelombang->akhir_acara }}
-                                </li>
-                            @endforeach
-                            <br>
-                        </ul>
-                        <a href="/form?unit_pendidikan=MADIN&cnt=2"
-                            class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
-                            DAFTAR KLIK DISINI
-                        </a>
+                    <div class="flex ">
+                        <div class="sma mr-4 ">
+                            <div class="bg-white p-6 rounded-md shadow-md  mb-4 tabel-1">
+                                <h2 class="text-[oklch(62.7%_0.194_149.214)] text-lg font-bold mb-4">
+                                    JADWAL PENDAFTARAN MADIN
+                                </h2>
+                                <ul class="space-y-2 mb-4">
+                                    @foreach ($acara as $gelombang)
+                                        <li>
+                                            <strong>{{ $gelombang->namaAcara }}</strong><br />
+                                            {{ $gelombang->awal_acara }} - {{ $gelombang->akhir_acara }}
+                                        </li>
+                                    @endforeach
+                                    <br>
+                                    <a href='/form?unit_pendidikan=PONDOK_SMA&cnt=1'
+                                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
+                                        DAFTAR KLIK DISINI
+                                    </a>
+                            </div>
+                        </div>
+                        <div class="smp ml-4">
+                            <div class="bg-white  p-6 rounded-md shadow-md mb-4 tabel-1">
+                                <h2 class="text-[oklch(62.7%_0.194_149.214)] text-lg font-bold mb-4">
+                                    JADWAL PENDAFTARAN TPQ
+                                </h2>
+                                <ul class="space-y-2 mb-4">
+                                    @foreach ($acara as $gelombang)
+                                        <li>
+                                            <strong>{{ $gelombang->namaAcara }}</strong><br />
+                                            {{ $gelombang->awal_acara }} - {{ $gelombang->akhir_acara }}
+                                        </li>
+                                    @endforeach
+                                    <br>
+                                    <a href='/form?unit_pendidikan=PONDOK_SMP&cnt=1'
+                                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
+                                        DAFTAR KLIK DISINI
+                                    </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="bg-white p-6 rounded-md shadow-md  tabel-2">
                         <h2 class="text-[oklch(62.7%_0.194_149.214)] text-lg font-bold mt-6 mb-4">
