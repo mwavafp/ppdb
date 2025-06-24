@@ -16,7 +16,14 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->text('visi');
             $table->text('misi');
-            });
+            $table->string('image_sd')->nullable();
+            $table->string('gallery_sd_a')->nullable();
+            $table->string('gallery_sd_b')->nullable();
+            $table->string('gallery_sd_c')->nullable();
+            $table->string('gallery_sd_d')->nullable();
+            $table->string('gallery_sd_e')->nullable();
+            $table->string('gallery_sd_f')->nullable();
+        });
     }
 
     /**

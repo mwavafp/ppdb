@@ -3,7 +3,8 @@
     <x-slot:title>{{ $title }}</x-slot:title>
 
     <div class="section-1 flex justify-center">
-        <img src="/images/banner.png" alt="" class="w-full object-cover">
+        <img src="{{ asset('storage/' . $all_teks[0]->image_banner) }}"
+            class="rounded-xl w-full max-h-[300px] object-cover object-center " alt="Banner">
     </div>
 
     <div class="section-2">
@@ -37,8 +38,11 @@
                     <p class="text-justify"> {!! $teks->deskripsi !!}</p>
             </div>
             <div class="content-2 flex-1 flex items-center justify-center">
-                <img src="/images/gambar-1.png" alt="" class="rounded-xl max-w-full h-auto">
+                <img src="{{ asset('storage/' . $teks->image_selamat_datang) }}"
+                    class="rounded-xl w-full max-w-[600px] h-auto object-cover transition-transform duration-300 hover:scale-120"
+                    alt="Banner">
             </div>
+
         </div>
     </div>
 
@@ -51,7 +55,7 @@
                 @for ($i = 1; $i <= 6; $i++)
                     <div class="w-full sm:w-72 mx-4 sm:mx-8 my-8">
                         <img src="/images/book.png" alt="" class="w-32 h-32 mx-auto mb-12">
-                        <p class="text-justify">{!! ($teks->{'alasan_memilih_' . $i}) !!}</p>
+                        <p class="text-justify">{!! $teks->{'alasan_memilih_' . $i} !!}</p>
                     </div>
                 @endfor
             </div>
@@ -61,12 +65,14 @@
     <div class="section-5">
         <div
             class="background flex flex-col lg:flex-row bg-gradient-to-r from-[oklch(62.7%_0.194_149.214)] to-[oklch(90.5%_0.182_98.111)] text-white px-4 md:px-16 py-8">
-            <div class="content-1 flex-initial flex justify-center items-center mb-8 lg:mb-0 lg:mr-14">
-                <img src="/images/gambar-1.png" alt="" class="rounded-xl max-w-full h-auto">
+            <div class="content-2 flex-1 flex items-center justify-center ">
+                <img src="{{ asset('storage/' . $teks->image_visi) }}"
+                    class="rounded-xl w-full max-w-[600px] h-auto object-cover transition-transform duration-300 hover:scale-120"
+                    alt="Banner">
             </div>
-            <div class="content-2 flex-initial">
+            <div class="content-2  flex-1 pl-6 ">
                 <p class="text-center text-xl font-bold mb-8">VISI & MISI</p>
-                <p class="text-justify">{!! ($teks->visi_misi) !!}</p>
+                <p class="text-justify">{!! $teks->visi_misi !!}</p>
             </div>
         </div>
     </div>
@@ -74,12 +80,14 @@
     <div class="section-6">
         <div
             class="background flex flex-col md:flex-row bg-gradient-to-r from-[oklch(45.7%_0.24_277.023)] to-[oklch(51.8%_0.253_323.949)] text-white px-4 md:px-16 py-8">
-            <div class="content-1 flex-1 mb-8 md:mb-0 md:mr-8">
+            <div class="content-1 flex-1 mb-8 md:mb-0 md:mr-8 ">
                 <p class="text-center text-xl font-bold mb-8">KEUNGGULAN KAMI</p>
-                <p class="text-justify">{!! ($teks->keunggulan) !!}</p>
+                <p class="text-justify">{!! $teks->keunggulan !!}</p>
             </div>
-            <div class="content-2 flex-1 flex items-center justify-center">
-                <img src="/images/gambar-1.png" alt="" class="rounded-xl max-w-full h-auto">
+            <div class="content-2 flex-1 flex items-center justify-center ">
+                <img src="{{ asset('storage/' . $teks->image_keunggulan) }}"
+                    class="rounded-xl w-full max-w-[600px] h-auto object-cover transition-transform duration-300 hover:scale-120"
+                    alt="Banner">
             </div>
         </div>
     </div>
@@ -97,7 +105,7 @@
                             <p class="text-3xl text-white font-bold">{{ $i }}</p>
                         </div>
                         <p class="text-xl font-bold mb-4">Membawa Kk</p>
-                        <p class="text-center text-sm">{!! ($teks->{'alur_pendaftaran_' . $i}) !!}</p>
+                        <p class="text-center text-sm">{!! $teks->{'alur_pendaftaran_' . $i} !!}</p>
                     </div>
                 @endfor
             </div>
@@ -136,7 +144,9 @@
                 </ul>
             </div>
             <div class="content-2 flex-1 flex items-center justify-center">
-                <img src="/images/gambar-1.png" alt="" class="rounded-xl max-w-full h-auto">
+                <img src="{{ asset('storage/' . $teks->image_daftar) }}"
+                    class="rounded-xl w-full max-w-[600px] h-auto object-cover transition-transform duration-300 hover:scale-120"
+                    alt="Banner">
             </div>
         </div>
     </div>

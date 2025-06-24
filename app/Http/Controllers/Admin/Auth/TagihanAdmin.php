@@ -25,7 +25,7 @@ class TagihanAdmin extends Controller
         ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
         ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
         ->join('pembayaran', 'users.id_user', '=', 'pembayaran.id_user')
-        ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by') 
+        ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
         ->whereBetween('users.created_at', [
             DB::raw('(SELECT awal FROM tahun LIMIT 1)'),
             DB::raw('(SELECT akhir FROM tahun LIMIT 1)')
@@ -39,13 +39,17 @@ class TagihanAdmin extends Controller
             'pembayaran.byr_dft_ulang',
             'pembayaran.status',
             'pembayaran.jmlh_byr',
+            'pembayaran.jmlh_byr2',
+            'pembayaran.jmlh_byr3',
+            'pembayaran.jmlh_byr4',
             'harga.total_bayar_daful',
             'harga.dp_daful',
             'harga.diskon',
             'pembayaran.updated_at',
-            'admins.name as nama_admin' 
+            'admins.name as nama_admin'
     )
     ->paginate(10);
+
 
 
 
@@ -53,26 +57,29 @@ class TagihanAdmin extends Controller
     }
 
 
-    public function editData($id)
-    {
+    // public function editData($id)
+    // {
 
-        $pembayaran = DB::table('pembayaran')
-            ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
-            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by') 
-            ->select('users.name', 'users.id_user', 'pembayaran.id_bayar', 
-                    'kelas.unt_pendidikan', 'pembayaran.byr_dft_ulang', 'pembayaran.status', 'jmlh_byr',
-                    'admins.name as nama_admin','pembayaran.updated_at')
-            ->where('pembayaran.id_bayar', '=', $id)
-            ->first();
+    //     $pembayaran = DB::table('pembayaran')
+    //         ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
+    //         ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+    //         ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+    //         ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
+    //         ->select('users.name', 'users.id_user', 'pembayaran.id_bayar',
+    //                 'kelas.unt_pendidikan', 'pembayaran.byr_dft_ulang', 'pembayaran.status', 'jmlh_byr','jmlh_byr2','jmlh_byr3','jmlh_byr4',
+    //                 'admins.name as nama_admin','pembayaran.updated_at')
+    //         ->where('pembayaran.id_bayar', '=', $id)
+    //         ->first();
 
-        return view('admin.page.modal.edit_tagihan', compact('pembayaran'), ['title' => 'tes']);
-    }
+    //     return view('admin.page.modal.edit_tagihan', compact('pembayaran'), ['title' => 'tes']);
+    // }
     public function updateData(Request $request, $id)
     {
         $validatedData = $request->validate([
             'jmlh_byr' => 'required|numeric',
+            'jmlh_byr2' => 'required|numeric',
+            'jmlh_byr3' => 'required|numeric',
+            'jmlh_byr4' => 'required|numeric',
 
         ]);
 
@@ -86,9 +93,9 @@ class TagihanAdmin extends Controller
 
             ->first();
 
-        $byr_dft_ulang = $validatedData['jmlh_byr'] >= $pembayaran->jmlh_byr ? 'lunas' : 'belum';
+        $byr_dft_ulang = $validatedData['jmlh_byr'] + $validatedData['jmlh_byr2'] + $validatedData['jmlh_byr3'] + $validatedData['jmlh_byr4'] >= $pembayaran->jmlh_byr ? 'lunas' : 'belum';
         $statusByr = $pembayaran->status; // default ke status lama
-        if ($validatedData['jmlh_byr'] + $harga->diskon >= $harga->total_bayar_daful) {
+        if ($validatedData['jmlh_byr'] + $validatedData['jmlh_byr2'] + $validatedData['jmlh_byr3'] + $validatedData['jmlh_byr4'] + $harga->diskon >= $harga->total_bayar_daful) {
             $statusByr = 'Lunas';
         } else {
             $statusByr = 'Cicil';
@@ -98,12 +105,36 @@ class TagihanAdmin extends Controller
             ->where('id_bayar', $id)
             ->update([
                 'jmlh_byr' => $validatedData['jmlh_byr'],
+                'jmlh_byr2' => $validatedData['jmlh_byr2'],
+                'jmlh_byr3' => $validatedData['jmlh_byr3'],
+                'jmlh_byr4' => $validatedData['jmlh_byr4'],
                 'status' => $statusByr,
                 'byr_dft_ulang' => $byr_dft_ulang,
                 'updated_by' => auth('admin')->id()
             ]);
         return redirect()->route('tagihan-admin')->with('success', 'Data berhasil disimpan!');
     }
+
+    public function showDetail()
+{
+    $data = DB::table('pembayaran')
+        ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
+        ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+        ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+        ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
+        ->select(
+            'pembayaran.*',
+            'users.name',
+            'kelas.unt_pendidikan',
+            'admins.name as nama_admin',
+            'pembayaran.updated_at'
+        )
+        ->orderBy('pembayaran.updated_at', 'desc')
+        ->paginate(10); // bisa disesuaikan
+
+    return redirect()->route('tagihan-admin', compact('data'), ['title' => 'Detail Pembayaran']);
+}
+
 
     public function search(Request $request)
     {

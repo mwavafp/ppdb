@@ -68,7 +68,7 @@ class ContactController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:255',
-            'cp' => 'required|string|max:20',
+            'cp' => 'required|string|max:255',
         ]);
 
         DB::table('contact')

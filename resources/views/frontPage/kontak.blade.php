@@ -48,20 +48,21 @@
                 <div id="map" class="rounded-lg w-full h-52"></div>
             </div>
 
-            <div class="flex gap-5 mt-6">
-                @if ($settings->facebook_url)
-                    <a href="{{ $settings->facebook_url }}" class="hover:scale-110 text-white text-2xl" target="_blank"><i class="fab fa-facebook"></i></a>
-                @endif
-                @if ($settings->instagram_url)
-                    <a href="{{ $settings->instagram_url }}" class="hover:scale-110 text-white text-2xl" target="_blank"><i class="fab fa-instagram"></i></a>
-                @endif
-                @if ($settings->whatsapp_url)
-                    <a href="{{ $settings->whatsapp_url }}" class="hover:scale-110 text-white text-2xl" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                @endif
-                @if ($settings->youtube_url)
-                    <a href="{{ $settings->youtube_url }}" class="hover:scale-110 text-white text-2xl" target="_blank"><i class="fab fa-youtube"></i></a>
-                @endif
-            </div>
+        <div class="flex gap-5 mt-6">
+            <a href="{{ $settings->facebook_url ?? 'https://facebook.com/' }}" class="hover:scale-110 text-white text-2xl" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="{{ $settings->instagram_url ?? 'https://instagram.com/' }}" class="hover:scale-110 text-white text-2xl" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="{{ $settings->whatsapp_url ?? 'https://wa.me/' }}" class="hover:scale-110 text-white text-2xl" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="{{ $settings->youtube_url ?? 'https://youtube.com/' }}" class="hover:scale-110 text-white text-2xl" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+
         </div>
 
         <div class="w-full lg:w-2/3">

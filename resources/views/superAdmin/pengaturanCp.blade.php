@@ -24,7 +24,7 @@
                 <tr>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">No</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama Admin</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nomor WhatsApp</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Link Group</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
                 </tr>

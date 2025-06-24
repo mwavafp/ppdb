@@ -21,10 +21,33 @@
 
             <!-- Form Section -->
             <div class="bg-white px-4 sm:px-7 pb-7 pt-1 rounded-lg shadow-lg w-full">
-                <form method="POST" action="{{ route('pengaturanhome-update') }}" class="space-y-8 w-full">
+                <form method="POST" action="{{ route('pengaturanhome-update') }}" enctype="multipart/form-data"
+                    class="space-y-8 w-full">
                     @csrf
                     <input type="hidden" name="id_yayasan" value="{{ $data->id_yayasan }}">
+                    <div id="banner  mb-8">
+                        <div class="w-full">
 
+                            <label for="deskripsi" class="block text-xl font-semibold mb-2 break-words">Foto
+                                Banner</label>
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang</p>
+                                <img class="rounded-xl" src="{{ asset('storage/' . $data->image_banner) }}"
+                                    alt="" width="500">
+                            </div>
+                            <div>
+                                <p>Edit Photo</p>
+                                <input type="file" name="image_banner" id=""
+                                    class="block w-full text-sm text-gray-500
+           file:mr-4 file:py-2 file:px-4
+           file:rounded-sm file:border-0
+           file:text-sm file:font-semibold
+           file:bg-[oklch(62.7%_0.194_149.214)] file:text-white
+           hover:file:bg-green-400">
+                            </div>
+
+                        </div>
+                    </div>
                     <!-- Deskripsi -->
                     <div class="w-full">
                         <label for="deskripsi" class="block text-xl font-semibold mb-2 break-words">Deskripsi</label>
@@ -33,6 +56,29 @@
                         </div>
                         <div class="w-full overflow-hidden">
                             <textarea id="deskripsi" name="deskripsi" class="w-full">{{ $data->deskripsi }}</textarea>
+                        </div>
+                    </div>
+                    <div id="deskripsi  mb-8">
+                        <div class="w-full">
+
+                            <label for="deskripsi" class="block text-xl font-semibold mb-2 break-words">Foto
+                                Selamat Datang</label>
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang</p>
+                                <img class="rounded-xl" src="{{ asset('storage/' . $data->image_selamat_datang) }}"
+                                    alt="" width="500">
+                            </div>
+                            <div>
+                                <p>Edit Photo</p>
+                                <input type="file" name="image_selamat_datang" id=""
+                                    class="block w-full text-sm text-gray-500
+           file:mr-4 file:py-2 file:px-4
+           file:rounded-sm file:border-0
+           file:text-sm file:font-semibold
+           file:bg-[oklch(62.7%_0.194_149.214)] file:text-white
+           hover:file:bg-green-400">
+                            </div>
+
                         </div>
                     </div>
 
@@ -46,15 +92,62 @@
                             <textarea id="keunggulan" name="keunggulan" class="w-full">{{ $data->keunggulan }}</textarea>
                         </div>
                     </div>
+                    <div id="keunggulan  mb-8">
+                        <div class="w-full">
+
+                            <label for="deskripsi" class="block text-xl font-semibold mb-2 break-words">Foto
+                                Keunggulan</label>
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang</p>
+                                <img class="rounded-xl" src="{{ asset('storage/' . $data->image_keunggulan) }}"
+                                    alt="" width="500">
+                            </div>
+                            <div>
+                                <p>Edit Photo</p>
+                                <input type="file" name="image_keunggulan" id=""
+                                    class="block w-full text-sm text-gray-500
+           file:mr-4 file:py-2 file:px-4
+           file:rounded-sm file:border-0
+           file:text-sm file:font-semibold
+           file:bg-[oklch(62.7%_0.194_149.214)] file:text-white
+           hover:file:bg-green-400">
+                            </div>
+
+                        </div>
+                    </div>
 
                     <!-- Visi Misi -->
                     <div class="w-full">
-                        <label for="visi_misi" class="block text-xl font-semibold mb-2 break-words">Visi dan Misi</label>
+                        <label for="visi_misi" class="block text-xl font-semibold mb-2 break-words">Visi dan
+                            Misi</label>
                         <div class="text-sm text-gray-500 mb-1">
                             <span id="visi_misi-count">0</span>/1500 karakter
                         </div>
                         <div class="w-full overflow-hidden">
                             <textarea id="visi_misi" name="visi_misi" class="w-full">{{ $data->visi_misi }}</textarea>
+                        </div>
+                    </div>
+                    <div id="deskripsi  mb-8">
+                        <div class="w-full">
+
+                            <label for="deskripsi" class="block text-xl font-semibold mb-2 break-words">Foto
+                                Visi & Misi</label>
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang</p>
+                                <img class="rounded-xl" src="{{ asset('storage/' . $data->image_visi) }}" alt=""
+                                    width="500">
+                            </div>
+                            <div>
+                                <p>Edit Photo</p>
+                                <input type="file" name="image_visi" id=""
+                                    class="block w-full text-sm text-gray-500
+           file:mr-4 file:py-2 file:px-4
+           file:rounded-sm file:border-0
+           file:text-sm file:font-semibold
+           file:bg-[oklch(62.7%_0.194_149.214)] file:text-white
+           hover:file:bg-green-400">
+                            </div>
+
                         </div>
                     </div>
 
@@ -63,7 +156,8 @@
                         @for ($i = 1; $i <= 6; $i++)
                             <div class="w-full min-w-0">
                                 <label for="alasan_memilih_{{ $i }}"
-                                    class="block text-xl font-semibold mb-2 break-words">Alasan Memilih {{ $i }}</label>
+                                    class="block text-xl font-semibold mb-2 break-words">Alasan Memilih
+                                    {{ $i }}</label>
                                 <div class="text-sm text-gray-500 mb-1">
                                     <span id="alasan_memilih_{{ $i }}-count">0</span>/1500 karakter
                                 </div>
@@ -79,7 +173,8 @@
                         @for ($i = 1; $i <= 5; $i++)
                             <div class="w-full min-w-0">
                                 <label for="alur_pendaftaran_{{ $i }}"
-                                    class="block text-xl font-semibold mb-2 break-words">Alur Pendaftaran {{ $i }}</label>
+                                    class="block text-xl font-semibold mb-2 break-words">Alur Pendaftaran
+                                    {{ $i }}</label>
                                 <div class="text-sm text-gray-500 mb-1">
                                     <span id="alur_pendaftaran_{{ $i }}-count">0</span>/1500 karakter
                                 </div>
@@ -88,6 +183,29 @@
                                 </div>
                             </div>
                         @endfor
+                    </div>
+                    <div id="daftar  mb-8">
+                        <div class="w-full">
+
+                            <label for="deskripsi" class="block text-xl font-semibold mb-2 break-words">Foto
+                                Daftar</label>
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang</p>
+                                <img class="rounded-xl" src="{{ asset('storage/' . $data->image_daftar) }}"
+                                    alt="" width="500">
+                            </div>
+                            <div>
+                                <p>Edit Photo</p>
+                                <input type="file" name="image_daftar" id=""
+                                    class="block w-full text-sm text-gray-500
+           file:mr-4 file:py-2 file:px-4
+           file:rounded-sm file:border-0
+           file:text-sm file:font-semibold
+           file:bg-[oklch(62.7%_0.194_149.214)] file:text-white
+           hover:file:bg-green-400">
+                            </div>
+
+                        </div>
                     </div>
 
                     <!-- Submit Button -->
@@ -104,6 +222,8 @@
                         </div>
                     </div>
                 </form>
+
+
             </div>
         </div>
 
@@ -112,7 +232,7 @@
             $(document).ready(function() {
                 // Konfigurasi maksimal karakter untuk semua field
                 const maxLength = 1500;
-                
+
                 const ids = [
                     'deskripsi', 'keunggulan', 'visi_misi',
                     'alasan_memilih_1', 'alasan_memilih_2', 'alasan_memilih_3', 'alasan_memilih_4',
@@ -132,7 +252,7 @@
                 function updateCounter(id, length) {
                     const counter = $('#' + id + '-count');
                     counter.text(length);
-                    
+
                     if (length >= maxLength) {
                         counter.addClass('text-red-500 font-semibold');
                     } else if (length >= maxLength * 0.8) {
@@ -147,7 +267,7 @@
                 function preventExcessInput(e, id) {
                     const content = $('#' + id).summernote('code');
                     const textLength = getTextLength(content);
-                    
+
                     // Jika sudah mencapai batas dan bukan tombol delete/backspace
                     if (textLength >= maxLength && e.keyCode !== 8 && e.keyCode !== 46) {
                         e.preventDefault();
@@ -176,7 +296,7 @@
                                 const initialContent = $('#' + id).summernote('code');
                                 const initialLength = getTextLength(initialContent);
                                 updateCounter(id, initialLength);
-                                
+
                                 // Pastikan editor responsif
                                 const $editor = $('#' + id).next('.note-editor');
                                 $editor.css({
@@ -184,7 +304,7 @@
                                     'max-width': '100%',
                                     'box-sizing': 'border-box'
                                 });
-                                
+
                                 // Pastikan note-editable area juga responsif
                                 $editor.find('.note-editable').css({
                                     'word-wrap': 'break-word',
@@ -200,7 +320,7 @@
                             onKeyup: function(e) {
                                 const content = $('#' + id).summernote('code');
                                 let textLength = getTextLength(content);
-                                
+
                                 // Potong jika melebihi batas (untuk kasus copy-paste atau lainnya)
                                 if (textLength > maxLength) {
                                     const tempDiv = document.createElement('div');
@@ -210,7 +330,7 @@
                                     $('#' + id).summernote('code', truncatedText);
                                     textLength = maxLength;
                                 }
-                                
+
                                 updateCounter(id, textLength);
                             },
                             onPaste: function(e) {
@@ -218,16 +338,18 @@
                                 setTimeout(() => {
                                     const content = $('#' + id).summernote('code');
                                     let textLength = getTextLength(content);
-                                    
+
                                     if (textLength > maxLength) {
                                         const tempDiv = document.createElement('div');
                                         tempDiv.innerHTML = content;
-                                        const fullText = tempDiv.textContent || tempDiv.innerText || '';
-                                        const truncatedText = fullText.substring(0, maxLength);
+                                        const fullText = tempDiv.textContent || tempDiv
+                                            .innerText || '';
+                                        const truncatedText = fullText.substring(0,
+                                            maxLength);
                                         $('#' + id).summernote('code', truncatedText);
                                         textLength = maxLength;
                                     }
-                                    
+
                                     updateCounter(id, textLength);
                                 }, 100);
                             }

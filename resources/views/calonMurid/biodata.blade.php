@@ -10,14 +10,13 @@
             <!-- Foto -->
             <div class="lg:w-1/4 w-full">
                 <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center justify-center">
-                    <img id="profile-photo" src="https://via.placeholder.com/200" alt="{{ $all_data->nama }}"
-                        class="rounded-lg border border-gray-300 w-full h-auto object-cover">
-                    <input id="profile-photo-input" type="file" class="hidden mt-2" accept="image/*">
-                    <a href="https://wa.me/+62{{ $all_data->cp }}" target="_blank" class="whatsapp-button">
+                    <strong class="text-center pb-5">Silahkan Masuk Ke Grub WhatsApp Di Bawah ini</strong>
+
+                        <a href="{{ $all_data->cp }}" target="_blank" class="whatsapp-button">
                         <button type="button"
-                            class="cursor-pointer rounded-md whatsapp-btn bg-[oklch(62.7%_0.194_149.214)] hover:bg-green-500 text-white py-2 px-4">Chat
-                            with us on
-                            WhatsApp</button>
+                            class="cursor-pointer rounded-md whatsapp-btn bg-[oklch(62.7%_0.194_149.214)] hover:bg-green-500 text-white py-2 px-4">
+                            Klik Untuk Masuk
+                        </button>
                     </a>
 
                 </div>
