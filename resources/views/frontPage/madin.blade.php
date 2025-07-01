@@ -172,7 +172,7 @@
                                         </li>
                                     @endforeach
                                     <br>
-                                    <a href='/form?unit_pendidikan=PONDOK_SMA&cnt=1'
+                                    <a href='/form?unit_pendidikan=MADIN&cnt=2'
                                         class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
                                         DAFTAR KLIK DISINI
                                     </a>
@@ -191,7 +191,7 @@
                                         </li>
                                     @endforeach
                                     <br>
-                                    <a href='/form?unit_pendidikan=PONDOK_SMP&cnt=1'
+                                    <a href='/form?unit_pendidikan=TPQ&cnt=2'
                                         class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
                                         DAFTAR KLIK DISINI
                                     </a>
