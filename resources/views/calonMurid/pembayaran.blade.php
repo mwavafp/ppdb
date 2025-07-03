@@ -6,49 +6,60 @@
 
     <!-- Informasi Pendaftar -->
     <div class="px-4 lg:px-9 py-5 flex flex-col lg:flex-row lg:space-x-20 space-y-4 lg:space-y-0">
-        <div>
-            <table>
-                <tr>
-                    <td class="pr-2 py-1 font-medium">No. Pendaftaran</td>
-                    <td class="pr-2">:</td>
-                    <td>{{ $all_data->id_user }}</td>
-                </tr>
-                <tr>
-                    <td class="pr-2 py-1 font-medium">Nama</td>
-                    <td class="pr-2">:</td>
-                    <td>{{ $all_data->name }}</td>
-                </tr>
-                <tr>
-                    <td class="pr-2 py-1 font-medium">Jenjang</td>
-                    <td class="pr-2">:</td>
-                    <td>{{ strtoupper($all_data->unt_pendidikan) }}</td>
-                </tr>
-            </table>
+        <div class="flex">
+            <div class="mr-8">
+                <table>
+                    @foreach ($all_data as $item)
+                        <div>
+                            <tr>
+                                <td class="pr-2 py-1 font-medium">No. Pendaftaran</td>
+                                <td class="pr-2">:</td>
+                                <td>{{ $item->id_user }}</td>
+                            </tr>
+                            <tr>
+                                <td class="pr-2 py-1 font-medium">Nama</td>
+                                <td class="pr-2">:</td>
+                                <td>{{ $item->name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="pr-2 py-1 font-medium">Jenjang</td>
+                                <td class="pr-2">:</td>
+                                <td>{{ strtoupper($item->unt_pendidikan) }}</td>
+                            </tr>
+                        </div>
+                    @endforeach
+
+                </table>
+            </div>
+
+            <div>
+                <table>
+                    @foreach ($all_data as $item)
+                        <tr>
+                            <td class="pr-2 py-1 font-medium">Gelombang</td>
+                            <td class="pr-2">:</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td class="pr-2 py-1 font-medium">Kategori</td>
+                            <td class="pr-2">:</td>
+                            <td>Alumni</td>
+                        </tr>
+                        <tr>
+                            <td class="pr-2 py-1 font-medium">Status</td>
+                            <td class="pr-2">:</td>
+                            <td>
+                                {!! $item->byr_dft_ulang == 'belum'
+                                    ? '<span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum Lunas</span>'
+                                    : '<span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-green-700 rounded-lg">Lunas</span>' !!}
+                            </td>
+                        </tr>
+                    @endforeach
+
+                </table>
+            </div>
         </div>
 
-        <div>
-            <table>
-                <tr>
-                    <td class="pr-2 py-1 font-medium">Gelombang</td>
-                    <td class="pr-2">:</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td class="pr-2 py-1 font-medium">Kategori</td>
-                    <td class="pr-2">:</td>
-                    <td>Alumni</td>
-                </tr>
-                <tr>
-                    <td class="pr-2 py-1 font-medium">Status</td>
-                    <td class="pr-2">:</td>
-                    <td>
-                        {!! $all_data->byr_dft_ulang == 'belum'
-                            ? '<span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-red-600 rounded-lg">Belum Lunas</span>'
-                            : '<span class="p-1.5 text-xs font-medium uppercase tracking-wider text-white bg-green-700 rounded-lg">Lunas</span>' !!}
-                    </td>
-                </tr>
-            </table>
-        </div>
     </div>
 
     <!-- Rincian Pembayaran -->
@@ -90,20 +101,21 @@
         <table class="min-w-full text-sm">
             <thead class="bg-gray-300 border-b-2 border-gray-400">
                 <tr>
+                    <th class="p-3 text-center">Unit Pendidikan</th>
                     <th class="p-3 text-center">DP</th>
                     <th class="p-3 text-center">Jumlah yang sudah dibayar</th>
                     <th class="p-3 text-center">Sisa Bayar</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white">
-                    @foreach ($biaya_murid as $item)
+                @foreach ($biaya_murid as $item)
+                    <tr class="bg-white">
+                        <td class="p-3 text-center">{{ $item->unt_pendidikan }}</td>
                         <td class="p-3 text-center">@currency($item->dp_daful)</td>
                         <td class="p-3 text-center">@currency($item->jmlh_byr)</td>
                         <td class="p-3 text-center">@currency($item->total_bayar_daful - $item->jmlh_byr)</td>
-                    @endforeach
-
-                </tr>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

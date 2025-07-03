@@ -16,11 +16,15 @@ class VerifikasiController extends Controller
 
         // Mengambil data verifikasi siswa berdasarkan ID pengguna yang sedang login
         $all_data = DB::table('users')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
-            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'kelas.unt_pendidikan', 'users.alamat', 'users.nisn', 'kelas.unt_pendidikan', 'kelas.kelas', 'kelas.kls_identitas')
+            ->select('users.name',  'users.alamat', 'users.nisn')
             ->where('users.id_user', '=', $catchUser)
             ->first();
+        $kelas = DB::table('user_unit_pendidikan')
+            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->where('user_unit_pendidikan.id_user', $catchUser)
+            ->select('kelas.unt_pendidikan',  'kelas.unt_pendidikan', 'kelas.kelas', 'kelas.kls_identitas')
+            ->get();
+
 
         $seleksi_user = DB::table('berkas')
             ->join('users', 'berkas.id_user', '=', 'users.id_user')
@@ -38,6 +42,6 @@ class VerifikasiController extends Controller
             ->where('users.id_user', '=', $catchUser)
             ->first();
         // Mengirim data ke view
-        return view('calonMurid.verifikasi', compact('all_data', 'seleksi_user', 'gelombang_user'))->with('title', 'Verifikasi Data');
+        return view('calonMurid.verifikasi', compact('all_data', 'seleksi_user', 'gelombang_user', 'kelas'))->with('title', 'Verifikasi Data');
     }
 }

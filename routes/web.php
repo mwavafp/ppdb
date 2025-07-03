@@ -112,6 +112,7 @@ Route::middleware('auth:web')->group(function () {
     // })->name('biodata');
 
     Route::get('/biodata', [BiodataController::class, 'showData'])->name('biodata');
+    Route::post('/biodata/kelas-tambahan', [BiodataController::class, 'kelasTambahan'])->name('biodata.kelasTambahan');
     Route::post('/biodata/update', [BiodataController::class, 'updateData'])->name('biodata.update');
 
 

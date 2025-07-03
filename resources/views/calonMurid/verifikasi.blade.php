@@ -5,7 +5,7 @@
         <x-tahapan></x-tahapan>
     </div>
 
-    <main class="container mx-auto mt-10 flex justify-center mb-16 px-4 h-[60vh]">
+    <main class="container mx-auto mt-10 flex justify-center mb-16 px-4 ">
         <div class="bg-white border-2 shadow-lg rounded-lg overflow-hidden w-full max-w-2xl">
             <!-- Header -->
             <div class="bg-green-500 text-white text-center py-4">
@@ -24,14 +24,20 @@
                             <td class="p-2 font-bold border border-gray-300">NISN</td>
                             <td class="p-2">{{ $all_data->nisn }}</td>
                         </tr>
-                        <tr class="border border-gray-300">
-                            <td class="p-2 font-bold border border-gray-300">Jenjang</td>
-                            <td class="p-2">{{ $all_data->unt_pendidikan }}</td>
-                        </tr>
-                        <tr class="border border-gray-300">
-                            <td class="p-2 font-bold border border-gray-300">Kelas</td>
-                            <td class="p-2">{{ $all_data->kelas }}{{ $all_data->kls_identitas }}</td>
-                        </tr>
+                        @foreach ($kelas as $item)
+                            <div>
+                                <tr class="border border-gray-300">
+                                    <td class="p-2 font-bold border border-gray-300">Jenjang</td>
+                                    <td class="p-2">{{ strtoupper($item->unt_pendidikan) }}</td>
+                                </tr>
+                                <tr class="border border-gray-300">
+                                    <td class="p-2 font-bold border border-gray-300">Kelas</td>
+                                    <td class="p-2">{{ $item->kelas }}{{ $item->kls_identitas }}</td>
+                                </tr>
+                            </div>
+                        @endforeach
+
+
                         <tr class="border border-gray-300">
                             <td class="p-2 font-bold border border-gray-300">Alamat</td>
                             <td class="p-2">{{ $all_data->alamat }}</td>
@@ -42,16 +48,22 @@
                     $seleksi_user->akta_lahir === 'diserahkan' &&
                         $seleksi_user->kk === 'diserahkan' &&
                         $seleksi_user->byr_dft_ulang === 'lunas')
-                    <div class="bg-green-500 text-center text-white py-4 w-full rounded-lg font-bold">
-                        SELAMAT ANDA TELAH DINYATAKAN LOLOS SELEKSI PPDB
+                    <div class=" my-8">
+                        <p class="bg-green-500 text-center text-white py-4 w-full rounded-lg font-bold">SELAMAT ANDA
+                            TELAH DINYATAKAN LOLOS SELEKSI PPDB</p>
+
                     </div>
                 @elseif($gelombang_user->akhir_acara >= date('Y-m-d'))
-                    <div class="bg-blue-500 text-center text-white py-4 w-full rounded-lg font-bold">
-                        MOHON UNTUK MENYELESAIKAN ADMINISTRASI SELEKSI PPDB
+                    <div class=" my-8">
+                        <p class="bg-blue-500 text-center text-white py-4 w-full rounded-lg font-bold"> MOHON UNTUK
+                            MENYELESAIKAN ADMINISTRASI SELEKSI PPDB</p>
+
                     </div>
                 @else
-                    <div class="bg-red-500 text-center text-white py-4 w-full rounded-lg font-bold">
-                        MOHON MAAF DINYATAKAN TIDAK LOLOS SELEKSI PPDB
+                    <div class=" my-8">
+                        <p class="bg-red-500 text-center text-white py-4 w-full rounded-lg font-bold"> MOHON MAAF
+                            DINYATAKAN TIDAK LOLOS SELEKSI PPDB</p>
+
                     </div>
                 @endif
 

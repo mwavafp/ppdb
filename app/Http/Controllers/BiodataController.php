@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Harga;
+use App\Models\Kelas;
+use App\Models\User;
+use App\Models\UserGolongan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function Laravel\Prompts\table;
 
 class BiodataController extends Controller
 {
     public function showData()
     {
         $catchUser = Auth::id();
+
 
         $all_data = DB::table('users')
 
@@ -44,10 +49,13 @@ class BiodataController extends Controller
                 'pekerjaan_ibu',
                 'nmr_ibu_wa',
                 'contact.nama',
-                'contact.cp'
+                'contact.cp',
+                'kelas.unt_pendidikan'
             )
             ->where('users.id_user', '=', $catchUser)
-            ->first();
+            ->get();
+
+
 
         //kurang nik
 
@@ -95,5 +103,45 @@ class BiodataController extends Controller
         ]);
 
         return redirect()->route('biodata')->with('success', 'Data berhasil diperbarui!');
+    }
+
+    public function kelasTambahan(Request $request)
+    {
+        $userId = Auth::id();
+
+        $userIdentity = DB::table('users')->where('id_user', '=', $userId)->first();
+        $userGolongan = DB::table('user_golongan')->select('id_acara')->where('id_user', '=', $userId)->first();
+        $hargaId = Harga::where('gender', '=', $userIdentity->gender)
+            ->where('tipe_siswa', '=', $userIdentity->tipe_siswa)
+            ->where('unitPendidikan', strtolower($request->unt_pendidikan))
+            ->where('id_acara', '=', $userGolongan->id_acara)
+            ->value('id_harga');
+        // Simpan ke user_golongan
+        DB::table('user_golongan')->insert([
+            'id_acara' => $userGolongan->id_acara,
+            'id_user' => $userId,
+            'id_harga' => $hargaId,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+
+        $kelas = Kelas::firstOrCreate([
+            'unt_pendidikan' => strtolower($request->unt_pendidikan),
+            'id_contact' => $request->cnt,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('user_unit_pendidikan')->insert([
+            'id_user' => $userId,
+            'id_kelas' => $kelas->id_kelas,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('pembayaran')->insert([
+            'id_user' => $userId,
+        ]);
+
+        return  redirect()->route('biodata')->with('success', 'Berhasil Daftar Kelas!');
     }
 }
