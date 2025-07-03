@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin\Auth;
 use App\Models\User;
 use App\Models\Tahun; // Pastikan mengimpor model Tahun jika diperlukan
 use App\Http\Controllers\Controller;
+use App\Imports\DataSiswaImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 use Termwind\Components\Dd;
 
 class SiswaController extends Controller
@@ -27,7 +30,7 @@ class SiswaController extends Controller
         $query = User::join('tahun', function ($join) {
 
         })
-        ->select('users.*', 'tahun.awal', 'tahun.akhir'); 
+        ->select('users.*', 'tahun.awal', 'tahun.akhir');
         if (!empty($search)) {
             $query->where('name', 'like', "%{$search}%")
                 ->orWhere('alamat', 'like', "%{$search}%");
@@ -132,4 +135,25 @@ class SiswaController extends Controller
         // Redirect atau kembalikan response setelah update
         return redirect()->route('siswa')->with('success', 'Data Siswa Berhasil Diperbarui!');
     }
+
+    public function import(Request $request)
+{
+    $request->validate([
+        'file' => 'required|mimes:xlsx,xls,csv',
+    ]);
+
+    try {
+        Excel::import(new DataSiswaImport, $request->file('file'));
+        return response()->json(['message' => 'Data berhasil diimport.'], 200);
+    } catch (ValidationException $e) {
+        return response()->json([
+            'message' => 'Validasi gagal.',
+            'errors' => $e->errors(),
+        ], 422);
+    } catch (\Exception $e) {
+        return response()->json([
+            'message' => 'Terjadi kesalahan: ' . $e->getMessage(),
+        ], 500);
+    }
+}
 }
