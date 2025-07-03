@@ -69,10 +69,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Berkas::class, 'id_user', 'id_user'); // user_id foreign key di ortu
     }
-    public function pembayaran()
-    {
-        return $this->hasOne(Pembayaran::class, 'id_user', 'id_user'); // user_id foreign key di ortu
-    }
+   
     public function seleksi()
     {
         return $this->hasOne(Seleksi::class, 'id_user', 'id_user'); // user_id foreign key di ortu

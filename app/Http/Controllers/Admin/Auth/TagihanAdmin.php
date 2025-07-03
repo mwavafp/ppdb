@@ -16,63 +16,71 @@ class TagihanAdmin extends Controller
 {
     public function showData()
     {
+        // Ambil pembayaran terakhir berdasarkan id_bayar per user + kelas
+        $latestPembayaran = DB::table('user_unit_pendidikan as uup')
+            ->join('pembayaran as p1', 'uup.id_user', '=', 'p1.id_user')
+            ->select(
+                'p1.id_user',
+                'uup.id_kelas',
+                DB::raw('MAX(p1.id_bayar) as latest_id_bayar')
+            )
+            ->groupBy('p1.id_user', 'uup.id_kelas');
 
+        // Join utama
+        $all_data = DB::table('user_unit_pendidikan')
+            ->join('users', 'user_unit_pendidikan.id_user', '=', 'users.id_user')
+            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->join('user_golongan', 'users.id_user', '=', 'user_golongan.id_user')
+            ->join('harga', 'user_golongan.id_harga', '=', 'harga.id_harga')
+            ->leftJoin('seleksi', 'users.id_user', '=', 'seleksi.id_user')
 
-        $all_data = DB::table('harga')
-        ->join('user_golongan', 'harga.id_harga', '=', 'user_golongan.id_harga')
-        ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
-        ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
-        ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-        ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-        ->join('pembayaran', 'users.id_user', '=', 'pembayaran.id_user')
-        ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
-        ->whereBetween('users.created_at', [
-            DB::raw('(SELECT awal FROM tahun LIMIT 1)'),
-            DB::raw('(SELECT akhir FROM tahun LIMIT 1)')
-        ])
-        ->select(
-            'users.name',
-            'users.id_user',
-            'users.gender',
-            'pembayaran.id_bayar',
-            'kelas.unt_pendidikan',
-            'pembayaran.byr_dft_ulang',
-            'pembayaran.status',
-            'pembayaran.jmlh_byr',
-            'pembayaran.jmlh_byr2',
-            'pembayaran.jmlh_byr3',
-            'pembayaran.jmlh_byr4',
-            'harga.total_bayar_daful',
-            'harga.dp_daful',
-            'harga.diskon',
-            'pembayaran.updated_at',
-            'admins.name as nama_admin'
-    )
-    ->paginate(10);
+            // join latest pembayaran
+            ->leftJoinSub($latestPembayaran, 'latest_pembayaran', function ($join) {
+                $join->on('user_unit_pendidikan.id_kelas', '=', 'latest_pembayaran.id_kelas')
+                    ->on('user_unit_pendidikan.id_user', '=', 'latest_pembayaran.id_user');
+            })
 
+            // join ke pembayaran yang cocok
+            ->leftJoin('pembayaran', 'pembayaran.id_bayar', '=', 'latest_pembayaran.latest_id_bayar')
+            ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
 
+            ->whereBetween('users.created_at', [
+                DB::raw('(SELECT awal FROM tahun LIMIT 1)'),
+                DB::raw('(SELECT akhir FROM tahun LIMIT 1)')
+            ])
+            ->select(
+                'users.name',
+                'users.id_user',
+                'users.gender',
+                'kelas.unt_pendidikan',
+                'kelas.id_kelas',
+                'pembayaran.id_bayar',
+                'pembayaran.byr_dft_ulang',
+                'pembayaran.status',
+                'pembayaran.jmlh_byr',
+                'pembayaran.jmlh_byr2',
+                'pembayaran.jmlh_byr3',
+                'pembayaran.jmlh_byr4',
+                'harga.total_bayar_daful',
+                'harga.dp_daful',
+                'harga.diskon',
+                'pembayaran.updated_at',
+                'admins.name as nama_admin'
+            )
+            ->orderBy('users.name')
+            ->paginate(10);
 
-
-        return view('admin.page.tagihan', compact('all_data',), ['title' => 'test']);
+        return view('admin.page.tagihan', compact('all_data'), ['title' => 'test']);
     }
 
 
-    // public function editData($id)
-    // {
 
-    //     $pembayaran = DB::table('pembayaran')
-    //         ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
-    //         ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
-    //         ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-    //         ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
-    //         ->select('users.name', 'users.id_user', 'pembayaran.id_bayar',
-    //                 'kelas.unt_pendidikan', 'pembayaran.byr_dft_ulang', 'pembayaran.status', 'jmlh_byr','jmlh_byr2','jmlh_byr3','jmlh_byr4',
-    //                 'admins.name as nama_admin','pembayaran.updated_at')
-    //         ->where('pembayaran.id_bayar', '=', $id)
-    //         ->first();
 
-    //     return view('admin.page.modal.edit_tagihan', compact('pembayaran'), ['title' => 'tes']);
-    // }
+
+
+
+
+
     public function updateData(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -116,24 +124,24 @@ class TagihanAdmin extends Controller
     }
 
     public function showDetail()
-{
-    $data = DB::table('pembayaran')
-        ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
-        ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
-        ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-        ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
-        ->select(
-            'pembayaran.*',
-            'users.name',
-            'kelas.unt_pendidikan',
-            'admins.name as nama_admin',
-            'pembayaran.updated_at'
-        )
-        ->orderBy('pembayaran.updated_at', 'desc')
-        ->paginate(10); // bisa disesuaikan
+    {
+        $data = DB::table('pembayaran')
+            ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
+            ->select(
+                'pembayaran.*',
+                'users.name',
+                'kelas.unt_pendidikan',
+                'admins.name as nama_admin',
+                'pembayaran.updated_at'
+            )
+            ->orderBy('pembayaran.updated_at', 'desc')
+            ->paginate(10); // bisa disesuaikan
 
-    return redirect()->route('tagihan-admin', compact('data'), ['title' => 'Detail Pembayaran']);
-}
+        return redirect()->route('tagihan-admin', compact('data'), ['title' => 'Detail Pembayaran']);
+    }
 
 
     public function search(Request $request)

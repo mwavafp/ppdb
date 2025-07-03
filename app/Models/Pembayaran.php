@@ -15,7 +15,7 @@ class Pembayaran extends Model
     public $incrementing = true;
     protected $keyType = 'int';
     protected $fillable = [
-        'id_user',
+
         'byr_dft_ulang',
         'status',
         'jmlh_byr',
@@ -27,9 +27,10 @@ class Pembayaran extends Model
         'byr_dft_ulang' => 'belum',
         'status' => 'Cicil',
     ];
-    public function user()
+    //needbelong
+    public function pembayaran()
     {
-        return $this->belongsTo(User::class, 'id_user', 'id_user');
+        return $this->hasOne(Pembayaran::class, 'id_bayar', 'id_bayar'); // user_id foreign key di ortu
     }
     public function admin()
     {

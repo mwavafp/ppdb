@@ -13,17 +13,14 @@ return new class extends Migration
     {
         Schema::create('user_unit_pendidikan', function (Blueprint $table) {
             $table->id('id_uup');
-            $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_kelas');
-
+            $table->unsignedBigInteger('id_bayar');
             $table->enum('status', ['Alumni', 'Siswa Aktif', 'Siswa Tidak Aktif'])->default('Alumni');
             $table->date('tgl_mulai')->nullable();
             $table->date('tgl_berakhir')->nullable();
             $table->timestamps();
-
-
-            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
             $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade');
+            $table->foreign('id_bayar')->references('id_bayar')->on('pembayaran')->onDelete('cascade');
         });
     }
 

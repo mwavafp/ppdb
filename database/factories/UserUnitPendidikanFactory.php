@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Kelas;
+use App\Models\Pembayaran;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,7 +20,7 @@ class UserUnitPendidikanFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_user' => User::factory(),
+            'id_bayar' => Pembayaran::factory(),
             'id_kelas' => Kelas::factory(),
             'status' => $this->faker->randomElement(['Alumni', 'Siswa Aktif', 'Siswa Tidak Aktif']),
             'tgl_mulai' => $this->faker->date('Y-m-d'),

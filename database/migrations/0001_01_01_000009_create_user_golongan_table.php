@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('user_golongan', function (Blueprint $table) {
             $table->id('id_ug');
-
             $table->unsignedBigInteger('id_acara');
             $table->unsignedBigInteger('id_harga');
             $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_uup');
             $table->foreign('id_acara')->references('id_acara')->on('acara')->onDelete('cascade');
             $table->foreign('id_harga')->references('id_harga')->on('harga')->onDelete('cascade');
             $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
+            $table->foreign('id_uup')->references('id_uup')->on('user_unit_pendidikan')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -848,15 +848,14 @@ class DatabaseSeeder extends Seeder
             'nmr_ibu_wa' => 123445
         ]);
 
-        Pembayaran::factory()->create([
-            'id_user' => $user->id_user,
+        $bayar = Pembayaran::factory()->create([
+
             'byr_dft_ulang' => 'lunas',
-            'status' => 'Lunas',
             'jmlh_byr' => 300000
         ]);
 
         UserUnitPendidikan::factory()->create([
-            'id_user' => $user->id_user,
+            'id_bayar' => $bayar->id_bayar,
             'id_kelas' => $kelas->id_kelas,
             'status' => 'Siswa Aktif',
             'tgl_mulai' => '2024-12-03',
@@ -887,7 +886,8 @@ class DatabaseSeeder extends Seeder
         UserGolongan::create([
             'id_acara' => 1,
             'id_harga' => 1,
-            'id_user' => 1
+            'id_user' => 1,
+            'id_uup' => 1
         ]);
 
         //Automatic 100 dummy

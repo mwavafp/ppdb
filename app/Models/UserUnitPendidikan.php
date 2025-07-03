@@ -10,22 +10,28 @@ class UserUnitPendidikan extends Model
     use HasFactory;
     protected $table = 'user_unit_pendidikan';
     protected $primaryKey = 'id_uup'; // digunakan untuk penggantian id
-    public $incrementing = true; 
-    protected $keyType = 'int'; 
-    protected $fillable=[
-        'id_user',
+    public $incrementing = true;
+    protected $keyType = 'int';
+    protected $fillable = [
+        'id_bayar',
         'id_kelas',
         'status',
         'tgl_mulai',
         'tgl_berakhir'
-        
+
     ];
-    public function user()
+
+    public function userUnitPendidikan()
     {
-        return $this->belongsTo(User::class, 'id_user', 'id_user');
+        return $this->hasOne(UserUnitPendidikan::class, 'id_uup', 'id_uup');
     }
+
     public function kelas()
     {
         return $this->belongsTo(User::class, 'id_kelas', 'id_kelas');
+    }
+    public function pembayaran()
+    {
+        return $this->belongsTo(Pembayaran::class, 'id_bayar', 'id_bayar');
     }
 }

@@ -17,11 +17,19 @@ class UserGolongan extends Model
         'id_acara',
         'id_harga',
         'id_user',
+        'id_uup',
     ];
-
+    public function userGolongan()
+    {
+        return $this->hasOne(UserGolongan::class, 'id_ug', 'id_ug');
+    }
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user', 'id_user');
+    }
+    public function userUnitPendidikan()
+    {
+        return $this->belongsTo(UserUnitPendidikan::class, 'id_uup', 'id_uup');
     }
     public function acara()
     {
