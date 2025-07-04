@@ -18,8 +18,8 @@ class AdminDashboardController extends Controller
     public function showUser()
     {
         $data_query = DB::table('pembayaran')
-            ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+            ->join('users', 'pembayaran.id_bayar', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_bayar')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas');
 

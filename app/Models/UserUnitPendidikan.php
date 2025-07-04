@@ -23,7 +23,7 @@ class UserUnitPendidikan extends Model
 
     public function userUnitPendidikan()
     {
-        return $this->hasOne(UserUnitPendidikan::class, 'id_uup', 'id_uup');
+        return $this->hasOne(UserUnitPendidikan::class, Pembayaran::class, 'id_uup', 'id_uup');
     }
 
     public function kelas()

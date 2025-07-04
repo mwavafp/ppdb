@@ -18,31 +18,27 @@ class TagihanAdmin extends Controller
     {
         // Ambil pembayaran terakhir berdasarkan id_bayar per user + kelas
         $latestPembayaran = DB::table('user_unit_pendidikan as uup')
-            ->join('pembayaran as p1', 'uup.id_user', '=', 'p1.id_user')
+            ->join('pembayaran as p1', 'uup.id_bayar', '=', 'p1.id_bayar')
             ->select(
-                'p1.id_user',
-                'uup.id_kelas',
+                'uup.id_uup',
                 DB::raw('MAX(p1.id_bayar) as latest_id_bayar')
             )
-            ->groupBy('p1.id_user', 'uup.id_kelas');
+            ->groupBy('uup.id_uup');
 
         // Join utama
         $all_data = DB::table('user_unit_pendidikan')
-            ->join('users', 'user_unit_pendidikan.id_user', '=', 'users.id_user')
-            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->join('user_golongan', 'users.id_user', '=', 'user_golongan.id_user')
-            ->join('harga', 'user_golongan.id_harga', '=', 'harga.id_harga')
-            ->leftJoin('seleksi', 'users.id_user', '=', 'seleksi.id_user')
+    ->join('user_golongan', 'user_unit_pendidikan.id_uup', '=', 'user_golongan.id_uup')
+    ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+    ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+    ->join('harga', 'user_golongan.id_harga', '=', 'harga.id_harga')
+    ->leftJoin('seleksi', 'users.id_user', '=', 'seleksi.id_user')
 
-            // join latest pembayaran
-            ->leftJoinSub($latestPembayaran, 'latest_pembayaran', function ($join) {
-                $join->on('user_unit_pendidikan.id_kelas', '=', 'latest_pembayaran.id_kelas')
-                    ->on('user_unit_pendidikan.id_user', '=', 'latest_pembayaran.id_user');
-            })
-
-            // join ke pembayaran yang cocok
-            ->leftJoin('pembayaran', 'pembayaran.id_bayar', '=', 'latest_pembayaran.latest_id_bayar')
-            ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
+    // join subquery pembayaran terakhir
+    ->leftJoinSub($latestPembayaran, 'latest_pembayaran', function ($join) {
+        $join->on('user_unit_pendidikan.id_uup', '=', 'latest_pembayaran.id_uup');
+    })
+    ->leftJoin('pembayaran', 'pembayaran.id_bayar', '=', 'latest_pembayaran.latest_id_bayar')
+    ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
 
             ->whereBetween('users.created_at', [
                 DB::raw('(SELECT awal FROM tahun LIMIT 1)'),
@@ -50,22 +46,20 @@ class TagihanAdmin extends Controller
             ])
             ->select(
                 'users.name',
-                'users.id_user',
-                'users.gender',
-                'kelas.unt_pendidikan',
-                'kelas.id_kelas',
-                'pembayaran.id_bayar',
-                'pembayaran.byr_dft_ulang',
-                'pembayaran.status',
-                'pembayaran.jmlh_byr',
-                'pembayaran.jmlh_byr2',
-                'pembayaran.jmlh_byr3',
-                'pembayaran.jmlh_byr4',
-                'harga.total_bayar_daful',
-                'harga.dp_daful',
-                'harga.diskon',
-                'pembayaran.updated_at',
-                'admins.name as nama_admin'
+        'users.id_user',
+        'kelas.unt_pendidikan',
+        'kelas.kelas',
+        'harga.total_bayar_daful',
+        'harga.diskon',
+        'pembayaran.byr_dft_ulang',
+        'pembayaran.status',
+        'pembayaran.id_bayar',
+        'pembayaran.jmlh_byr',
+        'pembayaran.jmlh_byr2',
+        'pembayaran.jmlh_byr3',
+        'pembayaran.jmlh_byr4',
+        'pembayaran.updated_at',
+        'admins.name as nama_admin'
             )
             ->orderBy('users.name')
             ->paginate(10);
@@ -95,10 +89,10 @@ class TagihanAdmin extends Controller
             ->where('id_bayar', $id)->first();
         $harga = DB::table('harga')
             ->join('user_golongan', 'harga.id_harga', '=', 'user_golongan.id_harga')
-            ->join('pembayaran', 'user_golongan.id_user', '=', 'pembayaran.id_user')
-            ->where('pembayaran.id_bayar', $id)
+            ->join('user_unit_pendidikan as uup', 'user_golongan.id_uup', '=', 'uup.id_uup')
+            ->join('pembayaran as p', 'uup.id_bayar', '=', 'p.id_bayar')
+            ->where('p.id_bayar', $id)
             ->select('harga.total_bayar_daful', 'harga.diskon')
-
             ->first();
 
         $byr_dft_ulang = $validatedData['jmlh_byr'] + $validatedData['jmlh_byr2'] + $validatedData['jmlh_byr3'] + $validatedData['jmlh_byr4'] >= $pembayaran->jmlh_byr ? 'lunas' : 'belum';

@@ -23,7 +23,7 @@ class SiswaController extends Controller
         $status = $request->input('status', '');
 
         // Query dasar dengan filter pencarian
-        $query = User::with(['ortu', 'userUnitPendidikan', 'ortu']);
+        $query = User::with(['ortu', 'userUnitPendidikan']);
         $query = User::select('users.*', 'admins.name as nama_admin')
         ->leftJoin('admins', 'users.updated_by', '=', 'admins.id_admin');
 
