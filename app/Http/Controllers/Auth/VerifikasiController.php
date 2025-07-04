@@ -14,34 +14,37 @@ class VerifikasiController extends Controller
         // Mendapatkan ID pengguna yang sedang login
         $catchUser = Auth::id();
 
-        // Mengambil data verifikasi siswa berdasarkan ID pengguna yang sedang login
-        $all_data = DB::table('users')
-            ->select('users.name',  'users.alamat', 'users.nisn')
-            ->where('users.id_user', '=', $catchUser)
-            ->first();
-        $kelas = DB::table('user_unit_pendidikan')
+        $users = DB::table('users')
+            ->join('user_golongan', 'users.id_user', '=', 'user_golongan.id_user')
+            ->join('acara', 'user_golongan.id_acara', '=', 'acara.id_acara')
+            ->join('harga', 'user_golongan.id_harga', '=', 'harga.id_harga')
+            ->join('berkas', 'users.id_user', '=', 'berkas.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
+            ->join('pembayaran', 'user_unit_pendidikan.id_bayar', '=', 'pembayaran.id_bayar') // ← sekarang aman
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->where('user_unit_pendidikan.id_user', $catchUser)
-            ->select('kelas.unt_pendidikan',  'kelas.unt_pendidikan', 'kelas.kelas', 'kelas.kls_identitas')
+            ->where('user_golongan.id_user', '=', $catchUser)
+            ->select(
+                'acara.akhir_acara',
+                'berkas.kk',
+                'berkas.akta_lahir',
+                'users.name',
+                'users.alamat',
+                'users.nisn',
+                'users.id_user',
+                'kelas.unt_pendidikan',
+                'kelas.kls_identitas',
+                'kelas.kelas',
+                'pembayaran.byr_dft_ulang'
+            )
+            ->get();
+        $kelasUser = DB::table('user_unit_pendidikan')
+            ->join('user_golongan', 'user_unit_pendidikan.id_uup', '=', 'user_golongan.id_uup')
+            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->where('user_golongan.id_user', '=', $catchUser)
+            ->select('kelas.*') // ambil semua info kelas
             ->get();
 
-
-        $seleksi_user = DB::table('berkas')
-            ->join('users', 'berkas.id_user', '=', 'users.id_user')
-            ->join('pembayaran', 'users.id_user', 'pembayaran.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
-            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('berkas.kk', 'berkas.akta_lahir', 'pembayaran.byr_dft_ulang')
-            ->where('users.id_user', '=', $catchUser)
-            ->first();
-
-        $gelombang_user = DB::table('acara')
-            ->join('user_golongan', 'acara.id_acara', '=', 'user_golongan.id_acara')
-            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
-            ->select('acara.akhir_acara')
-            ->where('users.id_user', '=', $catchUser)
-            ->first();
         // Mengirim data ke view
-        return view('calonMurid.verifikasi', compact('all_data', 'seleksi_user', 'gelombang_user', 'kelas'))->with('title', 'Verifikasi Data');
+        return view('calonMurid.verifikasi', compact('users', 'kelasUser'))->with('title', 'Verifikasi Data');
     }
 }

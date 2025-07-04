@@ -14,53 +14,127 @@ use Termwind\Components\Dd;
 
 class SiswaController extends Controller
 {
+    // public function siswa(Request $request)
+    // {
+
+    //     $search = $request->input('search', '');
+    //     $gender = $request->input('gender', '');
+    //     $status = $request->input('status', '');
+    //     $status = $request->input('status', '');
+
+    //     // Query dasar dengan filter pencarian
+    //     $query = User::with(['ortu', 'userUnitPendidikan', 'ortu']);
+    //     $query = User::select('users.*', 'admins.name as nama_admin')
+    //     ->leftJoin('admins', 'users.updated_by', '=', 'admins.id_admin');
+
+    //     $query = User::join('tahun', function ($join) {
+
+    //     })
+    //     ->select('users.*', 'tahun.awal', 'tahun.akhir');
+    //     if (!empty($search)) {
+    //         $query->where('name', 'like', "%{$search}%")
+    //             ->orWhere('alamat', 'like', "%{$search}%");
+    //         $query->where('users.name', 'like', "%{$search}%")
+    //             ->orWhere('users.alamat', 'like', "%{$search}%");
+    //     }
+
+    //     // Menambahkan filter berdasarkan gender jika ada
+    //     if (!empty($gender)) {
+    //         $query->where('gender', $gender);
+    //         $query->where('users.gender', $gender);
+    //     }
+
+    //     // Menambahkan filter berdasarkan status jika ada
+    //     if (!empty($status)) {
+    //         $query->where('status', $status);
+    //         $query->where('users.status', $status);
+    //     }
+
+    //     $query->whereBetween('users.created_at', [
+    //         DB::raw('tahun.awal'),
+    //         DB::raw('tahun.akhir')
+    //     ]);
+    //     // Ambil data siswa dengan pagination (halaman 10 data per halaman)
+    //     $siswa = $query->paginate(10);
+    //     // dd($query->toSql(), $query->getBindings());s
+    //     return view('admin.page.siswa', [
+    //     'title' => 'DataSiswa',
+    //     'all_data' => $siswa,
+    // ]);
+    // }
+
     public function siswa(Request $request)
     {
-
+        // Ambil filter dari request
         $search = $request->input('search', '');
         $gender = $request->input('gender', '');
         $status = $request->input('status', '');
-        $status = $request->input('status', '');
 
-        // Query dasar dengan filter pencarian
-        $query = User::with(['ortu', 'userUnitPendidikan', 'ortu']);
-        $query = User::select('users.*', 'admins.name as nama_admin')
-        ->leftJoin('admins', 'users.updated_by', '=', 'admins.id_admin');
+        // Ambil data tahun aktif
+        $tahun = DB::table('tahun')->orderByDesc('id_tahun')->first();
 
-        $query = User::join('tahun', function ($join) {
+        $query = DB::table('users')
+            ->leftJoin('user_golongan', 'users.id_user', '=', 'user_golongan.id_user')
+            ->leftJoin('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
+            ->leftJoin('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->leftJoin('admins', 'users.updated_by', '=', 'admins.id_admin')
+            ->leftJoin('ortu', 'users.id_user', '=', 'ortu.id_user')
+            ->leftJoin('seleksi', 'users.id_user', '=', 'seleksi.id_user')
+            ->select(
+                'users.*',
+                'admins.name as nama_admin',
+                'kelas.kelas',
+                'kelas.unt_pendidikan',
+                'seleksi.status_seleksi',
 
-        })
-        ->select('users.*', 'tahun.awal', 'tahun.akhir');
+                // Data lengkap ortu
+                'ortu.nmr_kk',
+                'ortu.nm_ayah',
+                'ortu.nik_ayah',
+                'ortu.tgl_lhr_ayah',
+                'ortu.tmpt_lhr_ayah',
+                'ortu.almt_ayah',
+                'ortu.pekerjaan_ayah',
+                'ortu.nmr_ayah_wa',
+                'ortu.nm_ibu',
+                'ortu.nik_ibu',
+                'ortu.tgl_lhr_ibu',
+                'ortu.tmpt_lhr_ibu',
+                'ortu.almt_ibu',
+                'ortu.pekerjaan_ibu',
+                'ortu.nmr_ibu_wa'
+            );
+
+        // Filter berdasarkan tahun jika ada
+        if ($tahun) {
+            $query->whereBetween('users.created_at', [$tahun->awal, $tahun->akhir]);
+        }
+
+        // Filter pencarian nama/alamat
         if (!empty($search)) {
-            $query->where('name', 'like', "%{$search}%")
-                ->orWhere('alamat', 'like', "%{$search}%");
-            $query->where('users.name', 'like', "%{$search}%")
-                ->orWhere('users.alamat', 'like', "%{$search}%");
+            $query->where(function ($q) use ($search) {
+                $q->where('users.name', 'like', "%{$search}%")
+                    ->orWhere('users.alamat', 'like', "%{$search}%");
+            });
         }
 
-        // Menambahkan filter berdasarkan gender jika ada
+        // Filter gender
         if (!empty($gender)) {
-            $query->where('gender', $gender);
-            $query->where('users.gender', $gender);
+            $query->where('users.gender', '=', $gender);
         }
 
-        // Menambahkan filter berdasarkan status jika ada
+        // Filter status
         if (!empty($status)) {
-            $query->where('status', $status);
-            $query->where('users.status', $status);
+            $query->where('users.status', '=', $status);
         }
 
-        $query->whereBetween('users.created_at', [
-            DB::raw('tahun.awal'),
-            DB::raw('tahun.akhir')
-        ]);
-        // Ambil data siswa dengan pagination (halaman 10 data per halaman)
+        // Paginate hasil
         $siswa = $query->paginate(10);
-        // dd($query->toSql(), $query->getBindings());s
+
         return view('admin.page.siswa', [
-        'title' => 'DataSiswa',
-        'all_data' => $siswa,
-    ]);
+            'title' => 'Data Siswa',
+            'all_data' => $siswa,
+        ]);
     }
 
 
@@ -137,23 +211,23 @@ class SiswaController extends Controller
     }
 
     public function import(Request $request)
-{
-    $request->validate([
-        'file' => 'required|mimes:xlsx,xls,csv',
-    ]);
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls,csv',
+        ]);
 
-    try {
-        Excel::import(new DataSiswaImport, $request->file('file'));
-        return response()->json(['message' => 'Data berhasil diimport.'], 200);
-    } catch (ValidationException $e) {
-        return response()->json([
-            'message' => 'Validasi gagal.',
-            'errors' => $e->errors(),
-        ], 422);
-    } catch (\Exception $e) {
-        return response()->json([
-            'message' => 'Terjadi kesalahan: ' . $e->getMessage(),
-        ], 500);
+        try {
+            Excel::import(new DataSiswaImport, $request->file('file'));
+            return response()->json(['message' => 'Data berhasil diimport.'], 200);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Validasi gagal.',
+                'errors' => $e->errors(),
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage(),
+            ], 500);
+        }
     }
-}
 }

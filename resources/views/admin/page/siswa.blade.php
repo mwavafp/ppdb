@@ -129,7 +129,7 @@
                         <td class="border px-4 py-2 text-center">{{ $item->alamat }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->gender }}</td>
                         <td class="border px-4 py-2 text-center">
-                            {{ $item->kelas->pluck('unt_pendidikan')->join(', ') ?? '-' }}</td>
+                            {{ $item->unt_pendidikan }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->ortu->nm_ibu ?? '-' }}</td>
                         <td class="border px-4 py-2 text-center">{{ $item->status ?? '-' }}</td>
                         <td class="border px-4 py-2 text-center">

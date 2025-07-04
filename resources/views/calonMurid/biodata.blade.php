@@ -8,20 +8,19 @@
         <div class="w-1/4">
 
             <div class=" w-full mx-4">
-                @foreach ($all_data as $data)
+                @foreach ($all_contact as $data)
                     <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center justify-center m-6">
-                        <strong class="text-center pb-5">Silahkan Masuk Ke Grub WhatsApp
+                        <strong class="text-center pb-5">Silahkan Masuk Ke Grup WhatsApp
                             {{ strtoupper($data->unt_pendidikan) }} Di Bawah ini</strong>
 
                         <a href="{{ $data->cp }}" target="_blank" class="whatsapp-button">
                             <button type="button"
-                                class="cursor-pointer rounded-md whatsapp-btn bg-[oklch(62.7%_0.194_149.214)] hover:bg-green-500 text-white py-2 px-4">
+                                class="cursor-pointer rounded-md whatsapp-btn bg-green-600 hover:bg-green-500 text-white py-2 px-4">
                                 Klik Untuk Masuk
                             </button>
                         </a>
                     </div>
                 @endforeach
-
                 <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center justify-center m-6">
                     <strong class="text-center pb-5">Daftar TPQ atau Madin</strong>
 
@@ -85,56 +84,56 @@
                             <div class="tab-panel h-auto mb-18" id="panel-0">
                                 <div class="overflow-x-auto">
                                     <table class="table-auto w-full border border-gray-300">
-                                        @foreach ($all_data as $data)
-                                            <tbody>
-                                                <tr class="odd:bg-white even:bg-gray-50">
-                                                    <td class="border px-4 py-2 font-bold">Nama Lengkap</td>
-                                                    <td class="border px-4 py-2"><input type="text" name="name"
-                                                            class="editable-field w-full" value="{{ $data->name }}"
-                                                            disabled>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd:bg-white even:bg-gray-50">
-                                                    <td class="border px-4 py-2 font-bold">Tempat Lahir Siswa</td>
-                                                    <td class="border px-4 py-2"><input type="text" name="tmpt_lahir"
-                                                            class="editable-field w-full"
-                                                            value="{{ $data->tmpt_lahir }}" disabled></td>
-                                                </tr>
-                                                <tr class="odd:bg-white even:bg-gray-50">
-                                                    <td class="border px-4 py-2 font-bold">Tanggal Lahir Siswa</td>
-                                                    <td class="border px-4 py-2"><input type="date" name="tgl_lahir"
-                                                            class="editable-field w-full" value="{{ $data->tgl_lahir }}"
-                                                            disabled></td>
-                                                </tr>
-                                                <tr class="odd:bg-white even:bg-gray-50">
-                                                    <td class="border px-4 py-2 font-bold">Alamat Siswa</td>
-                                                    <td class="border px-4 py-2"><input type="text" name="alamat"
-                                                            class="editable-field w-full" value="{{ $data->alamat }}"
-                                                            disabled>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd:bg-white even:bg-gray-50">
-                                                    <td class="border px-4 py-2 font-bold">Asal Sekolah</td>
-                                                    <td class="border px-4 py-2"><input type="text"
-                                                            name="asl_sekolah" class="editable-field w-full"
-                                                            value="{{ $data->asl_sekolah }}" disabled></td>
-                                                </tr>
-                                                <tr class="odd:bg-white even:bg-gray-50">
-                                                    <td class="border px-4 py-2 font-bold">NISN</td>
-                                                    <td class="border px-4 py-2"><input type="number" name="nisn"
-                                                            class="editable-field w-full" value="{{ $data->nisn }}"
-                                                            disabled>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        @endforeach
+                                        {{-- @foreach ($all_data as $data) --}}
+                                        <tbody>
+                                            <tr class="odd:bg-white even:bg-gray-50">
+                                                <td class="border px-4 py-2 font-bold">Nama Lengkap</td>
+                                                <td class="border px-4 py-2"><input type="text" name="name"
+                                                        class="editable-field w-full" value="{{ $all_data->name }}"
+                                                        disabled>
+                                                </td>
+                                            </tr>
+                                            <tr class="odd:bg-white even:bg-gray-50">
+                                                <td class="border px-4 py-2 font-bold">Tempat Lahir Siswa</td>
+                                                <td class="border px-4 py-2"><input type="text" name="tmpt_lahir"
+                                                        class="editable-field w-full"
+                                                        value="{{ $all_data->tmpt_lahir }}" disabled></td>
+                                            </tr>
+                                            <tr class="odd:bg-white even:bg-gray-50">
+                                                <td class="border px-4 py-2 font-bold">Tanggal Lahir Siswa</td>
+                                                <td class="border px-4 py-2"><input type="date" name="tgl_lahir"
+                                                        class="editable-field w-full" value="{{ $all_data->tgl_lahir }}"
+                                                        disabled></td>
+                                            </tr>
+                                            <tr class="odd:bg-white even:bg-gray-50">
+                                                <td class="border px-4 py-2 font-bold">Alamat Siswa</td>
+                                                <td class="border px-4 py-2"><input type="text" name="alamat"
+                                                        class="editable-field w-full" value="{{ $all_data->alamat }}"
+                                                        disabled>
+                                                </td>
+                                            </tr>
+                                            <tr class="odd:bg-white even:bg-gray-50">
+                                                <td class="border px-4 py-2 font-bold">Asal Sekolah</td>
+                                                <td class="border px-4 py-2"><input type="text" name="asl_sekolah"
+                                                        class="editable-field w-full"
+                                                        value="{{ $all_data->asl_sekolah }}" disabled></td>
+                                            </tr>
+                                            <tr class="odd:bg-white even:bg-gray-50">
+                                                <td class="border px-4 py-2 font-bold">NISN</td>
+                                                <td class="border px-4 py-2"><input type="number" name="nisn"
+                                                        class="editable-field w-full" value="{{ $all_data->nisn }}"
+                                                        disabled>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        {{-- @endforeach --}}
 
                                     </table>
                                 </div>
                             </div>
 
                             <!-- Tab 2 -->
-                            <div class="tab-panel hidden" id="panel-1">
+                            {{-- <div class="tab-panel hidden" id="panel-1">
                                 <table class="table-auto w-full border border-gray-300">
                                     @foreach ($all_data as $data)
                                         <tbody>
@@ -238,7 +237,7 @@
                                     @endforeach
 
                                 </table>
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div>

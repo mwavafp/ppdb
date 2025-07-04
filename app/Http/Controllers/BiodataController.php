@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Harga;
 use App\Models\Kelas;
+use App\Models\Pembayaran;
 use App\Models\User;
 use App\Models\UserGolongan;
+use App\Models\UserUnitPendidikan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +23,8 @@ class BiodataController extends Controller
         $all_data = DB::table('users')
 
             ->join('ortu', 'users.id_user', '=', 'ortu.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+            ->join('user_golongan', 'users.id_user', '=', 'user_golongan.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_golongan.id_uup')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
             ->join('contact', 'kelas.id_contact', '=', 'contact.id_contact')
             ->select(
@@ -53,14 +56,26 @@ class BiodataController extends Controller
                 'kelas.unt_pendidikan'
             )
             ->where('users.id_user', '=', $catchUser)
-            ->get();
+            ->first();
 
+        $all_contact = DB::table('user_golongan')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
+            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->join('contact', 'kelas.id_contact', '=', 'contact.id_contact')
+            ->select(
+                'contact.nama',
+                'contact.cp',
+                'kelas.unt_pendidikan'
+            )
+            ->where('user_golongan.id_user', '=', $catchUser)
+            ->get();
 
 
         //kurang nik
 
-        return view('calonMurid.biodata', compact('all_data',), ['title' => 'test']);
+        return view('calonMurid.biodata', compact('all_data', 'all_contact'), ['title' => 'test']);
     }
+
     public function updateData(Request $request)
     {
         $userId = Auth::id();
@@ -116,14 +131,8 @@ class BiodataController extends Controller
             ->where('unitPendidikan', strtolower($request->unt_pendidikan))
             ->where('id_acara', '=', $userGolongan->id_acara)
             ->value('id_harga');
-        // Simpan ke user_golongan
-        DB::table('user_golongan')->insert([
-            'id_acara' => $userGolongan->id_acara,
-            'id_user' => $userId,
-            'id_harga' => $hargaId,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+
+        $pembayaran = Pembayaran::create([]);
 
 
         $kelas = Kelas::firstOrCreate([
@@ -132,15 +141,23 @@ class BiodataController extends Controller
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        DB::table('user_unit_pendidikan')->insert([
-            'id_user' => $userId,
+
+        $uup = UserUnitPendidikan::create([
+            'id_bayar' => $pembayaran->id_bayar,
             'id_kelas' => $kelas->id_kelas,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        DB::table('pembayaran')->insert([
+        DB::table('user_golongan')->insert([
+            'id_acara' => $userGolongan->id_acara,
             'id_user' => $userId,
+            'id_harga' => $hargaId,
+            'id_uup' => $uup->id_uup,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
+
+
 
         return  redirect()->route('biodata')->with('success', 'Berhasil Daftar Kelas!');
     }

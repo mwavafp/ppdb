@@ -14,58 +14,59 @@
 
             <!-- Tabel Data -->
             <div class="p-6 overflow-x-auto">
-                <table class="w-full text-sm border border-gray-300  mb-10">
-                    <tbody>
-                        <tr class="border border-gray-300">
-                            <td class="p-2 font-bold border border-gray-300 w-1/3">Nama</td>
-                            <td class="p-2">{{ $all_data->name }}</td>
-                        </tr>
-                        <tr class="border border-gray-300">
-                            <td class="p-2 font-bold border border-gray-300">NISN</td>
-                            <td class="p-2">{{ $all_data->nisn }}</td>
-                        </tr>
-                        @foreach ($kelas as $item)
-                            <div>
-                                <tr class="border border-gray-300">
-                                    <td class="p-2 font-bold border border-gray-300">Jenjang</td>
-                                    <td class="p-2">{{ strtoupper($item->unt_pendidikan) }}</td>
-                                </tr>
-                                <tr class="border border-gray-300">
-                                    <td class="p-2 font-bold border border-gray-300">Kelas</td>
-                                    <td class="p-2">{{ $item->kelas }}{{ $item->kls_identitas }}</td>
-                                </tr>
-                            </div>
-                        @endforeach
 
 
-                        <tr class="border border-gray-300">
-                            <td class="p-2 font-bold border border-gray-300">Alamat</td>
-                            <td class="p-2">{{ $all_data->alamat }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                @if (
-                    $seleksi_user->akta_lahir === 'diserahkan' &&
-                        $seleksi_user->kk === 'diserahkan' &&
-                        $seleksi_user->byr_dft_ulang === 'lunas')
-                    <div class=" my-8">
-                        <p class="bg-green-500 text-center text-white py-4 w-full rounded-lg font-bold">SELAMAT ANDA
-                            TELAH DINYATAKAN LOLOS SELEKSI PPDB</p>
+                <div>
+                    <table class="w-full text-sm border border-gray-300  mb-10">
+                        <tbody>
+                            <tr class="border border-gray-300">
+                                <td class="p-2 font-bold border border-gray-300 w-1/3">Nama</td>
+                                <td class="p-2">{{ $users[0]->name }}</td>
+                            </tr>
+                            <tr class="border border-gray-300">
+                                <td class="p-2 font-bold border border-gray-300">NISN</td>
+                                <td class="p-2">{{ $users[0]->nisn }}</td>
+                            </tr>
+                            @foreach ($kelasUser as $item)
+                                <div>
+                                    <tr class="border border-gray-300">
+                                        <td class="p-2 font-bold border border-gray-300">Jenjang</td>
+                                        <td class="p-2">{{ strtoupper($item->unt_pendidikan) }}</td>
+                                    </tr>
+                                    <tr class="border border-gray-300">
+                                        <td class="p-2 font-bold border border-gray-300">Kelas</td>
+                                        <td class="p-2">{{ $item->kelas }}{{ $item->kls_identitas }}</td>
+                                    </tr>
+                                </div>
+                            @endforeach
 
-                    </div>
-                @elseif($gelombang_user->akhir_acara >= date('Y-m-d'))
-                    <div class=" my-8">
-                        <p class="bg-blue-500 text-center text-white py-4 w-full rounded-lg font-bold"> MOHON UNTUK
-                            MENYELESAIKAN ADMINISTRASI SELEKSI PPDB</p>
 
-                    </div>
-                @else
-                    <div class=" my-8">
-                        <p class="bg-red-500 text-center text-white py-4 w-full rounded-lg font-bold"> MOHON MAAF
-                            DINYATAKAN TIDAK LOLOS SELEKSI PPDB</p>
+                            <tr class="border border-gray-300">
+                                <td class="p-2 font-bold border border-gray-300">Alamat</td>
+                                <td class="p-2">{{ $users[0]->alamat }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @if ($users[0]->akta_lahir === 'diserahkan' && $users[0]->kk === 'diserahkan' && $users[0]->byr_dft_ulang === 'lunas')
+                        <div class=" my-8">
+                            <p class="bg-green-500 text-center text-white py-4 w-full rounded-lg font-bold">SELAMAT ANDA
+                                TELAH DINYATAKAN LOLOS SELEKSI PPDB</p>
 
-                    </div>
-                @endif
+                        </div>
+                    @elseif($users[0]->akhir_acara >= date('Y-m-d'))
+                        <div class=" my-8">
+                            <p class="bg-blue-500 text-center text-white py-4 w-full rounded-lg font-bold"> MOHON UNTUK
+                                MENYELESAIKAN ADMINISTRASI SELEKSI PPDB</p>
+
+                        </div>
+                    @else
+                        <div class=" my-8">
+                            <p class="bg-red-500 text-center text-white py-4 w-full rounded-lg font-bold"> MOHON MAAF
+                                DINYATAKAN TIDAK LOLOS SELEKSI PPDB</p>
+
+                        </div>
+                    @endif
+                </div>
 
             </div>
         </div>

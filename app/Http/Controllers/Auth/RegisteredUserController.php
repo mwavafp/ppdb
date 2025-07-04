@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Acara;
 use App\Models\Harga;
 use App\Models\Kelas;
+use App\Models\Pembayaran;
 use App\Models\User;
 use App\Models\UserGolongan;
+use App\Models\UserUnitPendidikan;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -114,10 +116,21 @@ class RegisteredUserController extends Controller
             ->where('id_acara', $request->id_acara)
             ->value('id_harga');
 
+        $kelas = Kelas::create([
+            'unt_pendidikan' => strtolower($request->unt_pendidikan),
+            'id_contact' => $request->cnt,
+        ]);
+        $pembayaran = Pembayaran::create([]);
+        $uup = UserUnitPendidikan::create([
+            'id_bayar' => $pembayaran->id_bayar,
+            'id_kelas' => $kelas->id_kelas
+
+        ]);
         UserGolongan::create([
             'id_acara' => $request->id_acara,
             'id_user' => $user->id_user,
             'id_harga' => $harga_id,
+            'id_uup' => $uup->id_uup,
         ]);
 
         $user->ortu()->create([
@@ -149,23 +162,12 @@ class RegisteredUserController extends Controller
             'id_user' => $user->id_user,
         ]);
 
-        $kelas = Kelas::create([
-            'unt_pendidikan' => strtolower($request->unt_pendidikan),
-            'id_contact' => $request->cnt,
-        ]);
 
-        $user->userUnitPendidikan()->create([
-            'id_user' => $user->id_user,
-            'id_kelas' => $kelas->id_kelas,
-        ]);
 
         $user->berkas()->create([
             'id_user' => $user->id_user,
         ]);
 
-        $user->pembayaran()->create([
-            'id_user' => $user->id_user,
-        ]);
 
         $pdf = $this->generatePDF($user, $identity);
         $pdfContent = $pdf->output();

@@ -9,7 +9,7 @@
         <div class="flex">
             <div class="mr-8">
                 <table>
-                    @foreach ($all_data as $item)
+                    @foreach ($users as $item)
                         <div>
                             <tr>
                                 <td class="pr-2 py-1 font-medium">No. Pendaftaran</td>
@@ -34,16 +34,16 @@
 
             <div>
                 <table>
-                    @foreach ($all_data as $item)
+                    @foreach ($gelombangs as $item)
                         <tr>
                             <td class="pr-2 py-1 font-medium">Gelombang</td>
                             <td class="pr-2">:</td>
-                            <td>1</td>
+                            <td>{{ $item->id_acara }}</td>
                         </tr>
                         <tr>
                             <td class="pr-2 py-1 font-medium">Kategori</td>
                             <td class="pr-2">:</td>
-                            <td>Alumni</td>
+                            <td>{{ $item->kls_status }}</td>
                         </tr>
                         <tr>
                             <td class="pr-2 py-1 font-medium">Status</td>
@@ -108,9 +108,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($biaya_murid as $item)
+                @foreach ($pembayaran as $item)
                     <tr class="bg-white">
-                        <td class="p-3 text-center">{{ $item->unt_pendidikan }}</td>
+                        <td class="p-3 text-center">{{ strtoupper($item->unt_pendidikan) }}</td>
                         <td class="p-3 text-center">@currency($item->dp_daful)</td>
                         <td class="p-3 text-center">@currency($item->jmlh_byr)</td>
                         <td class="p-3 text-center">@currency($item->total_bayar_daful - $item->jmlh_byr)</td>
