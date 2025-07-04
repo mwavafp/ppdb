@@ -152,8 +152,16 @@ class DataSiswaImport implements ToCollection
                     ]);
                 }
 
-                DB::table('user_unit_pendidikan')->insert([
-                    'id_user' => $userId,
+                $idBayar = DB::table('pembayaran')->insertGetId([
+                    // 'id_user'=>$userId,
+                    'jmlh_byr'=>0,
+                    'created_at'=>now(),
+                    'updated_at'=>now(),
+                ]);
+
+                $idUup = DB::table('user_unit_pendidikan')->insertGetId([
+                    // 'id_user' => $userId,
+                    'id_bayar' => $idBayar,
                     'id_kelas' => $idKelas,
                     'created_at'=> now(),
                     'updated_at'=> now(),
@@ -179,16 +187,12 @@ class DataSiswaImport implements ToCollection
                     'id_user'=>$userId,
                     'id_acara'=>$acara->id_acara,
                     'id_harga'=>$hargaId,
+                    'id_uup'=>$idUup,
                     'created_at'=>now(),
                     'updated_at'=>now(),
                 ]);
 
-                DB::table('pembayaran')->insert([
-                    'id_user'=>$userId,
-                    'jmlh_byr'=>0,
-                    'created_at'=>now(),
-                    'updated_at'=>now(),
-                ]);
+
             });
         }
     }
