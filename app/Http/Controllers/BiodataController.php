@@ -19,7 +19,31 @@ class BiodataController extends Controller
     {
         $catchUser = Auth::id();
 
+        // Daftar kelas tambahan yang bisa didaftar user
+        $additionalUnits = ['pondok', 'tpq', 'madin'];
 
+        // Ambil semua unit pendidikan user, trim dan lowercase agar konsisten
+        $userUnits = DB::table('user_unit_pendidikan as uup')
+            ->join('kelas', 'uup.id_kelas', '=', 'kelas.id_kelas')
+            ->join('user_golongan as ug', 'uup.id_uup', '=', 'ug.id_uup')
+            ->where('ug.id_user', $catchUser)
+            ->pluck('kelas.unt_pendidikan')
+            ->map(fn($item) => strtolower(trim($item)))
+            ->filter()
+            ->toArray();
+
+        // Cari kelas tambahan yang sudah user miliki
+        $registeredAdditionalUnits = array_intersect($userUnits, $additionalUnits);
+
+        // Cari kelas tambahan yang BELUM user miliki
+        $availableUnits = array_diff($additionalUnits, $registeredAdditionalUnits);
+
+        // Pastikan selalu array, jangan null
+        if (!is_array($availableUnits)) {
+            $availableUnits = [];
+        }
+
+        // dd(compact('userUnits', 'registeredAdditionalUnits', 'availableUnits'));
         $all_data = DB::table('users')
 
             ->join('ortu', 'users.id_user', '=', 'ortu.id_user')
@@ -71,9 +95,8 @@ class BiodataController extends Controller
             ->get();
 
 
-        //kurang nik
 
-        return view('calonMurid.biodata', compact('all_data', 'all_contact'), ['title' => 'test']);
+        return view('calonMurid.biodata', compact('all_data', 'all_contact', 'availableUnits', 'userUnits'), ['title' => 'test']);
     }
 
     public function updateData(Request $request)

@@ -16,24 +16,23 @@ class AllDataExport implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        $all_data = DB::table('harga')
-            ->join('user_golongan', 'harga.id_harga', '=', 'user_golongan.id_harga')  // Pastikan 'harga' di-join dengan 'user_golongan'
+        $adminUnit = auth('admin')->user()->unit;
+        $all_data = DB::table('user_golongan')
+            ->join('harga', 'user_golongan.id_harga', '=', 'harga.id_harga')  // Pastikan 'harga' di-join dengan 'user_golongan'
             ->join('users', 'user_golongan.id_user', '=', 'users.id_user')  // Join 'users' dengan 'user_golongan'
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('ortu', 'users.id_user', '=', 'ortu.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('pembayaran', 'users.id_user', '=', 'pembayaran.id_user')
-            // ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
-            // ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('berkas', 'users.id_user', '=', 'berkas.id_user')
+            ->join('pembayaran', 'user_unit_pendidikan.id_bayar', '=', 'pembayaran.id_bayar')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
 
-            // ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
-
-            // ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->whereBetween('users.created_at', [
-                DB::raw('(SELECT awal FROM tahun LIMIT 1)'),
-                DB::raw('(SELECT akhir FROM tahun LIMIT 1)')
-            ])
+            // Kalau bukan super, filter unit pendidikan
+            ->when($adminUnit !== 'super', function ($query) use ($adminUnit) {
+                $query->where('kelas.unt_pendidikan', $adminUnit);
+            })
             ->select(
                 'users.name',
                 'users.alamat',
@@ -60,6 +59,12 @@ class AllDataExport implements FromCollection, WithHeadings
                 'ortu.almt_ibu',
                 'ortu.pekerjaan_ibu',
                 'ortu.nmr_ibu_wa',
+
+                'berkas.kk',
+                'berkas.pas_foto',
+                'berkas.ijazah_akhir',
+                'berkas.kip',
+                'berkas.akta_lahir',
 
                 'kelas.unt_pendidikan',
                 'kelas.kelas',
@@ -101,6 +106,12 @@ class AllDataExport implements FromCollection, WithHeadings
             'Alamat Ibu',
             'Pekerjaan Ibu',
             'Nomor WA Ibu',
+
+            'Kartu Keluarga',
+            'Pas Foto',
+            'Ijazah Akhir',
+            'KIP',
+            'Akta Lahir',
 
             'Jenjang Pendidikan',
             'Kelas',

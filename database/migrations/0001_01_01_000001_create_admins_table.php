@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('password2')->nullable();
             $table->enum('role', ['admin', 'superAdmin']);
+            $table->enum('unit', ['super', 'tk', 'tpq', 'madin', 'sd', 'smp', 'sma', 'pondok']);
+
             $table->rememberToken();
             $table->timestamps();
         });

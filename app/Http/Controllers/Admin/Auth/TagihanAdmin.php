@@ -8,75 +8,19 @@ use App\Exports\UsersExport;
 use App\Http\Controllers\Controller;
 use App\Models\Pembayaran;
 use App\Models\User;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TagihanAdmin extends Controller
 {
-    // public function showData()
-    // {
-    //     // Ambil pembayaran terakhir berdasarkan id_bayar per user + kelas
-    //     $latestPembayaran = DB::table('user_unit_pendidikan as uup')
-    //         ->join('pembayaran as p1', 'uup.id_user', '=', 'p1.id_user')
-    //         ->select(
-    //             'p1.id_user',
-    //             'uup.id_kelas',
-    //             DB::raw('MAX(p1.id_bayar) as latest_id_bayar')
-    //         )
-    //         ->groupBy('p1.id_user', 'uup.id_kelas');
-
-    //     // Join utama
-    //     $all_data = DB::table('user_unit_pendidikan')
-    //         ->join('users', 'user_unit_pendidikan.id_user', '=', 'users.id_user')
-    //         ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-    //         ->join('user_golongan', 'users.id_user', '=', 'user_golongan.id_user')
-    //         ->join('harga', 'user_golongan.id_harga', '=', 'harga.id_harga')
-    //         ->leftJoin('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-
-    //         // join latest pembayaran
-    //         ->leftJoinSub($latestPembayaran, 'latest_pembayaran', function ($join) {
-    //             $join->on('user_unit_pendidikan.id_kelas', '=', 'latest_pembayaran.id_kelas')
-    //                 ->on('user_unit_pendidikan.id_user', '=', 'latest_pembayaran.id_user');
-    //         })
-
-    //         // join ke pembayaran yang cocok
-    //         ->leftJoin('pembayaran', 'pembayaran.id_bayar', '=', 'latest_pembayaran.latest_id_bayar')
-    //         ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
-
-    //         ->whereBetween('users.created_at', [
-    //             DB::raw('(SELECT awal FROM tahun LIMIT 1)'),
-    //             DB::raw('(SELECT akhir FROM tahun LIMIT 1)')
-    //         ])
-    //         ->select(
-    //             'users.name',
-    //             'users.id_user',
-    //             'users.gender',
-    //             'kelas.unt_pendidikan',
-    //             'kelas.id_kelas',
-    //             'pembayaran.id_bayar',
-    //             'pembayaran.byr_dft_ulang',
-    //             'pembayaran.status',
-    //             'pembayaran.jmlh_byr',
-    //             'pembayaran.jmlh_byr2',
-    //             'pembayaran.jmlh_byr3',
-    //             'pembayaran.jmlh_byr4',
-    //             'harga.total_bayar_daful',
-    //             'harga.dp_daful',
-    //             'harga.diskon',
-    //             'pembayaran.updated_at',
-    //             'admins.name as nama_admin'
-    //         )
-    //         ->orderBy('users.name')
-    //         ->paginate(10);
-
-    //     return view('admin.page.tagihan', compact('all_data'), ['title' => 'test']);
-    // }
 
 
     public function showData()
     {
-        // Ambil pembayaran terakhir berdasarkan id_bayar per user + kelas
+        $adminUnit = auth('admin')->user()->unit;
+
         $latestPembayaran = DB::table('user_unit_pendidikan as uup')
             ->join('pembayaran as p1', 'uup.id_bayar', '=', 'p1.id_bayar')
             ->select(
@@ -85,56 +29,47 @@ class TagihanAdmin extends Controller
             )
             ->groupBy('uup.id_uup');
 
-        // Join utama
         $all_data = DB::table('user_unit_pendidikan')
-    ->join('user_golongan', 'user_unit_pendidikan.id_uup', '=', 'user_golongan.id_uup')
-    ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
-    ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-    ->join('harga', 'user_golongan.id_harga', '=', 'harga.id_harga')
-    ->leftJoin('seleksi', 'users.id_user', '=', 'seleksi.id_user')
+            ->join('user_golongan', 'user_unit_pendidikan.id_uup', '=', 'user_golongan.id_uup')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
 
-    // join subquery pembayaran terakhir
-    ->leftJoinSub($latestPembayaran, 'latest_pembayaran', function ($join) {
-        $join->on('user_unit_pendidikan.id_uup', '=', 'latest_pembayaran.id_uup');
-    })
-    ->leftJoin('pembayaran', 'pembayaran.id_bayar', '=', 'latest_pembayaran.latest_id_bayar')
-    ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
+            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->join('harga', 'user_golongan.id_harga', '=', 'harga.id_harga')
+            ->leftJoin('seleksi', 'users.id_user', '=', 'seleksi.id_user')
+            ->leftJoinSub($latestPembayaran, 'latest_pembayaran', function ($join) {
+                $join->on('user_unit_pendidikan.id_uup', '=', 'latest_pembayaran.id_uup');
+            })
+            ->leftJoin('pembayaran', 'pembayaran.id_bayar', '=', 'latest_pembayaran.latest_id_bayar')
+            ->leftJoin('admins', 'admins.id_admin', '=', 'pembayaran.updated_by')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
 
-            ->whereBetween('users.created_at', [$tahun->awal, $tahun->akhir])
-
+            // Kalau bukan super, filter unit pendidikan
+            ->when($adminUnit !== 'super', function ($query) use ($adminUnit) {
+                $query->where('kelas.unt_pendidikan', $adminUnit);
+            })
             ->select(
                 'users.name',
-        'users.id_user',
-        'kelas.unt_pendidikan',
-        'kelas.kelas',
-        'harga.total_bayar_daful',
-        'harga.diskon',
-        'pembayaran.byr_dft_ulang',
-        'pembayaran.status',
-        'pembayaran.id_bayar',
-        'pembayaran.jmlh_byr',
-        'pembayaran.jmlh_byr2',
-        'pembayaran.jmlh_byr3',
-        'pembayaran.jmlh_byr4',
-        'pembayaran.updated_at',
-        'admins.name as nama_admin'
+                'users.id_user',
+                'kelas.unt_pendidikan',
+                'kelas.kelas',
+                'harga.total_bayar_daful',
+                'harga.diskon',
+                'pembayaran.byr_dft_ulang',
+                'pembayaran.status',
+                'pembayaran.id_bayar',
+                'pembayaran.jmlh_byr',
+                'pembayaran.jmlh_byr2',
+                'pembayaran.jmlh_byr3',
+                'pembayaran.jmlh_byr4',
+                'pembayaran.updated_at',
+                'admins.name as nama_admin'
             )
             ->orderBy('users.name')
             ->paginate(10);
 
-        return view('admin.page.tagihan', [
-            'title' => 'Tagihan Siswa',
-            'all_data' => $all_data
-        ]);
+        return view('admin.page.tagihan', compact('all_data'), ['title' => 'test']);
     }
-
-
-
-
-
-
-
-
 
 
 
@@ -203,59 +138,21 @@ class TagihanAdmin extends Controller
 
     public function search(Request $request)
     {
+        $adminUnit = auth('admin')->user()->unit;
         $search = $request->search;
         $all_data = DB::table('harga')
-            ->join('user_golongan', 'harga.id_harga', '=', 'user_golongan.id_harga')  // Pastikan 'harga' di-join dengan 'user_golongan'
-            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')  // Join 'users' dengan 'user_golongan'
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
+            ->join('user_golongan', 'harga.id_harga', '=', 'user_golongan.id_harga')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup') // ✅ perbaikan
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('pembayaran', 'users.id_user', '=', 'pembayaran.id_user')
-            // ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
-            // ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
-
-            // ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
-
-            // ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->whereBetween('users.created_at', [
-                DB::raw('(SELECT awal FROM tahun LIMIT 1)'),
-                DB::raw('(SELECT akhir FROM tahun LIMIT 1)')
-            ])
-            ->select(
-                'users.name',
-                'users.id_user',
-                'pembayaran.id_bayar',
-                'kelas.unt_pendidikan',
-                'pembayaran.byr_dft_ulang',
-                'pembayaran.status',
-                'jmlh_byr',
-                'harga.total_bayar_daful',
-                'harga.dp_daful',
-                'harga.diskon'
-            )
-
-            ->where('users.name', 'LIKE', "%{$search}%")
-            ->paginate(10);
-
-
-        return view('admin.page.tagihan', compact('all_data'), ['title' => 'Search Results']);
-    }
-
-    public function filter(Request $request)
-    {
-        $filterCategory = [
-            'unt_pendidikan' => 'kelas.unt_pendidikan',
-            'status' => 'pembayaran.status',
-            'dft_ulang' => 'pembayaran.byr_dft_ulang'
-
-        ];
-        $query = DB::table('harga')
-            ->join('user_golongan', 'harga.id_harga', '=', 'user_golongan.id_harga')  // Pastikan 'harga' di-join dengan 'user_golongan'
-            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')  // Join 'users' dengan 'user_golongan'
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
-            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('pembayaran', 'users.id_user', '=', 'pembayaran.id_user')
+            ->join('pembayaran', 'user_unit_pendidikan.id_bayar', '=', 'pembayaran.id_bayar') // ✅ sesuai struktur
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
+            // Kalau bukan super, filter unit pendidikan
+            ->when($adminUnit !== 'super', function ($query) use ($adminUnit) {
+                $query->where('kelas.unt_pendidikan', $adminUnit);
+            })
             ->select(
                 'users.name',
                 'users.id_user',
@@ -265,32 +162,69 @@ class TagihanAdmin extends Controller
                 'pembayaran.byr_dft_ulang',
                 'pembayaran.status',
                 'pembayaran.jmlh_byr',
+                'pembayaran.jmlh_byr2',
+                'pembayaran.jmlh_byr3',
+                'pembayaran.jmlh_byr4',
                 'harga.total_bayar_daful',
                 'harga.dp_daful',
-                'harga.diskon'
+                'harga.diskon',
+                'pembayaran.updated_at'
+            )
+            ->where('users.name', 'LIKE', "%{$search}%")
+            ->paginate(10);
 
+
+        return view('admin.page.tagihan', compact('all_data'), ['title' => 'Search Results']);
+    }
+
+    public function filter(Request $request)
+    {
+        $adminUnit = auth('admin')->user()->unit; // ambil unit admin login
+
+        $filterCategory = [
+            'unt_pendidikan' => 'kelas.unt_pendidikan',
+            'status'         => 'pembayaran.status',
+            'dft_ulang'      => 'pembayaran.byr_dft_ulang'
+        ];
+
+        $query = DB::table('harga')
+            ->join('user_golongan', 'harga.id_harga', '=', 'user_golongan.id_harga')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup') // ✅ perbaikan
+            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
+            ->join('pembayaran', 'user_unit_pendidikan.id_bayar', '=', 'pembayaran.id_bayar') // ✅ sesuai struktur
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
+            // Kalau bukan super, filter unit pendidikan
+            ->when($adminUnit !== 'super', function ($query) use ($adminUnit) {
+                $query->where('kelas.unt_pendidikan', $adminUnit);
+            })
+            ->select(
+                'users.name',
+                'users.id_user',
+                'users.gender',
+                'pembayaran.id_bayar',
+                'kelas.unt_pendidikan',
+                'pembayaran.byr_dft_ulang',
+                'pembayaran.status',
+                'pembayaran.jmlh_byr',
+                'pembayaran.jmlh_byr2',
+                'pembayaran.jmlh_byr3',
+                'pembayaran.jmlh_byr4',
+                'harga.total_bayar_daful',
+                'harga.dp_daful',
+                'harga.diskon',
+                'pembayaran.updated_at'
             );
-        //  DB::table('pembayaran')
-        //     ->join('users', 'pembayaran.id_user', '=', 'users.id_user')
-        //     ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
-        //     ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-        //     ->select(
-        //         'users.name',
-        //         'users.id_user',
-        //         'pembayaran.id_bayar',
-        //         'kelas.unt_pendidikan',
-        //         'pembayaran.byr_dft_ulang',
-        //         'pembayaran.status',
-        //         'pembayaran.jmlh_byr'
-        //     );
 
 
+        // 🔹 filter berdasarkan input user
         foreach ($filterCategory as $key => $value) {
             if ($request->filled($key)) {
                 $query->where($value, 'LIKE', "%{$request->$key}%");
             }
         }
-
 
         // Ambil data dengan pagination
         $all_data = $query->paginate(10);
@@ -298,8 +232,8 @@ class TagihanAdmin extends Controller
 
         return view('admin.page.tagihan', compact('all_data'), ['title' => 'Search Results']);
     }
-    // public function export()
-    // {
-    //     return Excel::download(new TagihanExport, 'Tagihan PPDB.xlsx');
-    // }
+    public function export()
+    {
+        return Excel::download(new TagihanExport, 'Data Tagihan PPDB.xlsx');
+    }
 }

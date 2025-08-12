@@ -15,8 +15,20 @@ class KelasController extends Controller
      */
     public function showData()
     {
-        $students = DB::table('kelas')
-            ->join('users', 'kelas.id_kelas', '=', 'users.id_user')
+        $adminUnit = auth('admin')->user()->unit;
+        $students = DB::table('user_golongan')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+
+            ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
+
+            // Kalau bukan super, filter unit pendidikan
+            ->when($adminUnit !== 'super', function ($query) use ($adminUnit) {
+                $query->where('kelas.unt_pendidikan', $adminUnit);
+            })
             ->select(
                 'users.name',
                 'kelas.kelas',
@@ -25,7 +37,9 @@ class KelasController extends Controller
                 'kelas.kls_status',
                 'kelas.id_kelas'
             )
+            ->orderBy('users.name')
             ->paginate(10);
+        // dd($students);
 
         return view('admin.page.pembagiankelas', compact('students'), ['title' => 'test']);
     }
@@ -88,9 +102,15 @@ class KelasController extends Controller
     public function search(Request $request)
     {
         $search = $request->search;
-
+        $adminUnit = auth('admin')->user()->unit;
         $students = DB::table('users')
             ->join('kelas', 'users.id_user', '=', 'kelas.id_kelas')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
+            // Kalau bukan super, filter unit pendidikan
+            ->when($adminUnit !== 'super', function ($query) use ($adminUnit) {
+                $query->where('kelas.unt_pendidikan', $adminUnit);
+            })
             ->select(
                 'users.name',
                 'kelas.kelas',
@@ -110,8 +130,15 @@ class KelasController extends Controller
      */
     public function filter(Request $request)
     {
+        $adminUnit = auth('admin')->user()->unit;
         $query = DB::table('users')
             ->join('kelas', 'users.id_user', '=', 'kelas.id_kelas')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
+            // Kalau bukan super, filter unit pendidikan
+            ->when($adminUnit !== 'super', function ($query) use ($adminUnit) {
+                $query->where('kelas.unt_pendidikan', $adminUnit);
+            })
             ->select(
                 'users.name',
                 'kelas.kelas',

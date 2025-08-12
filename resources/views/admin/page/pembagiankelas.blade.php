@@ -2,7 +2,7 @@
     <x-slot:title>{{ $title }}</x-slot:title>
 
 
-    <div class=" flex items-center mb-4">
+    <div class=" flex items-center mb-16">
         <h1 class="text-3xl font-bold">PEMBAGIAN KELAS</h1>
 
         <div class="flex-1 flex justify-center relative">
@@ -14,40 +14,45 @@
             <i class="fas fa-search absolute left-[calc(50%-240px+12px)] top-3 text-gray-400"></i>
         </div>
     </div>
+    @php
+        $adminUnit = auth('admin')->user()->unit;
+    @endphp
 
-    <form method="GET" action="{{ route('pembagiankelas.filter') }}">
-        <div class="w-full  my-8">
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
-                <div>
-                    <label class="block text-sm font-medium">Jenjang</label>
-                    <select name="unt_pendidikan"
-                        class="mt-1 block w-full py-2  border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
-                        <option value="">Semua</option>
-                        <option value="tk" {{ request('unt_pendidikan') == 'tk' ? 'selected' : '' }}>TK</option>
-                        <option value="sd" {{ request('unt_pendidikan') == 'sd' ? 'selected' : '' }}>SD</option>
-                        <option value="smp" {{ request('unt_pendidikan') == 'smp' ? 'selected' : '' }}>SMP
-                        </option>
-                        <option value="sma" {{ request('unt_pendidikan') == 'sma' ? 'selected' : '' }}>SMA
-                        </option>
-                        <option value="tpq" {{ request('unt_pendidikan') == 'tpq' ? 'selected' : '' }}>TPQ
-                        </option>
-                        <option value="madin" {{ request('unt_pendidikan') == 'madin' ? 'selected' : '' }}>MADIN
-                        </option>
-                        <option value="pondok" {{ request('unt_pendidikan') == 'pondok' ? 'selected' : '' }}>PONDOK
-                        </option>
-                    </select>
-                </div>
+    @if ($adminUnit === 'super')
+        <form method="GET" action="{{ route('pembagiankelas.filter') }}">
 
-                <div class="flex mt-4 mx-4">
-                    <button type="submit"
-                        class="bg-green-500 text-white py-2 px-4 rounded-md mr-2 w-[100px] border border-transparent hover:bg-green-600 hover:border-green-600 transition">Cari</button>
-                    <a href="{{ route('pembagiankelas.filter') }}"
-                        class="bg-red-500 text-white py-2 px-4 rounded-md w-[100px] borderborder-transparent hover:bg-red-600 hover:border-red-600transition text-center">Reset</a>
+            <div class="w-full  my-8">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium">Jenjang</label>
+                        <select name="unt_pendidikan"
+                            class="mt-1 block w-full py-2  border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
+                            <option value="">Semua</option>
+                            <option value="tk" {{ request('unt_pendidikan') == 'tk' ? 'selected' : '' }}>TK</option>
+                            <option value="sd" {{ request('unt_pendidikan') == 'sd' ? 'selected' : '' }}>SD</option>
+                            <option value="smp" {{ request('unt_pendidikan') == 'smp' ? 'selected' : '' }}>SMP
+                            </option>
+                            <option value="sma" {{ request('unt_pendidikan') == 'sma' ? 'selected' : '' }}>SMA
+                            </option>
+                            <option value="tpq" {{ request('unt_pendidikan') == 'tpq' ? 'selected' : '' }}>TPQ
+                            </option>
+                            <option value="madin" {{ request('unt_pendidikan') == 'madin' ? 'selected' : '' }}>MADIN
+                            </option>
+                            <option value="pondok" {{ request('unt_pendidikan') == 'pondok' ? 'selected' : '' }}>PONDOK
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="flex mt-4 mx-4">
+                        <button type="submit"
+                            class="bg-green-500 text-white py-2 px-4 rounded-md mr-2 w-[100px] border border-transparent hover:bg-green-600 hover:border-green-600 transition">Cari</button>
+                        <a href="{{ route('pembagiankelas.filter') }}"
+                            class="bg-red-500 text-white py-2 px-4 rounded-md w-[100px] borderborder-transparent hover:bg-red-600 hover:border-red-600transition text-center">Reset</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-
+        </form>
+    @endif
     <div class="bg-white  ">
         <table class="min-w-full divide-y divide-gray-200" id="dataTable">
             <thead class="bg-[oklch(62.7%_0.194_149.214)] border-b-2">
@@ -56,7 +61,8 @@
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Nama</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Kelas</th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Golongan</th>
-                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang Pendidikan
+                    <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Jenjang
+                        Pendidikan
                     </th>
                     <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">Aksi</th>
                 </tr>

@@ -18,7 +18,7 @@ class AdminSuperDashboardController extends Controller
     {
         // Mengambil data dari database termasuk kolom password yang telah dienkripsi sebelumnya
         $all_data = DB::table('admins')
-            ->select('id_admin', 'name', 'nip', 'email', 'password', 'password2', 'role', 'created_at')
+            ->select('id_admin', 'name', 'nip', 'email', 'password', 'password2', 'role', 'unit', 'created_at')
             ->where('role', '=', 'admin')
             ->paginate(10);
 
@@ -30,14 +30,18 @@ class AdminSuperDashboardController extends Controller
 
         return view('superAdmin.dataAdminPage', compact('all_data'), ['title' => 'Dashboard SuperAdmin']);
     }
-    public function createData(Request $request): RedirectResponse
+    public function createData(Request $request)
     {
+        // Debug cek isi request
+
+
         $request->validate([
             'name' => 'required|string|max:255',
             'nip' => 'required|numeric',
-            'email' => 'required|email|unique:admins,email',
             'password' => 'required|string|min:6',
+            'password2' => 'required|string|min:6',
             'role' => 'required|string',
+            'unit' => 'required|string',
         ], [
             'email.unique' => 'Email sudah digunakan. Silakan gunakan email yang berbeda.',
         ]);
@@ -49,10 +53,14 @@ class AdminSuperDashboardController extends Controller
             'password' => $request->password,
             'password2' => Crypt::encrypt($request->password),
             'role' => $request->role,
+            'unit' => $request->unit,
         ]);
+
+
 
         return to_route('admin.data-admin-Superadmin')->with('success', 'Data berhasil ditambahkan');
     }
+
 
     public function deleteData(Request $request, $id)
     {

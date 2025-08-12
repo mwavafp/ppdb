@@ -24,29 +24,37 @@
                 <div class="bg-white shadow rounded-lg p-6 flex flex-col items-center justify-center m-6">
                     <strong class="text-center pb-5">Daftar TPQ atau Madin</strong>
 
-                    <form action="{{ route('biodata.kelasTambahan') }}" method="POST">
-                        @csrf
-                        <div>
-                            <input id="unt_pendidikan" class="block mb-2 w-full" type="text" name='cnt'
-                                value='8' hidden />
-                        </div>
+                    @if (!empty($userUnits) & (count($availableUnits) > 0))
+                        <form action="{{ route('biodata.kelasTambahan') }}" method="POST">
+                            @csrf
+                            <div>
+                                <input id="unt_pendidikan" class="block mb-2 w-full" type="text" name='cnt'
+                                    value='8' hidden />
+                            </div>
 
-                        <div class="mb-4 w-full">
-                            <label for="">Kelas Pilihan</label>
-                            <select class="w-full rounded-md border-2 border-gray-400" name="unt_pendidikan"
-                                id="">
-                                <option>Pilih Pendidikan</option>
-                                <option value="tpq">TPQ</option>
-                                <option value="madin">Madin</option>
-                            </select>
+                            <div class="mb-4 w-full">
+                                <label for="">Kelas Pilihan</label>
+                                <select class="w-full rounded-md border-2 border-gray-400" name="unt_pendidikan"
+                                    required>
+                                    <option value="" disabled selected>Pilih Pendidikan</option>
+                                    @foreach ($availableUnits as $unit)
+                                        <option value="{{ $unit }}">{{ strtoupper($unit) }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <button type="submit" class="py-2 px-4 bg-green-600 rounded-md text-white">
+                                    Daftar
+                                </button>
+                            </div>
+                        </form>
+                    @else
+                        <div class="bg-white shadow rounded-lg p-6 m-6 text-center">
+                            <strong>Anda sudah terdaftar di semua unit pendidikan yang tersedia.</strong>
                         </div>
-                        <div>
-                            <button type="submit"
-                                class="py-2 px-4 bg-[oklch(62.7%_0.194_149.214)] rounded-md text-white">
-                                Daftar
-                            </button>
-                        </div>
-                    </form>
+                    @endif
+
+
                 </div>
             </div>
         </div>

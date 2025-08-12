@@ -100,7 +100,7 @@
                         <div class="sma mr-4 ">
                             <div class="bg-white p-6 rounded-md shadow-md  mb-4 tabel-1">
                                 <h2 class="text-[oklch(62.7%_0.194_149.214)] text-lg font-bold mb-4">
-                                    JADWAL PENDAFTARAN PONDOK + SMA
+                                    JADWAL PENDAFTARAN PONDOK
                                 </h2>
                                 <ul class="space-y-2 mb-4">
                                     @foreach ($acara as $gelombang)
@@ -110,31 +110,13 @@
                                         </li>
                                     @endforeach
                                     <br>
-                                    <a href='/form?unit_pendidikan=PONDOK_SMA&cnt=1'
+                                    <a href='/form?unit_pendidikan=PONDOK&cnt=1'
                                         class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
                                         DAFTAR KLIK DISINI
                                     </a>
                             </div>
                         </div>
-                        <div class="smp ml-4">
-                            <div class="bg-white  p-6 rounded-md shadow-md mb-4 tabel-1">
-                                <h2 class="text-[oklch(62.7%_0.194_149.214)] text-lg font-bold mb-4">
-                                    JADWAL PENDAFTARAN PONDOK + SMP
-                                </h2>
-                                <ul class="space-y-2 mb-4">
-                                    @foreach ($acara as $gelombang)
-                                        <li>
-                                            <strong>{{ $gelombang->namaAcara }}</strong><br />
-                                            {{ $gelombang->awal_acara }} - {{ $gelombang->akhir_acara }}
-                                        </li>
-                                    @endforeach
-                                    <br>
-                                    <a href='/form?unit_pendidikan=PONDOK_SMP&cnt=1'
-                                        class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
-                                        DAFTAR KLIK DISINI
-                                    </a>
-                            </div>
-                        </div>
+
                     </div>
 
 

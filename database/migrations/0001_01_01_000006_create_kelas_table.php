@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kelas', function (Blueprint $table) {
             $table->id('id_kelas');
 
-            $table->enum('unt_pendidikan', ['tk', 'sd', 'smp', 'sma', 'madin', 'pondok_sma', 'pondok_smp']);
+            $table->enum('unt_pendidikan', ['tk', 'sd', 'smp', 'sma', 'madin', 'pondok', 'tpq']);
             $table->enum('kelas', ['-', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'])->nullable();
             $table->enum('kls_identitas', ['-', 'A', 'B', 'C', 'D', 'E', 'F'])->nullable();
             $table->enum('kls_status', ['Alumni', 'Siswa Aktif', 'Siswa Tidak Aktif'])->default('Siswa Tidak Aktif');

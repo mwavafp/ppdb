@@ -46,6 +46,7 @@ Route::get('/smp', [PengaturanWebController::class, 'showDatasmp']);
 Route::get('/sma', [PengaturanWebController::class, 'showDatasma']);
 
 
+
 Route::get('/biaya-unit', [BiayaController::class, 'showDataBiaya']);
 
 Route::get('/tagihan', function () {
@@ -234,6 +235,8 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin', 'no-cache'])->group(fun
     Route::get('/pengaturan-website', [PengaturanWebController::class, 'showpage'])->name('pengaturanpage');
     // Route::get('/photo/{id}', [PengaturanWebController::class, 'editPhoto'])->name('photo.edit');
     // Route::put('/photo/{id}/edit', [PengaturanWebController::class, 'updatePhoto'])->name('photo.update');
+    Route::get('/pengaturan-website/edit/login', [AuthenticatedSessionController::class, 'editLoginImage'])->name('pengaturalogine-edit');
+    Route::post('/pengaturan-website/update/login', [AuthenticatedSessionController::class, 'updateLoginImage'])->name('pengaturanlogin-update');
 
     Route::get('/pengaturan-website/edit/home', [PengaturanWebController::class, 'edithome'])->name('pengaturanhome-edit');
     Route::post('/pengaturan-website/update/home', [PengaturanWebController::class, 'updatehome'])->name('pengaturanhome-update');

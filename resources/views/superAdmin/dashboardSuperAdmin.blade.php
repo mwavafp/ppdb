@@ -3,9 +3,9 @@
     <x-slot:title>{{ $title }}</x-slot:title>
 
 
-    <div class=" bg-gray-100 px-16 py-12">
+    <div class=" bg-gray-100 ">
         <div class="">
-            <p class="text-3xl font-bold">Dashboard woi</p>
+            <p class="text-3xl font-bold">Dashboard Super Admin</p>
         </div>
         <div class="text-right mb-8">
             <form action="{{ route('admin.dahsboard-super-export') }}" method="GET">

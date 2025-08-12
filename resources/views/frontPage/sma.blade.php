@@ -172,7 +172,7 @@
                         @endforeach
                         <br>
                     </ul>
-                    <a href="/form?unit_pendidikan=SMA&cnt=6"
+                    <a href="/form?unit_pendidikan=SMA&cnt=7"
                         class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
                         DAFTAR KLIK DISINI
                     </a>

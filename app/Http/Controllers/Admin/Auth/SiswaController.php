@@ -69,6 +69,7 @@ class SiswaController extends Controller
         $search = $request->input('search', '');
         $gender = $request->input('gender', '');
         $status = $request->input('status', '');
+        $adminUnit = auth('admin')->user()->unit;
 
         // Ambil data tahun aktif
         $tahun = DB::table('tahun')->orderByDesc('id_tahun')->first();
@@ -80,6 +81,13 @@ class SiswaController extends Controller
             ->leftJoin('admins', 'users.updated_by', '=', 'admins.id_admin')
             ->leftJoin('ortu', 'users.id_user', '=', 'ortu.id_user')
             ->leftJoin('seleksi', 'users.id_user', '=', 'seleksi.id_user')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
+
+            // Kalau bukan super, filter unit pendidikan
+            ->when($adminUnit !== 'super', function ($query) use ($adminUnit) {
+                $query->where('kelas.unt_pendidikan', $adminUnit);
+            })
             ->select(
                 'users.*',
                 'admins.name as nama_admin',

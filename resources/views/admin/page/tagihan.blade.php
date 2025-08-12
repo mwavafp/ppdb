@@ -15,32 +15,39 @@
         </div>
     </div>
 
-    <div class="flex w-full my-8">
+    <div class="flex w-full my-4 justify-between">
         <!--Form Filter -->
-        <form method="GET" action="{{ route('filter') }}" class="w-full">
+        <form method="GET" action="{{ route('filter') }}">
             <div class="max-w-7xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-2 mb-4 items-end">
                     <!-- Jenjang -->
-                    <div>
-                        <label class="block text-sm font-medium">Jenjang</label>
-                        <select name="unt_pendidikan"
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
-                            <option value="">Semua</option>
-                            <option value="tk" {{ request('unt_pendidikan') == 'tk' ? 'selected' : '' }}>TK</option>
-                            <option value="sd" {{ request('unt_pendidikan') == 'sd' ? 'selected' : '' }}>SD</option>
-                            <option value="smp"{{ request('unt_pendidikan') == 'smp' ? 'selected' : '' }}>SMP
-                            </option>
-                            <option value="sma"{{ request('unt_pendidikan') == 'sma' ? 'selected' : '' }}>SMA
-                            </option>
-                            <option value="tpq"{{ request('unt_pendidikan') == 'tpq' ? 'selected' : '' }}>TPQ
-                            </option>
-                            <option value="madin"{{ request('unt_pendidikan') == 'madin' ? 'selected' : '' }}>MADIN
-                            </option>
-                            <option value="pondok"{{ request('unt_pendidikan') == 'pondok' ? 'selected' : '' }}>PONDOK
-                            </option>
-                        </select>
-                    </div>
+                    @php
+                        $adminUnit = auth('admin')->user()->unit;
+                    @endphp
 
+                    @if ($adminUnit === 'super')
+                        <div>
+                            <label class="block text-sm font-medium">Jenjang</label>
+                            <select name="unt_pendidikan"
+                                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
+                                <option value="">Semua</option>
+                                <option value="tk" {{ request('unt_pendidikan') == 'tk' ? 'selected' : '' }}>TK
+                                </option>
+                                <option value="sd" {{ request('unt_pendidikan') == 'sd' ? 'selected' : '' }}>SD
+                                </option>
+                                <option value="smp" {{ request('unt_pendidikan') == 'smp' ? 'selected' : '' }}>SMP
+                                </option>
+                                <option value="sma" {{ request('unt_pendidikan') == 'sma' ? 'selected' : '' }}>SMA
+                                </option>
+                                <option value="tpq" {{ request('unt_pendidikan') == 'tpq' ? 'selected' : '' }}>TPQ
+                                </option>
+                                <option value="madin" {{ request('unt_pendidikan') == 'madin' ? 'selected' : '' }}>
+                                    MADIN</option>
+                                <option value="pondok" {{ request('unt_pendidikan') == 'pondok' ? 'selected' : '' }}>
+                                    PONDOK</option>
+                            </select>
+                        </div>
+                    @endif
                     <!-- Status DP -->
                     <div>
                         <label class="block text-sm font-medium">Status DP</label>
@@ -74,17 +81,18 @@
                     </div>
 
                     <!-- Tombol Download Excel -->
-                    <div>
-                        <form action="{{ route('tagihan.export') }}" method="GET">
-                            <button type="submit"
-                                class="bg-green-600 text-white py-2 px-4 rounded-md w-full hover:bg-green-700 transition">
-                                Download Excel
-                            </button>
-                        </form>
-                    </div>
+
                 </div>
             </div>
         </form>
+        <div class="flex items-center ">
+            <form action="{{ route('tagihan.export') }}" method="GET" class="align-con">
+                <button type="submit"
+                    class="bg-green-600 text-white py-2 px-4 rounded-md w-full hover:bg-green-700 transition">
+                    Download Excel
+                </button>
+            </form>
+        </div>
     </div>
 
 

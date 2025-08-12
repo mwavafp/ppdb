@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('harga', function (Blueprint $table) {
             $table->id('id_harga');
-            $table->enum('unitPendidikan', ['tk', 'sd', 'smp', 'sma', 'madin', 'pondok_smp', 'pondok_sma']);
+            $table->enum('unitPendidikan', ['tpq', 'tk', 'sd', 'smp', 'sma', 'madin', 'pondok']);
             $table->enum('gender', ['laki-laki', 'perempuan']);
             $table->enum('tipe_siswa', ['alumni', 'umum']);
             $table->bigInteger('total_bayar_daful');

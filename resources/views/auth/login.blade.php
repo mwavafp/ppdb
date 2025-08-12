@@ -1,7 +1,9 @@
 <x-layout>
     <div class="flex flex-col w-full lg:flex-row ">
+
         <div class="w-full lg:w-1/2">
-            <img src="{{ asset('/images/banner.png') }}" alt="" class="w-full">
+            <img src="{{ asset('storage/' . $all_teks[0]->image_login) }}"
+                class="rounded-xl w-full max-h-[300px] object-cover object-center " alt="Banner">
         </div>
         <div class="w-full lg:w-1/2">
             <x-guest-layout>

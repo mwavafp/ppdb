@@ -1,0 +1,29 @@
+Broken Fiture:
+Wajib
+- scan tahun ajaran & gelombang
+Filter
+- Data Pendaftar (OK)
+- Tagihan Pendaftar
+- Seleksi Pendaftar
+
+
+User Profile
+1. pengisian biodata
+- Daftar kelas (ketika sudah terpakai 1 harus unvailable)
+- Pengumuman (memungkinkan untuk mohon maaf dinyatakan lulus harus ada 2(konidisi ini tergantung tahun ajaran jika lebih dari tahun maka auto tidak lolos, jika masih dalam tahun ajaran pending))
+
+Admin Dashboard
+1.Seleksi Pendaftaran
+
+- 1 use + bisa banyak jenjang tetapi dokumen nya 1
+- status Dp (harus auto)
+- status seleksi wajib otomatis semisal lengkap (tetapi tidak menuntut kemudian dapat dirubah tidak lolos)
+
+2.Pembagian kelas 
+- hanya 1 kelas yang keluar. harusnya keluar 2
+
+
+Super Admin 
+- Dashboard Super Admin (pading)
+- Edit website
+ - photo di login belum bisa di edit

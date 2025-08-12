@@ -17,6 +17,7 @@
         <form method="GET" action="{{ route('seleksi.filter') }}">
 
             <div class="flex items-end flex-wrap gap-4">
+
                 <div>
                     <label class="block text-sm font-medium">Status Seleksi</label>
                     <select name="status"
@@ -27,22 +28,26 @@
                         <option value="Belum Ditentukan">Belum Ditentukan</option>
                     </select>
                 </div>
+                @php
+                    $adminUnit = auth('admin')->user()->unit;
+                @endphp
 
-                <div>
-                    <label class="block text-sm font-medium">Jenjang</label>
-                    <select name="jenjang"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
-                        <option value="">Semua Jenjang</option>
-                        <option value="tk">TK</option>
-                        <option value="sd">SD</option>
-                        <option value="smp">SMP</option>
-                        <option value="sma">SMA</option>
-                        <option value="tpq">TPQ</option>
-                        <option value="madin">MADIN</option>
-                        <option value="pondok">PONDOK</option>
-                    </select>
-                </div>
-
+                @if ($adminUnit === 'super')
+                    <div>
+                        <label class="block text-sm font-medium">Jenjang</label>
+                        <select name="jenjang"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-400 bg-white rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm">
+                            <option value="">Semua Jenjang</option>
+                            <option value="tk">TK</option>
+                            <option value="sd">SD</option>
+                            <option value="smp">SMP</option>
+                            <option value="sma">SMA</option>
+                            <option value="tpq">TPQ</option>
+                            <option value="madin">MADIN</option>
+                            <option value="pondok">PONDOK</option>
+                        </select>
+                    </div>
+                @endif
                 <div class="flex gap-2">
                     <button type="submit"
                         class="bg-green-500 text-white rounded-md px-6 py-2 text-sm hover:bg-green-600">
@@ -86,7 +91,7 @@
                         <td class="border px-2 py-2 text-center">{{ ucfirst($student->jenjang) }}</td>
                         <td class="border px-2 py-2 text-center">{{ $student->kelas ?? '-' }}</td>
                         <td class="border px-2 py-2">
-                            @foreach (['kk' => 'Kartu Keluarga', 'pas_foto' => 'Pas Foto', 'ijazah_akhir' => 'Ijazah Akhir', 'kip' => 'KIP','akta' => 'akta'] as $key => $label)
+                            @foreach (['kk' => 'Kartu Keluarga', 'pas_foto' => 'Pas Foto', 'ijazah_akhir' => 'Ijazah Akhir', 'kip' => 'KIP', 'akta' => 'akta'] as $key => $label)
                                 <p
                                     class="{{ $student->{'status_' . $key} === 'diserahkan' ? 'bg-green-500' : 'bg-red-500' }} text-white rounded-lg px-2 text-center my-2">
                                     {{ $label }}
@@ -190,11 +195,12 @@
                                             @endforeach
                                             @if ($student->nama_admin && $student->updated_at)
                                                 <div class="text-sm text-gray-600 mt-4">
-                                                    Terakhir diupdate oleh <span class="font-semibold">{{ $student->nama_admin }}</span>
-                                                    pada <span>{{ \Carbon\Carbon::parse($student->updated_at)}}</span>
+                                                    Terakhir diupdate oleh <span
+                                                        class="font-semibold">{{ $student->nama_admin }}</span>
+                                                    pada <span>{{ \Carbon\Carbon::parse($student->updated_at) }}</span>
                                                 </div>
                                             @endif
-                                            
+
 
                                             <div class="flex justify-end">
                                                 <button type="submit"

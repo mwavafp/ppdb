@@ -18,8 +18,6 @@ class AdminDashboardController extends Controller
     public function showUser()
     {
         $data_query = DB::table('pembayaran')
-            ->join('users', 'pembayaran.id_bayar', '=', 'users.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_bayar')
             ->join('user_unit_pendidikan', 'pembayaran.id_bayar', '=', 'user_unit_pendidikan.id_bayar')
             ->join('user_golongan', 'user_unit_pendidikan.id_uup', '=', 'user_golongan.id_uup') // ini biasanya relasi user
             ->join('users', 'users.id_user', '=', 'user_golongan.id_user')
@@ -90,6 +88,7 @@ class AdminDashboardController extends Controller
             'total_bayar_madin',
         ), ['title' => 'test']);
     }
+
 
     public function showUserSuperAdmin()
     {

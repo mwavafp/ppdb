@@ -34,6 +34,7 @@ class PengaturanWebController extends Controller
                 'image_visi',
                 'image_keunggulan',
                 'image_daftar',
+                'image_login',
                 'deskripsi',
                 'keunggulan',
                 'visi_misi',
@@ -64,6 +65,7 @@ class PengaturanWebController extends Controller
                 'image_visi',
                 'image_keunggulan',
                 'image_daftar',
+                'image_login',
                 'deskripsi',
                 'keunggulan',
                 'visi_misi',
@@ -106,13 +108,15 @@ class PengaturanWebController extends Controller
             'image_visi' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'image_keunggulan' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'image_daftar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image_login' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
         $imageFields = [
             'image_banner',
             'image_selamat_datang',
             'image_visi',
             'image_keunggulan',
-            'image_daftar'
+            'image_daftar',
+            'image_login'
         ];
         $uploadData = [];
 

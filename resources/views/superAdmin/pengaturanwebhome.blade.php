@@ -207,6 +207,29 @@
 
                         </div>
                     </div>
+                    <div id="daftar  mb-8">
+                        <div class="w-full">
+
+                            <label for="deskripsi" class="block text-xl font-semibold mb-2 break-words">Foto
+                                Halaman Login </label>
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang</p>
+                                <img class="rounded-xl" src="{{ asset('storage/' . $data->image_login) }}"
+                                    alt="" width="500">
+                            </div>
+                            <div>
+                                <p>Edit Photo</p>
+                                <input type="file" name="image_login" id=""
+                                    class="block w-full text-sm text-gray-500
+           file:mr-4 file:py-2 file:px-4
+           file:rounded-sm file:border-0
+           file:text-sm file:font-semibold
+           file:bg-[oklch(62.7%_0.194_149.214)] file:text-white
+           hover:file:bg-green-400">
+                            </div>
+
+                        </div>
+                    </div>
 
                     <!-- Submit Button -->
                     <div class="text-center w-full">

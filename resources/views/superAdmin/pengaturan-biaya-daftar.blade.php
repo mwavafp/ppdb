@@ -13,7 +13,7 @@
         activeButton.classList.remove('hover:bg-green-200');
     }
     window.onload = function() {
-        selectTab('TK');
+        selectTab('PONDOK');
     };
 </script>
 
@@ -33,7 +33,7 @@
 
         <div class="flex w-full px-16">
             <div class="flex justify-center space-x-4 my-4">
-                @foreach (['TK', 'SD', 'SMP', 'SMA', 'PONDOK', 'MADIN', 'NON MADIN'] as $jenjang)
+                @foreach (['PONDOK', 'MADIN', 'TPQ', 'TK', 'SD', 'SMP', 'SMA'] as $jenjang)
                     <button
                         class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
                         onclick="selectTab('{{ $jenjang }}')">{{ $jenjang }}</button>
@@ -42,7 +42,7 @@
         </div>
 
         @php
-            $units = ['tk', 'sd', 'smp', 'sma', 'pondok', 'madin', 'nonmadin'];
+            $units = ['pondok', 'madin', 'tpq', 'tk', 'sd', 'smp', 'sma'];
         @endphp
 
         <div class=" rounded-lg shadow">

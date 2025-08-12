@@ -38,10 +38,8 @@
                 onclick="selectTab('SMA')">SMA</button>
             <button
                 class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
-                onclick="selectTab('PONDOK_SMP')">PONDOK+SMP</button>
-            <button
-                class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
-                onclick="selectTab('PONDOK_SMA')">PONDOK+SMA</button>
+                onclick="selectTab('PONDOK')">PONDOK</button>
+
             <button
                 class="menu-btn bg-orange text-black hover:text-white px-6 py-2 rounded hover:bg-[oklch(62.7%_0.194_149.214)] active:bg-[oklch(62.7%_0.194_149.214)]"
                 onclick="selectTab('MADIN')">MADIN & TPQ</button>

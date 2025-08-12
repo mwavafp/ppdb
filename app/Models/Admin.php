@@ -29,7 +29,8 @@ class Admin extends Authenticatable
         'email',
         'password',
         'password2',
-        'role'
+        'role',
+        'unit'
     ];
 
     /**
@@ -54,19 +55,18 @@ class Admin extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    
 
-     public function user()
+
+    public function user()
     {
-        return $this->hasMany(Admin::class); 
+        return $this->hasMany(Admin::class);
     }
     public function pembayaran()
     {
-        return $this->hasMany(Admin::class); 
+        return $this->hasMany(Admin::class);
     }
     public function berkas()
     {
-        return $this->hasMany(Admin::class); 
+        return $this->hasMany(Admin::class);
     }
-
 }
