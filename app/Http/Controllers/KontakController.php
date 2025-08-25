@@ -12,9 +12,9 @@ class KontakController extends Controller
     {
         $settings = PengaturanKontak::first();
         $contactPersons = KontakAdmin::all();
-        
+
         $title = 'Contact Us';
-        
-        return view('frontpage.kontak', compact('settings', 'contactPersons', 'title'));
+
+        return view('frontPage.kontak', compact('settings', 'contactPersons', 'title'));
     }
 }

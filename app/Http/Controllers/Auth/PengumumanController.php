@@ -14,11 +14,14 @@ class PengumumanController extends Controller
 
         $sma = 'sma';
         // Mengambil data pengguna yang lolos seleksi tanpa filter pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
             ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $sma)
             ->where('seleksi.status_seleksi', '=', 'LOLOS')
             ->paginate(10);
@@ -36,11 +39,14 @@ class PengumumanController extends Controller
         $search = $request->input('search');
 
         // Mengambil data pengguna yang sesuai dengan kata kunci pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $sma)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->where(function ($query) use ($search) {
@@ -59,11 +65,14 @@ class PengumumanController extends Controller
         $lolos = 'LOLOS';
         $smp = 'smp';
         // Mengambil data pengguna yang lolos seleksi tanpa filter pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'unt_pendidikan')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $smp)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->paginate(10);
@@ -82,11 +91,14 @@ class PengumumanController extends Controller
         $search = $request->input('search');
 
         // Mengambil data pengguna yang sesuai dengan kata kunci pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $smp)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->where(function ($query) use ($search) {
@@ -105,11 +117,14 @@ class PengumumanController extends Controller
         $lolos = 'LOLOS';
         $tk = 'tk';
         // Mengambil data pengguna yang lolos seleksi tanpa filter pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'unt_pendidikan')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $tk)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->paginate(10);
@@ -128,11 +143,14 @@ class PengumumanController extends Controller
         $search = $request->input('search');
 
         // Mengambil data pengguna yang sesuai dengan kata kunci pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $tk)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->where(function ($query) use ($search) {
@@ -151,11 +169,14 @@ class PengumumanController extends Controller
         $lolos = 'LOLOS';
         $sd = 'sd';
         // Mengambil data pengguna yang lolos seleksi tanpa filter pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'unt_pendidikan')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $sd)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->paginate(10);
@@ -174,11 +195,14 @@ class PengumumanController extends Controller
         $search = $request->input('search');
 
         // Mengambil data pengguna yang sesuai dengan kata kunci pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $sd)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->where(function ($query) use ($search) {
@@ -197,11 +221,14 @@ class PengumumanController extends Controller
         $lolos = 'LOLOS';
         $tpq = 'tpq';
         // Mengambil data pengguna yang lolos seleksi tanpa filter pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'unt_pendidikan')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $tpq)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->paginate(10);
@@ -220,11 +247,14 @@ class PengumumanController extends Controller
         $search = $request->input('search');
 
         // Mengambil data pengguna yang sesuai dengan kata kunci pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $tpq)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->where(function ($query) use ($search) {
@@ -242,18 +272,23 @@ class PengumumanController extends Controller
         // Status seleksi yang ingin ditampilkan
         $lolos = 'LOLOS';
         $madin = 'madin';
+        $tpq = 'tpq';
         // Mengambil data pengguna yang lolos seleksi tanpa filter pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'unt_pendidikan')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $madin)
+            ->where('kelas.unt_pendidikan', '=', $tpq)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->paginate(10);
 
         // Mengirim data ke tampilan
-        return view('frontPage.pengumumanmadin', compact('all_data'), ['title' => 'Pengumuman MADIN']);
+        return view('frontPage.pengumumanmadin', compact('all_data'), ['title' => 'Pengumuman MADIN & TPQ']);
     }
 
     public function searchmadin(Request $request)
@@ -261,17 +296,21 @@ class PengumumanController extends Controller
         // Status seleksi yang ingin ditampilkan
         $lolos = 'LOLOS';
         $madin = 'madin';
-
+        $tpq = 'tpq';
         // Mengambil kata kunci pencarian
         $search = $request->input('search');
 
         // Mengambil data pengguna yang sesuai dengan kata kunci pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $madin)
+            ->where('kelas.unt_pendidikan', '=', $tpq)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->where(function ($query) use ($search) {
                 $query->where('users.name', 'like', "%{$search}%")
@@ -280,7 +319,7 @@ class PengumumanController extends Controller
             ->paginate(10);
 
         // Mengirim data ke tampilan
-        return view('frontPage.pengumumanmadin', compact('all_data'), ['title' => 'Pengumuman MADIN']);
+        return view('frontPage.pengumumanmadin', compact('all_data'), ['title' => 'Pengumuman MADIN & TPQ']);
     }
 
     public function showDatapondok()
@@ -289,11 +328,14 @@ class PengumumanController extends Controller
         $lolos = 'LOLOS';
         $pondok = 'pondok';
         // Mengambil data pengguna yang lolos seleksi tanpa filter pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'unt_pendidikan')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $pondok)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->paginate(10);
@@ -312,11 +354,14 @@ class PengumumanController extends Controller
         $search = $request->input('search');
 
         // Mengambil data pengguna yang sesuai dengan kata kunci pencarian
-        $all_data = DB::table('users')
+        $all_data = DB::table('user_golongan')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
             ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
-            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi')
+            ->select('users.name', 'users.nisn', 'users.alamat', 'seleksi.status_seleksi', 'kelas.unt_pendidikan')
+            ->crossJoin('tahun')
+            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             ->where('kelas.unt_pendidikan', '=', $pondok)
             ->where('seleksi.status_seleksi', '=', $lolos)
             ->where(function ($query) use ($search) {

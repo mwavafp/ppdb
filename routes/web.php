@@ -235,6 +235,11 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin', 'no-cache'])->group(fun
     Route::get('/pengaturan-website', [PengaturanWebController::class, 'showpage'])->name('pengaturanpage');
     // Route::get('/photo/{id}', [PengaturanWebController::class, 'editPhoto'])->name('photo.edit');
     // Route::put('/photo/{id}/edit', [PengaturanWebController::class, 'updatePhoto'])->name('photo.update');
+    // Edit semua
+
+    Route::put('/notes/update-all', [PengaturanBiayaDaftarController::class, 'updateAll'])->name('notes.update_all');
+
+
     Route::get('/pengaturan-website/edit/login', [AuthenticatedSessionController::class, 'editLoginImage'])->name('pengaturalogine-edit');
     Route::post('/pengaturan-website/update/login', [AuthenticatedSessionController::class, 'updateLoginImage'])->name('pengaturanlogin-update');
 

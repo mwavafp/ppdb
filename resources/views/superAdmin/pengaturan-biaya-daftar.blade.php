@@ -167,4 +167,41 @@
             @endforeach
         </div>
     </div>
+
+    <div class="mt-10">
+        <div class="container flex flex-col">
+            <h1 class="text-3xl font-bold">Pengaturan Catatan Biaya</h1>
+            <p class="text-sm text-gray-500 mt-1">Mengatur Perincian Biaya Daftar</p>
+        </div>
+    </div>
+    <div>
+        <div class="bg-white px-7 pb-7 pt-1 rounded-lg shadow-lg max-w-full">
+            <form action="{{ route('notes.update_all') }}" method="POST" class="space-y-6">
+                @csrf
+                @method('PUT')
+
+                @foreach ($notes as $note)
+                    <div>
+                        <label class="block font-semibold mb-2">
+                            Catatan {{ strtoupper($note->unit) }}
+                        </label>
+                        <textarea name="catatan[{{ $note->id_note }}]" rows="3"
+                            class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-400">{{ old('catatan.' . $note->id_note, $note->catatan) }}</textarea>
+                    </div>
+                @endforeach
+
+                <div class="flex justify-end space-x-3">
+                    <a href="{{ route('superAdmin-biaya-daftar') }}"
+                        class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg">
+                        Batal
+                    </a>
+                    <button type="submit" class="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg">
+                        Simpan Semua
+                    </button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
 </x-layoute>

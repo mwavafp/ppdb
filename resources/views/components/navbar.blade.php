@@ -8,25 +8,26 @@
                 <div class="flex items-center">
                     <img class="h-12 w-12" src="{{ asset('images/logo-yysn.png') }}" alt="Logo">
                     <a href="/">
-                        <span class="font-medium text-lg ml-4">Yayasan Nurul Huda</span></a>
+                        <span class="font-medium text-lg ml-4">Yayasan Nurul Huda</span>
+                    </a>
                 </div>
 
-                <!-- Desktop Menu and Login Button -->
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-4">
                     <x-nav-link href="/">BERANDA</x-nav-link>
 
-                    <!-- Dropdown -->
-                    <div class="relative group">
-                        <a class="flex items-center cursor-pointer hover:text-[oklch(62.7%_0.194_149.214)] hover:bg-green-200 px-4 py-2 rounded-md"
-                            onclick="toggleDropdown()">
+                    <!-- Desktop Dropdown -->
+                    <div class="relative">
+                        <button onclick="toggleDropdown()"
+                            class="flex items-center cursor-pointer hover:text-[oklch(62.7%_0.194_149.214)] hover:bg-green-200 px-4 py-2 rounded-md focus:outline-none">
                             INFORMASI
                             <i class="fas fa-chevron-down ml-2"></i>
-                        </a>
+                        </button>
                         <div id="dropdown-menu"
-                            class="absolute hidden bg-white text-black shadow-lg border rounded-lg mt-2 py-2 w-48 transition duration-300 ease-in-out z-50">
+                            class="absolute hidden bg-white text-black shadow-lg border rounded-lg mt-2 py-2 w-48 z-50">
                             <x-nav-link href="/pondok" class="block px-4 py-2 hover:bg-gray-100">PONDOK</x-nav-link>
-                            <x-nav-link href="/madin" class="block px-4 py-2 hover:bg-gray-100">MADIN & TPQ</x-nav-link>
-
+                            <x-nav-link href="/madin" class="block px-4 py-2 hover:bg-gray-100">MADIN &
+                                TPQ</x-nav-link>
                             <x-nav-link href="/tk" class="block px-4 py-2 hover:bg-gray-100">TK</x-nav-link>
                             <x-nav-link href="/sd" class="block px-4 py-2 hover:bg-gray-100">SD</x-nav-link>
                             <x-nav-link href="/smp" class="block px-4 py-2 hover:bg-gray-100">SMP</x-nav-link>
@@ -58,8 +59,7 @@
                 <!-- Mobile Menu Toggle -->
                 <button id="menu-toggle"
                     class="md:hidden text-gray-500 focus:outline-none focus:ring-2 focus:ring-[oklch(62.7%_0.194_149.214)]">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
@@ -70,21 +70,24 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 pt-2 space-y-1 transition-all duration-300 ease-in-out">
             <x-nav-link href="/">BERANDA</x-nav-link>
+
+            <!-- Mobile Dropdown -->
             <div>
-                <x-nav-link href="#" class="flex items-center justify-between">
+                <button id="mobile-dropdown-toggle"
+                    class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-gray-100 focus:outline-none">
                     INFORMASI
                     <i class="fas fa-chevron-down ml-2"></i>
-                </x-nav-link>
-                <div class="pl-4 space-y-1">
+                </button>
+                <div id="mobile-dropdown-menu" class="hidden pl-4 space-y-1">
                     <a href="/pondok" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">PONDOK</a>
-                    <a href="/madin" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MADIN</a>
-                    <a href="/tpq" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">TPQ</a>
+                    <a href="/madin" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MADIN & TPQ</a>
                     <a href="/tk" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">TK</a>
                     <a href="/sd" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">SD</a>
                     <a href="/smp" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">SMP</a>
                     <a href="/sma" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">SMA</a>
                 </div>
             </div>
+
             <x-nav-link href="/biaya">BIAYA</x-nav-link>
             <x-nav-link href="/kontak">KONTAK</x-nav-link>
             <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
@@ -98,13 +101,21 @@
 </div>
 
 <script>
+    // Desktop Dropdown Toggle
     function toggleDropdown() {
         const dropdown = document.getElementById("dropdown-menu");
         dropdown.classList.toggle("hidden");
     }
 
+    // Mobile Menu Toggle
     document.getElementById("menu-toggle").addEventListener("click", function() {
         const mobileMenu = document.getElementById("mobile-menu");
         mobileMenu.classList.toggle("hidden");
+    });
+
+    // Mobile Dropdown Toggle
+    document.getElementById("mobile-dropdown-toggle").addEventListener("click", function() {
+        const mobileDropdown = document.getElementById("mobile-dropdown-menu");
+        mobileDropdown.classList.toggle("hidden");
     });
 </script>

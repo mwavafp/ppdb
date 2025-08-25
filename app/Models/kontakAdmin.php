@@ -10,7 +10,7 @@ class KontakAdmin extends Model
     use HasFactory;
 
     protected $table = 'contact_people';
-    
+
     protected $fillable = [
         'name',
         'description',
@@ -28,7 +28,7 @@ class KontakAdmin extends Model
     {
         $phone = preg_replace('/[^0-9]/', '', $this->phone);
         $message = urlencode($this->whatsapp_message ?? 'Assalamualaikum');
-        
+
         return "https://wa.me/{$phone}?text={$message}";
     }
 
@@ -42,7 +42,7 @@ class KontakAdmin extends Model
         if (!$this->photo) {
             return null;
         }
-        
+
         return 'data:image/jpeg;base64,' . base64_encode($this->photo);
     }
 }

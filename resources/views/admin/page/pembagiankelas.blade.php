@@ -109,6 +109,14 @@
                                                     class="block w-full px-4 py-2 pr-8 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700 appearance-none">
                                                     <option value="-" {{ $item->kelas == '-' ? 'selected' : '' }}>
                                                         -</option>
+                                                    <option value="A" {{ $item->kelas == 'A' ? 'selected' : '' }}>
+                                                        A</option>
+                                                    <option value="B" {{ $item->kelas == 'B' ? 'selected' : '' }}>
+                                                        B</option>
+                                                    <option value="C" {{ $item->kelas == 'C' ? 'selected' : '' }}>
+                                                        C</option>
+                                                    <option value="D" {{ $item->kelas == 'D' ? 'selected' : '' }}>
+                                                        D</option>
                                                     <option value="1" {{ $item->kelas == '1' ? 'selected' : '' }}>
                                                         1</option>
                                                     <option value="2" {{ $item->kelas == '2' ? 'selected' : '' }}>
@@ -159,6 +167,19 @@
                                                     </option>
                                                     <option value="F"
                                                         {{ $item->kls_identitas == 'F' ? 'selected' : '' }}>F
+                                                    </option>
+                                                    <option value="ULA"
+                                                        {{ $item->kls_identitas == 'ULA' ? 'selected' : '' }}>ULA
+                                                    </option>
+                                                    <option value="WUSTO"
+                                                        {{ $item->kls_identitas == 'WUSTO' ? 'selected' : '' }}>WUSTO
+                                                    </option>
+                                                    <option value="ULYA"
+                                                        {{ $item->kls_identitas == 'ULYA' ? 'selected' : '' }}>ULYA
+                                                    </option>
+                                                    <option value="TAHKHOSUSS"
+                                                        {{ $item->kls_identitas == 'TAHKHOSUSS' ? 'selected' : '' }}>
+                                                        TAHKHOSUSS
                                                     </option>
                                                 </select>
                                             </div>

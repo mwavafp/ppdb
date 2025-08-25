@@ -12,14 +12,14 @@ class BiayaController extends Controller
     {
         // $rawData = Harga::all();
         $rawData = DB::table('harga')
-        ->join('acara', 'harga.id_acara', '=', 'acara.id_acara')
-        ->select('id_harga', 'unitPendidikan','gender','tipe_siswa','dp_daful','total_bayar_daful','diskon','acara.id_acara','acara.namaAcara')
-        ->paginate(1000);
-        
+            ->join('acara', 'harga.id_acara', '=', 'acara.id_acara')
+            ->select('id_harga', 'unitPendidikan', 'gender', 'tipe_siswa', 'dp_daful', 'total_bayar_daful', 'diskon', 'acara.id_acara', 'acara.namaAcara')
+            ->paginate(1000);
+
 
         $notesRaw = DB::table('note')
-        ->select('id_note', 'unit', 'catatan')
-        ->get(); // gunakan get() daripada paginate() karena kita mau olah semua data
+            ->select('id_note', 'unit', 'catatan')
+            ->get(); // gunakan get() daripada paginate() karena kita mau olah semua data
 
         $notes = [];
 
@@ -37,11 +37,11 @@ class BiayaController extends Controller
             ];
         }
 
-        
+
 
 
         $data = [];
-    
+
 
         foreach ($rawData as $row) {
             $key = $row->unitPendidikan;
@@ -77,4 +77,5 @@ class BiayaController extends Controller
             'notes' => $notes
         ]);
     }
+   
 }
