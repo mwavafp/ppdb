@@ -93,6 +93,9 @@ Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman', ['title' => 'About Page']);
 });
 
+Route::get('/berita', function () {
+    return view('frontPage.berita', ['title' => 'Berita']);
+});
 
 //////////////////////////////////Route Auth/////////////////////////////////////
 Route::middleware('guest:web')->group(function () {

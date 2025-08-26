@@ -34,6 +34,11 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
+        $this->call([
+            KunitSeeder::class,
+            KategoriSeeder::class,
+            BeritaSeeder::class,
+        ]);
         Acara::factory()->createMany(
 
             [
