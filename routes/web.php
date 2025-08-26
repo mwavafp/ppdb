@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BiayaController;
 use App\Http\Controllers\SendAccountController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BeritaController;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\UserBerkasController;
 use App\Http\Controllers\AdminSuper\PengaturanGelombang;
 use App\Http\Controllers\AdminSuper\PengaturanBiayaDaftarController;
 use App\Http\Controllers\AdminSuper\ContactController;
+use App\Http\Controllers\AdminSuper\PengaturanBeritaController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\AdminSuper\ContactSettingsController;
 use App\Http\Controllers\AdminSuper\PengaturanKelasController;
@@ -93,9 +95,9 @@ Route::get('/pengumuman', function () {
     return view('frontPage.pengumuman', ['title' => 'About Page']);
 });
 
-Route::get('/berita', function () {
-    return view('frontPage.berita', ['title' => 'Berita']);
-});
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.show');
+
 
 //////////////////////////////////Route Auth/////////////////////////////////////
 Route::middleware('guest:web')->group(function () {
@@ -269,6 +271,16 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin', 'no-cache'])->group(fun
 
     Route::get('/pengaturan-website/edit/pondok', [PengaturanWebController::class, 'editpondok'])->name('pengaturanpondok-edit');
     Route::post('/pengaturan-website/update/pondok', [PengaturanWebController::class, 'updatepondok'])->name('pengaturanpondok-update');
+
+    Route::get('/pengaturan-berita', [PengaturanBeritaController::class, 'show'])->name('pengaturanberita');
+    Route::delete('/berita/{id}', [PengaturanBeritaController::class, 'destroy'])->name('berita.destroy');  
+    Route::get('/create-berita', [PengaturanBeritaController::class, 'create'])->name('createberita');
+    Route::post('/berita', [PengaturanBeritaController::class, 'store'])->name('berita.store');
+    Route::get('/berita/{id}/edit', [PengaturanBeritaController::class, 'edit'])->name('berita.edit');
+    Route::put('/berita/{id}', [PengaturanBeritaController::class, 'update'])->name('berita.update');
+
+
+
     Route::post('/logout-super', [LoginController::class, 'destroy'])
         ->name('admin.logoutSuperAdmin');
 });

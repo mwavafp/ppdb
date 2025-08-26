@@ -67,6 +67,13 @@
                 ],
             ],
             (object) [
+                'menu' => (object) [
+                    'icon' => 'fa-book',
+                    'title' => 'Pengaturan Berita',
+                    'link' => 'pengaturan-berita',
+                ],
+            ],
+            (object) [
                 'menu' => (object) ['icon' => 'fa-address-book', 'title' => 'Pengaturan CP', 'link' => 'cp-admin'],
             ],
         ];
