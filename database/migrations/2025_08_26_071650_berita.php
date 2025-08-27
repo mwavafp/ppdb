@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('berita', function (Blueprint $table) {
             $table->id('id_berita');
             $table->string('judul');
-            $table->string('abstrak');
             $table->longText('isi');
             $table->string('gambar')->nullable();
 

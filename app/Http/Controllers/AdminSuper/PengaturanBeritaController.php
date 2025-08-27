@@ -22,7 +22,6 @@ class PengaturanBeritaController extends Controller
                 'kategori.nama',
                 'k_unit.unit',
                 'berita.judul',
-                'berita.abstrak',
                 'berita.isi',
                 'berita.gambar'
             )
@@ -48,7 +47,6 @@ public function store(Request $request)
 {
     $validated = $request->validate([
         'judul' => 'required|string|max:255',
-        'abstrak' => 'nullable|string',
         'isi' => 'required|string',
         'id_kategori' => 'required|exists:kategori,id_kategori',
         'id_unit' => 'required|exists:k_unit,id_unit',
@@ -85,7 +83,6 @@ public function update(Request $request, $id)
 {
     $validated = $request->validate([
         'judul' => 'required|string|max:255',
-        'abstrak' => 'nullable|string',
         'isi' => 'required|string',
         'id_kategori' => 'required|exists:kategori,id_kategori',
         'id_unit' => 'required|exists:k_unit,id_unit',
@@ -94,6 +91,7 @@ public function update(Request $request, $id)
 
     if ($request->hasFile('gambar')) {
     $path = $request->file('gambar')->store('berita', 'public');
+
     $validated['gambar'] = $path;    
     $validated['updated_at'] = now();
 }
@@ -104,6 +102,49 @@ public function update(Request $request, $id)
 
     return redirect()->route('pengaturanberita')->with('success', 'Berita berhasil diperbarui.');
 }
+
+public function indexKategori()
+{
+    $kategori = DB::table('kategori')->get();
+    return view('superAdmin.kategoriindex', compact('kategori'), ['title' => 'Kategori']);
+}
+
+public function storeKategori(Request $request)
+{
+    $request->validate([
+        'nama' => 'required|string|max:255',
+    ]);
+
+    DB::table('kategori')->insert([
+        'nama' => $request->nama,
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    return redirect()->route('kategori.index')->with('success', 'Kategori berhasil ditambahkan.');
+}
+
+public function updateKategori(Request $request, $id)
+{
+    $request->validate([
+        'nama' => 'required|string|max:255',
+    ]);
+
+    DB::table('kategori')->where('id_kategori', $id)->update([
+        'nama' => $request->nama,
+        'updated_at' => now(),
+    ]);
+
+    return redirect()->route('kategori.index')->with('success', 'Kategori berhasil diperbarui.');
+}
+
+public function destroyKategori($id)
+{
+    DB::table('kategori')->where('id_kategori', $id)->delete();
+
+    return redirect()->route('kategori.index')->with('success', 'Kategori berhasil dihapus.');
+}
+
 
     
 

@@ -67,7 +67,8 @@
                     </div>
                     <x-nav-link href="/biaya">BIAYA</x-nav-link>
                     <x-nav-link href="/kontak">KONTAK</x-nav-link>
-                    <x-nav-link href="/pengumuman">PENGUMUMAN</x-nav-link>
+                    <x-nav-link href="/berita">BERITA</x-nav-link>
+                    <x-nav-link href="/pengumuman">HASIL SELEKSI</x-nav-link>
                     <a href="/login"
                         class="block w-full text-center py-2 px-4 bg-[oklch(62.7%_0.194_149.214)] text-white rounded-lg hover:bg-[oklch(62.7%_0.194_149.214)]-600 transition">
                         Login

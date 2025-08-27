@@ -279,6 +279,11 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin', 'no-cache'])->group(fun
     Route::get('/berita/{id}/edit', [PengaturanBeritaController::class, 'edit'])->name('berita.edit');
     Route::put('/berita/{id}', [PengaturanBeritaController::class, 'update'])->name('berita.update');
 
+    
+    Route::get('/kategori', [PengaturanBeritaController::class, 'indexKategori'])->name('kategori.index');
+    Route::post('/kategori', [PengaturanBeritaController::class, 'storeKategori'])->name('kategori.store');
+    Route::put('/kategori/{id}', [PengaturanBeritaController::class, 'updateKategori'])->name('kategori.update');
+    Route::delete('/kategori/{id}', [PengaturanBeritaController::class, 'destroyKategori'])->name('kategori.destroy');
 
 
     Route::post('/logout-super', [LoginController::class, 'destroy'])
