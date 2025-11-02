@@ -55,7 +55,7 @@
         <div class="section-7 mt-12">
             <div class="box px-4 md:px-12">
                 <p class="text-3xl md:text-4xl font-bold mb-8 text-center">
-                    <span class="text-[oklch(62.7%_0.194_149.214)]">Gallery Kegiatan</span>
+                    <span class="text-[oklch(62.7%_0.194_149.214)]">Gallery Kegiatan MADIN & TPQ</span>
                 </p>
                 <div id="gallery-photo" class="max-w-full mx-auto px-4 py-8 max-h-1/2">
                     <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
@@ -86,6 +86,7 @@
 
 
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 m-6">
 
                 <div class="bg-white p-6 rounded-md shadow-md">

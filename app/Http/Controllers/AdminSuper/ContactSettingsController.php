@@ -14,7 +14,7 @@ class ContactSettingsController extends Controller
         $settings = PengaturanKontak::first();
         $contactPersons = KontakAdmin::all();
         
-        return view('superadmin.pengaturankontak', compact('settings', 'contactPersons'));
+        return view('superAdmin.pengaturankontak', compact('settings', 'contactPersons'));
     }
     
     public function updateGeneral(Request $request)

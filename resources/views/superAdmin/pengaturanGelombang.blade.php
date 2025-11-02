@@ -25,10 +25,82 @@
     <x-slot:title>{{ 'gelombang Ajaran' }}</x-slot:title>
 
 
-    <header class=" mb-10">
-        <div class="container mx-auto  flex flex-col">
+    <header class="  flex">
+        <div class="container mx-auto  flex flex-col w-1/2">
             <h1 class="text-3xl font-bold">Pengaturan Gelombang</h1>
             <p class="text-sm text-gray-500 mt-1">Mengatur Jadwal Gelombang Masuk</p>
+        </div>
+        <div class=" w-1/2">
+            <div class="text-right m-4">
+                <div x-data="{ isModalOpen: false }">
+                    <!-- Tombol untuk membuka modal -->
+                    <button @click="isModalOpen = true" class="bg-[oklch(62.7%_0.194_149.214)] text-white p-2 rounded-md">
+                        <span>Tambah Gelombang</span>
+                    </button>
+
+                    <div class="mx-8 p-4">
+                        <!-- Modal -->
+                        <div x-show="isModalOpen"
+                            class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50"
+                            style="display: none;">
+                            <div class="bg-white rounded-lg shadow-lg w-3/4 md:w-1/2 p-6 relative">
+                                <!-- Tombol untuk menutup modal -->
+                                <button @click="isModalOpen = false"
+                                    class="absolute top-2 right-2 text-gray-600 hover:text-gray-900">&times;</button>
+
+                                <!-- Form tambah admin -->
+                                <form action="{{ route('superAdmin.tambah-gelombang') }}" method="POST">
+                                    @csrf
+                                    <div class="modal fade text-left" id="ModalCreate" tabindex="-1">
+                                        <h1 class="font-bold text-xl mb-4">Tambahkan Gelombang Masuk</h1>
+
+                                        <div class="mb-4">
+                                            <label for="name" class="block text-gray-700 font-medium">Nama
+                                                Gelombang</label>
+                                            <input type="text" name="namaAcara" placeholder="Masukkan Nama Gelombang"
+                                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                                required>
+                                        </div>
+
+
+
+
+                                        <input id="Status" type="hidden" name="status" value="tidak_aktif">
+
+                                        <div class="mb-4">
+                                            <label for="awal_ajaran" class="block text-gray-700 font-medium">Awal Ajaran
+                                                Tahun
+                                                Baru</label>
+                                            <input type="date" id="awal" name="awal_acara"
+                                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="akhir_ajaran" class="block text-gray-700 font-medium">Akhir
+                                                Ajaran Tahun
+                                                Baru</label>
+                                            <input type="date" id="akhir" name="akhir_acara"
+                                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <button type="submit" id="submitBtn"
+                                                class="text-white px-4 py-2 bg-[oklch(62.7%_0.194_149.214)] rounded-lg">
+                                                Simpan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination Controls -->
+                {{-- <div class="my-4">
+            {{ $all_data->links() }}
+        </div> --}}
+            </div>
+
         </div>
     </header>
 
@@ -41,7 +113,7 @@
                 <th class="py-2 px-4">Status</th>
                 <th class="py-2 px-4">Awal Acara</th>
                 <th class="py-2 px-4">Akhir Acara</th>
-                <th class="py-2 px-4">Aksi</th>
+                <th class="py-2 px-4" colspan="2">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -52,13 +124,22 @@
                     <td class="py-2 px-4">{{ $gelombang->status === 'aktif' ? 'Aktif' : 'Nonaktif' }}</td>
                     <td class="py-2 px-4">{{ $gelombang->awal_acara }}</td>
                     <td class="py-2 px-4">{{ $gelombang->akhir_acara }}</td>
-                    <td class="py-2 px-4">
+                    <td class="py-2 ">
                         <button class="text-white bg-amber-500 px-4 py-2 rounded-md hover:underline"
                             onclick="openEditModal(this)" data-id="{{ $gelombang->id_acara }}"
                             data-nama="{{ $gelombang->namaAcara }}" data-status="{{ $gelombang->status }}"
                             data-awal="{{ $gelombang->awal_acara }}" data-akhir="{{ $gelombang->akhir_acara }}">
                             Edit
                         </button>
+                    </td>
+                    <td class="py-2 ">
+                        <form action="{{ route('superAdmin.delete-gelombang', $gelombang->id_acara) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="bg-red-500 text-white  px-4 py-2 rounded hover:bg-red-600  items-center">
+                                <i class="fas fa-trash "></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @empty

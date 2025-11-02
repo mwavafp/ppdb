@@ -11,18 +11,19 @@ class SeleksiAdminController extends Controller
     public function showData(Request $request)
     {
         $adminUnit = auth('admin')->user()->unit;
-        $query = DB::table('users')
-            ->join('pembayaran', 'users.id_user', '=', 'pembayaran.id_bayar')
-            ->join('user_unit_pendidikan', 'users.id_user', '=', 'user_unit_pendidikan.id_bayar')
-            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
+        $query_s = DB::table('user_golongan')
+            ->join('user_unit_pendidikan', 'user_golongan.id_uup', '=', 'user_unit_pendidikan.id_uup')
+            ->join('users', 'user_golongan.id_user', '=', 'users.id_user')
             ->join('kelas', 'user_unit_pendidikan.id_kelas', '=', 'kelas.id_kelas')
+            ->join('pembayaran', 'user_unit_pendidikan.id_bayar', '=', 'pembayaran.id_bayar')
+            ->join('seleksi', 'users.id_user', '=', 'seleksi.id_user')
             ->leftJoin('berkas', 'users.id_user', '=', 'berkas.id_user')
-            ->leftJoin('admins', 'berkas.updated_by', '=', 'admins.id_admin')
+            // ->leftJoin('admins', 'berkas.updated_by', '=', 'admins.id_admin')
             ->crossJoin('tahun')
-            ->whereBetween('users.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
+            ->whereBetween('user_golongan.created_at', [DB::raw('tahun.awal'), DB::raw('tahun.akhir')])
             // Kalau bukan super, filter unit pendidikan
-            ->when($adminUnit !== 'super', function ($query) use ($adminUnit) {
-                $query->where('kelas.unt_pendidikan', $adminUnit);
+            ->when($adminUnit !== 'super', function ($query_s) use ($adminUnit) {
+                $query_s->where('kelas.unt_pendidikan', $adminUnit);
             })
             ->select(
                 'users.id_user',
@@ -39,20 +40,24 @@ class SeleksiAdminController extends Controller
                 'berkas.kip as status_kip',
                 'berkas.akta_lahir as status_akta',
                 'berkas.updated_at',
-                'admins.name as nama_admin',
+                // 'admins.name as nama_admin',
                 'pembayaran.byr_dft_ulang',
                 'seleksi.status_seleksi',
             );
 
+
+        
+
         if ($request->filled('status')) {
-            $query->where('seleksi.status_seleksi', $request->status);
+            $query_s->where('seleksi.status_seleksi', $request->status);
         }
 
         if ($request->filled('jenjang')) {
-            $query->where('kelas.unt_pendidikan', $request->jenjang);
+            $query_s->where('kelas.unt_pendidikan', $request->jenjang);
         }
 
-        $data = $query->paginate(10);
+        $data = $query_s->paginate(10);
+        dd($data);
 
         return view('admin.page.seleksi', compact('data'), ['title' => 'Seleksi Siswa']);
     }

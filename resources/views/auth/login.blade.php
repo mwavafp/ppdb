@@ -3,7 +3,7 @@
 
         <div class="w-full lg:w-1/2">
             <img src="{{ asset('storage/' . $all_teks[0]->image_login) }}"
-                class="rounded-xl w-full max-h-[300px] object-cover object-center " alt="Banner">
+                class=" w-full max-h-[1080px] object-cover object-center " alt="Banner">
         </div>
         <div class="w-full lg:w-1/2">
             <x-guest-layout>

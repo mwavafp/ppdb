@@ -12,19 +12,19 @@
     </header>
     <main class="container  py-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                @php
-                    $cards = [
-                        ['label' => 'Home', 'route' => 'pengaturanhome-edit', 'icon' => 'fas fa-home'],
-                        ['label' => 'TK', 'route' => 'pengaturantk-edit', 'icon' => 'fas fa-child'],
-                        ['label' => 'SD', 'route' => 'pengaturansd-edit', 'icon' => 'fas fa-school'],
-                        ['label' => 'SMP', 'route' => 'pengaturansmp-edit', 'icon' => 'fas fa-user-graduate'],
-                        ['label' => 'SMA', 'route' => 'pengaturansma-edit', 'icon' => 'fas fa-university'],
-                        ['label' => 'TPQ', 'route' => 'pengaturantpq-edit', 'icon' => 'fas fa-book-open'],
-                        ['label' => 'MADIN', 'route' => 'pengaturanmadin-edit', 'icon' => 'fas fa-mosque'],
-                        ['label' => 'Pondok', 'route' => 'pengaturanpondok-edit', 'icon' => 'fas fa-kaaba'],
-                        ['label' => 'Kontak', 'route' => 'contact-settings', 'icon' => 'fas fa-envelope'],
-                    ];
-                @endphp
+            @php
+                $cards = [
+                    ['label' => 'Home', 'route' => 'pengaturanhome-edit', 'icon' => 'fas fa-home'],
+                    ['label' => 'TK', 'route' => 'pengaturantk-edit', 'icon' => 'fas fa-child'],
+                    ['label' => 'SD', 'route' => 'pengaturansd-edit', 'icon' => 'fas fa-school'],
+                    ['label' => 'SMP', 'route' => 'pengaturansmp-edit', 'icon' => 'fas fa-user-graduate'],
+                    ['label' => 'SMA', 'route' => 'pengaturansma-edit', 'icon' => 'fas fa-university'],
+                    // ['label' => 'TPQ', 'route' => 'pengaturantpq-edit', 'icon' => 'fas fa-book-open'],
+                    ['label' => 'MADIN & TPQ', 'route' => 'pengaturanmadin-edit', 'icon' => 'fas fa-mosque'],
+                    ['label' => 'Pondok', 'route' => 'pengaturanpondok-edit', 'icon' => 'fas fa-kaaba'],
+                    ['label' => 'Kontak', 'route' => 'contact-settings', 'icon' => 'fas fa-envelope'],
+                ];
+            @endphp
 
             @foreach ($cards as $card)
                 <div

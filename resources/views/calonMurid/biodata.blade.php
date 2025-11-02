@@ -28,14 +28,14 @@
                         <form action="{{ route('biodata.kelasTambahan') }}" method="POST">
                             @csrf
                             <div>
-                                <input id="unt_pendidikan" class="block mb-2 w-full" type="text" name='cnt'
-                                    value='8' hidden />
+                                <input id="unt_pendidikan_cnt" class="block mb-2 w-full" type="hidden" name="cnt"
+                                    value="">
                             </div>
 
                             <div class="mb-4 w-full">
                                 <label for="">Kelas Pilihan</label>
-                                <select class="w-full rounded-md border-2 border-gray-400" name="unt_pendidikan"
-                                    required>
+                                <select id="unt_pendidikan" class="w-full rounded-md border-2 border-gray-400"
+                                    name="unt_pendidikan" required>
                                     <option value="" disabled selected>Pilih Pendidikan</option>
                                     @foreach ($availableUnits as $unit)
                                         <option value="{{ $unit }}">{{ strtoupper($unit) }}</option>
@@ -332,6 +332,25 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             showTab(0);
+        });
+
+        const pendidikanMap = {
+            'pondok': 1,
+            'tpq': 2,
+            'madin': 2,
+
+        };
+
+        const select = document.getElementById('unt_pendidikan');
+        const cntInput = document.getElementById('unt_pendidikan_cnt');
+
+        select.addEventListener('change', function() {
+            // ambil value dari select
+            const val = this.value.toLowerCase();
+            // isi cnt sesuai mapping
+            cntInput.value = pendidikanMap[val] || '';
+            // kalau ingin debug:
+            // console.log('CNT di-set ke:', cntInput.value);
         });
     </script>
 

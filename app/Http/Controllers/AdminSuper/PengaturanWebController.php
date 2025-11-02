@@ -22,6 +22,7 @@ class PengaturanWebController extends Controller
     {
         return view('superAdmin.pengaturanweb');
     }
+  
 
     ////////// controller untuk halamana dashboard //////////
     public function showDatahome()

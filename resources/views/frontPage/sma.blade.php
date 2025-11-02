@@ -56,8 +56,8 @@
                 <p class="text-3xl md:text-4xl font-bold mb-8 text-center">
                     <span class="text-[oklch(62.7%_0.194_149.214)]">Gallery Kegiatan</span>
                 </p>
-                <div id="gallery-photo" class="max-w-full mx-auto px-4 py-8 max-h-1/2">
-                    <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+                <div id="gallery-photo" class="max-w-full mx-auto px-4 py-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach ($all_teks as $data)
                             @php
                                 $photos = [
@@ -73,8 +73,8 @@
                             @foreach ($photos as $photo)
                                 @if ($photo)
                                     <div
-                                        class="overflow-hidden rounded-xl break-inside-avoid object-cover transition-transform duration-300 hover:scale-120">
-                                        <img src="{{ asset('storage/' . $photo) }}" class="w-full h-auto  "
+                                        class="overflow-hidden rounded-xl transition-transform duration-300 hover:scale-120">
+                                        <img src="{{ asset('storage/' . $photo) }}" class="w-full h-64 object-cover"
                                             alt="">
                                     </div>
                                 @endif
@@ -82,6 +82,7 @@
                         @endforeach
                     </div>
                 </div>
+
 
 
             </div>

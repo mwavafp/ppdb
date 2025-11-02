@@ -88,7 +88,7 @@
                         <td class="border px-2 py-2 text-center">{{ $loop->iteration }}</td>
                         <td class="border px-2 py-2 text-center">{{ $student->nama }}</td>
                         <td class="border px-2 py-2 text-center">{{ $student->nisn }}</td>
-                        <td class="border px-2 py-2 text-center">{{ ucfirst($student->jenjang) }}</td>
+                        <td class="border px-2 py-2 text-center">{{ $student->jenjang }}</td>
                         <td class="border px-2 py-2 text-center">{{ $student->kelas ?? '-' }}</td>
                         <td class="border px-2 py-2">
                             @foreach (['kk' => 'Kartu Keluarga', 'pas_foto' => 'Pas Foto', 'ijazah_akhir' => 'Ijazah Akhir', 'kip' => 'KIP', 'akta' => 'akta'] as $key => $label)
@@ -193,13 +193,13 @@
                                                     </select>
                                                 </div>
                                             @endforeach
-                                            @if ($student->nama_admin && $student->updated_at)
+                                            {{-- @if ($student->nama_admin && $student->updated_at)
                                                 <div class="text-sm text-gray-600 mt-4">
                                                     Terakhir diupdate oleh <span
                                                         class="font-semibold">{{ $student->nama_admin }}</span>
                                                     pada <span>{{ \Carbon\Carbon::parse($student->updated_at) }}</span>
                                                 </div>
-                                            @endif
+                                            @endif --}}
 
 
                                             <div class="flex justify-end">

@@ -9,13 +9,16 @@ use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\returnValue;
 
-class PengaturanGelombang extends Controller {
+class PengaturanGelombang extends Controller
+{
 
-    public function showGelombang(){
+    public function showGelombang()
+    {
         $acara = Acara::all();
-        return view ('superAdmin.pengaturanGelombang', compact('acara'));
+        return view('superAdmin.pengaturanGelombang', compact('acara'));
     }
-    public function updateGelombang(Request $request) {
+    public function updateGelombang(Request $request)
+    {
         $request->validate([
             'id_acara' => 'required|exists:acara,id_acara',
             'namaAcara' => 'required|string',
@@ -31,7 +34,7 @@ class PengaturanGelombang extends Controller {
             // Nonaktifkan semua gelombang lain
             Acara::where('id_acara', '!=', $request->id_acara)->update(['status' => 'tidak_aktif']);
         }
-        
+
         $acara = Acara::find($request->id_acara);
         $acara->namaAcara = $request->namaAcara;
         $acara->status = $request->status;
@@ -41,6 +44,34 @@ class PengaturanGelombang extends Controller {
 
         return redirect()->route('superAdmin.gelombang')->with('success', 'Data berhasil diupdate!');
     }
+    public function createDataGelombang(Request $request)
+    {
+        // Debug cek isi request
 
 
+        $request->validate([
+            'namaAcara'   => 'required|string|max:255',
+            'status'      => 'required|in:aktif,tidak_aktif',
+            'awal_acara'  => 'required|date',
+            'akhir_acara' => 'required|date',
+
+        ]);
+
+        Acara::create([
+            'namaAcara' => $request->namaAcara,
+            'status' => $request->status,
+            'awal_acara' => $request->awal_acara,
+            'akhir_acara' => $request->akhir_acara,
+        ]);
+
+        return to_route('superAdmin.gelombang')->with('success', 'Data berhasil ditambahkan');
+    }
+    public function deleteDataGelombang($id)
+    {
+        DB::table('acara')
+            ->where('id_acara', '=', $id)
+            ->delete();
+
+        return redirect()->route('superAdmin.gelombang')->with('success', "Data Berhasil Di hapus");
+    }
 }

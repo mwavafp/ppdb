@@ -217,12 +217,19 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin', 'no-cache'])->group(fun
     // Route::delete('/delete-admin/{id}', [AdminSuperDashboardController::class, 'deleteData'])->name('admin.hapus-admin');
 
     Route::get('/pengaturan-gelombang', [PengaturanGelombang::class, 'showGelombang'])->name('superAdmin.gelombang');
+
     Route::put('/pengaturan-gelombang/update', [PengaturanGelombang::class, 'updateGelombang'])->name('superAdmin.gelombang.update');
     Route::get('/pengaturan-biaya-daftar', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.biaya-daftar');
+    Route::post('/tambah-gelombang', [PengaturanGelombang::class, 'createDataGelombang'])->name('superAdmin.tambah-gelombang');
+    Route::delete('/hapus-gelombang/{id}', [PengaturanGelombang::class, 'deleteDataGelombang'])->name('superAdmin.delete-gelombang');
+
     // Route::get('/pengaturan-gelombang', [TahunAjaranController::class, 'showTahunAjaran'])->name('superAdmin.gelombang');
 
     Route::get('/pengaturan-biaya-daftar', [PengaturanBiayaDaftarController::class, 'showDataBiaya'])->name('superAdmin-biaya-daftar');
     Route::post('update-biaya-daftar/{id}', [PengaturanBiayaDaftarController::class, 'updateDataBiaya'])->name('update-biaya-daftar');
+    Route::post('/tambah-biaya-daftar', [PengaturanBiayaDaftarController::class, 'createDataHarga'])->name('superAdmin.tambah-biaya-daftar');
+    Route::delete('/hapus-biaya-daftar/{id}', [PengaturanBiayaDaftarController::class, 'deleteDataHarga'])->name('superAdmin.delete-biaya');
+
 
     Route::get('/contact-settings', [ContactSettingsController::class, 'index'])->name('contact-settings');
     Route::put('/contact-settings/update-general', [ContactSettingsController::class, 'updateGeneral'])->name('contact-update-general');
@@ -238,6 +245,7 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin', 'no-cache'])->group(fun
     Route::post('/tahun-ajaran/update/{id_tahun}', [TahunAjaranController::class, 'update'])->name('superAdmin.tahun-ajaran-update');
     // Route pengaturan home dan setiap infoemasi jenjang
     Route::get('/pengaturan-website', [PengaturanWebController::class, 'showpage'])->name('pengaturanpage');
+
     // Route::get('/photo/{id}', [PengaturanWebController::class, 'editPhoto'])->name('photo.edit');
     // Route::put('/photo/{id}/edit', [PengaturanWebController::class, 'updatePhoto'])->name('photo.update');
     // Edit semua
@@ -273,13 +281,13 @@ Route::middleware(['auth:admin', 'checkrole:superAdmin', 'no-cache'])->group(fun
     Route::post('/pengaturan-website/update/pondok', [PengaturanWebController::class, 'updatepondok'])->name('pengaturanpondok-update');
 
     Route::get('/pengaturan-berita', [PengaturanBeritaController::class, 'show'])->name('pengaturanberita');
-    Route::delete('/berita/{id}', [PengaturanBeritaController::class, 'destroy'])->name('berita.destroy');  
+    Route::delete('/berita/{id}', [PengaturanBeritaController::class, 'destroy'])->name('berita.destroy');
     Route::get('/create-berita', [PengaturanBeritaController::class, 'create'])->name('createberita');
     Route::post('/berita', [PengaturanBeritaController::class, 'store'])->name('berita.store');
     Route::get('/berita/{id}/edit', [PengaturanBeritaController::class, 'edit'])->name('berita.edit');
     Route::put('/berita/{id}', [PengaturanBeritaController::class, 'update'])->name('berita.update');
 
-    
+
     Route::get('/kategori', [PengaturanBeritaController::class, 'indexKategori'])->name('kategori.index');
     Route::post('/kategori', [PengaturanBeritaController::class, 'storeKategori'])->name('kategori.store');
     Route::put('/kategori/{id}', [PengaturanBeritaController::class, 'updateKategori'])->name('kategori.update');

@@ -17,19 +17,20 @@ class PengaturanBiayaDaftarController extends Controller
         foreach ($units as $unit) {
             $data[$unit] = DB::table('harga')
                 ->join('acara', 'harga.id_acara', '=', 'acara.id_acara')
-                ->where('unitPendidikan', $unit)->paginate(10); // atau pakai paginate kalau mau
+                ->where('unitPendidikan', $unit)->get(); // atau pakai paginate kalau mau
         }
         // Ambil semua notes per unit
         $notes = DB::table('note')
             ->whereIn('unit', array_map('strtolower', $units)) // unit di note biasanya lowercase
             ->orderByRaw("FIELD(unit, 'pondok','madin','tpq','tk','sd','smp','sma')")
             ->get();
-
+        $harga_unitPendidikan = DB::table('acara')->get();
 
         return view('superAdmin.pengaturan-biaya-daftar', [
             'title' => 'Pengaturan Biaya Daftar',
             'all_data' => $data,
-            'notes' => $notes
+            'notes' => $notes,
+            'harga_unitPendidikan' => $harga_unitPendidikan
         ]);
     }
     public function updateDataBiaya(Request $request, $id)
@@ -110,5 +111,38 @@ class PengaturanBiayaDaftarController extends Controller
 
         return redirect()->route('superAdmin-biaya-daftar')
             ->with('success', 'Catatan berhasil diperbarui.');
+    }
+    public function createDataHarga(Request $request)
+    {
+
+        $request->validate([
+            'id_acara'           => 'required|numeric|min:0',
+            'unitPendidikan'     => 'required|in:pondok,tpq,madin,tk,sd,smp,sma',
+            'gender'             => 'required|in:laki-laki,perempuan',
+            'tipe_siswa'         => 'required|in:umum,alumni',
+            'total_bayar_daful'  => 'required|numeric|min:0',
+            'dp_daful'           => 'nullable|numeric|min:0',
+            'diskon'             => 'nullable|numeric|min:0',
+        ]);
+
+        Harga::create([
+            'id_acara' => $request->id_acara,
+            'unitPendidikan' => $request->unitPendidikan,
+            'gender' => $request->gender,
+            'tipe_siswa' => $request->tipe_siswa,
+            'total_bayar_daful' => $request->total_bayar_daful,
+            'dp_daful' => $request->dp_daful,
+            'diskon' => $request->diskon,
+        ]);
+
+        return to_route('superAdmin-biaya-daftar')->with('success', 'Data berhasil ditambahkan');
+    }
+    public function deleteDataHarga($id)
+    {
+        DB::table('harga')
+            ->where('id_harga', '=', $id)
+            ->delete();
+
+        return redirect()->route('superAdmin-biaya-daftar')->with('success', "Data Berhasil Di hapus");
     }
 }

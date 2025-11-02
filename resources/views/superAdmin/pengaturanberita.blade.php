@@ -8,8 +8,8 @@
         </div>
     @endif
 
-    <header class="mb-4">
-        <div class="container flex flex-col md:flex-row md:items-center md:justify-between">
+    <header class="mb-4 ">
+        <div class=" container flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
                 <h1 class="text-3xl font-bold">Pengaturan Berita</h1>
                 <p class="text-sm text-gray-500 mt-1">Manajemen Berita</p>
@@ -24,9 +24,10 @@
                 class="mt-3 md:mt-0 inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded">
                 + Tambah Berita
             </a>
-            
+
 
         </div>
+        
     </header>
     <main class="container  py-4">
 

@@ -55,7 +55,88 @@
                         <textarea id="misi" name="misi" class="w-full">{{ $data->misi }}</textarea>
                     </div>
                 </div>
+                <div id="gallery " class="mb-8">
+                    <div class="w-full">
 
+                        <label for="deskripsi" class="block text-xl font-semibold mb-2 break-words">Foto
+                            Gallery SMP</label>
+                        <div class="flex flex-wrap">
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang Gallery A</p>
+                                <div>
+                                    <img class="rounded-xl" src="{{ asset('storage/' . $data->gallery_smp_a) }}"
+                                        alt="" width="200">
+                                </div>
+                                <div>
+                                    <p>Edit Photo</p>
+                                    <input type="file" name="gallery_smp_a" id=""
+                                        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-[oklch(62.7%_0.194_149.214)] file:text-white hover:file:bg-green-400">
+                                </div>
+                            </div>
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang Gallery B</p>
+                                <div>
+                                    <img class="rounded-xl" src="{{ asset('storage/' . $data->gallery_smp_b) }}"
+                                        alt="" width="200">
+                                </div>
+                                <div>
+                                    <p>Edit Photo</p>
+                                    <input type="file" name="gallery_smp_b" id=""
+                                        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-[oklch(62.7%_0.194_149.214)] file:text-white hover:file:bg-green-400">
+                                </div>
+                            </div>
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang Gallery C</p>
+                                <div>
+
+                                    <img class="rounded-xl" src="{{ asset('storage/' . $data->gallery_smp_c) }}"
+                                        alt="" width="200">
+                                </div>
+                                <div>
+                                    <p>Edit Photo</p>
+                                    <input type="file" name="gallery_smp_c" id=""
+                                        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-[oklch(62.7%_0.194_149.214)] file:text-white hover:file:bg-green-400">
+                                </div>
+                            </div>
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang Gallery D</p>
+                                <div>
+                                    <img class="rounded-xl" src="{{ asset('storage/' . $data->gallery_smp_d) }}"
+                                        alt="" width="200">
+                                </div>
+                                <div>
+                                    <p>Edit Photo</p>
+                                    <input type="file" name="gallery_smp_d" id=""
+                                        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-[oklch(62.7%_0.194_149.214)] file:text-white hover:file:bg-green-400">
+                                </div>
+                            </div>
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang Gallery E</p>
+                                <div>
+                                    <img class="rounded-xl" src="{{ asset('storage/' . $data->gallery_smp_e) }}"
+                                        alt="" width="200">
+                                </div>
+                                <div>
+                                    <p>Edit Photo</p>
+                                    <input type="file" name="gallery_smp_e" id=""
+                                        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-[oklch(62.7%_0.194_149.214)] file:text-white hover:file:bg-green-400">
+                                </div>
+                            </div>
+                            <div class="py-4">
+                                <p class="text-md pb-2">Foto Sekarang Gallery F</p>
+                                <div>
+                                    <img class="rounded-xl" src="{{ asset('storage/' . $data->gallery_smp_f) }}"
+                                        alt="" width="200">
+                                </div>
+                                <div>
+                                    <p>Edit Photo</p>
+                                    <input type="file" name="gallery_smp_f" id=""
+                                        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-[oklch(62.7%_0.194_149.214)] file:text-white hover:file:bg-green-400">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- Submit Button -->
                 <div class="text-center">
                     <a href="{{ route('pengaturanpage') }}"
@@ -71,13 +152,13 @@
         </div>
 
     </body>
-    
+
     <!-- Summernote Init Script -->
     <script>
         $(document).ready(function() {
             // Konfigurasi maksimal karakter untuk semua field
             const maxLength = 1500;
-            
+
             const ids = ['deskripsi', 'visi', 'misi'];
 
             // Fungsi untuk menghitung karakter tanpa HTML tags
@@ -91,7 +172,7 @@
             function updateCounter(id, length) {
                 const counter = $('#' + id + '-count');
                 counter.text(length);
-                
+
                 if (length >= maxLength) {
                     counter.addClass('text-red-500 font-semibold');
                 } else if (length >= maxLength * 0.8) {
@@ -106,7 +187,7 @@
             function preventExcessInput(e, id) {
                 const content = $('#' + id).summernote('code');
                 const textLength = getTextLength(content);
-                
+
                 // Jika sudah mencapai batas dan bukan tombol delete/backspace
                 if (textLength >= maxLength && e.keyCode !== 8 && e.keyCode !== 46) {
                     e.preventDefault();
@@ -136,7 +217,7 @@
                             const initialContent = $('#' + id).summernote('code');
                             const initialLength = getTextLength(initialContent);
                             updateCounter(id, initialLength);
-                            
+
                             // Memastikan editor tidak melebar
                             $('.note-editor').css({
                                 'max-width': '100%',
@@ -157,7 +238,7 @@
                         onKeyup: function(e) {
                             const content = $('#' + id).summernote('code');
                             let textLength = getTextLength(content);
-                            
+
                             // Potong jika melebihi batas (untuk kasus copy-paste atau lainnya)
                             if (textLength > maxLength) {
                                 const tempDiv = document.createElement('div');
@@ -167,7 +248,7 @@
                                 $('#' + id).summernote('code', truncatedText);
                                 textLength = maxLength;
                             }
-                            
+
                             updateCounter(id, textLength);
                         },
                         onPaste: function(e) {
@@ -175,23 +256,25 @@
                             setTimeout(() => {
                                 const content = $('#' + id).summernote('code');
                                 let textLength = getTextLength(content);
-                                
+
                                 if (textLength > maxLength) {
                                     const tempDiv = document.createElement('div');
                                     tempDiv.innerHTML = content;
-                                    const fullText = tempDiv.textContent || tempDiv.innerText || '';
-                                    const truncatedText = fullText.substring(0, maxLength);
+                                    const fullText = tempDiv.textContent || tempDiv
+                                        .innerText || '';
+                                    const truncatedText = fullText.substring(0,
+                                        maxLength);
                                     $('#' + id).summernote('code', truncatedText);
                                     textLength = maxLength;
                                 }
-                                
+
                                 updateCounter(id, textLength);
                             }, 100);
                         }
                     }
                 });
             });
-            
+
             // CSS tambahan untuk memastikan tidak ada overflow horizontal
             $('<style>')
                 .prop('type', 'text/css')

@@ -10,11 +10,12 @@
     <body class="bg-white text-gray-900 overflow-x-hidden">
 
         <!-- Header Section -->
-        <header class="mb-10 max-w-full">
+        <header class="mb-10 max-w-full  ">
             <div class="container flex flex-col max-w-full">
                 <h1 class="text-3xl font-bold">Pengaturan Website</h1>
                 <p class="text-sm text-gray-500 mt-1">Halaman TK</p>
             </div>
+
         </header>
 
         <!-- Form Section -->
@@ -34,7 +35,7 @@
                         <textarea id="deskripsi" name="deskripsi" class="w-full">{{ $data->deskripsi }}</textarea>
                     </div>
                 </div>
- <div id="gambar-deskripsi " class="mb-8">
+                <div id="gambar-deskripsi " class="mb-8">
                     <div class="w-full">
 
                         <label for="deskripsi" class="block text-xl font-semibold mb-2 break-words">Foto
@@ -78,7 +79,7 @@
                         <textarea id="misi" name="misi" class="w-full">{{ $data->misi }}</textarea>
                     </div>
                 </div>
-  <!-- Gallery -->
+                <!-- Gallery -->
                 <div id="gallery " class="mb-8">
                     <div class="w-full">
 
@@ -163,6 +164,7 @@
                 </div>
                 <!-- Submit Button -->
                 <div class="text-center">
+
                     <a href="{{ route('pengaturanpage') }}"
                         class="bg-red-500 text-white py-3 px-8 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-gray-500 mr-4">
                         Batal

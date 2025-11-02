@@ -4,7 +4,7 @@
 
     <div class="section-1 flex justify-center">
         <img src="{{ asset('storage/' . $all_teks[0]->image_banner) }}"
-            class="rounded-xl w-full max-h-[300px] object-cover object-center " alt="Banner">
+            class=" w-full max-h-[1080px] object-cover object-center " alt="Banner">
     </div>
 
     <div class="section-2">
@@ -23,7 +23,7 @@
 
         </div>
         <div class="flex flex-wrap justify-center gap-4 mb-8">
-           
+
             <x-card-sekolah href="/madin">MADIN & TPQ</x-card-sekolah>
             <x-card-sekolah href="/pondok">PONDOK</x-card-sekolah>
         </div>
@@ -31,7 +31,7 @@
 
     <div class="section-3">
         <div
-            class="background flex flex-col md:flex-row bg-gradient-to-r from-[oklch(62.7%_0.194_149.214)] to-[oklch(90.5%_0.182_98.111)] text-white p-8 md:p-16">
+            class="background flex flex-col md:flex-row bg-gradient-to-r from-[oklch(62.7%_0.194_149.214)] to-[oklch(90.5%_0.182_98.111)] text-white px-4 md:px-16 py-8">
             <div class="content-1 flex-1 mb-8 md:mb-0 md:mr-8">
                 <p class="text-right text-xl font-bold mb-8">Selamat Datang Di PMB Yayasan Nurul Huda</p>
                 @foreach ($all_teks as $teks)
@@ -64,7 +64,7 @@
 
     <div class="section-5">
         <div
-            class="background flex flex-col lg:flex-row bg-gradient-to-r from-[oklch(62.7%_0.194_149.214)] to-[oklch(90.5%_0.182_98.111)] text-white px-4 md:px-16 py-8">
+            class="background flex flex-col lg:flex-row bg-gradient-to-r from-[oklch(90.5%_0.182_98.111)] to-[oklch(62.7%_0.194_149.214)] text-white px-4 md:px-16 py-8">
             <div class="content-2 flex-1 flex items-center justify-center ">
                 <img src="{{ asset('storage/' . $teks->image_visi) }}"
                     class="rounded-xl w-full max-w-[600px] h-auto object-cover transition-transform duration-300 hover:scale-120"
@@ -104,8 +104,7 @@
                             class="w-20 h-20 mb-4 mx-auto bg-gradient-to-r from-[oklch(45.7%_0.24_277.023)] to-[oklch(51.8%_0.253_323.949)] rounded-full flex items-center justify-center">
                             <p class="text-3xl text-white font-bold">{{ $i }}</p>
                         </div>
-                        <p class="text-xl font-bold mb-4">Membawa Kk</p>
-                        <p class="text-center text-sm">{!! $teks->{'alur_pendaftaran_' . $i} !!}</p>
+                        <p class="text-xl font-bold mb-4">{!! $teks->{'alur_pendaftaran_' . $i} !!}</p>
                     </div>
                 @endfor
             </div>
@@ -123,23 +122,27 @@
                 <ul>
                     <li class="mb-8 flex items-center">
                         <img src="/images/checklist.png" alt="" class="w-8 h-8 mr-4">
-                        <div><span class="text-xl font-bold mr-4">Membawa KTP</span><span class="text-lg">sebanyak 3
-                                lembar</span></div>
+                        <div><span class="text-xl font-bold mr-4">Membawa Pas Foto</span><span class="text-lg">sebanyak
+                                3
+                                lembar dengan ukuran 3x4</span></div>
                     </li>
                     <li class="mb-8 flex items-center">
                         <img src="/images/checklist.png" alt="" class="w-8 h-8 mr-4">
-                        <div><span class="text-xl font-bold mr-4">Membawa KTP</span><span class="text-lg">sebanyak 3
-                                lembar</span></div>
+                        <div><span class="text-xl font-bold mr-4">Membawa Ijazah Akhir</span><span
+                                class="text-lg">sebanyak 3
+                                lembar Foto Copy</span></div>
                     </li>
                     <li class="mb-8 flex items-center">
                         <img src="/images/checklist.png" alt="" class="w-8 h-8 mr-4">
-                        <div><span class="text-xl font-bold mr-4">Membawa Kk</span><span class="text-lg">sebanyak 3
-                                lembar</span></div>
+                        <div><span class="text-xl font-bold mr-4">Membawa Kartu Keluarha</span><span
+                                class="text-lg">sebanyak 3
+                                lembar Foto Copy</span></div>
                     </li>
                     <li class="mb-8 flex items-center">
                         <img src="/images/checklist.png" alt="" class="w-8 h-8 mr-4">
-                        <div><span class="text-xl font-bold mr-4">Membawa BPJS</span><span class="text-lg">sebanyak 3
-                                lembar</span></div>
+                        <div><span class="text-xl font-bold mr-4">Membawa Akta Lahir</span><span
+                                class="text-lg">sebanyak 3
+                                lembar Foto Copy</span></div>
                     </li>
                 </ul>
             </div>
