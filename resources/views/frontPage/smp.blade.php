@@ -27,8 +27,8 @@
                 </div>
             </div>
 
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <div class="bg-gray-100 p-4 rounded-md shadow-md"> <!-- Mengubah bg-white menjadi bg-teal-400 -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 mx-4">
+                <div class="bg-gpay-100 p-4 rounded-md shadow-md"> <!-- Mengubah bg-white menjadi bg-teal-400 -->
                     <center>
                         <h2 class="text-green-600 text-lg font-bold mb-4"> <!-- Mengubah warna teks menjadi putih -->
                             VISI
