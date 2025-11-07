@@ -19,9 +19,10 @@
                             </p>
                         </div>
                     </div>
-                    <div class="content-2 flex-1 items-center flex">
+                    <div
+                        class="content-2 flex-1 flex items-center justify-center object-cover transition-transform duration-300 hover:scale-120">
                         <img src="{{ asset('storage/' . $teks->image_sd) }}"
-                            class="rounded-xl max-w-full max-h-[600px] object-cover object-center " alt="">
+                            class="rounded-xl w-full max-h-[600] object-cover " alt="">
                     </div>
                 </div>
             </div>
@@ -55,8 +56,8 @@
                 <p class="text-3xl md:text-4xl font-bold mb-8 text-center">
                     <span class="text-[oklch(62.7%_0.194_149.214)]">Gallery Kegiatan</span>
                 </p>
-                <div id="gallery-photo" class="max-w-full mx-auto px-4 py-8 max-h-1/2">
-                    <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+                <div id="gallery-photo" class="max-w-full mx-auto px-4 py-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach ($all_teks as $data)
                             @php
                                 $photos = [
@@ -72,8 +73,8 @@
                             @foreach ($photos as $photo)
                                 @if ($photo)
                                     <div
-                                        class="overflow-hidden rounded-xl break-inside-avoid object-cover transition-transform duration-300 hover:scale-120">
-                                        <img src="{{ asset('storage/' . $photo) }}" class="w-full h-auto  "
+                                        class="aspect-[13/9] overflow-hidden rounded-xl transition-transform duration-300 hover:scale-115">
+                                        <img src="{{ asset('storage/' . $photo) }}" class="w-full h-full object-cover"
                                             alt="">
                                     </div>
                                 @endif
@@ -169,7 +170,7 @@
                             </li>
                         @endforeach
                         <br>
-                        <a href='/form?unit_pendidikan=SD&cnt=5'
+                        <a href='/form?unit_pendidikan=SD&cnt=4'
                             class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
                             DAFTAR KLIK DISINI
                         </a>
@@ -183,21 +184,21 @@
                             <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
                             </i>
                             <span class="ml-2">
-                                Fotocopy KK 2 Lembar
+                                Fotocopy Kartu Keluarga Sebanyak 2 Lembar
                             </span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
                             </i>
                             <span class="ml-2">
-                                Fotocopy Akte Kelahiran 2 Lembar
+                                Fotocopy Akte Kelahiran Sebanyak 2 Lembar
                             </span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
                             </i>
                             <span class="ml-2">
-                                Foto Berwarna 3x4 2 Lembar
+                                Foto Berwarna 3x4 Sebanyak 2 Lembar
                             </span>
                         </li>
                     </ul>

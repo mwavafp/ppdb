@@ -147,41 +147,51 @@ class BiodataController extends Controller
     {
         $userId = Auth::id();
 
-        $userIdentity = DB::table('users')->where('id_user', '=', $userId)->first();
-        $userGolongan = DB::table('user_golongan')->select('id_acara')->where('id_user', '=', $userId)->first();
-        $hargaId = Harga::where('gender', '=', $userIdentity->gender)
-            ->where('tipe_siswa', '=', $userIdentity->tipe_siswa)
+        $userIdentity = DB::table('users')->where('id_user', $userId)->first();
+        $userGolongan = DB::table('user_golongan')->select('id_acara')->where('id_user', $userId)->first();
+        $hargaId = Harga::where('gender', $userIdentity->gender)
+            ->where('tipe_siswa', $userIdentity->tipe_siswa)
             ->where('unitPendidikan', strtolower($request->unt_pendidikan))
-            ->where('id_acara', '=', $userGolongan->id_acara)
+            ->where('id_acara', $userGolongan->id_acara)
             ->value('id_harga');
 
-        $pembayaran = Pembayaran::create([]);
+        try {
+            // Operasi database
+            $pembayaran = Pembayaran::create([]);
+            $kelas = Kelas::firstOrCreate([
+                'unt_pendidikan' => strtolower($request->unt_pendidikan),
+                'id_contact' => $request->cnt,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
 
+            $uup = UserUnitPendidikan::create([
+                'id_bayar' => $pembayaran->id_bayar,
+                'id_kelas' => $kelas->id_kelas,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
 
-        $kelas = Kelas::firstOrCreate([
-            'unt_pendidikan' => strtolower($request->unt_pendidikan),
-            'id_contact' => $request->cnt,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+            DB::table('user_golongan')->insert([
+                'id_acara' => $userGolongan->id_acara,
+                'id_user' => $userId,
+                'id_harga' => $hargaId,
+                'id_uup' => $uup->id_uup,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
 
-        $uup = UserUnitPendidikan::create([
-            'id_bayar' => $pembayaran->id_bayar,
-            'id_kelas' => $kelas->id_kelas,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table('user_golongan')->insert([
-            'id_acara' => $userGolongan->id_acara,
-            'id_user' => $userId,
-            'id_harga' => $hargaId,
-            'id_uup' => $uup->id_uup,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+            $status = true; // semua berhasil
 
+        } catch (\Exception $e) {
+            $status = false; // ada error
+        }
 
-
-        return  redirect()->route('biodata')->with('success', 'Berhasil Daftar Kelas!');
+        // Redirect dengan pesan sukses / error
+        return redirect()->route('biodata')
+            ->with(
+                $status ? 'success' : 'error',
+                $status ? 'Berhasil Daftar Kelas!' : 'Gagal daftar kelas!'
+            );
     }
 }

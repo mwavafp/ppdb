@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Kategori;
 use App\Models\Kunit;
-
+use Illuminate\Support\Facades\Storage;
 
 class PengaturanBeritaController extends Controller
 {
@@ -85,17 +85,24 @@ class PengaturanBeritaController extends Controller
             'isi' => 'required|string',
             'id_kategori' => 'required|exists:kategori,id_kategori',
             'id_unit' => 'required|exists:k_unit,id_unit',
-            'gambar' => 'nullable|image|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
-        if ($request->hasFile('gambar')) {
-            $path = $request->file('gambar')->store('berita', 'public');
+        $berita = DB::table('berita')->where('id_berita', $id)->first();
+        $berita = DB::table('berita')->where('id_berita', $id)->first();
 
-            $validated['gambar'] = $path;
-            $validated['updated_at'] = now();
+        // Jika upload gambar baru
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            if (!empty($berita->gambar) && file_exists(public_path('storage/' . $berita->gambar))) {
+                unlink(public_path('storage/' . $berita->gambar));
+            }
+            $filename = 'berita_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage'), $filename);
+            $validated['gambar'] = $filename;
         }
 
-
+        $validated['updated_at'] = now();
 
         DB::table('berita')->where('id_berita', $id)->update($validated);
 

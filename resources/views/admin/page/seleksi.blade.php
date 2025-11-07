@@ -193,13 +193,13 @@
                                                     </select>
                                                 </div>
                                             @endforeach
-                                            {{-- @if ($student->nama_admin && $student->updated_at)
+                                            @if ($student->nama_admin && $student->updated_at)
                                                 <div class="text-sm text-gray-600 mt-4">
                                                     Terakhir diupdate oleh <span
                                                         class="font-semibold">{{ $student->nama_admin }}</span>
                                                     pada <span>{{ \Carbon\Carbon::parse($student->updated_at) }}</span>
                                                 </div>
-                                            @endif --}}
+                                            @endif
 
 
                                             <div class="flex justify-end">

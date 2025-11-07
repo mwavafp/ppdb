@@ -19,7 +19,8 @@
 
         <!-- Form Section -->
         <div class="bg-white px-7 pb-7 pt-1 rounded-lg shadow-lg max-w-full">
-            <form method="POST" action="{{ route('pengaturansmp-update') }}" class="space-y-8 max-w-full">
+            <form method="POST" action="{{ route('pengaturansmp-update') }}" class="space-y-8 max-w-full"
+                enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id_smp" value="{{ $data->id_smp }}">
 
@@ -33,7 +34,29 @@
                         <textarea id="deskripsi" name="deskripsi" class="w-full">{{ $data->deskripsi }}</textarea>
                     </div>
                 </div>
+                <div id="gambar-deskripsi " class="mb-8">
+                    <div class="w-full">
 
+                        <label for="deskripsi" class="block text-xl font-semibold mb-2 break-words">Foto
+                            Deskripsi</label>
+                        <div class="py-4">
+                            <p class="text-md pb-2">Foto Sekarang</p>
+                            <img class="rounded-xl" src="{{ asset('storage/' . $data->image_smp) }}" alt=""
+                                width="400">
+                        </div>
+                        <div>
+                            <p>Edit Photo</p>
+                            <input type="file" name="image_smp" id=""
+                                class="block w-full text-sm text-gray-500
+           file:mr-4 file:py-2 file:px-4
+           file:rounded-sm file:border-0
+           file:text-sm file:font-semibold
+           file:bg-[oklch(62.7%_0.194_149.214)] file:text-white
+           hover:file:bg-green-400">
+                        </div>
+
+                    </div>
+                </div>
                 <!-- Visi -->
                 <div class="w-full">
                     <label for="visi" class="block text-xl font-semibold mb-2">Visi</label>

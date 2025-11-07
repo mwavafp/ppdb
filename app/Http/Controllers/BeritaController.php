@@ -11,7 +11,7 @@ class BeritaController extends Controller
      * Menampilkan daftar berita (dengan filter kategori opsional).
      */
     public function index(Request $request)
-    { {
+    { 
             $query = Berita::with(['kategori', 'kUnit'])->latest();
 
             // Filter kategori
@@ -46,7 +46,7 @@ class BeritaController extends Controller
                 'kategori'  => \App\Models\Kategori::all(),
                 'units'     => \App\Models\Kunit::all(),
             ]);
-        }
+        
     }
 
     /**

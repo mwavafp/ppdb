@@ -22,7 +22,7 @@
                     <div
                         class="content-2 flex-1 flex items-center justify-center object-cover transition-transform duration-300 hover:scale-120">
                         <img src="{{ asset('storage/' . $teks->image_sma) }}"
-                            class="rounded-xl max-w-full max-h-[600px] object-cover object-center " alt="">
+                            class="rounded-xl w-full max-h-[600] object-cover " alt="">
                     </div>
                 </div>
             </div>
@@ -73,8 +73,8 @@
                             @foreach ($photos as $photo)
                                 @if ($photo)
                                     <div
-                                        class="overflow-hidden rounded-xl transition-transform duration-300 hover:scale-120">
-                                        <img src="{{ asset('storage/' . $photo) }}" class="w-full h-64 object-cover"
+                                        class="aspect-[13/9] overflow-hidden rounded-xl transition-transform duration-300 hover:scale-115">
+                                        <img src="{{ asset('storage/' . $photo) }}" class="w-full h-full object-cover"
                                             alt="">
                                     </div>
                                 @endif
@@ -173,7 +173,7 @@
                         @endforeach
                         <br>
                     </ul>
-                    <a href="/form?unit_pendidikan=SMA&cnt=7"
+                    <a href="/form?unit_pendidikan=SMA&cnt=6"
                         class="bg-[oklch(62.7%_0.194_149.214)] text-white py-2 px-4 rounded-md">
                         DAFTAR KLIK DISINI
                     </a>
@@ -187,49 +187,21 @@
                             <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
                             </i>
                             <span class="ml-2">
-                                Fotocopy Ijazah di Legalisir 3 Lembar
+                                Fotocopy Kartu Keluarga Sebanyak 2 Lembar
                             </span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
                             </i>
                             <span class="ml-2">
-                                Fotocopy SKHUN di Legalisir 3 Lembar
+                                Fotocopy Akte Kelahiran Sebanyak 2 Lembar
                             </span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
                             </i>
                             <span class="ml-2">
-                                Fotocopy KK di Legalisir 3 Lembar
-                            </span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
-                            </i>
-                            <span class="ml-2">
-                                Fotocopy Akte Kelahiran 3 Lembar
-                            </span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
-                            </i>
-                            <span class="ml-2">
-                                Foto Warna 4x6 2 Lembar
-                            </span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
-                            </i>
-                            <span class="ml-2">
-                                Foto Warna 3x4 2 Lembar
-                            </span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-[oklch(62.7%_0.194_149.214)]">
-                            </i>
-                            <span class="ml-2">
-                                Foto Hitam Putih 3x4 2 Lembar
+                                Foto Berwarna 3x4 Sebanyak 2 Lembar
                             </span>
                         </li>
                     </ul>

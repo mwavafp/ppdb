@@ -1,3 +1,15 @@
+@if (session('success'))
+    <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-md">
+        {{ session('success') }}
+    </div>
+@endif
+
+{{-- Notifikasi Error --}}
+@if (session('error'))
+    <div class="mb-4 p-4 bg-red-100 text-red-800 rounded-md">
+        {{ session('error') }}
+    </div>
+@endif
 <x-layout-login>
     <x-slot:title>{{ $title }}</x-slot:title>
 
@@ -110,8 +122,8 @@
                                             <tr class="odd:bg-white even:bg-gray-50">
                                                 <td class="border px-4 py-2 font-bold">Tanggal Lahir Siswa</td>
                                                 <td class="border px-4 py-2"><input type="date" name="tgl_lahir"
-                                                        class="editable-field w-full" value="{{ $all_data->tgl_lahir }}"
-                                                        disabled></td>
+                                                        class="editable-field w-full"
+                                                        value="{{ $all_data->tgl_lahir }}" disabled></td>
                                             </tr>
                                             <tr class="odd:bg-white even:bg-gray-50">
                                                 <td class="border px-4 py-2 font-bold">Alamat Siswa</td>

@@ -135,6 +135,9 @@
                                                         8</option>
                                                     <option value="9" {{ $item->kelas == '9' ? 'selected' : '' }}>
                                                         9</option>
+                                                    <option value="10"
+                                                        {{ $item->kelas == '10' ? 'selected' : '' }}>
+                                                        10</option>
                                                     <option value="11"
                                                         {{ $item->kelas == '11' ? 'selected' : '' }}>11</option>
                                                     <option value="12"

@@ -15,7 +15,7 @@
 
     <x-navbar></x-navbar>
 
-    <div class=" h-full mt-[64px] w-full">
+    <div class=" min-h-[100vh] mt-[64px] w-full">
         {{ $slot }}
     </div>
     <footer>
