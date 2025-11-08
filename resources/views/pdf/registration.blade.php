@@ -125,7 +125,7 @@
         </div>
 
         <!-- Note -->
-        <div class="Warning">
+        <div class="login_akun">
             <h3> Halaman Login Akun</h3>
             <a href="https://yppnurulhudasby.sch.id/login">https://yppnurulhudasby.sch.id/login</a>
         </div>
